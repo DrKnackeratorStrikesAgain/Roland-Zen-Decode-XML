@@ -1,4 +1,4 @@
-# RolandZenDecodeXML Build 4
+# RolandZenDecodeXML Build 5
 A tool to decode Roland editor XML files (initially Jupiter X/Xm and ZenCore) and generate JSON and a Javascript module with byte offsets (for files)
 and SYSEX locations/length, with plain text and HTML output tables for easy reading. 
 
@@ -162,7 +162,7 @@ The top level object contains blocks and these contain a `parameters` object whe
     "id": "PHRASE_VEL_SHIFT",
     "description": "Phrase Velo Shift",
     "byteOffset": 24,                       // byte offset from start of block
-    "lengthBytes": 1,                       // length of binary data block
+    "byteLength": 1,                        // length of binary data block
     "sysexOffset": 23,                      // sysex offset from start of block (decimal)
     "lengthSysex": 2,                       // length of sysex data. more than 1 = use lower nibbles
     "dataRange": [                          // range of data 
@@ -182,7 +182,7 @@ The top level object contains blocks and these contain a `parameters` object whe
     "id": "ctrlSrc1",
     "description": "MFX CtrlSrc 1",
     "byteOffset": 4,
-    "lengthBytes": 1,
+    "byteLength": 1,
     "sysexOffset": 4,
     "lengthSysex": 1,
     "dataRange": [
@@ -210,7 +210,7 @@ Some parameters can have a measurement name attached (such as db or cent) and al
 "id": "RELEASE",
 "description": "Comp Release Time",
 "byteOffset": 2,
-"lengthBytes": 1,
+"byteLength": 1,
 "sysexOffset": 2,
 "lengthSysex": 1,
 "dataRange": [
@@ -238,15 +238,10 @@ When a block contains a subblock (whether from a `group->block` or a `block->sub
     "id": "WMT",                        // subblock ID (from XML)
     "blockName": "INST_CMN_WMT",        // name of the separate block created for this subblock
     "count": 4,                         // number of array instances
-    "byteOffset": [                     // array of byte offsets, one for each instance
-        28,
-        56,
-        84,
-        112
-    ],
+    "byteOffset": 28,                   // byte offset of item #0 (code should calculate addresses in real time)
     "blockByteLength": 28,              // size of a single subblock instance
-    "lengthBytes": 112,                 // total size (blockByteLength * count)
-    "description": "WMT",                // description from XML
+    "byteLength": 112,                  // total size (blockByteLength * count)
+    "description": "WMT",               // description from XML
 
     // only in.js version
     "block": ZenProperties["INST_CMN_WMT"]
@@ -255,9 +250,47 @@ When a block contains a subblock (whether from a `group->block` or a `block->sub
 
 The referenced block (`INST_CMN_WMT` in this example) exists as a separate top-level block with its own `parameters` object. Subblock parameters are identified by the presence of the `blockName` field.
 
+**Array Item Address Calculation**: For array items (subblocks or blocks in groups), `byteOffset` stores the address of item #0. To calculate the address of item `i`, use: `address = byteOffset + (i * blockByteLength)`. The HTML and TXT documentation output shows all array items with their calculated addresses, but the JSON/JS output stores only the base offset for efficiency.
 
+### Group Structure
+
+Groups are containers for blocks and have a similar structure to blocks:
+
+```json
+  "VoDsgn": {
+    "name": "VoDsgn",
+    "description": "Voice Design",
+    "byteLength": 136,
+    "parameters": {
+      "PCMT_CMN": {
+        "blockName": "PCMT_CMN",
+        "count": 1,
+        "byteOffset": 0,
+        "blockByteLength": 32,
+        "byteLength": 32
+      },
+      "PCMS_PMT": {
+        "blockName": "PCMS_PMT",
+        "count": 4,
+        "byteOffset": 32,
+        "blockByteLength": 26,
+        "byteLength": 104
+      }
+    }
+  }
+```
+
+Groups contain a `parameters` object where each entry references a block. Block references within groups use the same structure as subblock parameters: `byteOffset` stores the address of item #0, and addresses for array items are calculated at runtime.
 
 ## Changelog
+**Build 5**
+
+- **Subblock parameters use single byteOffset value**: When a parameter references a subblock (indicated by the presence of a `blockName` field), the `byteOffset` field contains the address of item #0. Addresses for other array items are calculated at runtime using: `address = byteOffset + (index * blockByteLength)`. This applies to both subblocks within blocks and block references within groups. The HTML and TXT documentation output shows all array items with their calculated addresses for reference.
+
+- **Property name changes**: 
+  - `lengthBytes` has been renamed to `byteLength` for consistency with the `byteLength` property used at the block level.
+  - `totalByteLength` has been renamed to `byteLength` in groups and block references within groups for consistency with the naming convention used throughout the codebase.
+
 **Build 4 - JavaScript Port**
 
 Converted from PHP to JavaScript (Node.js). Now uses `fast-xml-parser` for XML parsing.
@@ -273,7 +306,6 @@ The JSON output format has been unified in Build 4:
 
 - **Subblocks are created as separate blocks**: When a block contains a `<subblock>` element, the subblock is parsed as a separate block definition (e.g., `INST_CMN_WMT` is a separate block from `INST_CMN`). The parent block contains a parameter entry that references the subblock.
 
-- **Subblock parameters contain byteOffset as an array**: When a parameter references a subblock (indicated by the presence of a `blockName` field), the `byteOffset` field is an array containing the byte offset for each instance of the subblock. This allows for multiple instances of the same subblock within a parent block. Subblock parameters do not include `isSubblock` or `totalByteLength` fields - they are identified by the presence of `blockName`.
 
 **Build 3**
 

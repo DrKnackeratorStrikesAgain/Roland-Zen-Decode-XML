@@ -8,7 +8,7 @@ ZenProperties["INST_CMN_WMT"] = {
     "SW": {
       "id": "SW",
       "byteOffset": 0,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Wave Switch",
       "dataRange": [
         0,
@@ -23,7 +23,7 @@ ZenProperties["INST_CMN_WMT"] = {
     "WAV_GTYPE": {
       "id": "WAV_GTYPE",
       "byteOffset": 1,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Wave Group Type",
       "dataRange": [
         0,
@@ -39,7 +39,7 @@ ZenProperties["INST_CMN_WMT"] = {
     "WAV_GID": {
       "id": "WAV_GID",
       "byteOffset": 2,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "Wave Group ID",
       "dataRange": [
         0,
@@ -50,7 +50,7 @@ ZenProperties["INST_CMN_WMT"] = {
     "WAV_NUM_L": {
       "id": "WAV_NUM_L",
       "byteOffset": 4,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "Wave Number L",
       "dataRange": [
         0,
@@ -61,7 +61,7 @@ ZenProperties["INST_CMN_WMT"] = {
     "WAV_NUM_R": {
       "id": "WAV_NUM_R",
       "byteOffset": 6,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "Wave Number R",
       "dataRange": [
         0,
@@ -72,7 +72,7 @@ ZenProperties["INST_CMN_WMT"] = {
     "WAV_GAIN": {
       "id": "WAV_GAIN",
       "byteOffset": 8,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Wave Gain",
       "dataRange": [
         0,
@@ -92,7 +92,7 @@ ZenProperties["INST_CMN_WMT"] = {
     "FXM_SW": {
       "id": "FXM_SW",
       "byteOffset": 9,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Wave FXM Switch",
       "dataRange": [
         0,
@@ -107,7 +107,7 @@ ZenProperties["INST_CMN_WMT"] = {
     "FXM_COLOR": {
       "id": "FXM_COLOR",
       "byteOffset": 10,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Wave FXM Color",
       "dataRange": [
         1,
@@ -118,7 +118,7 @@ ZenProperties["INST_CMN_WMT"] = {
     "FXM_DEPTH": {
       "id": "FXM_DEPTH",
       "byteOffset": 11,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Wave FXM Depth",
       "dataRange": [
         0,
@@ -129,7 +129,7 @@ ZenProperties["INST_CMN_WMT"] = {
     "PIT_CRS": {
       "id": "PIT_CRS",
       "byteOffset": 12,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Wave Coarse Tune",
       "dataRange": [
         -48,
@@ -140,7 +140,7 @@ ZenProperties["INST_CMN_WMT"] = {
     "PIT_FINE": {
       "id": "PIT_FINE",
       "byteOffset": 13,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Wave Fine Tune",
       "dataRange": [
         -50,
@@ -151,7 +151,7 @@ ZenProperties["INST_CMN_WMT"] = {
     "PAN": {
       "id": "PAN",
       "byteOffset": 14,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Wave Pan",
       "dataRange": [
         -64,
@@ -162,7 +162,7 @@ ZenProperties["INST_CMN_WMT"] = {
     "PAN_RND_SW": {
       "id": "PAN_RND_SW",
       "byteOffset": 15,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Wave Random Pan Sw",
       "dataRange": [
         0,
@@ -177,7 +177,7 @@ ZenProperties["INST_CMN_WMT"] = {
     "PAN_ALT_SW": {
       "id": "PAN_ALT_SW",
       "byteOffset": 16,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Wave Alternate Pan Sw",
       "dataRange": [
         0,
@@ -193,7 +193,7 @@ ZenProperties["INST_CMN_WMT"] = {
     "LEVEL": {
       "id": "LEVEL",
       "byteOffset": 17,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Wave Level",
       "dataRange": [
         0,
@@ -204,7 +204,7 @@ ZenProperties["INST_CMN_WMT"] = {
     "DELAY_MODE": {
       "id": "DELAY_MODE",
       "byteOffset": 19,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Delay Mode",
       "dataRange": [
         0,
@@ -221,7 +221,7 @@ ZenProperties["INST_CMN_WMT"] = {
     "DLY_TIME_SYNC": {
       "id": "DLY_TIME_SYNC",
       "byteOffset": 20,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "DelayTime Sync",
       "dataRange": [
         0,
@@ -236,7 +236,7 @@ ZenProperties["INST_CMN_WMT"] = {
     "DLY_TIME_NOTE": {
       "id": "DLY_TIME_NOTE",
       "byteOffset": 21,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "DelayTime (note)",
       "dataRange": [
         0,
@@ -271,7 +271,7 @@ ZenProperties["INST_CMN_WMT"] = {
     "DLY_TIME": {
       "id": "DLY_TIME",
       "byteOffset": 22,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "DelayTime",
       "dataRange": [
         0,
@@ -282,7 +282,7 @@ ZenProperties["INST_CMN_WMT"] = {
     "VRANGE_LO": {
       "id": "VRANGE_LO",
       "byteOffset": 24,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "VeloRange Lower",
       "dataRange": [
         1,
@@ -293,7 +293,7 @@ ZenProperties["INST_CMN_WMT"] = {
     "VRANGE_UP": {
       "id": "VRANGE_UP",
       "byteOffset": 25,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "VeloRange Upper",
       "dataRange": [
         1,
@@ -304,7 +304,7 @@ ZenProperties["INST_CMN_WMT"] = {
     "VFADE_LO": {
       "id": "VFADE_LO",
       "byteOffset": 26,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "VeloFade Lower",
       "dataRange": [
         0,
@@ -315,7 +315,7 @@ ZenProperties["INST_CMN_WMT"] = {
     "VFADE_UP": {
       "id": "VFADE_UP",
       "byteOffset": 27,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "VeloFade Upper",
       "dataRange": [
         0,
@@ -334,7 +334,7 @@ ZenProperties["INST_CMN"] = {
     "NAME_1": {
       "id": "NAME_1",
       "byteOffset": 0,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Name 1",
       "dataRange": [
         32,
@@ -346,7 +346,7 @@ ZenProperties["INST_CMN"] = {
     "CATEGORY": {
       "id": "CATEGORY",
       "byteOffset": 16,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Category",
       "dataRange": [
         0,
@@ -357,7 +357,7 @@ ZenProperties["INST_CMN"] = {
     "LEVEL": {
       "id": "LEVEL",
       "byteOffset": 17,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Level",
       "dataRange": [
         0,
@@ -368,7 +368,7 @@ ZenProperties["INST_CMN"] = {
     "SRC_KEY": {
       "id": "SRC_KEY",
       "byteOffset": 18,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Source Key",
       "dataRange": [
         0,
@@ -379,7 +379,7 @@ ZenProperties["INST_CMN"] = {
     "PIT_FINE": {
       "id": "PIT_FINE",
       "byteOffset": 19,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Fine Tune",
       "dataRange": [
         -50,
@@ -391,7 +391,7 @@ ZenProperties["INST_CMN"] = {
     "PIT_RND": {
       "id": "PIT_RND",
       "byteOffset": 20,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "Random Pitch Depth",
       "dataRange": [
         0,
@@ -403,7 +403,7 @@ ZenProperties["INST_CMN"] = {
     "PAN_RND": {
       "id": "PAN_RND",
       "byteOffset": 22,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Random Pan Depth",
       "dataRange": [
         0,
@@ -414,7 +414,7 @@ ZenProperties["INST_CMN"] = {
     "PAN_ALT": {
       "id": "PAN_ALT",
       "byteOffset": 23,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Alternate Pan Depth",
       "dataRange": [
         -64,
@@ -425,7 +425,7 @@ ZenProperties["INST_CMN"] = {
     "ASGN_TYPE": {
       "id": "ASGN_TYPE",
       "byteOffset": 24,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Assign Type",
       "dataRange": [
         0,
@@ -440,7 +440,7 @@ ZenProperties["INST_CMN"] = {
     "ENV_MODE": {
       "id": "ENV_MODE",
       "byteOffset": 25,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Envelope Mode",
       "dataRange": [
         0,
@@ -455,7 +455,7 @@ ZenProperties["INST_CMN"] = {
     "WMT_VEL_CTRL": {
       "id": "WMT_VEL_CTRL",
       "byteOffset": 26,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "WMT Velocity Control",
       "dataRange": [
         0,
@@ -471,7 +471,7 @@ ZenProperties["INST_CMN"] = {
     "WMT": {
       "id": "WMT",
       "byteOffset": 28,
-      "lengthBytes": 112,
+      "byteLength": 112,
       "description": "WMT",
       "blockName": "INST_CMN_WMT",
       "count": 4,
@@ -481,7 +481,7 @@ ZenProperties["INST_CMN"] = {
     "FILTER_TYPE": {
       "id": "FILTER_TYPE",
       "byteOffset": 140,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVF Filter Type",
       "dataRange": [
         0,
@@ -501,7 +501,7 @@ ZenProperties["INST_CMN"] = {
     "CUTOFF": {
       "id": "CUTOFF",
       "byteOffset": 142,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "TVF Cutoff Frequency",
       "dataRange": [
         0,
@@ -512,7 +512,7 @@ ZenProperties["INST_CMN"] = {
     "CUTOFF_VCRV": {
       "id": "CUTOFF_VCRV",
       "byteOffset": 144,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVF Cutoff Velocity Curve",
       "dataRange": [
         0,
@@ -533,7 +533,7 @@ ZenProperties["INST_CMN"] = {
     "CUTOFF_VSENS": {
       "id": "CUTOFF_VSENS",
       "byteOffset": 145,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVF Cutoff Velocity Sens",
       "dataRange": [
         -100,
@@ -544,7 +544,7 @@ ZenProperties["INST_CMN"] = {
     "RESO": {
       "id": "RESO",
       "byteOffset": 146,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "TVF Resonance",
       "dataRange": [
         0,
@@ -555,7 +555,7 @@ ZenProperties["INST_CMN"] = {
     "RESO_VSENS": {
       "id": "RESO_VSENS",
       "byteOffset": 148,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVF Resonance Velocity Sens",
       "dataRange": [
         -100,
@@ -566,7 +566,7 @@ ZenProperties["INST_CMN"] = {
     "LEVEL_VCRV": {
       "id": "LEVEL_VCRV",
       "byteOffset": 149,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVA Level Velocity Curve",
       "dataRange": [
         0,
@@ -587,7 +587,7 @@ ZenProperties["INST_CMN"] = {
     "LEVEL_VSENS": {
       "id": "LEVEL_VSENS",
       "byteOffset": 150,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVA Level Velocity Sens",
       "dataRange": [
         -100,
@@ -598,7 +598,7 @@ ZenProperties["INST_CMN"] = {
     "TEMPO_SYNC": {
       "id": "TEMPO_SYNC",
       "byteOffset": 151,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Wave Tempo Sync",
       "dataRange": [
         0,
@@ -621,7 +621,7 @@ ZenProperties["MDLCORE"] = {
     "MODEL": {
       "id": "MODEL",
       "byteOffset": 0,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Model",
       "dataRange": [
         0,
@@ -640,7 +640,7 @@ ZenProperties["MDLCORE"] = {
     "LFOWAVE": {
       "id": "LFOWAVE",
       "byteOffset": 1,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "LFO WAVE FORM",
       "dataRange": [
         0,
@@ -664,7 +664,7 @@ ZenProperties["MDLCORE"] = {
     "LFORATE": {
       "id": "LFORATE",
       "byteOffset": 2,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "LFO RATE",
       "dataRange": [
         0,
@@ -675,7 +675,7 @@ ZenProperties["MDLCORE"] = {
     "LFODLY": {
       "id": "LFODLY",
       "byteOffset": 4,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "LFO DELAY TIME",
       "dataRange": [
         0,
@@ -686,7 +686,7 @@ ZenProperties["MDLCORE"] = {
     "OSC1MOD": {
       "id": "OSC1MOD",
       "byteOffset": 6,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC1 MOD",
       "dataRange": [
         -100,
@@ -697,7 +697,7 @@ ZenProperties["MDLCORE"] = {
     "OSC1PENV": {
       "id": "OSC1PENV",
       "byteOffset": 7,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC1 PITCH ENV DEPTH",
       "dataRange": [
         -100,
@@ -708,7 +708,7 @@ ZenProperties["MDLCORE"] = {
     "OSC1DEST": {
       "id": "OSC1DEST",
       "byteOffset": 8,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC1 DEST SELECT",
       "dataRange": [
         0,
@@ -724,7 +724,7 @@ ZenProperties["MDLCORE"] = {
     "OSC1ENVS": {
       "id": "OSC1ENVS",
       "byteOffset": 9,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC1 ENVT SELECT",
       "dataRange": [
         0,
@@ -739,7 +739,7 @@ ZenProperties["MDLCORE"] = {
     "OSC1WAVE": {
       "id": "OSC1WAVE",
       "byteOffset": 10,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "OSC1 WAVE FORM",
       "dataRange": [
         0,
@@ -780,7 +780,7 @@ ZenProperties["MDLCORE"] = {
     "OSC1FEET": {
       "id": "OSC1FEET",
       "byteOffset": 12,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC1 FEET",
       "dataRange": [
         0,
@@ -798,7 +798,7 @@ ZenProperties["MDLCORE"] = {
     "OSC1COARSE": {
       "id": "OSC1COARSE",
       "byteOffset": 13,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC1 COARSE TUNE",
       "dataRange": [
         -48,
@@ -809,7 +809,7 @@ ZenProperties["MDLCORE"] = {
     "OSC1FINE": {
       "id": "OSC1FINE",
       "byteOffset": 14,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC1 FINE TUNE",
       "dataRange": [
         -50,
@@ -820,7 +820,7 @@ ZenProperties["MDLCORE"] = {
     "OSC1LOWFREQ": {
       "id": "OSC1LOWFREQ",
       "byteOffset": 15,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC1 LOW FREQ PITCH",
       "dataRange": [
         0,
@@ -831,7 +831,7 @@ ZenProperties["MDLCORE"] = {
     "OSC1MODE": {
       "id": "OSC1MODE",
       "byteOffset": 16,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC1 MODE",
       "dataRange": [
         0,
@@ -846,7 +846,7 @@ ZenProperties["MDLCORE"] = {
     "OSC1PWM": {
       "id": "OSC1PWM",
       "byteOffset": 17,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC1 PWM DEPTH",
       "dataRange": [
         -63,
@@ -857,7 +857,7 @@ ZenProperties["MDLCORE"] = {
     "OSC1PLSW": {
       "id": "OSC1PLSW",
       "byteOffset": 18,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC1 PULSE WIDTH",
       "dataRange": [
         0,
@@ -868,7 +868,7 @@ ZenProperties["MDLCORE"] = {
     "OSC1PLSM": {
       "id": "OSC1PLSM",
       "byteOffset": 19,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC1 PULSE WIDTH MODE",
       "dataRange": [
         0,
@@ -884,7 +884,7 @@ ZenProperties["MDLCORE"] = {
     "OSC2MOD": {
       "id": "OSC2MOD",
       "byteOffset": 20,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC2 MOD",
       "dataRange": [
         -100,
@@ -895,7 +895,7 @@ ZenProperties["MDLCORE"] = {
     "OSC2PENV": {
       "id": "OSC2PENV",
       "byteOffset": 21,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC2 PITCH ENV DEPTH",
       "dataRange": [
         -100,
@@ -906,7 +906,7 @@ ZenProperties["MDLCORE"] = {
     "OSC2WAVE": {
       "id": "OSC2WAVE",
       "byteOffset": 22,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "OSC2 WAVE FORM",
       "dataRange": [
         0,
@@ -947,7 +947,7 @@ ZenProperties["MDLCORE"] = {
     "OSC2FEET": {
       "id": "OSC2FEET",
       "byteOffset": 24,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC2 FEET",
       "dataRange": [
         0,
@@ -965,7 +965,7 @@ ZenProperties["MDLCORE"] = {
     "OSC2COARSE": {
       "id": "OSC2COARSE",
       "byteOffset": 25,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC2 COARSE TUNE",
       "dataRange": [
         -48,
@@ -976,7 +976,7 @@ ZenProperties["MDLCORE"] = {
     "OSC2FINE": {
       "id": "OSC2FINE",
       "byteOffset": 26,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC2 FINE TUNE",
       "dataRange": [
         -50,
@@ -987,7 +987,7 @@ ZenProperties["MDLCORE"] = {
     "OSC2LOWFREQ": {
       "id": "OSC2LOWFREQ",
       "byteOffset": 27,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC2 LOW FREQ PITCH",
       "dataRange": [
         0,
@@ -998,7 +998,7 @@ ZenProperties["MDLCORE"] = {
     "OSC2MODE": {
       "id": "OSC2MODE",
       "byteOffset": 28,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC2 MODE",
       "dataRange": [
         0,
@@ -1013,7 +1013,7 @@ ZenProperties["MDLCORE"] = {
     "OSC2PW": {
       "id": "OSC2PW",
       "byteOffset": 29,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC2 PULSE WIDTH",
       "dataRange": [
         0,
@@ -1024,7 +1024,7 @@ ZenProperties["MDLCORE"] = {
     "OSC3MOD": {
       "id": "OSC3MOD",
       "byteOffset": 30,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC3 MOD",
       "dataRange": [
         -100,
@@ -1035,7 +1035,7 @@ ZenProperties["MDLCORE"] = {
     "OSC3PENV": {
       "id": "OSC3PENV",
       "byteOffset": 31,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC3 PITCH ENV DEPTH",
       "dataRange": [
         -100,
@@ -1046,7 +1046,7 @@ ZenProperties["MDLCORE"] = {
     "OSC3WAVE": {
       "id": "OSC3WAVE",
       "byteOffset": 32,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "OSC3 WAVE FORM",
       "dataRange": [
         0,
@@ -1087,7 +1087,7 @@ ZenProperties["MDLCORE"] = {
     "OSC3FEET": {
       "id": "OSC3FEET",
       "byteOffset": 34,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC3 FEET",
       "dataRange": [
         0,
@@ -1105,7 +1105,7 @@ ZenProperties["MDLCORE"] = {
     "OSC3COARSE": {
       "id": "OSC3COARSE",
       "byteOffset": 35,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC3 COARSE TUNE",
       "dataRange": [
         -48,
@@ -1116,7 +1116,7 @@ ZenProperties["MDLCORE"] = {
     "OSC3FINE": {
       "id": "OSC3FINE",
       "byteOffset": 36,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC3 FINE TUNE",
       "dataRange": [
         -50,
@@ -1127,7 +1127,7 @@ ZenProperties["MDLCORE"] = {
     "OSC3LOWFREQ": {
       "id": "OSC3LOWFREQ",
       "byteOffset": 37,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC3 LOW FREQ PITCH",
       "dataRange": [
         0,
@@ -1138,7 +1138,7 @@ ZenProperties["MDLCORE"] = {
     "OSC3MODE": {
       "id": "OSC3MODE",
       "byteOffset": 38,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC3 MODE",
       "dataRange": [
         0,
@@ -1153,7 +1153,7 @@ ZenProperties["MDLCORE"] = {
     "NOISE": {
       "id": "NOISE",
       "byteOffset": 39,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "NOISE",
       "dataRange": [
         0,
@@ -1168,7 +1168,7 @@ ZenProperties["MDLCORE"] = {
     "MODDPTH": {
       "id": "MODDPTH",
       "byteOffset": 40,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "MOD DEPTH",
       "dataRange": [
         0,
@@ -1179,7 +1179,7 @@ ZenProperties["MDLCORE"] = {
     "MODMODE": {
       "id": "MODMODE",
       "byteOffset": 42,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "MOD MODE",
       "dataRange": [
         0,
@@ -1196,7 +1196,7 @@ ZenProperties["MDLCORE"] = {
     "MXROSC1": {
       "id": "MXROSC1",
       "byteOffset": 43,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC1 LEVEL",
       "dataRange": [
         0,
@@ -1207,7 +1207,7 @@ ZenProperties["MDLCORE"] = {
     "MXROSC2": {
       "id": "MXROSC2",
       "byteOffset": 44,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC2 LEVEL",
       "dataRange": [
         0,
@@ -1218,7 +1218,7 @@ ZenProperties["MDLCORE"] = {
     "MXROSC3": {
       "id": "MXROSC3",
       "byteOffset": 45,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC3 LEVEL",
       "dataRange": [
         0,
@@ -1229,7 +1229,7 @@ ZenProperties["MDLCORE"] = {
     "MXRNOISE": {
       "id": "MXRNOISE",
       "byteOffset": 46,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "NOISE LEVEL",
       "dataRange": [
         0,
@@ -1240,7 +1240,7 @@ ZenProperties["MDLCORE"] = {
     "MXRENVD": {
       "id": "MXRENVD",
       "byteOffset": 47,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "MIXER ENV DEPTH",
       "dataRange": [
         -63,
@@ -1251,7 +1251,7 @@ ZenProperties["MDLCORE"] = {
     "MXRENVS": {
       "id": "MXRENVS",
       "byteOffset": 48,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "MIXER ENV SELECT",
       "dataRange": [
         0,
@@ -1266,7 +1266,7 @@ ZenProperties["MDLCORE"] = {
     "MXRDYNA": {
       "id": "MXRDYNA",
       "byteOffset": 49,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "MIXER DYNAMICS",
       "dataRange": [
         0,
@@ -1277,7 +1277,7 @@ ZenProperties["MDLCORE"] = {
     "FLTTYPE": {
       "id": "FLTTYPE",
       "byteOffset": 50,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "FILTER TYPE",
       "dataRange": [
         0,
@@ -1288,7 +1288,7 @@ ZenProperties["MDLCORE"] = {
     "FLTHPF2": {
       "id": "FLTHPF2",
       "byteOffset": 51,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "FILTER HPF STEP",
       "dataRange": [
         0,
@@ -1299,7 +1299,7 @@ ZenProperties["MDLCORE"] = {
     "FLTHPF1": {
       "id": "FLTHPF1",
       "byteOffset": 52,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "FILTER HPF",
       "dataRange": [
         0,
@@ -1310,7 +1310,7 @@ ZenProperties["MDLCORE"] = {
     "FLTFREQ": {
       "id": "FLTFREQ",
       "byteOffset": 54,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "FILTER FREQ",
       "dataRange": [
         0,
@@ -1321,7 +1321,7 @@ ZenProperties["MDLCORE"] = {
     "FLTRESO": {
       "id": "FLTRESO",
       "byteOffset": 56,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "FILTER RESO",
       "dataRange": [
         0,
@@ -1332,7 +1332,7 @@ ZenProperties["MDLCORE"] = {
     "FLTENVD": {
       "id": "FLTENVD",
       "byteOffset": 58,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "FILTER ENV DEPTH",
       "dataRange": [
         -1023,
@@ -1343,7 +1343,7 @@ ZenProperties["MDLCORE"] = {
     "FLTENVS": {
       "id": "FLTENVS",
       "byteOffset": 60,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "FILTER ENV SELECT",
       "dataRange": [
         0,
@@ -1358,7 +1358,7 @@ ZenProperties["MDLCORE"] = {
     "FLTSLOPE": {
       "id": "FLTSLOPE",
       "byteOffset": 61,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "FILTER SLOPE",
       "dataRange": [
         0,
@@ -1374,7 +1374,7 @@ ZenProperties["MDLCORE"] = {
     "FLTKYBD": {
       "id": "FLTKYBD",
       "byteOffset": 62,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "FILTER KEY FOLLOW",
       "dataRange": [
         -200,
@@ -1385,7 +1385,7 @@ ZenProperties["MDLCORE"] = {
     "FLTMOD": {
       "id": "FLTMOD",
       "byteOffset": 64,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "FILTER MOD",
       "dataRange": [
         -100,
@@ -1396,7 +1396,7 @@ ZenProperties["MDLCORE"] = {
     "AMPLVL": {
       "id": "AMPLVL",
       "byteOffset": 66,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "AMP LEVEL",
       "dataRange": [
         0,
@@ -1407,7 +1407,7 @@ ZenProperties["MDLCORE"] = {
     "AMPMOD1": {
       "id": "AMPMOD1",
       "byteOffset": 67,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "AMP MOD",
       "dataRange": [
         -100,
@@ -1418,7 +1418,7 @@ ZenProperties["MDLCORE"] = {
     "AMPMOD2": {
       "id": "AMPMOD2",
       "byteOffset": 68,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "AMP MOD STEP",
       "dataRange": [
         0,
@@ -1429,7 +1429,7 @@ ZenProperties["MDLCORE"] = {
     "AMPENVS": {
       "id": "AMPENVS",
       "byteOffset": 69,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "AMP ENV SELECT",
       "dataRange": [
         0,
@@ -1446,7 +1446,7 @@ ZenProperties["MDLCORE"] = {
     "ENV1A": {
       "id": "ENV1A",
       "byteOffset": 70,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "ENV1 ATTACK",
       "dataRange": [
         0,
@@ -1457,7 +1457,7 @@ ZenProperties["MDLCORE"] = {
     "ENV1D": {
       "id": "ENV1D",
       "byteOffset": 72,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "ENV1 DECAY",
       "dataRange": [
         0,
@@ -1468,7 +1468,7 @@ ZenProperties["MDLCORE"] = {
     "ENV1S": {
       "id": "ENV1S",
       "byteOffset": 74,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "ENV1 SUSTAIN",
       "dataRange": [
         0,
@@ -1479,7 +1479,7 @@ ZenProperties["MDLCORE"] = {
     "ENV1R": {
       "id": "ENV1R",
       "byteOffset": 76,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "ENV1 RELEASE",
       "dataRange": [
         0,
@@ -1490,7 +1490,7 @@ ZenProperties["MDLCORE"] = {
     "ENV1KYBD1": {
       "id": "ENV1KYBD1",
       "byteOffset": 78,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "ENV1 KEY FOLLOW",
       "dataRange": [
         -100,
@@ -1501,7 +1501,7 @@ ZenProperties["MDLCORE"] = {
     "ENV1KYBD2": {
       "id": "ENV1KYBD2",
       "byteOffset": 79,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "ENV1 KEY FOLLOW STEP",
       "dataRange": [
         0,
@@ -1512,7 +1512,7 @@ ZenProperties["MDLCORE"] = {
     "ENV2A": {
       "id": "ENV2A",
       "byteOffset": 80,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "ENV2 ATTACK",
       "dataRange": [
         0,
@@ -1523,7 +1523,7 @@ ZenProperties["MDLCORE"] = {
     "ENV2D": {
       "id": "ENV2D",
       "byteOffset": 82,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "ENV2 DECAY",
       "dataRange": [
         0,
@@ -1534,7 +1534,7 @@ ZenProperties["MDLCORE"] = {
     "ENV2S": {
       "id": "ENV2S",
       "byteOffset": 84,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "ENV2 SUSTAIN",
       "dataRange": [
         0,
@@ -1545,7 +1545,7 @@ ZenProperties["MDLCORE"] = {
     "ENV2R": {
       "id": "ENV2R",
       "byteOffset": 86,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "ENV2 RELEASE",
       "dataRange": [
         0,
@@ -1556,7 +1556,7 @@ ZenProperties["MDLCORE"] = {
     "ENV2MODE": {
       "id": "ENV2MODE",
       "byteOffset": 88,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "ENV2 MODE",
       "dataRange": [
         0,
@@ -1572,7 +1572,7 @@ ZenProperties["MDLCORE"] = {
     "ENV2KYBD1": {
       "id": "ENV2KYBD1",
       "byteOffset": 89,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "ENV2 KEY FOLLOW",
       "dataRange": [
         -100,
@@ -1583,7 +1583,7 @@ ZenProperties["MDLCORE"] = {
     "ENV2KYBD2": {
       "id": "ENV2KYBD2",
       "byteOffset": 90,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "ENV2 KEY FOLLOW STEP",
       "dataRange": [
         0,
@@ -1594,7 +1594,7 @@ ZenProperties["MDLCORE"] = {
     "DYNPTCH": {
       "id": "DYNPTCH",
       "byteOffset": 91,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "DYNAMICS PITCH",
       "dataRange": [
         0,
@@ -1605,7 +1605,7 @@ ZenProperties["MDLCORE"] = {
     "DYNFLTT": {
       "id": "DYNFLTT",
       "byteOffset": 92,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "DYNAMICS FILTER",
       "dataRange": [
         0,
@@ -1616,7 +1616,7 @@ ZenProperties["MDLCORE"] = {
     "DYNAMP": {
       "id": "DYNAMP",
       "byteOffset": 93,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "DYNAMICS AMP",
       "dataRange": [
         0,
@@ -1627,7 +1627,7 @@ ZenProperties["MDLCORE"] = {
     "PCHDRFT": {
       "id": "PCHDRFT",
       "byteOffset": 94,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "PITCH DRIFT",
       "dataRange": [
         0,
@@ -1638,7 +1638,7 @@ ZenProperties["MDLCORE"] = {
     "BNDPTCH2": {
       "id": "BNDPTCH2",
       "byteOffset": 95,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "BENDER PITCH DEPTH STEP",
       "dataRange": [
         0,
@@ -1655,7 +1655,7 @@ ZenProperties["MDLCORE"] = {
     "BNDFLT": {
       "id": "BNDFLT",
       "byteOffset": 96,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "BENDER FILTER DEPTH",
       "dataRange": [
         -63,
@@ -1666,7 +1666,7 @@ ZenProperties["MDLCORE"] = {
     "BNDLFO": {
       "id": "BNDLFO",
       "byteOffset": 97,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "MODULATION LFO DEPTH",
       "dataRange": [
         -63,
@@ -1677,7 +1677,7 @@ ZenProperties["MDLCORE"] = {
     "BNDPTCH1": {
       "id": "BNDPTCH1",
       "byteOffset": 98,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "BENDER PITCH DEPTH",
       "dataRange": [
         0,
@@ -1688,7 +1688,7 @@ ZenProperties["MDLCORE"] = {
     "PTATIME": {
       "id": "PTATIME",
       "byteOffset": 100,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "PORTAMENT TIME",
       "dataRange": [
         0,
@@ -1699,7 +1699,7 @@ ZenProperties["MDLCORE"] = {
     "PTAMODE": {
       "id": "PTAMODE",
       "byteOffset": 102,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "PORTAMENT MODE",
       "dataRange": [
         0,
@@ -1715,7 +1715,7 @@ ZenProperties["MDLCORE"] = {
     "KBDMODE": {
       "id": "KBDMODE",
       "byteOffset": 103,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "KEY MODE",
       "dataRange": [
         0,
@@ -1732,7 +1732,7 @@ ZenProperties["MDLCORE"] = {
     "EXPAND": {
       "id": "EXPAND",
       "byteOffset": 104,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "PARAMETER EXPANSION SWITCH",
       "dataRange": [
         0,
@@ -1747,7 +1747,7 @@ ZenProperties["MDLCORE"] = {
     "CONDITION": {
       "id": "CONDITION",
       "byteOffset": 105,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "CONDITION",
       "dataRange": [
         0,
@@ -1758,7 +1758,7 @@ ZenProperties["MDLCORE"] = {
     "PTACRV": {
       "id": "PTACRV",
       "byteOffset": 106,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "PORTAMENT CURVE TYPE",
       "dataRange": [
         0,
@@ -1775,7 +1775,7 @@ ZenProperties["MDLCORE"] = {
     "AFT_LFO": {
       "id": "AFT_LFO",
       "byteOffset": 107,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "AFTER TOUCH SENS LFO",
       "dataRange": [
         -63,
@@ -1786,7 +1786,7 @@ ZenProperties["MDLCORE"] = {
     "AFT_FREQ": {
       "id": "AFT_FREQ",
       "byteOffset": 108,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "AFTER TOUCH SENS FREQ",
       "dataRange": [
         -63,
@@ -1797,7 +1797,7 @@ ZenProperties["MDLCORE"] = {
     "AFT_LEV": {
       "id": "AFT_LEV",
       "byteOffset": 109,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "AFTER TOUCH SENS LEVEL",
       "dataRange": [
         -63,
@@ -1816,7 +1816,7 @@ ZenProperties["MDLJD800COM"] = {
     "LEVEL": {
       "id": "LEVEL",
       "byteOffset": 0,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Level",
       "dataRange": [
         0,
@@ -1827,7 +1827,7 @@ ZenProperties["MDLJD800COM"] = {
     "KEYA_RNG_LO": {
       "id": "KEYA_RNG_LO",
       "byteOffset": 1,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Key Range A Low",
       "dataRange": [
         0,
@@ -1838,7 +1838,7 @@ ZenProperties["MDLJD800COM"] = {
     "KEYA_RNG_HI": {
       "id": "KEYA_RNG_HI",
       "byteOffset": 2,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Key Range A High",
       "dataRange": [
         0,
@@ -1849,7 +1849,7 @@ ZenProperties["MDLJD800COM"] = {
     "KEYB_RNG_LO": {
       "id": "KEYB_RNG_LO",
       "byteOffset": 3,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Key Range B Low",
       "dataRange": [
         0,
@@ -1860,7 +1860,7 @@ ZenProperties["MDLJD800COM"] = {
     "KEYB_RNG_HI": {
       "id": "KEYB_RNG_HI",
       "byteOffset": 4,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Key Range B High",
       "dataRange": [
         0,
@@ -1871,7 +1871,7 @@ ZenProperties["MDLJD800COM"] = {
     "KEYC_RNG_LO": {
       "id": "KEYC_RNG_LO",
       "byteOffset": 5,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Key Range C Low",
       "dataRange": [
         0,
@@ -1882,7 +1882,7 @@ ZenProperties["MDLJD800COM"] = {
     "KEYC_RNG_HI": {
       "id": "KEYC_RNG_HI",
       "byteOffset": 6,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Key Range C High",
       "dataRange": [
         0,
@@ -1893,7 +1893,7 @@ ZenProperties["MDLJD800COM"] = {
     "KEYD_RNG_LO": {
       "id": "KEYD_RNG_LO",
       "byteOffset": 7,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Key Range D Low",
       "dataRange": [
         0,
@@ -1904,7 +1904,7 @@ ZenProperties["MDLJD800COM"] = {
     "KEYD_RNG_HI": {
       "id": "KEYD_RNG_HI",
       "byteOffset": 8,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Key Range D High",
       "dataRange": [
         0,
@@ -1915,7 +1915,7 @@ ZenProperties["MDLJD800COM"] = {
     "BND_RNG_DW": {
       "id": "BND_RNG_DW",
       "byteOffset": 9,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Bender Range Down",
       "dataRange": [
         0,
@@ -1926,7 +1926,7 @@ ZenProperties["MDLJD800COM"] = {
     "BND_RNG_UP": {
       "id": "BND_RNG_UP",
       "byteOffset": 10,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Bender Range Up",
       "dataRange": [
         0,
@@ -1937,7 +1937,7 @@ ZenProperties["MDLJD800COM"] = {
     "AFT_BEND": {
       "id": "AFT_BEND",
       "byteOffset": 11,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "After Touch Bend Sens",
       "dataRange": [
         0,
@@ -1977,7 +1977,7 @@ ZenProperties["MDLJD800COM"] = {
     "SOLO_SW": {
       "id": "SOLO_SW",
       "byteOffset": 12,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Solo Switch",
       "dataRange": [
         0,
@@ -1992,7 +1992,7 @@ ZenProperties["MDLJD800COM"] = {
     "LEGATO_SW": {
       "id": "LEGATO_SW",
       "byteOffset": 13,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Solo Legato Switch",
       "dataRange": [
         0,
@@ -2007,7 +2007,7 @@ ZenProperties["MDLJD800COM"] = {
     "PORT_SW": {
       "id": "PORT_SW",
       "byteOffset": 14,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Portamento Switch",
       "dataRange": [
         0,
@@ -2022,7 +2022,7 @@ ZenProperties["MDLJD800COM"] = {
     "PORT_MODE": {
       "id": "PORT_MODE",
       "byteOffset": 15,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Portamento Mode",
       "dataRange": [
         0,
@@ -2037,7 +2037,7 @@ ZenProperties["MDLJD800COM"] = {
     "PORT_TIME": {
       "id": "PORT_TIME",
       "byteOffset": 16,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Portamento Time",
       "dataRange": [
         0,
@@ -2048,7 +2048,7 @@ ZenProperties["MDLJD800COM"] = {
     "EQ_MID_Q": {
       "id": "EQ_MID_Q",
       "byteOffset": 17,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "EQ Mid Q",
       "dataRange": [
         5,
@@ -2064,7 +2064,7 @@ ZenProperties["MDLJD800COM"] = {
     "EQ_LO_F": {
       "id": "EQ_LO_F",
       "byteOffset": 18,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "EQ Low Frequency",
       "dataRange": [
         20,
@@ -2075,7 +2075,7 @@ ZenProperties["MDLJD800COM"] = {
     "EQ_MID_F": {
       "id": "EQ_MID_F",
       "byteOffset": 20,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "EQ Mid Frequency",
       "dataRange": [
         20,
@@ -2086,7 +2086,7 @@ ZenProperties["MDLJD800COM"] = {
     "EQ_HI_F": {
       "id": "EQ_HI_F",
       "byteOffset": 22,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "EQ High Frequency",
       "dataRange": [
         20,
@@ -2097,7 +2097,7 @@ ZenProperties["MDLJD800COM"] = {
     "EQ_LO_G": {
       "id": "EQ_LO_G",
       "byteOffset": 24,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "EQ Low Gain",
       "dataRange": [
         -240,
@@ -2113,7 +2113,7 @@ ZenProperties["MDLJD800COM"] = {
     "EQ_MID_G": {
       "id": "EQ_MID_G",
       "byteOffset": 26,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "EQ Mid Gain",
       "dataRange": [
         -240,
@@ -2129,7 +2129,7 @@ ZenProperties["MDLJD800COM"] = {
     "EQ_HI_G": {
       "id": "EQ_HI_G",
       "byteOffset": 28,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "EQ High Gain",
       "dataRange": [
         -240,
@@ -2145,7 +2145,7 @@ ZenProperties["MDLJD800COM"] = {
     "EQ_SW": {
       "id": "EQ_SW",
       "byteOffset": 30,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "EQ Switch",
       "dataRange": [
         0,
@@ -2160,7 +2160,7 @@ ZenProperties["MDLJD800COM"] = {
     "UNISON": {
       "id": "UNISON",
       "byteOffset": 31,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Unison Switch",
       "dataRange": [
         0,
@@ -2183,7 +2183,7 @@ ZenProperties["MDLJD800FxB"] = {
     "SEQUENCE": {
       "id": "SEQUENCE",
       "byteOffset": 0,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Sequence",
       "dataRange": [
         0,
@@ -2202,7 +2202,7 @@ ZenProperties["MDLJD800FxB"] = {
     "DLY_SW": {
       "id": "DLY_SW",
       "byteOffset": 1,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "DL Switch",
       "dataRange": [
         0,
@@ -2217,7 +2217,7 @@ ZenProperties["MDLJD800FxB"] = {
     "DLY_C_SYNC": {
       "id": "DLY_C_SYNC",
       "byteOffset": 2,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Delay Center (sync sw)",
       "dataRange": [
         0,
@@ -2232,7 +2232,7 @@ ZenProperties["MDLJD800FxB"] = {
     "DLY_C_TIME": {
       "id": "DLY_C_TIME",
       "byteOffset": 3,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Delay Center (time)",
       "dataRange": [
         0,
@@ -2372,7 +2372,7 @@ ZenProperties["MDLJD800FxB"] = {
     "DLY_C_NOTE": {
       "id": "DLY_C_NOTE",
       "byteOffset": 4,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Delay Center (note)",
       "dataRange": [
         0,
@@ -2386,7 +2386,7 @@ ZenProperties["MDLJD800FxB"] = {
     "DLY_L_SYNC": {
       "id": "DLY_L_SYNC",
       "byteOffset": 5,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Delay Left (sync sw)",
       "dataRange": [
         0,
@@ -2401,7 +2401,7 @@ ZenProperties["MDLJD800FxB"] = {
     "DLY_L_TIME": {
       "id": "DLY_L_TIME",
       "byteOffset": 6,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Delay Left (time)",
       "dataRange": [
         0,
@@ -2541,7 +2541,7 @@ ZenProperties["MDLJD800FxB"] = {
     "DLY_L_NOTE": {
       "id": "DLY_L_NOTE",
       "byteOffset": 7,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Delay Left (note)",
       "dataRange": [
         0,
@@ -2555,7 +2555,7 @@ ZenProperties["MDLJD800FxB"] = {
     "DLY_R_SYNC": {
       "id": "DLY_R_SYNC",
       "byteOffset": 8,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Delay Right (sync sw)",
       "dataRange": [
         0,
@@ -2570,7 +2570,7 @@ ZenProperties["MDLJD800FxB"] = {
     "DLY_R_TIME": {
       "id": "DLY_R_TIME",
       "byteOffset": 9,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Delay Right (time)",
       "dataRange": [
         0,
@@ -2710,7 +2710,7 @@ ZenProperties["MDLJD800FxB"] = {
     "DLY_R_NOTE": {
       "id": "DLY_R_NOTE",
       "byteOffset": 10,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Delay Right (note)",
       "dataRange": [
         0,
@@ -2724,7 +2724,7 @@ ZenProperties["MDLJD800FxB"] = {
     "DLY_C_LEV": {
       "id": "DLY_C_LEV",
       "byteOffset": 11,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Center Level",
       "dataRange": [
         0,
@@ -2735,7 +2735,7 @@ ZenProperties["MDLJD800FxB"] = {
     "DLY_L_LEV": {
       "id": "DLY_L_LEV",
       "byteOffset": 12,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Left Level",
       "dataRange": [
         0,
@@ -2746,7 +2746,7 @@ ZenProperties["MDLJD800FxB"] = {
     "DLY_R_LEV": {
       "id": "DLY_R_LEV",
       "byteOffset": 13,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Right Level",
       "dataRange": [
         0,
@@ -2757,7 +2757,7 @@ ZenProperties["MDLJD800FxB"] = {
     "DLY_FB": {
       "id": "DLY_FB",
       "byteOffset": 14,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Delay Feedback",
       "dataRange": [
         0,
@@ -2773,7 +2773,7 @@ ZenProperties["MDLJD800FxB"] = {
     "CHO_SW": {
       "id": "CHO_SW",
       "byteOffset": 15,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Chorus Sw",
       "dataRange": [
         0,
@@ -2788,7 +2788,7 @@ ZenProperties["MDLJD800FxB"] = {
     "CHO_RATE": {
       "id": "CHO_RATE",
       "byteOffset": 16,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Chorus Rate",
       "dataRange": [
         0,
@@ -2804,7 +2804,7 @@ ZenProperties["MDLJD800FxB"] = {
     "CHO_DEPTH": {
       "id": "CHO_DEPTH",
       "byteOffset": 17,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Chorus Depth",
       "dataRange": [
         0,
@@ -2815,7 +2815,7 @@ ZenProperties["MDLJD800FxB"] = {
     "CHO_DLY": {
       "id": "CHO_DLY",
       "byteOffset": 18,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Chorus Delay",
       "dataRange": [
         0,
@@ -2929,7 +2929,7 @@ ZenProperties["MDLJD800FxB"] = {
     "CHO_FB": {
       "id": "CHO_FB",
       "byteOffset": 19,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Chorus Feedback",
       "dataRange": [
         0,
@@ -2945,7 +2945,7 @@ ZenProperties["MDLJD800FxB"] = {
     "CHO_LEV": {
       "id": "CHO_LEV",
       "byteOffset": 20,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Chorus Level",
       "dataRange": [
         0,
@@ -2956,7 +2956,7 @@ ZenProperties["MDLJD800FxB"] = {
     "REV_SW": {
       "id": "REV_SW",
       "byteOffset": 21,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Reverb Sw",
       "dataRange": [
         0,
@@ -2971,7 +2971,7 @@ ZenProperties["MDLJD800FxB"] = {
     "REV_TYPE": {
       "id": "REV_TYPE",
       "byteOffset": 22,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Reverb Type",
       "dataRange": [
         0,
@@ -2994,7 +2994,7 @@ ZenProperties["MDLJD800FxB"] = {
     "REV_DLY": {
       "id": "REV_DLY",
       "byteOffset": 23,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Reverb Pre Delay",
       "dataRange": [
         0,
@@ -3006,7 +3006,7 @@ ZenProperties["MDLJD800FxB"] = {
     "REV_ER_LEV": {
       "id": "REV_ER_LEV",
       "byteOffset": 24,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Reverb ER Lev",
       "dataRange": [
         0,
@@ -3017,7 +3017,7 @@ ZenProperties["MDLJD800FxB"] = {
     "REV_HF_DAMP": {
       "id": "REV_HF_DAMP",
       "byteOffset": 25,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Reverb HF Damp",
       "dataRange": [
         0,
@@ -3047,7 +3047,7 @@ ZenProperties["MDLJD800FxB"] = {
     "REV_TIME": {
       "id": "REV_TIME",
       "byteOffset": 26,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Reverb Time",
       "dataRange": [
         0,
@@ -3161,7 +3161,7 @@ ZenProperties["MDLJD800FxB"] = {
     "REV_LEV": {
       "id": "REV_LEV",
       "byteOffset": 27,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Reverb Level",
       "dataRange": [
         0,
@@ -3172,7 +3172,7 @@ ZenProperties["MDLJD800FxB"] = {
     "BAL": {
       "id": "BAL",
       "byteOffset": 28,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Balance",
       "dataRange": [
         0,
@@ -3186,7 +3186,7 @@ ZenProperties["MDLJD800FxB"] = {
     "LEVEL": {
       "id": "LEVEL",
       "byteOffset": 29,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Level",
       "dataRange": [
         0,
@@ -3205,7 +3205,7 @@ ZenProperties["MDLJD800PTL"] = {
     "PTL_SW": {
       "id": "PTL_SW",
       "byteOffset": 0,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Layer Partial Switch",
       "dataRange": [
         0,
@@ -3220,7 +3220,7 @@ ZenProperties["MDLJD800PTL"] = {
     "ACT_SW": {
       "id": "ACT_SW",
       "byteOffset": 1,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Active Partial Switch",
       "dataRange": [
         0,
@@ -3235,7 +3235,7 @@ ZenProperties["MDLJD800PTL"] = {
     "VELO_CRV": {
       "id": "VELO_CRV",
       "byteOffset": 2,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Velocity Curve",
       "dataRange": [
         0,
@@ -3250,7 +3250,7 @@ ZenProperties["MDLJD800PTL"] = {
     "HOLD_CTRL": {
       "id": "HOLD_CTRL",
       "byteOffset": 3,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Hold Control Switch",
       "dataRange": [
         0,
@@ -3265,7 +3265,7 @@ ZenProperties["MDLJD800PTL"] = {
     "LFO1_WAV": {
       "id": "LFO1_WAV",
       "byteOffset": 4,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "LFO1:Waveform",
       "dataRange": [
         0,
@@ -3283,7 +3283,7 @@ ZenProperties["MDLJD800PTL"] = {
     "LFO1_SYNC": {
       "id": "LFO1_SYNC",
       "byteOffset": 5,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "LFO1:Rate sync",
       "dataRange": [
         0,
@@ -3298,7 +3298,7 @@ ZenProperties["MDLJD800PTL"] = {
     "LFO1_RATE": {
       "id": "LFO1_RATE",
       "byteOffset": 6,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "LFO1:Rate",
       "dataRange": [
         0,
@@ -3309,7 +3309,7 @@ ZenProperties["MDLJD800PTL"] = {
     "LFO1_NOTE": {
       "id": "LFO1_NOTE",
       "byteOffset": 7,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "LFO1:Rate nt",
       "dataRange": [
         0,
@@ -3345,7 +3345,7 @@ ZenProperties["MDLJD800PTL"] = {
     "LFO1_DLY": {
       "id": "LFO1_DLY",
       "byteOffset": 8,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "LFO1:Delay time",
       "dataRange": [
         0,
@@ -3356,7 +3356,7 @@ ZenProperties["MDLJD800PTL"] = {
     "LFO1_FADE": {
       "id": "LFO1_FADE",
       "byteOffset": 9,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "LFO1:Fade time",
       "dataRange": [
         -50,
@@ -3367,7 +3367,7 @@ ZenProperties["MDLJD800PTL"] = {
     "LFO1_OFST": {
       "id": "LFO1_OFST",
       "byteOffset": 10,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "LFO1:Offset",
       "dataRange": [
         0,
@@ -3383,7 +3383,7 @@ ZenProperties["MDLJD800PTL"] = {
     "LFO1_KEY": {
       "id": "LFO1_KEY",
       "byteOffset": 11,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "LFO1:Key trig",
       "dataRange": [
         0,
@@ -3398,7 +3398,7 @@ ZenProperties["MDLJD800PTL"] = {
     "LFO2_WAV": {
       "id": "LFO2_WAV",
       "byteOffset": 12,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "LFO2:Waveform",
       "dataRange": [
         0,
@@ -3416,7 +3416,7 @@ ZenProperties["MDLJD800PTL"] = {
     "LFO2_SYNC": {
       "id": "LFO2_SYNC",
       "byteOffset": 13,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "LFO2:Rate Sync",
       "dataRange": [
         0,
@@ -3431,7 +3431,7 @@ ZenProperties["MDLJD800PTL"] = {
     "LFO2_RATE": {
       "id": "LFO2_RATE",
       "byteOffset": 14,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "LFO2:Rate",
       "dataRange": [
         0,
@@ -3442,7 +3442,7 @@ ZenProperties["MDLJD800PTL"] = {
     "LFO2_NOTE": {
       "id": "LFO2_NOTE",
       "byteOffset": 15,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "LFO2:Rate nt",
       "dataRange": [
         0,
@@ -3478,7 +3478,7 @@ ZenProperties["MDLJD800PTL"] = {
     "LFO2_DLY": {
       "id": "LFO2_DLY",
       "byteOffset": 16,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "LFO2:Delay Time",
       "dataRange": [
         0,
@@ -3489,7 +3489,7 @@ ZenProperties["MDLJD800PTL"] = {
     "LFO2_FADE": {
       "id": "LFO2_FADE",
       "byteOffset": 17,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "LFO2:Fade time",
       "dataRange": [
         -50,
@@ -3500,7 +3500,7 @@ ZenProperties["MDLJD800PTL"] = {
     "LFO2_OFST": {
       "id": "LFO2_OFST",
       "byteOffset": 18,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "LFO2:Offset",
       "dataRange": [
         0,
@@ -3516,7 +3516,7 @@ ZenProperties["MDLJD800PTL"] = {
     "LFO2_KEY": {
       "id": "LFO2_KEY",
       "byteOffset": 19,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "LFO2:Key trig",
       "dataRange": [
         0,
@@ -3531,7 +3531,7 @@ ZenProperties["MDLJD800PTL"] = {
     "WAV_NUM": {
       "id": "WAV_NUM",
       "byteOffset": 20,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "WG:Waveform",
       "dataRange": [
         0,
@@ -3542,7 +3542,7 @@ ZenProperties["MDLJD800PTL"] = {
     "WAV_SRC": {
       "id": "WAV_SRC",
       "byteOffset": 22,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "WG:Wave source",
       "dataRange": [
         0,
@@ -3553,7 +3553,7 @@ ZenProperties["MDLJD800PTL"] = {
     "WAV_GAIN": {
       "id": "WAV_GAIN",
       "byteOffset": 23,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "WG:Wave gain",
       "dataRange": [
         0,
@@ -3573,7 +3573,7 @@ ZenProperties["MDLJD800PTL"] = {
     "PIT_COARSE": {
       "id": "PIT_COARSE",
       "byteOffset": 24,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "WG:Pitch coarse",
       "dataRange": [
         -48,
@@ -3584,7 +3584,7 @@ ZenProperties["MDLJD800PTL"] = {
     "PIT_FINE": {
       "id": "PIT_FINE",
       "byteOffset": 25,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "WG:Pitch fine",
       "dataRange": [
         -50,
@@ -3595,7 +3595,7 @@ ZenProperties["MDLJD800PTL"] = {
     "PIT_RND": {
       "id": "PIT_RND",
       "byteOffset": 26,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "WG:Pitch random",
       "dataRange": [
         0,
@@ -3606,7 +3606,7 @@ ZenProperties["MDLJD800PTL"] = {
     "PIT_KF": {
       "id": "PIT_KF",
       "byteOffset": 27,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "WG:Pitch KF",
       "dataRange": [
         0,
@@ -3637,7 +3637,7 @@ ZenProperties["MDLJD800PTL"] = {
     "BENDER_SW": {
       "id": "BENDER_SW",
       "byteOffset": 28,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "WG:Bender Sw",
       "dataRange": [
         0,
@@ -3652,7 +3652,7 @@ ZenProperties["MDLJD800PTL"] = {
     "AFT_BEND_SW": {
       "id": "AFT_BEND_SW",
       "byteOffset": 29,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "WG:Atch bend sw",
       "dataRange": [
         0,
@@ -3667,7 +3667,7 @@ ZenProperties["MDLJD800PTL"] = {
     "LFO1_DEP": {
       "id": "LFO1_DEP",
       "byteOffset": 30,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "WG:LFO1 depth",
       "dataRange": [
         -50,
@@ -3678,7 +3678,7 @@ ZenProperties["MDLJD800PTL"] = {
     "LFO2_DEP": {
       "id": "LFO2_DEP",
       "byteOffset": 31,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "WG:LFO2 depth",
       "dataRange": [
         -50,
@@ -3689,7 +3689,7 @@ ZenProperties["MDLJD800PTL"] = {
     "LEVER_SENS": {
       "id": "LEVER_SENS",
       "byteOffset": 32,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "WG:Lever sens",
       "dataRange": [
         -50,
@@ -3700,7 +3700,7 @@ ZenProperties["MDLJD800PTL"] = {
     "AFT_SENS": {
       "id": "AFT_SENS",
       "byteOffset": 33,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "WG:Atch msens",
       "dataRange": [
         -50,
@@ -3711,7 +3711,7 @@ ZenProperties["MDLJD800PTL"] = {
     "PENV_VSENS": {
       "id": "PENV_VSENS",
       "byteOffset": 34,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Pitch Env Velocity Sens",
       "dataRange": [
         -50,
@@ -3722,7 +3722,7 @@ ZenProperties["MDLJD800PTL"] = {
     "PENV_T_VS": {
       "id": "PENV_T_VS",
       "byteOffset": 35,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Pitch Env Time Velocity Sens",
       "dataRange": [
         -50,
@@ -3733,7 +3733,7 @@ ZenProperties["MDLJD800PTL"] = {
     "PENV_T_KF": {
       "id": "PENV_T_KF",
       "byteOffset": 36,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Pitch Env Time Keyfollow",
       "dataRange": [
         -10,
@@ -3744,7 +3744,7 @@ ZenProperties["MDLJD800PTL"] = {
     "PENV_L0": {
       "id": "PENV_L0",
       "byteOffset": 37,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Pitch Env L0",
       "dataRange": [
         -50,
@@ -3755,7 +3755,7 @@ ZenProperties["MDLJD800PTL"] = {
     "PENV_L1": {
       "id": "PENV_L1",
       "byteOffset": 38,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Pitch Env L1",
       "dataRange": [
         -50,
@@ -3766,7 +3766,7 @@ ZenProperties["MDLJD800PTL"] = {
     "PENV_L2": {
       "id": "PENV_L2",
       "byteOffset": 39,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Pitch Env L2",
       "dataRange": [
         -50,
@@ -3777,7 +3777,7 @@ ZenProperties["MDLJD800PTL"] = {
     "PENV_T1": {
       "id": "PENV_T1",
       "byteOffset": 40,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Pitch Env T1",
       "dataRange": [
         0,
@@ -3788,7 +3788,7 @@ ZenProperties["MDLJD800PTL"] = {
     "PENV_T2": {
       "id": "PENV_T2",
       "byteOffset": 41,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Pitch Env T2",
       "dataRange": [
         0,
@@ -3799,7 +3799,7 @@ ZenProperties["MDLJD800PTL"] = {
     "PENV_T3": {
       "id": "PENV_T3",
       "byteOffset": 42,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Pitch Env T3",
       "dataRange": [
         0,
@@ -3810,7 +3810,7 @@ ZenProperties["MDLJD800PTL"] = {
     "TVF_FLT": {
       "id": "TVF_FLT",
       "byteOffset": 43,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVF:Filter mode",
       "dataRange": [
         0,
@@ -3826,7 +3826,7 @@ ZenProperties["MDLJD800PTL"] = {
     "TVF_CUTOFF": {
       "id": "TVF_CUTOFF",
       "byteOffset": 44,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVF:Cutoff freq",
       "dataRange": [
         0,
@@ -3837,7 +3837,7 @@ ZenProperties["MDLJD800PTL"] = {
     "TVF_RESO": {
       "id": "TVF_RESO",
       "byteOffset": 45,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVF:Resonance",
       "dataRange": [
         0,
@@ -3848,7 +3848,7 @@ ZenProperties["MDLJD800PTL"] = {
     "TVF_KF": {
       "id": "TVF_KF",
       "byteOffset": 46,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVF:Cutoff KF",
       "dataRange": [
         0,
@@ -3903,7 +3903,7 @@ ZenProperties["MDLJD800PTL"] = {
     "TVF_AFT": {
       "id": "TVF_AFT",
       "byteOffset": 47,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVF:Atch sens",
       "dataRange": [
         -50,
@@ -3914,7 +3914,7 @@ ZenProperties["MDLJD800PTL"] = {
     "TVF_LFO": {
       "id": "TVF_LFO",
       "byteOffset": 48,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVF:LFO select",
       "dataRange": [
         0,
@@ -3929,7 +3929,7 @@ ZenProperties["MDLJD800PTL"] = {
     "TVF_LFO_DEP": {
       "id": "TVF_LFO_DEP",
       "byteOffset": 49,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVF:LFO depth",
       "dataRange": [
         -50,
@@ -3940,7 +3940,7 @@ ZenProperties["MDLJD800PTL"] = {
     "TVF_ENV_DEP": {
       "id": "TVF_ENV_DEP",
       "byteOffset": 50,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVF:ENV depth",
       "dataRange": [
         -50,
@@ -3951,7 +3951,7 @@ ZenProperties["MDLJD800PTL"] = {
     "FENV_VSENS": {
       "id": "FENV_VSENS",
       "byteOffset": 51,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "F-ENV:Velo sens",
       "dataRange": [
         -50,
@@ -3962,7 +3962,7 @@ ZenProperties["MDLJD800PTL"] = {
     "FENV_T_VS": {
       "id": "FENV_T_VS",
       "byteOffset": 52,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "F-ENV:T vsens",
       "dataRange": [
         -50,
@@ -3973,7 +3973,7 @@ ZenProperties["MDLJD800PTL"] = {
     "FENV_T_KF": {
       "id": "FENV_T_KF",
       "byteOffset": 53,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "F-ENV:Time KF",
       "dataRange": [
         -10,
@@ -3984,7 +3984,7 @@ ZenProperties["MDLJD800PTL"] = {
     "FENV_L1": {
       "id": "FENV_L1",
       "byteOffset": 54,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "F-ENV:Level 1",
       "dataRange": [
         0,
@@ -3995,7 +3995,7 @@ ZenProperties["MDLJD800PTL"] = {
     "FENV_L2": {
       "id": "FENV_L2",
       "byteOffset": 55,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "F-ENV:Level 2",
       "dataRange": [
         0,
@@ -4006,7 +4006,7 @@ ZenProperties["MDLJD800PTL"] = {
     "FENV_SUS": {
       "id": "FENV_SUS",
       "byteOffset": 56,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "F-ENV:Sus Level",
       "dataRange": [
         0,
@@ -4017,7 +4017,7 @@ ZenProperties["MDLJD800PTL"] = {
     "FENV_L4": {
       "id": "FENV_L4",
       "byteOffset": 57,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "F-ENV:Level 4",
       "dataRange": [
         0,
@@ -4028,7 +4028,7 @@ ZenProperties["MDLJD800PTL"] = {
     "FENV_T1": {
       "id": "FENV_T1",
       "byteOffset": 58,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "F-ENV:Time 1",
       "dataRange": [
         0,
@@ -4039,7 +4039,7 @@ ZenProperties["MDLJD800PTL"] = {
     "FENV_T2": {
       "id": "FENV_T2",
       "byteOffset": 59,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "F-ENV:Time 2",
       "dataRange": [
         0,
@@ -4050,7 +4050,7 @@ ZenProperties["MDLJD800PTL"] = {
     "FENV_T3": {
       "id": "FENV_T3",
       "byteOffset": 60,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "F-ENV:Time 3",
       "dataRange": [
         0,
@@ -4061,7 +4061,7 @@ ZenProperties["MDLJD800PTL"] = {
     "FENV_T4": {
       "id": "FENV_T4",
       "byteOffset": 61,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "F-ENV:Time 4",
       "dataRange": [
         0,
@@ -4072,7 +4072,7 @@ ZenProperties["MDLJD800PTL"] = {
     "TVA_BS_DIR": {
       "id": "TVA_BS_DIR",
       "byteOffset": 62,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVA Bias Direction",
       "dataRange": [
         0,
@@ -4088,7 +4088,7 @@ ZenProperties["MDLJD800PTL"] = {
     "TVA_BS_KEY": {
       "id": "TVA_BS_KEY",
       "byteOffset": 63,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVA Bias Point",
       "dataRange": [
         0,
@@ -4099,7 +4099,7 @@ ZenProperties["MDLJD800PTL"] = {
     "TVA_BS_LVL": {
       "id": "TVA_BS_LVL",
       "byteOffset": 64,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVA:Bias level",
       "dataRange": [
         -10,
@@ -4110,7 +4110,7 @@ ZenProperties["MDLJD800PTL"] = {
     "TVA_LEVEL": {
       "id": "TVA_LEVEL",
       "byteOffset": 65,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVA:Level",
       "dataRange": [
         0,
@@ -4121,7 +4121,7 @@ ZenProperties["MDLJD800PTL"] = {
     "TVA_AFT": {
       "id": "TVA_AFT",
       "byteOffset": 66,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVA After Touch Sens",
       "dataRange": [
         -50,
@@ -4132,7 +4132,7 @@ ZenProperties["MDLJD800PTL"] = {
     "TVA_LFO": {
       "id": "TVA_LFO",
       "byteOffset": 67,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVA:LFO select",
       "dataRange": [
         0,
@@ -4147,7 +4147,7 @@ ZenProperties["MDLJD800PTL"] = {
     "TVA_LFO_DEP": {
       "id": "TVA_LFO_DEP",
       "byteOffset": 68,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVA:LFO depth",
       "dataRange": [
         -50,
@@ -4158,7 +4158,7 @@ ZenProperties["MDLJD800PTL"] = {
     "AENV_VSENS": {
       "id": "AENV_VSENS",
       "byteOffset": 69,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "A-ENV:Velo sens",
       "dataRange": [
         -50,
@@ -4169,7 +4169,7 @@ ZenProperties["MDLJD800PTL"] = {
     "AENV_T_VS": {
       "id": "AENV_T_VS",
       "byteOffset": 70,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "A-ENV:T vsens",
       "dataRange": [
         -50,
@@ -4180,7 +4180,7 @@ ZenProperties["MDLJD800PTL"] = {
     "AENV_T_KF": {
       "id": "AENV_T_KF",
       "byteOffset": 71,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "A-ENV:Time KF",
       "dataRange": [
         -10,
@@ -4191,7 +4191,7 @@ ZenProperties["MDLJD800PTL"] = {
     "AENV_L1": {
       "id": "AENV_L1",
       "byteOffset": 72,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "A-ENV:Level 1",
       "dataRange": [
         0,
@@ -4202,7 +4202,7 @@ ZenProperties["MDLJD800PTL"] = {
     "AENV_L2": {
       "id": "AENV_L2",
       "byteOffset": 73,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "A-ENV:Level 2",
       "dataRange": [
         0,
@@ -4213,7 +4213,7 @@ ZenProperties["MDLJD800PTL"] = {
     "AENV_SUS": {
       "id": "AENV_SUS",
       "byteOffset": 74,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "A-ENV:Sus level",
       "dataRange": [
         0,
@@ -4224,7 +4224,7 @@ ZenProperties["MDLJD800PTL"] = {
     "AENV_T1": {
       "id": "AENV_T1",
       "byteOffset": 75,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "A-ENV:Time 1",
       "dataRange": [
         0,
@@ -4235,7 +4235,7 @@ ZenProperties["MDLJD800PTL"] = {
     "AENV_T2": {
       "id": "AENV_T2",
       "byteOffset": 76,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "A-ENV:Time 2",
       "dataRange": [
         0,
@@ -4246,7 +4246,7 @@ ZenProperties["MDLJD800PTL"] = {
     "AENV_T3": {
       "id": "AENV_T3",
       "byteOffset": 77,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "A-ENV:Time 3",
       "dataRange": [
         0,
@@ -4257,7 +4257,7 @@ ZenProperties["MDLJD800PTL"] = {
     "AENV_T4": {
       "id": "AENV_T4",
       "byteOffset": 78,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "A-ENV:Time 4",
       "dataRange": [
         0,
@@ -4276,7 +4276,7 @@ ZenProperties["MDLSYN0"] = {
     "MODEL": {
       "id": "MODEL",
       "byteOffset": 0,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Model",
       "dataRange": [
         0,
@@ -4295,7 +4295,7 @@ ZenProperties["MDLSYN0"] = {
     "LFOWAVE": {
       "id": "LFOWAVE",
       "byteOffset": 1,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "LFO WAVE FORM",
       "dataRange": [
         0,
@@ -4319,7 +4319,7 @@ ZenProperties["MDLSYN0"] = {
     "LFORATE": {
       "id": "LFORATE",
       "byteOffset": 2,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "LFO RATE",
       "dataRange": [
         0,
@@ -4330,7 +4330,7 @@ ZenProperties["MDLSYN0"] = {
     "LFODLY": {
       "id": "LFODLY",
       "byteOffset": 4,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "LFO DELAY TIME",
       "dataRange": [
         0,
@@ -4341,7 +4341,7 @@ ZenProperties["MDLSYN0"] = {
     "OSC1MOD": {
       "id": "OSC1MOD",
       "byteOffset": 6,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC1 MOD",
       "dataRange": [
         -100,
@@ -4352,7 +4352,7 @@ ZenProperties["MDLSYN0"] = {
     "OSC1PENV": {
       "id": "OSC1PENV",
       "byteOffset": 7,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC1 PITCH ENV DEPTH",
       "dataRange": [
         -100,
@@ -4363,7 +4363,7 @@ ZenProperties["MDLSYN0"] = {
     "OSC1DEST": {
       "id": "OSC1DEST",
       "byteOffset": 8,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC1 DEST SELECT",
       "dataRange": [
         0,
@@ -4379,7 +4379,7 @@ ZenProperties["MDLSYN0"] = {
     "OSC1ENVS": {
       "id": "OSC1ENVS",
       "byteOffset": 9,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC1 ENVT SELECT",
       "dataRange": [
         0,
@@ -4394,7 +4394,7 @@ ZenProperties["MDLSYN0"] = {
     "OSC1WAVE": {
       "id": "OSC1WAVE",
       "byteOffset": 10,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "OSC1 WAVE FORM",
       "dataRange": [
         0,
@@ -4435,7 +4435,7 @@ ZenProperties["MDLSYN0"] = {
     "OSC1FEET": {
       "id": "OSC1FEET",
       "byteOffset": 12,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC1 FEET",
       "dataRange": [
         0,
@@ -4453,7 +4453,7 @@ ZenProperties["MDLSYN0"] = {
     "OSC1COARSE": {
       "id": "OSC1COARSE",
       "byteOffset": 13,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC1 COARSE TUNE",
       "dataRange": [
         -48,
@@ -4464,7 +4464,7 @@ ZenProperties["MDLSYN0"] = {
     "OSC1FINE": {
       "id": "OSC1FINE",
       "byteOffset": 14,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC1 FINE TUNE",
       "dataRange": [
         -50,
@@ -4475,7 +4475,7 @@ ZenProperties["MDLSYN0"] = {
     "OSC1LOWFREQ": {
       "id": "OSC1LOWFREQ",
       "byteOffset": 15,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC1 LOW FREQ PITCH",
       "dataRange": [
         0,
@@ -4486,7 +4486,7 @@ ZenProperties["MDLSYN0"] = {
     "OSC1MODE": {
       "id": "OSC1MODE",
       "byteOffset": 16,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC1 MODE",
       "dataRange": [
         0,
@@ -4501,7 +4501,7 @@ ZenProperties["MDLSYN0"] = {
     "OSC1PWM": {
       "id": "OSC1PWM",
       "byteOffset": 17,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC1 PWM DEPTH",
       "dataRange": [
         -63,
@@ -4512,7 +4512,7 @@ ZenProperties["MDLSYN0"] = {
     "OSC1PLSW": {
       "id": "OSC1PLSW",
       "byteOffset": 18,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC1 PULSE WIDTH",
       "dataRange": [
         0,
@@ -4523,7 +4523,7 @@ ZenProperties["MDLSYN0"] = {
     "OSC1PLSM": {
       "id": "OSC1PLSM",
       "byteOffset": 19,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC1 PULSE WIDTH MODE",
       "dataRange": [
         0,
@@ -4539,7 +4539,7 @@ ZenProperties["MDLSYN0"] = {
     "OSC2MOD": {
       "id": "OSC2MOD",
       "byteOffset": 20,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC2 MOD",
       "dataRange": [
         -100,
@@ -4550,7 +4550,7 @@ ZenProperties["MDLSYN0"] = {
     "OSC2PENV": {
       "id": "OSC2PENV",
       "byteOffset": 21,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC2 PITCH ENV DEPTH",
       "dataRange": [
         -100,
@@ -4561,7 +4561,7 @@ ZenProperties["MDLSYN0"] = {
     "OSC2WAVE": {
       "id": "OSC2WAVE",
       "byteOffset": 22,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "OSC2 WAVE FORM",
       "dataRange": [
         0,
@@ -4602,7 +4602,7 @@ ZenProperties["MDLSYN0"] = {
     "OSC2FEET": {
       "id": "OSC2FEET",
       "byteOffset": 24,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC2 FEET",
       "dataRange": [
         0,
@@ -4620,7 +4620,7 @@ ZenProperties["MDLSYN0"] = {
     "OSC2COARSE": {
       "id": "OSC2COARSE",
       "byteOffset": 25,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC2 COARSE TUNE",
       "dataRange": [
         -48,
@@ -4631,7 +4631,7 @@ ZenProperties["MDLSYN0"] = {
     "OSC2FINE": {
       "id": "OSC2FINE",
       "byteOffset": 26,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC2 FINE TUNE",
       "dataRange": [
         -50,
@@ -4642,7 +4642,7 @@ ZenProperties["MDLSYN0"] = {
     "OSC2LOWFREQ": {
       "id": "OSC2LOWFREQ",
       "byteOffset": 27,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC2 LOW FREQ PITCH",
       "dataRange": [
         0,
@@ -4653,7 +4653,7 @@ ZenProperties["MDLSYN0"] = {
     "OSC2MODE": {
       "id": "OSC2MODE",
       "byteOffset": 28,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC2 MODE",
       "dataRange": [
         0,
@@ -4668,7 +4668,7 @@ ZenProperties["MDLSYN0"] = {
     "OSC2PW": {
       "id": "OSC2PW",
       "byteOffset": 29,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC2 PULSE WIDTH",
       "dataRange": [
         0,
@@ -4679,7 +4679,7 @@ ZenProperties["MDLSYN0"] = {
     "OSC3MOD": {
       "id": "OSC3MOD",
       "byteOffset": 30,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC3 MOD",
       "dataRange": [
         -100,
@@ -4690,7 +4690,7 @@ ZenProperties["MDLSYN0"] = {
     "OSC3PENV": {
       "id": "OSC3PENV",
       "byteOffset": 31,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC3 PITCH ENV DEPTH",
       "dataRange": [
         -100,
@@ -4701,7 +4701,7 @@ ZenProperties["MDLSYN0"] = {
     "OSC3WAVE": {
       "id": "OSC3WAVE",
       "byteOffset": 32,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "OSC3 WAVE FORM",
       "dataRange": [
         0,
@@ -4742,7 +4742,7 @@ ZenProperties["MDLSYN0"] = {
     "OSC3FEET": {
       "id": "OSC3FEET",
       "byteOffset": 34,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC3 FEET",
       "dataRange": [
         0,
@@ -4760,7 +4760,7 @@ ZenProperties["MDLSYN0"] = {
     "OSC3COARSE": {
       "id": "OSC3COARSE",
       "byteOffset": 35,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC3 COARSE TUNE",
       "dataRange": [
         -48,
@@ -4771,7 +4771,7 @@ ZenProperties["MDLSYN0"] = {
     "OSC3FINE": {
       "id": "OSC3FINE",
       "byteOffset": 36,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC3 FINE TUNE",
       "dataRange": [
         -50,
@@ -4782,7 +4782,7 @@ ZenProperties["MDLSYN0"] = {
     "OSC3LOWFREQ": {
       "id": "OSC3LOWFREQ",
       "byteOffset": 37,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC3 LOW FREQ PITCH",
       "dataRange": [
         0,
@@ -4793,7 +4793,7 @@ ZenProperties["MDLSYN0"] = {
     "OSC3MODE": {
       "id": "OSC3MODE",
       "byteOffset": 38,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC3 MODE",
       "dataRange": [
         0,
@@ -4808,7 +4808,7 @@ ZenProperties["MDLSYN0"] = {
     "NOISE": {
       "id": "NOISE",
       "byteOffset": 39,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "NOISE",
       "dataRange": [
         0,
@@ -4823,7 +4823,7 @@ ZenProperties["MDLSYN0"] = {
     "MODDPTH": {
       "id": "MODDPTH",
       "byteOffset": 40,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "MOD DEPTH",
       "dataRange": [
         0,
@@ -4834,7 +4834,7 @@ ZenProperties["MDLSYN0"] = {
     "MODMODE": {
       "id": "MODMODE",
       "byteOffset": 42,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "MOD MODE",
       "dataRange": [
         0,
@@ -4851,7 +4851,7 @@ ZenProperties["MDLSYN0"] = {
     "MXROSC1": {
       "id": "MXROSC1",
       "byteOffset": 43,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC1 LEVEL",
       "dataRange": [
         0,
@@ -4862,7 +4862,7 @@ ZenProperties["MDLSYN0"] = {
     "MXROSC2": {
       "id": "MXROSC2",
       "byteOffset": 44,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC2 LEVEL",
       "dataRange": [
         0,
@@ -4873,7 +4873,7 @@ ZenProperties["MDLSYN0"] = {
     "MXROSC3": {
       "id": "MXROSC3",
       "byteOffset": 45,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC3 LEVEL",
       "dataRange": [
         0,
@@ -4884,7 +4884,7 @@ ZenProperties["MDLSYN0"] = {
     "MXRNOISE": {
       "id": "MXRNOISE",
       "byteOffset": 46,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "NOISE LEVEL",
       "dataRange": [
         0,
@@ -4895,7 +4895,7 @@ ZenProperties["MDLSYN0"] = {
     "MXRENVD": {
       "id": "MXRENVD",
       "byteOffset": 47,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "MIXER ENV DEPTH",
       "dataRange": [
         -63,
@@ -4906,7 +4906,7 @@ ZenProperties["MDLSYN0"] = {
     "MXRENVS": {
       "id": "MXRENVS",
       "byteOffset": 48,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "MIXER ENV SELECT",
       "dataRange": [
         0,
@@ -4921,7 +4921,7 @@ ZenProperties["MDLSYN0"] = {
     "MXRDYNA": {
       "id": "MXRDYNA",
       "byteOffset": 49,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "MIXER DYNAMICS",
       "dataRange": [
         0,
@@ -4932,7 +4932,7 @@ ZenProperties["MDLSYN0"] = {
     "FLTTYPE": {
       "id": "FLTTYPE",
       "byteOffset": 50,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "FILTER TYPE",
       "dataRange": [
         0,
@@ -4943,7 +4943,7 @@ ZenProperties["MDLSYN0"] = {
     "FLTHPF2": {
       "id": "FLTHPF2",
       "byteOffset": 51,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "FILTER HPF STEP",
       "dataRange": [
         0,
@@ -4954,7 +4954,7 @@ ZenProperties["MDLSYN0"] = {
     "FLTHPF1": {
       "id": "FLTHPF1",
       "byteOffset": 52,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "FILTER HPF",
       "dataRange": [
         0,
@@ -4965,7 +4965,7 @@ ZenProperties["MDLSYN0"] = {
     "FLTFREQ": {
       "id": "FLTFREQ",
       "byteOffset": 54,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "FILTER FREQ",
       "dataRange": [
         0,
@@ -4976,7 +4976,7 @@ ZenProperties["MDLSYN0"] = {
     "FLTRESO": {
       "id": "FLTRESO",
       "byteOffset": 56,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "FILTER RESO",
       "dataRange": [
         0,
@@ -4987,7 +4987,7 @@ ZenProperties["MDLSYN0"] = {
     "FLTENVD": {
       "id": "FLTENVD",
       "byteOffset": 58,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "FILTER ENV DEPTH",
       "dataRange": [
         -1023,
@@ -4998,7 +4998,7 @@ ZenProperties["MDLSYN0"] = {
     "FLTENVS": {
       "id": "FLTENVS",
       "byteOffset": 60,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "FILTER ENV SELECT",
       "dataRange": [
         0,
@@ -5013,7 +5013,7 @@ ZenProperties["MDLSYN0"] = {
     "FLTSLOPE": {
       "id": "FLTSLOPE",
       "byteOffset": 61,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "FILTER SLOPE",
       "dataRange": [
         0,
@@ -5029,7 +5029,7 @@ ZenProperties["MDLSYN0"] = {
     "FLTKYBD": {
       "id": "FLTKYBD",
       "byteOffset": 62,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "FILTER KEY FOLLOW",
       "dataRange": [
         -200,
@@ -5040,7 +5040,7 @@ ZenProperties["MDLSYN0"] = {
     "FLTMOD": {
       "id": "FLTMOD",
       "byteOffset": 64,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "FILTER MOD",
       "dataRange": [
         -100,
@@ -5051,7 +5051,7 @@ ZenProperties["MDLSYN0"] = {
     "AMPLVL": {
       "id": "AMPLVL",
       "byteOffset": 66,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "AMP LEVEL",
       "dataRange": [
         0,
@@ -5062,7 +5062,7 @@ ZenProperties["MDLSYN0"] = {
     "AMPMOD1": {
       "id": "AMPMOD1",
       "byteOffset": 67,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "AMP MOD",
       "dataRange": [
         -100,
@@ -5073,7 +5073,7 @@ ZenProperties["MDLSYN0"] = {
     "AMPMOD2": {
       "id": "AMPMOD2",
       "byteOffset": 68,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "AMP MOD STEP",
       "dataRange": [
         0,
@@ -5084,7 +5084,7 @@ ZenProperties["MDLSYN0"] = {
     "AMPENVS": {
       "id": "AMPENVS",
       "byteOffset": 69,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "AMP ENV SELECT",
       "dataRange": [
         0,
@@ -5101,7 +5101,7 @@ ZenProperties["MDLSYN0"] = {
     "ENV1A": {
       "id": "ENV1A",
       "byteOffset": 70,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "ENV1 ATTACK",
       "dataRange": [
         0,
@@ -5112,7 +5112,7 @@ ZenProperties["MDLSYN0"] = {
     "ENV1D": {
       "id": "ENV1D",
       "byteOffset": 72,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "ENV1 DECAY",
       "dataRange": [
         0,
@@ -5123,7 +5123,7 @@ ZenProperties["MDLSYN0"] = {
     "ENV1S": {
       "id": "ENV1S",
       "byteOffset": 74,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "ENV1 SUSTAIN",
       "dataRange": [
         0,
@@ -5134,7 +5134,7 @@ ZenProperties["MDLSYN0"] = {
     "ENV1R": {
       "id": "ENV1R",
       "byteOffset": 76,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "ENV1 RELEASE",
       "dataRange": [
         0,
@@ -5145,7 +5145,7 @@ ZenProperties["MDLSYN0"] = {
     "ENV1KYBD1": {
       "id": "ENV1KYBD1",
       "byteOffset": 78,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "ENV1 KEY FOLLOW",
       "dataRange": [
         -100,
@@ -5156,7 +5156,7 @@ ZenProperties["MDLSYN0"] = {
     "ENV1KYBD2": {
       "id": "ENV1KYBD2",
       "byteOffset": 79,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "ENV1 KEY FOLLOW STEP",
       "dataRange": [
         0,
@@ -5167,7 +5167,7 @@ ZenProperties["MDLSYN0"] = {
     "ENV2A": {
       "id": "ENV2A",
       "byteOffset": 80,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "ENV2 ATTACK",
       "dataRange": [
         0,
@@ -5178,7 +5178,7 @@ ZenProperties["MDLSYN0"] = {
     "ENV2D": {
       "id": "ENV2D",
       "byteOffset": 82,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "ENV2 DECAY",
       "dataRange": [
         0,
@@ -5189,7 +5189,7 @@ ZenProperties["MDLSYN0"] = {
     "ENV2S": {
       "id": "ENV2S",
       "byteOffset": 84,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "ENV2 SUSTAIN",
       "dataRange": [
         0,
@@ -5200,7 +5200,7 @@ ZenProperties["MDLSYN0"] = {
     "ENV2R": {
       "id": "ENV2R",
       "byteOffset": 86,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "ENV2 RELEASE",
       "dataRange": [
         0,
@@ -5211,7 +5211,7 @@ ZenProperties["MDLSYN0"] = {
     "ENV2MODE": {
       "id": "ENV2MODE",
       "byteOffset": 88,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "ENV2 MODE",
       "dataRange": [
         0,
@@ -5227,7 +5227,7 @@ ZenProperties["MDLSYN0"] = {
     "ENV2KYBD1": {
       "id": "ENV2KYBD1",
       "byteOffset": 89,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "ENV2 KEY FOLLOW",
       "dataRange": [
         -100,
@@ -5238,7 +5238,7 @@ ZenProperties["MDLSYN0"] = {
     "ENV2KYBD2": {
       "id": "ENV2KYBD2",
       "byteOffset": 90,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "ENV2 KEY FOLLOW STEP",
       "dataRange": [
         0,
@@ -5249,7 +5249,7 @@ ZenProperties["MDLSYN0"] = {
     "DYNPTCH": {
       "id": "DYNPTCH",
       "byteOffset": 91,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "DYNAMICS PITCH",
       "dataRange": [
         0,
@@ -5260,7 +5260,7 @@ ZenProperties["MDLSYN0"] = {
     "DYNFLTT": {
       "id": "DYNFLTT",
       "byteOffset": 92,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "DYNAMICS FILTER",
       "dataRange": [
         0,
@@ -5271,7 +5271,7 @@ ZenProperties["MDLSYN0"] = {
     "DYNAMP": {
       "id": "DYNAMP",
       "byteOffset": 93,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "DYNAMICS AMP",
       "dataRange": [
         0,
@@ -5282,7 +5282,7 @@ ZenProperties["MDLSYN0"] = {
     "PCHDRFT": {
       "id": "PCHDRFT",
       "byteOffset": 94,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "PITCH DRIFT",
       "dataRange": [
         0,
@@ -5293,7 +5293,7 @@ ZenProperties["MDLSYN0"] = {
     "BNDPTCH2": {
       "id": "BNDPTCH2",
       "byteOffset": 95,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "BENDER PITCH DEPTH STEP",
       "dataRange": [
         0,
@@ -5310,7 +5310,7 @@ ZenProperties["MDLSYN0"] = {
     "BNDFLT": {
       "id": "BNDFLT",
       "byteOffset": 96,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "BENDER FILTER DEPTH",
       "dataRange": [
         -63,
@@ -5321,7 +5321,7 @@ ZenProperties["MDLSYN0"] = {
     "BNDLFO": {
       "id": "BNDLFO",
       "byteOffset": 97,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "MODULATION LFO DEPTH",
       "dataRange": [
         -63,
@@ -5332,7 +5332,7 @@ ZenProperties["MDLSYN0"] = {
     "BNDPTCH1": {
       "id": "BNDPTCH1",
       "byteOffset": 98,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "BENDER PITCH DEPTH",
       "dataRange": [
         0,
@@ -5343,7 +5343,7 @@ ZenProperties["MDLSYN0"] = {
     "PTATIME": {
       "id": "PTATIME",
       "byteOffset": 100,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "PORTAMENT TIME",
       "dataRange": [
         0,
@@ -5354,7 +5354,7 @@ ZenProperties["MDLSYN0"] = {
     "PTAMODE": {
       "id": "PTAMODE",
       "byteOffset": 102,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "PORTAMENT MODE",
       "dataRange": [
         0,
@@ -5370,7 +5370,7 @@ ZenProperties["MDLSYN0"] = {
     "KBDMODE": {
       "id": "KBDMODE",
       "byteOffset": 103,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "KEY MODE",
       "dataRange": [
         0,
@@ -5387,7 +5387,7 @@ ZenProperties["MDLSYN0"] = {
     "EXPAND": {
       "id": "EXPAND",
       "byteOffset": 104,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "PARAMETER EXPANSION SWITCH",
       "dataRange": [
         0,
@@ -5402,7 +5402,7 @@ ZenProperties["MDLSYN0"] = {
     "CONDITION": {
       "id": "CONDITION",
       "byteOffset": 105,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "CONDITION",
       "dataRange": [
         0,
@@ -5413,7 +5413,7 @@ ZenProperties["MDLSYN0"] = {
     "PTACRV": {
       "id": "PTACRV",
       "byteOffset": 106,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "PORTAMENT CURVE TYPE",
       "dataRange": [
         0,
@@ -5430,7 +5430,7 @@ ZenProperties["MDLSYN0"] = {
     "AFT_LFO": {
       "id": "AFT_LFO",
       "byteOffset": 107,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "AFTER TOUCH SENS LFO",
       "dataRange": [
         -63,
@@ -5441,7 +5441,7 @@ ZenProperties["MDLSYN0"] = {
     "AFT_FREQ": {
       "id": "AFT_FREQ",
       "byteOffset": 108,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "AFTER TOUCH SENS FREQ",
       "dataRange": [
         -63,
@@ -5452,7 +5452,7 @@ ZenProperties["MDLSYN0"] = {
     "AFT_LEV": {
       "id": "AFT_LEV",
       "byteOffset": 109,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "AFTER TOUCH SENS LEVEL",
       "dataRange": [
         -63,
@@ -5471,7 +5471,7 @@ ZenProperties["MDLVDN"] = {
     "MSTR_LVL": {
       "id": "MSTR_LVL",
       "byteOffset": 0,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Level",
       "dataRange": [
         0,
@@ -5482,7 +5482,7 @@ ZenProperties["MDLVDN"] = {
     "MIC_LVL": {
       "id": "MIC_LVL",
       "byteOffset": 1,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Mic Direct Level",
       "dataRange": [
         0,
@@ -5493,7 +5493,7 @@ ZenProperties["MDLVDN"] = {
     "VOC_LVL": {
       "id": "VOC_LVL",
       "byteOffset": 2,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Vocoder Level",
       "dataRange": [
         0,
@@ -5504,7 +5504,7 @@ ZenProperties["MDLVDN"] = {
     "ALGO": {
       "id": "ALGO",
       "byteOffset": 3,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Algorithm",
       "dataRange": [
         0,
@@ -5543,7 +5543,7 @@ ZenProperties["MDLVDN"] = {
     "CRR_TYPE": {
       "id": "CRR_TYPE",
       "byteOffset": 4,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Carrier Type",
       "dataRange": [
         0,
@@ -5558,7 +5558,7 @@ ZenProperties["MDLVDN"] = {
     "RSV_CRR_BASIC": {
       "id": "RSV_CRR_BASIC",
       "byteOffset": 5,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Reserved",
       "dataRange": [
         0,
@@ -5569,7 +5569,7 @@ ZenProperties["MDLVDN"] = {
     "LEVEL": {
       "id": "LEVEL",
       "byteOffset": 6,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Carrier Basic Level",
       "dataRange": [
         0,
@@ -5580,7 +5580,7 @@ ZenProperties["MDLVDN"] = {
     "PAN": {
       "id": "PAN",
       "byteOffset": 7,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Carrier Basic Pan",
       "dataRange": [
         -64,
@@ -5591,7 +5591,7 @@ ZenProperties["MDLVDN"] = {
     "PIT_CRS": {
       "id": "PIT_CRS",
       "byteOffset": 8,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Carrier Basic Coarse Tune",
       "dataRange": [
         -48,
@@ -5602,7 +5602,7 @@ ZenProperties["MDLVDN"] = {
     "PIT_FINE": {
       "id": "PIT_FINE",
       "byteOffset": 9,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Carrier Basic Fine Tune",
       "dataRange": [
         -50,
@@ -5613,7 +5613,7 @@ ZenProperties["MDLVDN"] = {
     "OCTAVE": {
       "id": "OCTAVE",
       "byteOffset": 10,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Carrier Basic Octave Shift",
       "dataRange": [
         -2,
@@ -5632,7 +5632,7 @@ ZenProperties["MFX"] = {
     "mfxType": {
       "id": "mfxType",
       "byteOffset": 0,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Type",
       "dataRange": [
         0,
@@ -5643,7 +5643,7 @@ ZenProperties["MFX"] = {
     "mfxSwitch": {
       "id": "mfxSwitch",
       "byteOffset": 1,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "MFX Switch",
       "dataRange": [
         0,
@@ -5654,7 +5654,7 @@ ZenProperties["MFX"] = {
     "choSend": {
       "id": "choSend",
       "byteOffset": 2,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "MFX Chorus Send Level",
       "dataRange": [
         0,
@@ -5665,7 +5665,7 @@ ZenProperties["MFX"] = {
     "revSend": {
       "id": "revSend",
       "byteOffset": 3,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "MFX Reverb Send Level",
       "dataRange": [
         0,
@@ -5676,7 +5676,7 @@ ZenProperties["MFX"] = {
     "ctrlSrc1": {
       "id": "ctrlSrc1",
       "byteOffset": 4,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "MFX CtrlSrc 1",
       "dataRange": [
         0,
@@ -5790,7 +5790,7 @@ ZenProperties["MFX"] = {
     "ctrlSens1": {
       "id": "ctrlSens1",
       "byteOffset": 5,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "MFX CtrlSens 1",
       "dataRange": [
         -63,
@@ -5801,7 +5801,7 @@ ZenProperties["MFX"] = {
     "ctrlSrc2": {
       "id": "ctrlSrc2",
       "byteOffset": 6,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "MFX CtrlSrc 2",
       "dataRange": [
         0,
@@ -5915,7 +5915,7 @@ ZenProperties["MFX"] = {
     "ctrlSens2": {
       "id": "ctrlSens2",
       "byteOffset": 7,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "MFX CtrlSens 2",
       "dataRange": [
         -63,
@@ -5926,7 +5926,7 @@ ZenProperties["MFX"] = {
     "ctrlSrc3": {
       "id": "ctrlSrc3",
       "byteOffset": 8,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "MFX CtrlSrc 3",
       "dataRange": [
         0,
@@ -6040,7 +6040,7 @@ ZenProperties["MFX"] = {
     "ctrlSens3": {
       "id": "ctrlSens3",
       "byteOffset": 9,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "MFX CtrlSens 3",
       "dataRange": [
         -63,
@@ -6051,7 +6051,7 @@ ZenProperties["MFX"] = {
     "ctrlSrc4": {
       "id": "ctrlSrc4",
       "byteOffset": 10,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "MFX CtrlSrc 4",
       "dataRange": [
         0,
@@ -6165,7 +6165,7 @@ ZenProperties["MFX"] = {
     "ctrlSens4": {
       "id": "ctrlSens4",
       "byteOffset": 11,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "MFX CtrlSens 4",
       "dataRange": [
         -63,
@@ -6176,7 +6176,7 @@ ZenProperties["MFX"] = {
     "ctrlAsgn_1": {
       "id": "ctrlAsgn_1",
       "byteOffset": 12,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "MFX CtrlAsgn 1",
       "dataRange": [
         0,
@@ -6187,7 +6187,7 @@ ZenProperties["MFX"] = {
     "param_1": {
       "id": "param_1",
       "byteOffset": 16,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "MFX Parameter 1",
       "dataRange": [
         -20000,
@@ -6206,7 +6206,7 @@ ZenProperties["PCMR_CMN"] = {
     "NAME_1": {
       "id": "NAME_1",
       "byteOffset": 0,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Name 1",
       "dataRange": [
         32,
@@ -6218,7 +6218,7 @@ ZenProperties["PCMR_CMN"] = {
     "PHRASE": {
       "id": "PHRASE",
       "byteOffset": 18,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "Phrase Number",
       "dataRange": [
         0,
@@ -6229,7 +6229,7 @@ ZenProperties["PCMR_CMN"] = {
     "LEVEL": {
       "id": "LEVEL",
       "byteOffset": 20,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Level",
       "dataRange": [
         0,
@@ -6240,7 +6240,7 @@ ZenProperties["PCMR_CMN"] = {
     "PHRASE_VEL_RATE": {
       "id": "PHRASE_VEL_RATE",
       "byteOffset": 23,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Phrase Velo Rate",
       "dataRange": [
         1,
@@ -6251,7 +6251,7 @@ ZenProperties["PCMR_CMN"] = {
     "PHRASE_VEL_SHIFT": {
       "id": "PHRASE_VEL_SHIFT",
       "byteOffset": 24,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Phrase Velo Shift",
       "dataRange": [
         -100,
@@ -6270,7 +6270,7 @@ ZenProperties["PCMR_PTL"] = {
     "INST_NUM": {
       "id": "INST_NUM",
       "byteOffset": 0,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "Inst Number",
       "dataRange": [
         0,
@@ -6281,7 +6281,7 @@ ZenProperties["PCMR_PTL"] = {
     "INST_GTYPE": {
       "id": "INST_GTYPE",
       "byteOffset": 2,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Inst Bank",
       "dataRange": [
         0,
@@ -6297,7 +6297,7 @@ ZenProperties["PCMR_PTL"] = {
     "INST_GID": {
       "id": "INST_GID",
       "byteOffset": 4,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "Inst Group ID",
       "dataRange": [
         0,
@@ -6308,7 +6308,7 @@ ZenProperties["PCMR_PTL"] = {
     "LEVEL": {
       "id": "LEVEL",
       "byteOffset": 6,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Level",
       "dataRange": [
         0,
@@ -6319,7 +6319,7 @@ ZenProperties["PCMR_PTL"] = {
     "PAN": {
       "id": "PAN",
       "byteOffset": 8,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Pan",
       "dataRange": [
         -64,
@@ -6330,7 +6330,7 @@ ZenProperties["PCMR_PTL"] = {
     "CHO_SEND": {
       "id": "CHO_SEND",
       "byteOffset": 9,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Chorus Send Level",
       "dataRange": [
         0,
@@ -6341,7 +6341,7 @@ ZenProperties["PCMR_PTL"] = {
     "REV_SEND": {
       "id": "REV_SEND",
       "byteOffset": 10,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Reverb Send Level",
       "dataRange": [
         0,
@@ -6352,7 +6352,7 @@ ZenProperties["PCMR_PTL"] = {
     "MUTE_GRP": {
       "id": "MUTE_GRP",
       "byteOffset": 11,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Mute Group",
       "dataRange": [
         0,
@@ -6397,7 +6397,7 @@ ZenProperties["PCMR_PTL"] = {
     "OUT_ASGN": {
       "id": "OUT_ASGN",
       "byteOffset": 12,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Output Assign",
       "dataRange": [
         0,
@@ -6418,7 +6418,7 @@ ZenProperties["PCMR_PTL"] = {
     "KEY_OFST": {
       "id": "KEY_OFST",
       "byteOffset": 13,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Key Offset",
       "dataRange": [
         -24,
@@ -6429,7 +6429,7 @@ ZenProperties["PCMR_PTL"] = {
     "PIT_FINE_OFST": {
       "id": "PIT_FINE_OFST",
       "byteOffset": 14,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Fine Tune Offset",
       "dataRange": [
         -50,
@@ -6441,7 +6441,7 @@ ZenProperties["PCMR_PTL"] = {
     "CUTOFF_OFST": {
       "id": "CUTOFF_OFST",
       "byteOffset": 15,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVF Cutoff Offset",
       "dataRange": [
         -100,
@@ -6452,7 +6452,7 @@ ZenProperties["PCMR_PTL"] = {
     "RESO_OFST": {
       "id": "RESO_OFST",
       "byteOffset": 16,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVF Resonance Offset",
       "dataRange": [
         -100,
@@ -6463,7 +6463,7 @@ ZenProperties["PCMR_PTL"] = {
     "TVA_ATK_OFST": {
       "id": "TVA_ATK_OFST",
       "byteOffset": 17,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVA Attack Time Offset",
       "dataRange": [
         -100,
@@ -6474,7 +6474,7 @@ ZenProperties["PCMR_PTL"] = {
     "TVA_DCY_OFST": {
       "id": "TVA_DCY_OFST",
       "byteOffset": 18,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVA Decay Time Offset",
       "dataRange": [
         -100,
@@ -6485,7 +6485,7 @@ ZenProperties["PCMR_PTL"] = {
     "TVA_REL_OFST": {
       "id": "TVA_REL_OFST",
       "byteOffset": 19,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVA Release Time Offset",
       "dataRange": [
         -100,
@@ -6504,7 +6504,7 @@ ZenProperties["PCMS_CMN"] = {
     "UNISON_SW": {
       "id": "UNISON_SW",
       "byteOffset": 0,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Unison Switch",
       "dataRange": [
         0,
@@ -6519,7 +6519,7 @@ ZenProperties["PCMS_CMN"] = {
     "UNISON_SIZE": {
       "id": "UNISON_SIZE",
       "byteOffset": 1,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Unison Size",
       "dataRange": [
         2,
@@ -6530,7 +6530,7 @@ ZenProperties["PCMS_CMN"] = {
     "UNISON_DETN": {
       "id": "UNISON_DETN",
       "byteOffset": 2,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Unison Detune",
       "dataRange": [
         0,
@@ -6541,7 +6541,7 @@ ZenProperties["PCMS_CMN"] = {
     "BEND_RANGE_FINE_UP": {
       "id": "BEND_RANGE_FINE_UP",
       "byteOffset": 4,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Bend Range Fine Up",
       "dataRange": [
         0,
@@ -6552,7 +6552,7 @@ ZenProperties["PCMS_CMN"] = {
     "BEND_RANGE_FINE_DW": {
       "id": "BEND_RANGE_FINE_DW",
       "byteOffset": 5,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Bend Range Fine Down",
       "dataRange": [
         0,
@@ -6563,7 +6563,7 @@ ZenProperties["PCMS_CMN"] = {
     "RND_PIT_VAL": {
       "id": "RND_PIT_VAL",
       "byteOffset": 6,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Pitch Drift",
       "dataRange": [
         0,
@@ -6574,7 +6574,7 @@ ZenProperties["PCMS_CMN"] = {
     "RND_PIT_NUM": {
       "id": "RND_PIT_NUM",
       "byteOffset": 7,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Pitch Drift Cycle Number",
       "dataRange": [
         0,
@@ -6596,7 +6596,7 @@ ZenProperties["PCMS_CMN"] = {
     "CONDITION": {
       "id": "CONDITION",
       "byteOffset": 8,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Condition",
       "dataRange": [
         0,
@@ -6615,7 +6615,7 @@ ZenProperties["PCMS_PMT"] = {
     "STRUCT12": {
       "id": "STRUCT12",
       "byteOffset": 0,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Structure1-2",
       "dataRange": [
         0,
@@ -6633,7 +6633,7 @@ ZenProperties["PCMS_PMT"] = {
     "STRUCT34": {
       "id": "STRUCT34",
       "byteOffset": 1,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Structure3-4",
       "dataRange": [
         0,
@@ -6651,7 +6651,7 @@ ZenProperties["PCMS_PMT"] = {
     "RING12_LEVEL": {
       "id": "RING12_LEVEL",
       "byteOffset": 4,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "RING1-2 Level",
       "dataRange": [
         0,
@@ -6662,7 +6662,7 @@ ZenProperties["PCMS_PMT"] = {
     "RING34_LEVEL": {
       "id": "RING34_LEVEL",
       "byteOffset": 5,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "RING3-4 Level",
       "dataRange": [
         0,
@@ -6673,7 +6673,7 @@ ZenProperties["PCMS_PMT"] = {
     "RING_OSC1_LEVEL": {
       "id": "RING_OSC1_LEVEL",
       "byteOffset": 6,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "RING OSC1 Level",
       "dataRange": [
         0,
@@ -6684,7 +6684,7 @@ ZenProperties["PCMS_PMT"] = {
     "RING_OSC2_LEVEL": {
       "id": "RING_OSC2_LEVEL",
       "byteOffset": 7,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "RING OSC2 Level",
       "dataRange": [
         0,
@@ -6695,7 +6695,7 @@ ZenProperties["PCMS_PMT"] = {
     "RING_OSC3_LEVEL": {
       "id": "RING_OSC3_LEVEL",
       "byteOffset": 8,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "RING OSC3 Level",
       "dataRange": [
         0,
@@ -6706,7 +6706,7 @@ ZenProperties["PCMS_PMT"] = {
     "RING_OSC4_LEVEL": {
       "id": "RING_OSC4_LEVEL",
       "byteOffset": 9,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "RING OSC4 Level",
       "dataRange": [
         0,
@@ -6717,7 +6717,7 @@ ZenProperties["PCMS_PMT"] = {
     "XMOD12_DEPTH": {
       "id": "XMOD12_DEPTH",
       "byteOffset": 12,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "CrossMod1-2 Depth",
       "dataRange": [
         0,
@@ -6729,7 +6729,7 @@ ZenProperties["PCMS_PMT"] = {
     "XMOD34_DEPTH": {
       "id": "XMOD34_DEPTH",
       "byteOffset": 14,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "CrossMod3-4 Depth",
       "dataRange": [
         0,
@@ -6741,7 +6741,7 @@ ZenProperties["PCMS_PMT"] = {
     "XMOD_OSC1_LEVEL": {
       "id": "XMOD_OSC1_LEVEL",
       "byteOffset": 16,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "CrossMod OSC1 Level",
       "dataRange": [
         0,
@@ -6752,7 +6752,7 @@ ZenProperties["PCMS_PMT"] = {
     "XMOD_OSC2_LEVEL": {
       "id": "XMOD_OSC2_LEVEL",
       "byteOffset": 17,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "CrossMod OSC2 Level",
       "dataRange": [
         0,
@@ -6763,7 +6763,7 @@ ZenProperties["PCMS_PMT"] = {
     "XMOD_OSC3_LEVEL": {
       "id": "XMOD_OSC3_LEVEL",
       "byteOffset": 18,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "CrossMod OSC3 Level",
       "dataRange": [
         0,
@@ -6774,7 +6774,7 @@ ZenProperties["PCMS_PMT"] = {
     "XMOD_OSC4_LEVEL": {
       "id": "XMOD_OSC4_LEVEL",
       "byteOffset": 19,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "CrossMod OSC4 Level",
       "dataRange": [
         0,
@@ -6785,7 +6785,7 @@ ZenProperties["PCMS_PMT"] = {
     "PTL_PHS_LOCK": {
       "id": "PTL_PHS_LOCK",
       "byteOffset": 20,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Partial Phase Lock",
       "dataRange": [
         0,
@@ -6800,7 +6800,7 @@ ZenProperties["PCMS_PMT"] = {
     "XMOD2_12_DEPTH": {
       "id": "XMOD2_12_DEPTH",
       "byteOffset": 21,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "CrossMod2 1-2 Depth",
       "dataRange": [
         0,
@@ -6811,7 +6811,7 @@ ZenProperties["PCMS_PMT"] = {
     "XMOD2_34_DEPTH": {
       "id": "XMOD2_34_DEPTH",
       "byteOffset": 22,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "CrossMod2 3-4 Depth",
       "dataRange": [
         0,
@@ -6830,7 +6830,7 @@ ZenProperties["PCMS_PTL"] = {
     "OSC_TYPE": {
       "id": "OSC_TYPE",
       "byteOffset": 0,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC Type",
       "dataRange": [
         0,
@@ -6848,7 +6848,7 @@ ZenProperties["PCMS_PTL"] = {
     "VA_FORM": {
       "id": "VA_FORM",
       "byteOffset": 1,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "VA Waveform",
       "dataRange": [
         0,
@@ -6870,7 +6870,7 @@ ZenProperties["PCMS_PTL"] = {
     "SYNC_WAV_NUM": {
       "id": "SYNC_WAV_NUM",
       "byteOffset": 2,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "PCM-Sync Wave Number",
       "dataRange": [
         0,
@@ -6881,7 +6881,7 @@ ZenProperties["PCMS_PTL"] = {
     "PW": {
       "id": "PW",
       "byteOffset": 4,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Pulse Width",
       "dataRange": [
         0,
@@ -6892,7 +6892,7 @@ ZenProperties["PCMS_PTL"] = {
     "PWM_DEPTH": {
       "id": "PWM_DEPTH",
       "byteOffset": 5,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "PWM Depth",
       "dataRange": [
         -63,
@@ -6903,7 +6903,7 @@ ZenProperties["PCMS_PTL"] = {
     "SSAW_DETUNE": {
       "id": "SSAW_DETUNE",
       "byteOffset": 6,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "SuperSAW Detune",
       "dataRange": [
         0,
@@ -6914,7 +6914,7 @@ ZenProperties["PCMS_PTL"] = {
     "CLICK_TYPE": {
       "id": "CLICK_TYPE",
       "byteOffset": 7,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Click Type",
       "dataRange": [
         0,
@@ -6931,7 +6931,7 @@ ZenProperties["PCMS_PTL"] = {
     "HPF_CUTOFF": {
       "id": "HPF_CUTOFF",
       "byteOffset": 8,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "HPF Cutoff",
       "dataRange": [
         0,
@@ -6942,7 +6942,7 @@ ZenProperties["PCMS_PTL"] = {
     "FILTER_TYPE": {
       "id": "FILTER_TYPE",
       "byteOffset": 10,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Filter Type",
       "dataRange": [
         0,
@@ -6957,7 +6957,7 @@ ZenProperties["PCMS_PTL"] = {
     "FILTER_SLOPE": {
       "id": "FILTER_SLOPE",
       "byteOffset": 11,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Filter Slope",
       "dataRange": [
         0,
@@ -6974,7 +6974,7 @@ ZenProperties["PCMS_PTL"] = {
     "ADSR_ENV_SW": {
       "id": "ADSR_ENV_SW",
       "byteOffset": 12,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "ADSREnv Switch",
       "dataRange": [
         0,
@@ -6989,7 +6989,7 @@ ZenProperties["PCMS_PTL"] = {
     "FAT": {
       "id": "FAT",
       "byteOffset": 13,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Fat",
       "dataRange": [
         0,
@@ -7000,7 +7000,7 @@ ZenProperties["PCMS_PTL"] = {
     "VCF_TYPE": {
       "id": "VCF_TYPE",
       "byteOffset": 14,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "VCF Type",
       "dataRange": [
         0,
@@ -7017,7 +7017,7 @@ ZenProperties["PCMS_PTL"] = {
     "OSC_ATT": {
       "id": "OSC_ATT",
       "byteOffset": 15,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "OSC Attenuator",
       "dataRange": [
         0,
@@ -7028,7 +7028,7 @@ ZenProperties["PCMS_PTL"] = {
     "CUTOFF_KF_BP": {
       "id": "CUTOFF_KF_BP",
       "byteOffset": 16,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Cutoff Keyfollow Base Point",
       "dataRange": [
         0,
@@ -7039,7 +7039,7 @@ ZenProperties["PCMS_PTL"] = {
     "VA_INVERT_SW": {
       "id": "VA_INVERT_SW",
       "byteOffset": 17,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "VA Waveform Invert Switch",
       "dataRange": [
         0,
@@ -7054,7 +7054,7 @@ ZenProperties["PCMS_PTL"] = {
     "FENV_FINE_DEPTH": {
       "id": "FENV_FINE_DEPTH",
       "byteOffset": 18,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVF Env Fine Depth",
       "dataRange": [
         -63,
@@ -7065,7 +7065,7 @@ ZenProperties["PCMS_PTL"] = {
     "PENV_LFO_TRIG_SW": {
       "id": "PENV_LFO_TRIG_SW",
       "byteOffset": 19,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "PENV LFO Trigger Switch",
       "dataRange": [
         0,
@@ -7080,7 +7080,7 @@ ZenProperties["PCMS_PTL"] = {
     "FENV_LFO_TRIG_SW": {
       "id": "FENV_LFO_TRIG_SW",
       "byteOffset": 20,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "FENV LFO Trigger Switch",
       "dataRange": [
         0,
@@ -7095,7 +7095,7 @@ ZenProperties["PCMS_PTL"] = {
     "AENV_LFO_TRIG_SW": {
       "id": "AENV_LFO_TRIG_SW",
       "byteOffset": 21,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "AENV LFO Trigger Switch",
       "dataRange": [
         0,
@@ -7110,7 +7110,7 @@ ZenProperties["PCMS_PTL"] = {
     "PITCH_DOWN_DEPTH": {
       "id": "PITCH_DOWN_DEPTH",
       "byteOffset": 22,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Pitch Down Depth",
       "dataRange": [
         0,
@@ -7121,7 +7121,7 @@ ZenProperties["PCMS_PTL"] = {
     "VCF_GC": {
       "id": "VCF_GC",
       "byteOffset": 23,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "VCF Gain Correction",
       "dataRange": [
         0,
@@ -7132,7 +7132,7 @@ ZenProperties["PCMS_PTL"] = {
     "VA_INIT_PHASE": {
       "id": "VA_INIT_PHASE",
       "byteOffset": 24,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "VA Init Phase",
       "dataRange": [
         0,
@@ -7155,7 +7155,7 @@ ZenProperties["PCMT_CMN"] = {
     "NAME_1": {
       "id": "NAME_1",
       "byteOffset": 0,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Name 1",
       "dataRange": [
         32,
@@ -7167,7 +7167,7 @@ ZenProperties["PCMT_CMN"] = {
     "CATEGORY": {
       "id": "CATEGORY",
       "byteOffset": 16,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Category",
       "dataRange": [
         0,
@@ -7231,7 +7231,7 @@ ZenProperties["PCMT_CMN"] = {
     "PHRASE": {
       "id": "PHRASE",
       "byteOffset": 18,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "Reserved",
       "dataRange": [
         0,
@@ -7242,7 +7242,7 @@ ZenProperties["PCMT_CMN"] = {
     "LEVEL": {
       "id": "LEVEL",
       "byteOffset": 20,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Level",
       "dataRange": [
         0,
@@ -7253,7 +7253,7 @@ ZenProperties["PCMT_CMN"] = {
     "PAN": {
       "id": "PAN",
       "byteOffset": 21,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Pan",
       "dataRange": [
         -64,
@@ -7264,7 +7264,7 @@ ZenProperties["PCMT_CMN"] = {
     "PRIORITY": {
       "id": "PRIORITY",
       "byteOffset": 24,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Priority",
       "dataRange": [
         0,
@@ -7279,7 +7279,7 @@ ZenProperties["PCMT_CMN"] = {
     "PIT_CRS": {
       "id": "PIT_CRS",
       "byteOffset": 25,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Tone Coarse Tune",
       "dataRange": [
         -48,
@@ -7291,7 +7291,7 @@ ZenProperties["PCMT_CMN"] = {
     "PIT_FINE": {
       "id": "PIT_FINE",
       "byteOffset": 26,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Tone Fine Tune",
       "dataRange": [
         -50,
@@ -7303,7 +7303,7 @@ ZenProperties["PCMT_CMN"] = {
     "OCTAVE": {
       "id": "OCTAVE",
       "byteOffset": 27,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Octave Shift",
       "dataRange": [
         -3,
@@ -7314,7 +7314,7 @@ ZenProperties["PCMT_CMN"] = {
     "STRETCH": {
       "id": "STRETCH",
       "byteOffset": 28,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Stretch Tune Depth",
       "dataRange": [
         0,
@@ -7331,7 +7331,7 @@ ZenProperties["PCMT_CMN"] = {
     "ANALOG_FEEL": {
       "id": "ANALOG_FEEL",
       "byteOffset": 29,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Analog Feel",
       "dataRange": [
         0,
@@ -7342,7 +7342,7 @@ ZenProperties["PCMT_CMN"] = {
     "MONO_POLY": {
       "id": "MONO_POLY",
       "byteOffset": 30,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Mono/Poly",
       "dataRange": [
         0,
@@ -7357,7 +7357,7 @@ ZenProperties["PCMT_CMN"] = {
     "LEGATO_SW": {
       "id": "LEGATO_SW",
       "byteOffset": 31,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Legato Switch",
       "dataRange": [
         0,
@@ -7372,7 +7372,7 @@ ZenProperties["PCMT_CMN"] = {
     "RETRIG_INTVL": {
       "id": "RETRIG_INTVL",
       "byteOffset": 32,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Legato Retrigger Interval",
       "dataRange": [
         0,
@@ -7399,7 +7399,7 @@ ZenProperties["PCMT_CMN"] = {
     "PORTA_SW": {
       "id": "PORTA_SW",
       "byteOffset": 33,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Portamento Switch",
       "dataRange": [
         0,
@@ -7414,7 +7414,7 @@ ZenProperties["PCMT_CMN"] = {
     "PORTA_MODE": {
       "id": "PORTA_MODE",
       "byteOffset": 34,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Portamento Mode",
       "dataRange": [
         0,
@@ -7429,7 +7429,7 @@ ZenProperties["PCMT_CMN"] = {
     "PORTA_TYPE": {
       "id": "PORTA_TYPE",
       "byteOffset": 35,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Portamento Type",
       "dataRange": [
         0,
@@ -7444,7 +7444,7 @@ ZenProperties["PCMT_CMN"] = {
     "PORTA_START": {
       "id": "PORTA_START",
       "byteOffset": 37,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Portamento Start",
       "dataRange": [
         0,
@@ -7459,7 +7459,7 @@ ZenProperties["PCMT_CMN"] = {
     "PORTA_TIME": {
       "id": "PORTA_TIME",
       "byteOffset": 38,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "Portamento Time",
       "dataRange": [
         0,
@@ -7470,7 +7470,7 @@ ZenProperties["PCMT_CMN"] = {
     "BEND_RANGE_UP": {
       "id": "BEND_RANGE_UP",
       "byteOffset": 40,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Bend Range Up",
       "dataRange": [
         0,
@@ -7481,7 +7481,7 @@ ZenProperties["PCMT_CMN"] = {
     "BEND_RANGE_DW": {
       "id": "BEND_RANGE_DW",
       "byteOffset": 41,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Bend Range Down",
       "dataRange": [
         0,
@@ -7492,7 +7492,7 @@ ZenProperties["PCMT_CMN"] = {
     "BEND_MODE": {
       "id": "BEND_MODE",
       "byteOffset": 42,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Bend Mode",
       "dataRange": [
         0,
@@ -7507,7 +7507,7 @@ ZenProperties["PCMT_CMN"] = {
     "SOFT_LEVEL_SENS": {
       "id": "SOFT_LEVEL_SENS",
       "byteOffset": 43,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Soft Level Sens",
       "dataRange": [
         0,
@@ -7518,7 +7518,7 @@ ZenProperties["PCMT_CMN"] = {
     "PHRASE_OCT": {
       "id": "PHRASE_OCT",
       "byteOffset": 44,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Reserved",
       "dataRange": [
         0,
@@ -7529,7 +7529,7 @@ ZenProperties["PCMT_CMN"] = {
     "PHRASE_VEL_RATE": {
       "id": "PHRASE_VEL_RATE",
       "byteOffset": 45,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Reserved",
       "dataRange": [
         0,
@@ -7540,7 +7540,7 @@ ZenProperties["PCMT_CMN"] = {
     "PHRASE_VEL_SHIFT": {
       "id": "PHRASE_VEL_SHIFT",
       "byteOffset": 46,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Reserved",
       "dataRange": [
         0,
@@ -7551,7 +7551,7 @@ ZenProperties["PCMT_CMN"] = {
     "SYMP_DEPTH": {
       "id": "SYMP_DEPTH",
       "byteOffset": 47,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Reserved",
       "dataRange": [
         0,
@@ -7562,7 +7562,7 @@ ZenProperties["PCMT_CMN"] = {
     "PORTA_CRV": {
       "id": "PORTA_CRV",
       "byteOffset": 48,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Portamento Curve Type",
       "dataRange": [
         0,
@@ -7577,7 +7577,7 @@ ZenProperties["PCMT_CMN"] = {
     "PTL_LFO_LOCK": {
       "id": "PTL_LFO_LOCK",
       "byteOffset": 49,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Partial LFO Phase Lock",
       "dataRange": [
         0,
@@ -7600,7 +7600,7 @@ ZenProperties["PCMT_PMT_PMT"] = {
     "PTL_SW": {
       "id": "PTL_SW",
       "byteOffset": 0,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Partial Switch",
       "dataRange": [
         0,
@@ -7615,7 +7615,7 @@ ZenProperties["PCMT_PMT_PMT"] = {
     "KRANGE_LO": {
       "id": "KRANGE_LO",
       "byteOffset": 4,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "KeyRange Lower",
       "dataRange": [
         0,
@@ -7626,7 +7626,7 @@ ZenProperties["PCMT_PMT_PMT"] = {
     "KRANGE_UP": {
       "id": "KRANGE_UP",
       "byteOffset": 5,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "KeyRange Upper",
       "dataRange": [
         0,
@@ -7637,7 +7637,7 @@ ZenProperties["PCMT_PMT_PMT"] = {
     "KFADE_LO": {
       "id": "KFADE_LO",
       "byteOffset": 6,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "KeyFade Lower",
       "dataRange": [
         0,
@@ -7648,7 +7648,7 @@ ZenProperties["PCMT_PMT_PMT"] = {
     "KFADE_UP": {
       "id": "KFADE_UP",
       "byteOffset": 7,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "KeyFade Upper",
       "dataRange": [
         0,
@@ -7659,7 +7659,7 @@ ZenProperties["PCMT_PMT_PMT"] = {
     "VRANGE_LO": {
       "id": "VRANGE_LO",
       "byteOffset": 8,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "VeloRange Lower",
       "dataRange": [
         1,
@@ -7670,7 +7670,7 @@ ZenProperties["PCMT_PMT_PMT"] = {
     "VRANGE_UP": {
       "id": "VRANGE_UP",
       "byteOffset": 9,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "VeloRange Upper",
       "dataRange": [
         1,
@@ -7681,7 +7681,7 @@ ZenProperties["PCMT_PMT_PMT"] = {
     "VFADE_LO": {
       "id": "VFADE_LO",
       "byteOffset": 10,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "VeloFade Lower",
       "dataRange": [
         0,
@@ -7692,7 +7692,7 @@ ZenProperties["PCMT_PMT_PMT"] = {
     "VFADE_UP": {
       "id": "VFADE_UP",
       "byteOffset": 11,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "VeloFade Upper",
       "dataRange": [
         0,
@@ -7711,7 +7711,7 @@ ZenProperties["PCMT_PMT"] = {
     "VEL_CTRL": {
       "id": "VEL_CTRL",
       "byteOffset": 0,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Velocity Control",
       "dataRange": [
         0,
@@ -7728,7 +7728,7 @@ ZenProperties["PCMT_PMT"] = {
     "PMT_LEVEL_CRV": {
       "id": "PMT_LEVEL_CRV",
       "byteOffset": 1,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "PMT Level Curve",
       "dataRange": [
         0,
@@ -7743,7 +7743,7 @@ ZenProperties["PCMT_PMT"] = {
     "PMT": {
       "id": "PMT",
       "byteOffset": 4,
-      "lengthBytes": 48,
+      "byteLength": 48,
       "description": "PMT",
       "blockName": "PCMT_PMT_PMT",
       "count": 4,
@@ -7761,7 +7761,7 @@ ZenProperties["PCMT_PTL_MCTL"] = {
     "SRC": {
       "id": "SRC",
       "byteOffset": 0,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Source",
       "dataRange": [
         0,
@@ -7883,7 +7883,7 @@ ZenProperties["PCMT_PTL_MCTL"] = {
     "DST1": {
       "id": "DST1",
       "byteOffset": 1,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Destination 1",
       "dataRange": [
         0,
@@ -7945,7 +7945,7 @@ ZenProperties["PCMT_PTL_MCTL"] = {
     "SENS1": {
       "id": "SENS1",
       "byteOffset": 2,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Sens 1",
       "dataRange": [
         -63,
@@ -7956,7 +7956,7 @@ ZenProperties["PCMT_PTL_MCTL"] = {
     "DST2": {
       "id": "DST2",
       "byteOffset": 3,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Destination 2",
       "dataRange": [
         0,
@@ -8018,7 +8018,7 @@ ZenProperties["PCMT_PTL_MCTL"] = {
     "SENS2": {
       "id": "SENS2",
       "byteOffset": 4,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Sens 2",
       "dataRange": [
         -63,
@@ -8029,7 +8029,7 @@ ZenProperties["PCMT_PTL_MCTL"] = {
     "DST3": {
       "id": "DST3",
       "byteOffset": 5,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Destination 3",
       "dataRange": [
         0,
@@ -8091,7 +8091,7 @@ ZenProperties["PCMT_PTL_MCTL"] = {
     "SENS3": {
       "id": "SENS3",
       "byteOffset": 6,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Sens 3",
       "dataRange": [
         -63,
@@ -8102,7 +8102,7 @@ ZenProperties["PCMT_PTL_MCTL"] = {
     "DST4": {
       "id": "DST4",
       "byteOffset": 7,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Destination 4",
       "dataRange": [
         0,
@@ -8164,7 +8164,7 @@ ZenProperties["PCMT_PTL_MCTL"] = {
     "SENS4": {
       "id": "SENS4",
       "byteOffset": 8,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Sens 4",
       "dataRange": [
         -63,
@@ -8183,7 +8183,7 @@ ZenProperties["PCMT_PTL"] = {
     "LEVEL": {
       "id": "LEVEL",
       "byteOffset": 0,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Level",
       "dataRange": [
         0,
@@ -8194,7 +8194,7 @@ ZenProperties["PCMT_PTL"] = {
     "PIT_CRS": {
       "id": "PIT_CRS",
       "byteOffset": 2,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Coarse Tune",
       "dataRange": [
         -48,
@@ -8205,7 +8205,7 @@ ZenProperties["PCMT_PTL"] = {
     "PIT_FINE": {
       "id": "PIT_FINE",
       "byteOffset": 3,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Fine Tune",
       "dataRange": [
         -50,
@@ -8217,7 +8217,7 @@ ZenProperties["PCMT_PTL"] = {
     "PIT_RND": {
       "id": "PIT_RND",
       "byteOffset": 4,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "Random Pitch Depth",
       "dataRange": [
         0,
@@ -8229,7 +8229,7 @@ ZenProperties["PCMT_PTL"] = {
     "PAN": {
       "id": "PAN",
       "byteOffset": 6,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Pan",
       "dataRange": [
         -64,
@@ -8240,7 +8240,7 @@ ZenProperties["PCMT_PTL"] = {
     "PAN_KF": {
       "id": "PAN_KF",
       "byteOffset": 7,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Pan Keyfollow",
       "dataRange": [
         -100,
@@ -8251,7 +8251,7 @@ ZenProperties["PCMT_PTL"] = {
     "PAN_RND": {
       "id": "PAN_RND",
       "byteOffset": 8,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Random Pan Depth",
       "dataRange": [
         0,
@@ -8262,7 +8262,7 @@ ZenProperties["PCMT_PTL"] = {
     "PAN_ALT": {
       "id": "PAN_ALT",
       "byteOffset": 9,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Alternate Pan Depth",
       "dataRange": [
         -64,
@@ -8273,7 +8273,7 @@ ZenProperties["PCMT_PTL"] = {
     "ENV_MODE": {
       "id": "ENV_MODE",
       "byteOffset": 10,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Envelope Mode",
       "dataRange": [
         0,
@@ -8288,7 +8288,7 @@ ZenProperties["PCMT_PTL"] = {
     "DELAY_MODE": {
       "id": "DELAY_MODE",
       "byteOffset": 11,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Delay Mode",
       "dataRange": [
         0,
@@ -8305,7 +8305,7 @@ ZenProperties["PCMT_PTL"] = {
     "DLY_TIME_SYNC": {
       "id": "DLY_TIME_SYNC",
       "byteOffset": 12,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "DelayTime Sync",
       "dataRange": [
         0,
@@ -8320,7 +8320,7 @@ ZenProperties["PCMT_PTL"] = {
     "DLY_TIME_NOTE": {
       "id": "DLY_TIME_NOTE",
       "byteOffset": 13,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "DelayTime (note)",
       "dataRange": [
         0,
@@ -8355,7 +8355,7 @@ ZenProperties["PCMT_PTL"] = {
     "DLY_TIME": {
       "id": "DLY_TIME",
       "byteOffset": 14,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "DelayTime",
       "dataRange": [
         0,
@@ -8366,7 +8366,7 @@ ZenProperties["PCMT_PTL"] = {
     "CHO_SEND": {
       "id": "CHO_SEND",
       "byteOffset": 16,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Chorus Send Level",
       "dataRange": [
         0,
@@ -8377,7 +8377,7 @@ ZenProperties["PCMT_PTL"] = {
     "REV_SEND": {
       "id": "REV_SEND",
       "byteOffset": 17,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Reverb Send Level",
       "dataRange": [
         0,
@@ -8388,7 +8388,7 @@ ZenProperties["PCMT_PTL"] = {
     "RX_BEND": {
       "id": "RX_BEND",
       "byteOffset": 18,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Receive Bender",
       "dataRange": [
         0,
@@ -8403,7 +8403,7 @@ ZenProperties["PCMT_PTL"] = {
     "RX_EXPR": {
       "id": "RX_EXPR",
       "byteOffset": 19,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Receive Expression",
       "dataRange": [
         0,
@@ -8418,7 +8418,7 @@ ZenProperties["PCMT_PTL"] = {
     "RX_HOLD": {
       "id": "RX_HOLD",
       "byteOffset": 20,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Receive Hold-1",
       "dataRange": [
         0,
@@ -8433,7 +8433,7 @@ ZenProperties["PCMT_PTL"] = {
     "REDAMP_SW": {
       "id": "REDAMP_SW",
       "byteOffset": 21,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Redamper Switch",
       "dataRange": [
         0,
@@ -8448,7 +8448,7 @@ ZenProperties["PCMT_PTL"] = {
     "OUT_ASGN": {
       "id": "OUT_ASGN",
       "byteOffset": 22,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Output Assign",
       "dataRange": [
         0,
@@ -8463,7 +8463,7 @@ ZenProperties["PCMT_PTL"] = {
     "WAV_GTYPE": {
       "id": "WAV_GTYPE",
       "byteOffset": 23,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Wave Group Type",
       "dataRange": [
         0,
@@ -8480,7 +8480,7 @@ ZenProperties["PCMT_PTL"] = {
     "WAV_GID": {
       "id": "WAV_GID",
       "byteOffset": 24,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "Wave Group ID",
       "dataRange": [
         0,
@@ -8491,7 +8491,7 @@ ZenProperties["PCMT_PTL"] = {
     "WAV_NUM_L": {
       "id": "WAV_NUM_L",
       "byteOffset": 26,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "Wave Number L",
       "dataRange": [
         0,
@@ -8502,7 +8502,7 @@ ZenProperties["PCMT_PTL"] = {
     "WAV_NUM_R": {
       "id": "WAV_NUM_R",
       "byteOffset": 28,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "Wave Number R",
       "dataRange": [
         0,
@@ -8513,7 +8513,7 @@ ZenProperties["PCMT_PTL"] = {
     "WAV_GAIN": {
       "id": "WAV_GAIN",
       "byteOffset": 30,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Gain",
       "dataRange": [
         0,
@@ -8533,7 +8533,7 @@ ZenProperties["PCMT_PTL"] = {
     "FXM_SW": {
       "id": "FXM_SW",
       "byteOffset": 31,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "FXM Switch",
       "dataRange": [
         0,
@@ -8548,7 +8548,7 @@ ZenProperties["PCMT_PTL"] = {
     "FXM_COLOR": {
       "id": "FXM_COLOR",
       "byteOffset": 32,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "FXM Color",
       "dataRange": [
         1,
@@ -8559,7 +8559,7 @@ ZenProperties["PCMT_PTL"] = {
     "FXM_DEPTH": {
       "id": "FXM_DEPTH",
       "byteOffset": 33,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "FXM Depth",
       "dataRange": [
         0,
@@ -8570,7 +8570,7 @@ ZenProperties["PCMT_PTL"] = {
     "PIT_KF": {
       "id": "PIT_KF",
       "byteOffset": 34,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "Pitch Keyfollow",
       "dataRange": [
         -200,
@@ -8581,7 +8581,7 @@ ZenProperties["PCMT_PTL"] = {
     "SOFT_EQ_SENS": {
       "id": "SOFT_EQ_SENS",
       "byteOffset": 36,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Soft EQ Sens",
       "dataRange": [
         0,
@@ -8592,7 +8592,7 @@ ZenProperties["PCMT_PTL"] = {
     "FILTER_TYPE": {
       "id": "FILTER_TYPE",
       "byteOffset": 37,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVF Filter Type",
       "dataRange": [
         0,
@@ -8612,7 +8612,7 @@ ZenProperties["PCMT_PTL"] = {
     "CUTOFF": {
       "id": "CUTOFF",
       "byteOffset": 40,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "TVF Cutoff Frequency",
       "dataRange": [
         0,
@@ -8623,7 +8623,7 @@ ZenProperties["PCMT_PTL"] = {
     "CUTOFF_KF": {
       "id": "CUTOFF_KF",
       "byteOffset": 42,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "TVF Cutoff Keyfollow",
       "dataRange": [
         -200,
@@ -8634,7 +8634,7 @@ ZenProperties["PCMT_PTL"] = {
     "CUTOFF_VCRV": {
       "id": "CUTOFF_VCRV",
       "byteOffset": 44,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVF Cutoff Velocity Curve",
       "dataRange": [
         0,
@@ -8655,7 +8655,7 @@ ZenProperties["PCMT_PTL"] = {
     "CUTOFF_VSENS": {
       "id": "CUTOFF_VSENS",
       "byteOffset": 45,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVF Cutoff Velocity Sens",
       "dataRange": [
         -100,
@@ -8666,7 +8666,7 @@ ZenProperties["PCMT_PTL"] = {
     "RESO": {
       "id": "RESO",
       "byteOffset": 46,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "TVF Resonance",
       "dataRange": [
         0,
@@ -8677,7 +8677,7 @@ ZenProperties["PCMT_PTL"] = {
     "RESO_VSENS": {
       "id": "RESO_VSENS",
       "byteOffset": 48,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVF Resonance Velocity Sens",
       "dataRange": [
         -100,
@@ -8688,7 +8688,7 @@ ZenProperties["PCMT_PTL"] = {
     "BIAS_LEVEL": {
       "id": "BIAS_LEVEL",
       "byteOffset": 49,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Bias Level",
       "dataRange": [
         -100,
@@ -8699,7 +8699,7 @@ ZenProperties["PCMT_PTL"] = {
     "BIAS_POS": {
       "id": "BIAS_POS",
       "byteOffset": 50,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Bias Position",
       "dataRange": [
         0,
@@ -8710,7 +8710,7 @@ ZenProperties["PCMT_PTL"] = {
     "BIAS_DIR": {
       "id": "BIAS_DIR",
       "byteOffset": 51,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Bias Direction",
       "dataRange": [
         0,
@@ -8727,7 +8727,7 @@ ZenProperties["PCMT_PTL"] = {
     "LEVEL_VCRV": {
       "id": "LEVEL_VCRV",
       "byteOffset": 52,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVA Level Velocity Curve",
       "dataRange": [
         0,
@@ -8748,7 +8748,7 @@ ZenProperties["PCMT_PTL"] = {
     "LEVEL_VSENS": {
       "id": "LEVEL_VSENS",
       "byteOffset": 53,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVA Level Velocity Sens",
       "dataRange": [
         -100,
@@ -8759,7 +8759,7 @@ ZenProperties["PCMT_PTL"] = {
     "PENV_TKF": {
       "id": "PENV_TKF",
       "byteOffset": 54,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Pitch Env Time Keyfollow",
       "dataRange": [
         -100,
@@ -8770,7 +8770,7 @@ ZenProperties["PCMT_PTL"] = {
     "FENV_TKF": {
       "id": "FENV_TKF",
       "byteOffset": 55,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVF Env Time Keyfollow",
       "dataRange": [
         -100,
@@ -8781,7 +8781,7 @@ ZenProperties["PCMT_PTL"] = {
     "AENV_TKF": {
       "id": "AENV_TKF",
       "byteOffset": 56,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVA Env Time Keyfollow",
       "dataRange": [
         -100,
@@ -8792,7 +8792,7 @@ ZenProperties["PCMT_PTL"] = {
     "VIB_PIT_SENS": {
       "id": "VIB_PIT_SENS",
       "byteOffset": 57,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Vibrato Pitch Sens",
       "dataRange": [
         -100,
@@ -8803,7 +8803,7 @@ ZenProperties["PCMT_PTL"] = {
     "VIB_CUT_SENS": {
       "id": "VIB_CUT_SENS",
       "byteOffset": 58,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Vibrato Cutoff Sens",
       "dataRange": [
         -100,
@@ -8814,7 +8814,7 @@ ZenProperties["PCMT_PTL"] = {
     "VIB_AMP_SENS": {
       "id": "VIB_AMP_SENS",
       "byteOffset": 59,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Vibrato Level Sens",
       "dataRange": [
         -100,
@@ -8825,7 +8825,7 @@ ZenProperties["PCMT_PTL"] = {
     "MCTL": {
       "id": "MCTL",
       "byteOffset": 60,
-      "lengthBytes": 48,
+      "byteLength": 48,
       "description": "Matrix Control",
       "blockName": "PCMT_PTL_MCTL",
       "count": 4,
@@ -8835,7 +8835,7 @@ ZenProperties["PCMT_PTL"] = {
     "DAMP_FREE": {
       "id": "DAMP_FREE",
       "byteOffset": 108,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Damper Free Note",
       "dataRange": [
         0,
@@ -8977,7 +8977,7 @@ ZenProperties["PCMT_PTL"] = {
     "STEREO_WIDTH": {
       "id": "STEREO_WIDTH",
       "byteOffset": 109,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Stereo Width",
       "dataRange": [
         0,
@@ -8988,7 +8988,7 @@ ZenProperties["PCMT_PTL"] = {
     "STEREO_DETN": {
       "id": "STEREO_DETN",
       "byteOffset": 110,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Stereo Detune",
       "dataRange": [
         -50,
@@ -9000,7 +9000,7 @@ ZenProperties["PCMT_PTL"] = {
     "DF_DCY_OFST": {
       "id": "DF_DCY_OFST",
       "byteOffset": 111,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Damper Free Decay Offset",
       "dataRange": [
         -100,
@@ -9011,7 +9011,7 @@ ZenProperties["PCMT_PTL"] = {
     "TEMPO_SYNC": {
       "id": "TEMPO_SYNC",
       "byteOffset": 112,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Wave Tempo Sync",
       "dataRange": [
         0,
@@ -9034,7 +9034,7 @@ ZenProperties["PTL_AENV"] = {
     "T1_VSENS": {
       "id": "T1_VSENS",
       "byteOffset": 0,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVA Env Time1 Velocity Sens",
       "dataRange": [
         -100,
@@ -9045,7 +9045,7 @@ ZenProperties["PTL_AENV"] = {
     "T4_VSENS": {
       "id": "T4_VSENS",
       "byteOffset": 1,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVA Env Time4 Velocity Sens",
       "dataRange": [
         -100,
@@ -9056,7 +9056,7 @@ ZenProperties["PTL_AENV"] = {
     "T1": {
       "id": "T1",
       "byteOffset": 2,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "TVA Env Time1",
       "dataRange": [
         0,
@@ -9067,7 +9067,7 @@ ZenProperties["PTL_AENV"] = {
     "T2": {
       "id": "T2",
       "byteOffset": 4,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "TVA Env Time2",
       "dataRange": [
         0,
@@ -9078,7 +9078,7 @@ ZenProperties["PTL_AENV"] = {
     "T3": {
       "id": "T3",
       "byteOffset": 6,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "TVA Env Time3",
       "dataRange": [
         0,
@@ -9089,7 +9089,7 @@ ZenProperties["PTL_AENV"] = {
     "T4": {
       "id": "T4",
       "byteOffset": 8,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "TVA Env Time4",
       "dataRange": [
         0,
@@ -9100,7 +9100,7 @@ ZenProperties["PTL_AENV"] = {
     "L1": {
       "id": "L1",
       "byteOffset": 10,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "TVA Env Level1",
       "dataRange": [
         0,
@@ -9111,7 +9111,7 @@ ZenProperties["PTL_AENV"] = {
     "L2": {
       "id": "L2",
       "byteOffset": 12,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "TVA Env Level2",
       "dataRange": [
         0,
@@ -9122,7 +9122,7 @@ ZenProperties["PTL_AENV"] = {
     "L3": {
       "id": "L3",
       "byteOffset": 14,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "TVA Env Level3",
       "dataRange": [
         0,
@@ -9141,7 +9141,7 @@ ZenProperties["PTL_EQ"] = {
     "LO_GAIN": {
       "id": "LO_GAIN",
       "byteOffset": 0,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "EQ Low Gain",
       "dataRange": [
         -240,
@@ -9157,7 +9157,7 @@ ZenProperties["PTL_EQ"] = {
     "MID_GAIN": {
       "id": "MID_GAIN",
       "byteOffset": 2,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "EQ Mid Gain",
       "dataRange": [
         -240,
@@ -9173,7 +9173,7 @@ ZenProperties["PTL_EQ"] = {
     "HI_GAIN": {
       "id": "HI_GAIN",
       "byteOffset": 4,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "EQ High Gain",
       "dataRange": [
         -240,
@@ -9189,7 +9189,7 @@ ZenProperties["PTL_EQ"] = {
     "LO_FREQ": {
       "id": "LO_FREQ",
       "byteOffset": 6,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "EQ Low Frequency",
       "dataRange": [
         20,
@@ -9201,7 +9201,7 @@ ZenProperties["PTL_EQ"] = {
     "MID_FREQ": {
       "id": "MID_FREQ",
       "byteOffset": 8,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "EQ Mid Frequency",
       "dataRange": [
         20,
@@ -9213,7 +9213,7 @@ ZenProperties["PTL_EQ"] = {
     "HI_FREQ": {
       "id": "HI_FREQ",
       "byteOffset": 10,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "EQ High Frequency",
       "dataRange": [
         20,
@@ -9225,7 +9225,7 @@ ZenProperties["PTL_EQ"] = {
     "MID_Q": {
       "id": "MID_Q",
       "byteOffset": 12,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "EQ Mid Q",
       "dataRange": [
         5,
@@ -9241,7 +9241,7 @@ ZenProperties["PTL_EQ"] = {
     "SW": {
       "id": "SW",
       "byteOffset": 13,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "EQ Switch",
       "dataRange": [
         0,
@@ -9264,7 +9264,7 @@ ZenProperties["PTL_FENV"] = {
     "DEPTH": {
       "id": "DEPTH",
       "byteOffset": 0,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVF Env Depth",
       "dataRange": [
         -63,
@@ -9275,7 +9275,7 @@ ZenProperties["PTL_FENV"] = {
     "VCRV": {
       "id": "VCRV",
       "byteOffset": 1,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVF Env Velocity Curve",
       "dataRange": [
         0,
@@ -9296,7 +9296,7 @@ ZenProperties["PTL_FENV"] = {
     "VSENS": {
       "id": "VSENS",
       "byteOffset": 2,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVF Env Velocity Sens",
       "dataRange": [
         -100,
@@ -9307,7 +9307,7 @@ ZenProperties["PTL_FENV"] = {
     "T1_VSENS": {
       "id": "T1_VSENS",
       "byteOffset": 3,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVF Env T1 Velocity Sens",
       "dataRange": [
         -100,
@@ -9318,7 +9318,7 @@ ZenProperties["PTL_FENV"] = {
     "T4_VSENS": {
       "id": "T4_VSENS",
       "byteOffset": 4,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVF Env T4 Velocity Sens",
       "dataRange": [
         -100,
@@ -9329,7 +9329,7 @@ ZenProperties["PTL_FENV"] = {
     "T1": {
       "id": "T1",
       "byteOffset": 6,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "TVF Env Time1",
       "dataRange": [
         0,
@@ -9340,7 +9340,7 @@ ZenProperties["PTL_FENV"] = {
     "T2": {
       "id": "T2",
       "byteOffset": 8,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "TVF Env Time2",
       "dataRange": [
         0,
@@ -9351,7 +9351,7 @@ ZenProperties["PTL_FENV"] = {
     "T3": {
       "id": "T3",
       "byteOffset": 10,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "TVF Env Time3",
       "dataRange": [
         0,
@@ -9362,7 +9362,7 @@ ZenProperties["PTL_FENV"] = {
     "T4": {
       "id": "T4",
       "byteOffset": 12,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "TVF Env Time4",
       "dataRange": [
         0,
@@ -9373,7 +9373,7 @@ ZenProperties["PTL_FENV"] = {
     "L0": {
       "id": "L0",
       "byteOffset": 14,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "TVF Env Level0",
       "dataRange": [
         0,
@@ -9384,7 +9384,7 @@ ZenProperties["PTL_FENV"] = {
     "L1": {
       "id": "L1",
       "byteOffset": 16,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "TVF Env Level1",
       "dataRange": [
         0,
@@ -9395,7 +9395,7 @@ ZenProperties["PTL_FENV"] = {
     "L2": {
       "id": "L2",
       "byteOffset": 18,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "TVF Env Level2",
       "dataRange": [
         0,
@@ -9406,7 +9406,7 @@ ZenProperties["PTL_FENV"] = {
     "L3": {
       "id": "L3",
       "byteOffset": 20,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "TVF Env Level3",
       "dataRange": [
         0,
@@ -9417,7 +9417,7 @@ ZenProperties["PTL_FENV"] = {
     "L4": {
       "id": "L4",
       "byteOffset": 22,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "TVF Env Level4",
       "dataRange": [
         0,
@@ -9436,7 +9436,7 @@ ZenProperties["PTL_LFO_LFO"] = {
     "FORM": {
       "id": "FORM",
       "byteOffset": 0,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Waveform",
       "dataRange": [
         0,
@@ -9460,7 +9460,7 @@ ZenProperties["PTL_LFO_LFO"] = {
     "RATE_SYNC": {
       "id": "RATE_SYNC",
       "byteOffset": 1,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Rate Sync",
       "dataRange": [
         0,
@@ -9475,7 +9475,7 @@ ZenProperties["PTL_LFO_LFO"] = {
     "RATE_NOTE": {
       "id": "RATE_NOTE",
       "byteOffset": 2,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Rate (note)",
       "dataRange": [
         0,
@@ -9511,7 +9511,7 @@ ZenProperties["PTL_LFO_LFO"] = {
     "STEP_MAX": {
       "id": "STEP_MAX",
       "byteOffset": 3,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Step Size",
       "dataRange": [
         0,
@@ -9526,7 +9526,7 @@ ZenProperties["PTL_LFO_LFO"] = {
     "RATE": {
       "id": "RATE",
       "byteOffset": 4,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "Rate",
       "dataRange": [
         0,
@@ -9537,7 +9537,7 @@ ZenProperties["PTL_LFO_LFO"] = {
     "OFST": {
       "id": "OFST",
       "byteOffset": 6,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Offset",
       "dataRange": [
         -100,
@@ -9548,7 +9548,7 @@ ZenProperties["PTL_LFO_LFO"] = {
     "RATE_DETN": {
       "id": "RATE_DETN",
       "byteOffset": 7,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Rate Detune",
       "dataRange": [
         0,
@@ -9559,7 +9559,7 @@ ZenProperties["PTL_LFO_LFO"] = {
     "DELAY": {
       "id": "DELAY",
       "byteOffset": 8,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "Delay Time",
       "dataRange": [
         0,
@@ -9570,7 +9570,7 @@ ZenProperties["PTL_LFO_LFO"] = {
     "DELAY_KF": {
       "id": "DELAY_KF",
       "byteOffset": 10,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Delay Time Keyfolow",
       "dataRange": [
         -100,
@@ -9581,7 +9581,7 @@ ZenProperties["PTL_LFO_LFO"] = {
     "FADE_MODE": {
       "id": "FADE_MODE",
       "byteOffset": 11,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Fade Mode",
       "dataRange": [
         0,
@@ -9598,7 +9598,7 @@ ZenProperties["PTL_LFO_LFO"] = {
     "FADE": {
       "id": "FADE",
       "byteOffset": 12,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "Fade Time",
       "dataRange": [
         0,
@@ -9609,7 +9609,7 @@ ZenProperties["PTL_LFO_LFO"] = {
     "KEY_TRIG": {
       "id": "KEY_TRIG",
       "byteOffset": 14,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Key Trigger",
       "dataRange": [
         0,
@@ -9624,7 +9624,7 @@ ZenProperties["PTL_LFO_LFO"] = {
     "PIT_DEPTH": {
       "id": "PIT_DEPTH",
       "byteOffset": 15,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Pitch Depth",
       "dataRange": [
         -100,
@@ -9635,7 +9635,7 @@ ZenProperties["PTL_LFO_LFO"] = {
     "TVF_DEPTH": {
       "id": "TVF_DEPTH",
       "byteOffset": 16,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVF Depth",
       "dataRange": [
         -100,
@@ -9646,7 +9646,7 @@ ZenProperties["PTL_LFO_LFO"] = {
     "TVA_DEPTH": {
       "id": "TVA_DEPTH",
       "byteOffset": 17,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "TVA Depth",
       "dataRange": [
         -100,
@@ -9657,7 +9657,7 @@ ZenProperties["PTL_LFO_LFO"] = {
     "PAN_DEPTH": {
       "id": "PAN_DEPTH",
       "byteOffset": 18,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "PAN Depth",
       "dataRange": [
         -63,
@@ -9668,7 +9668,7 @@ ZenProperties["PTL_LFO_LFO"] = {
     "PHASE_POS": {
       "id": "PHASE_POS",
       "byteOffset": 19,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Phase Position",
       "dataRange": [
         0,
@@ -9679,7 +9679,7 @@ ZenProperties["PTL_LFO_LFO"] = {
     "STEP_1": {
       "id": "STEP_1",
       "byteOffset": 20,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Step 1",
       "dataRange": [
         -72,
@@ -9690,7 +9690,7 @@ ZenProperties["PTL_LFO_LFO"] = {
     "STEP_CURVE_1": {
       "id": "STEP_CURVE_1",
       "byteOffset": 36,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Step Curve 1",
       "dataRange": [
         0,
@@ -9709,7 +9709,7 @@ ZenProperties["PTL_LFO"] = {
     "LFO": {
       "id": "LFO",
       "byteOffset": 0,
-      "lengthBytes": 104,
+      "byteLength": 104,
       "description": "LFO",
       "blockName": "PTL_LFO_LFO",
       "count": 2,
@@ -9727,7 +9727,7 @@ ZenProperties["PTL_PENV"] = {
     "DEPTH": {
       "id": "DEPTH",
       "byteOffset": 0,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Pitch Env Depth",
       "dataRange": [
         -100,
@@ -9738,7 +9738,7 @@ ZenProperties["PTL_PENV"] = {
     "VSENS": {
       "id": "VSENS",
       "byteOffset": 1,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Pitch Env Velocity Sens",
       "dataRange": [
         -100,
@@ -9749,7 +9749,7 @@ ZenProperties["PTL_PENV"] = {
     "T1_VSENS": {
       "id": "T1_VSENS",
       "byteOffset": 2,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Pitch Env T1 Velocity Sens",
       "dataRange": [
         -100,
@@ -9760,7 +9760,7 @@ ZenProperties["PTL_PENV"] = {
     "T4_VSENS": {
       "id": "T4_VSENS",
       "byteOffset": 3,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Pitch Env T4 Velocity Sens",
       "dataRange": [
         -100,
@@ -9771,7 +9771,7 @@ ZenProperties["PTL_PENV"] = {
     "T1": {
       "id": "T1",
       "byteOffset": 4,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "Pitch Env Time1",
       "dataRange": [
         0,
@@ -9782,7 +9782,7 @@ ZenProperties["PTL_PENV"] = {
     "T2": {
       "id": "T2",
       "byteOffset": 6,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "Pitch Env Time2",
       "dataRange": [
         0,
@@ -9793,7 +9793,7 @@ ZenProperties["PTL_PENV"] = {
     "T3": {
       "id": "T3",
       "byteOffset": 8,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "Pitch Env Time3",
       "dataRange": [
         0,
@@ -9804,7 +9804,7 @@ ZenProperties["PTL_PENV"] = {
     "T4": {
       "id": "T4",
       "byteOffset": 10,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "Pitch Env Time4",
       "dataRange": [
         0,
@@ -9815,7 +9815,7 @@ ZenProperties["PTL_PENV"] = {
     "L0": {
       "id": "L0",
       "byteOffset": 12,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "Pitch Env Level0",
       "dataRange": [
         -511,
@@ -9826,7 +9826,7 @@ ZenProperties["PTL_PENV"] = {
     "L1": {
       "id": "L1",
       "byteOffset": 14,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "Pitch Env Level1",
       "dataRange": [
         -511,
@@ -9837,7 +9837,7 @@ ZenProperties["PTL_PENV"] = {
     "L2": {
       "id": "L2",
       "byteOffset": 16,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "Pitch Env Level2",
       "dataRange": [
         -511,
@@ -9848,7 +9848,7 @@ ZenProperties["PTL_PENV"] = {
     "L3": {
       "id": "L3",
       "byteOffset": 18,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "Pitch Env Level3",
       "dataRange": [
         -511,
@@ -9859,7 +9859,7 @@ ZenProperties["PTL_PENV"] = {
     "L4": {
       "id": "L4",
       "byteOffset": 20,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "Pitch Env Level4",
       "dataRange": [
         -511,
@@ -9870,7 +9870,7 @@ ZenProperties["PTL_PENV"] = {
     "VCRV": {
       "id": "VCRV",
       "byteOffset": 22,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Pitch Env Velocity Curve",
       "dataRange": [
         0,
@@ -9899,7 +9899,7 @@ ZenProperties["RCMP"] = {
     "SW": {
       "id": "SW",
       "byteOffset": 0,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Comp Switch",
       "dataRange": [
         0,
@@ -9914,7 +9914,7 @@ ZenProperties["RCMP"] = {
     "ATTCK": {
       "id": "ATTCK",
       "byteOffset": 1,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Comp Attack Time",
       "dataRange": [
         0,
@@ -10029,7 +10029,7 @@ ZenProperties["RCMP"] = {
     "RELEASE": {
       "id": "RELEASE",
       "byteOffset": 2,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Comp Release Time",
       "dataRange": [
         0,
@@ -10045,7 +10045,7 @@ ZenProperties["RCMP"] = {
     "THRESHOLD": {
       "id": "THRESHOLD",
       "byteOffset": 3,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Comp Threshold",
       "dataRange": [
         -60,
@@ -10057,7 +10057,7 @@ ZenProperties["RCMP"] = {
     "RATIO": {
       "id": "RATIO",
       "byteOffset": 4,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Comp Ratio",
       "dataRange": [
         0,
@@ -10078,7 +10078,7 @@ ZenProperties["RCMP"] = {
     "KNEE": {
       "id": "KNEE",
       "byteOffset": 5,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Comp Knee",
       "dataRange": [
         0,
@@ -10090,7 +10090,7 @@ ZenProperties["RCMP"] = {
     "POSTGAIN": {
       "id": "POSTGAIN",
       "byteOffset": 6,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Comp Output Gain",
       "dataRange": [
         -48,
@@ -10106,7 +10106,7 @@ ZenProperties["RCMP"] = {
     "OUT_ASGN": {
       "id": "OUT_ASGN",
       "byteOffset": 7,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Comp Output Assign",
       "dataRange": [
         0,
@@ -10138,7 +10138,7 @@ ZenProperties["TONECOM"] = {
     "NAME_1": {
       "id": "NAME_1",
       "byteOffset": 0,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Name 1",
       "dataRange": [
         32,
@@ -10150,7 +10150,7 @@ ZenProperties["TONECOM"] = {
     "CATEGORY": {
       "id": "CATEGORY",
       "byteOffset": 16,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Category",
       "dataRange": [
         0,
@@ -10214,7 +10214,7 @@ ZenProperties["TONECOM"] = {
     "RSRV8": {
       "id": "RSRV8",
       "byteOffset": 17,
-      "lengthBytes": 1,
+      "byteLength": 1,
       "description": "Reserved",
       "dataRange": [
         0,
@@ -10225,7 +10225,7 @@ ZenProperties["TONECOM"] = {
     "RSRV16": {
       "id": "RSRV16",
       "byteOffset": 18,
-      "lengthBytes": 2,
+      "byteLength": 2,
       "description": "Reserved",
       "dataRange": [
         0,
@@ -10244,7 +10244,7 @@ ZenProperties["PCMEX"] = {
       "count": 1,
       "byteOffset": 0,
       "blockByteLength": 64,
-      "totalByteLength": 64,
+      "byteLength": 64,
       "block": ZenProperties["PCMT_CMN"]
     },
     "MFX": {
@@ -10252,7 +10252,7 @@ ZenProperties["PCMEX"] = {
       "count": 1,
       "byteOffset": 64,
       "blockByteLength": 84,
-      "totalByteLength": 84,
+      "byteLength": 84,
       "block": ZenProperties["MFX"]
     },
     "PCMT_PMT": {
@@ -10260,7 +10260,7 @@ ZenProperties["PCMEX"] = {
       "count": 1,
       "byteOffset": 148,
       "blockByteLength": 52,
-      "totalByteLength": 52,
+      "byteLength": 52,
       "block": ZenProperties["PCMT_PMT"]
     },
     "PCMT_PTL": {
@@ -10268,7 +10268,7 @@ ZenProperties["PCMEX"] = {
       "count": 4,
       "byteOffset": 200,
       "blockByteLength": 124,
-      "totalByteLength": 496,
+      "byteLength": 496,
       "block": ZenProperties["PCMT_PTL"]
     },
     "PTL_PENV": {
@@ -10276,7 +10276,7 @@ ZenProperties["PCMEX"] = {
       "count": 4,
       "byteOffset": 696,
       "blockByteLength": 24,
-      "totalByteLength": 96,
+      "byteLength": 96,
       "block": ZenProperties["PTL_PENV"]
     },
     "PTL_FENV": {
@@ -10284,7 +10284,7 @@ ZenProperties["PCMEX"] = {
       "count": 4,
       "byteOffset": 792,
       "blockByteLength": 24,
-      "totalByteLength": 96,
+      "byteLength": 96,
       "block": ZenProperties["PTL_FENV"]
     },
     "PTL_AENV": {
@@ -10292,7 +10292,7 @@ ZenProperties["PCMEX"] = {
       "count": 4,
       "byteOffset": 888,
       "blockByteLength": 16,
-      "totalByteLength": 64,
+      "byteLength": 64,
       "block": ZenProperties["PTL_AENV"]
     },
     "PTL_LFO": {
@@ -10300,7 +10300,7 @@ ZenProperties["PCMEX"] = {
       "count": 4,
       "byteOffset": 952,
       "blockByteLength": 104,
-      "totalByteLength": 416,
+      "byteLength": 416,
       "block": ZenProperties["PTL_LFO"]
     },
     "PTL_EQ": {
@@ -10308,7 +10308,7 @@ ZenProperties["PCMEX"] = {
       "count": 4,
       "byteOffset": 1368,
       "blockByteLength": 16,
-      "totalByteLength": 64,
+      "byteLength": 64,
       "block": ZenProperties["PTL_EQ"]
     },
     "PCMS_CMN": {
@@ -10316,7 +10316,7 @@ ZenProperties["PCMEX"] = {
       "count": 1,
       "byteOffset": 1432,
       "blockByteLength": 20,
-      "totalByteLength": 20,
+      "byteLength": 20,
       "block": ZenProperties["PCMS_CMN"]
     },
     "PCMS_PMT": {
@@ -10324,7 +10324,7 @@ ZenProperties["PCMEX"] = {
       "count": 1,
       "byteOffset": 1452,
       "blockByteLength": 36,
-      "totalByteLength": 36,
+      "byteLength": 36,
       "block": ZenProperties["PCMS_PMT"]
     },
     "PCMS_PTL": {
@@ -10332,11 +10332,11 @@ ZenProperties["PCMEX"] = {
       "count": 4,
       "byteOffset": 1488,
       "blockByteLength": 36,
-      "totalByteLength": 144,
+      "byteLength": 144,
       "block": ZenProperties["PCMS_PTL"]
     }
   },
-  "totalByteLength": 1632
+  "byteLength": 1632
 };
 
 ZenProperties["PCMR"] = {
@@ -10347,7 +10347,7 @@ ZenProperties["PCMR"] = {
       "count": 1,
       "byteOffset": 0,
       "blockByteLength": 28,
-      "totalByteLength": 28,
+      "byteLength": 28,
       "block": ZenProperties["PCMR_CMN"]
     },
     "MFX": {
@@ -10355,7 +10355,7 @@ ZenProperties["PCMR"] = {
       "count": 1,
       "byteOffset": 28,
       "blockByteLength": 84,
-      "totalByteLength": 84,
+      "byteLength": 84,
       "block": ZenProperties["MFX"]
     },
     "RCMP": {
@@ -10363,7 +10363,7 @@ ZenProperties["PCMR"] = {
       "count": 6,
       "byteOffset": 112,
       "blockByteLength": 8,
-      "totalByteLength": 48,
+      "byteLength": 48,
       "block": ZenProperties["RCMP"]
     },
     "PCMR_PTL": {
@@ -10371,7 +10371,7 @@ ZenProperties["PCMR"] = {
       "count": 88,
       "byteOffset": 160,
       "blockByteLength": 20,
-      "totalByteLength": 1760,
+      "byteLength": 1760,
       "block": ZenProperties["PCMR_PTL"]
     },
     "PTL_EQ": {
@@ -10379,11 +10379,11 @@ ZenProperties["PCMR"] = {
       "count": 88,
       "byteOffset": 1920,
       "blockByteLength": 16,
-      "totalByteLength": 1408,
+      "byteLength": 1408,
       "block": ZenProperties["PTL_EQ"]
     }
   },
-  "totalByteLength": 3328
+  "byteLength": 3328
 };
 
 ZenProperties["MdlSynPrm0"] = {
@@ -10394,7 +10394,7 @@ ZenProperties["MdlSynPrm0"] = {
       "count": 1,
       "byteOffset": 0,
       "blockByteLength": 112,
-      "totalByteLength": 112,
+      "byteLength": 112,
       "block": ZenProperties["MDLSYN0"]
     },
     "MFX": {
@@ -10402,7 +10402,7 @@ ZenProperties["MdlSynPrm0"] = {
       "count": 1,
       "byteOffset": 112,
       "blockByteLength": 84,
-      "totalByteLength": 84,
+      "byteLength": 84,
       "block": ZenProperties["MFX"]
     },
     "TONECOM": {
@@ -10410,11 +10410,11 @@ ZenProperties["MdlSynPrm0"] = {
       "count": 1,
       "byteOffset": 196,
       "blockByteLength": 20,
-      "totalByteLength": 20,
+      "byteLength": 20,
       "block": ZenProperties["TONECOM"]
     }
   },
-  "totalByteLength": 216
+  "byteLength": 216
 };
 
 ZenProperties["MdlJD800"] = {
@@ -10425,7 +10425,7 @@ ZenProperties["MdlJD800"] = {
       "count": 1,
       "byteOffset": 0,
       "blockByteLength": 44,
-      "totalByteLength": 44,
+      "byteLength": 44,
       "block": ZenProperties["MDLJD800COM"]
     },
     "MDLJD800PTL": {
@@ -10433,7 +10433,7 @@ ZenProperties["MdlJD800"] = {
       "count": 4,
       "byteOffset": 44,
       "blockByteLength": 80,
-      "totalByteLength": 320,
+      "byteLength": 320,
       "block": ZenProperties["MDLJD800PTL"]
     },
     "MFX": {
@@ -10441,7 +10441,7 @@ ZenProperties["MdlJD800"] = {
       "count": 1,
       "byteOffset": 364,
       "blockByteLength": 84,
-      "totalByteLength": 84,
+      "byteLength": 84,
       "block": ZenProperties["MFX"]
     },
     "MDLJD800FxB": {
@@ -10449,7 +10449,7 @@ ZenProperties["MdlJD800"] = {
       "count": 1,
       "byteOffset": 448,
       "blockByteLength": 32,
-      "totalByteLength": 32,
+      "byteLength": 32,
       "block": ZenProperties["MDLJD800FxB"]
     },
     "TONECOM": {
@@ -10457,11 +10457,11 @@ ZenProperties["MdlJD800"] = {
       "count": 1,
       "byteOffset": 480,
       "blockByteLength": 20,
-      "totalByteLength": 20,
+      "byteLength": 20,
       "block": ZenProperties["TONECOM"]
     }
   },
-  "totalByteLength": 500
+  "byteLength": 500
 };
 
 ZenProperties["VoDsgn"] = {
@@ -10472,7 +10472,7 @@ ZenProperties["VoDsgn"] = {
       "count": 1,
       "byteOffset": 0,
       "blockByteLength": 32,
-      "totalByteLength": 32,
+      "byteLength": 32,
       "block": ZenProperties["MDLVDN"]
     },
     "TONECOM": {
@@ -10480,7 +10480,7 @@ ZenProperties["VoDsgn"] = {
       "count": 1,
       "byteOffset": 32,
       "blockByteLength": 20,
-      "totalByteLength": 20,
+      "byteLength": 20,
       "block": ZenProperties["TONECOM"]
     },
     "MFX": {
@@ -10488,11 +10488,11 @@ ZenProperties["VoDsgn"] = {
       "count": 1,
       "byteOffset": 52,
       "blockByteLength": 84,
-      "totalByteLength": 84,
+      "byteLength": 84,
       "block": ZenProperties["MFX"]
     }
   },
-  "totalByteLength": 136
+  "byteLength": 136
 };
 
 export default ZenProperties;

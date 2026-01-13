@@ -165,7 +165,7 @@ function parseBaseBlock(children, blockName, description, blocks, settings) {
             const entry = {
                 id: idPrefix + (attrs["@_id"] || "") + idPost,
                 byteOffset: byteOffset,
-                lengthBytes: byteSize,
+                byteLength: byteSize,
                 description: descPrefix + desc + descPost,
                 dataRange: dataRange,
                 initValue: parseInt(attrs["@_init"]) || 0,
@@ -208,7 +208,7 @@ function parseBaseBlock(children, blockName, description, blocks, settings) {
             const entry = {
                 id: idPrefix + "PADDING" + paddingNum++,
                 byteOffset: byteOffset,
-                lengthBytes: byteSize,
+                byteLength: byteSize,
                 description: "__padding",
                 dataRange: [0, 0],
                 initValue: null,
@@ -251,7 +251,7 @@ function parseBaseBlock(children, blockName, description, blocks, settings) {
         const subblockEntry = {
             id: subblockId,
             byteOffset: startByteOffset,
-            lengthBytes: totalByteLength,
+            byteLength: totalByteLength,
             description: attrs["@_desc"] || subblockId,
             blockName: subblockName,
             count: arraySize,
@@ -370,7 +370,7 @@ function parseGroup(children, groupName, blocks, settings) {
                 count: arrayCount,
                 byteOffset: startByteOffset,
                 blockByteLength: block.byteLength,
-                totalByteLength: arrayCount * block.byteLength
+                byteLength: arrayCount * block.byteLength
             };
 
             if (includeSysex) {
@@ -398,7 +398,7 @@ function parseGroup(children, groupName, blocks, settings) {
     return {
         name: groupName,
         parameters: groupChildren,
-        totalByteLength: byteOffset
+        byteLength: byteOffset
     };
 }
 
@@ -455,7 +455,7 @@ function generateJSOutput(blocks, groups) {
         const groupWithRefs = {
             name: group.name,
             parameters: {},
-            totalByteLength: group.totalByteLength
+            byteLength: group.byteLength
         };
         
         // Add each block reference to parameters with a block reference
@@ -639,9 +639,9 @@ writeFileSync(`${outputDir}/${configName}.js`, jsOutput);
 const jsFilePath = resolve(__dirname, `${outputDir}/${configName}.js`);
 const ZenProperties = (await import(jsFilePath)).default;
 
-// Helper function to determine if an entry is a group (has totalByteLength and parameters with blockName references)
+// Helper function to determine if an entry is a group (has byteLength and parameters with blockName references)
 function isGroup(entry) {
-    if (!entry || typeof entry !== "object" || !("totalByteLength" in entry) || !("name" in entry) || !("parameters" in entry)) {
+    if (!entry || typeof entry !== "object" || !("byteLength" in entry) || !("name" in entry) || !("parameters" in entry)) {
         return false;
     }
     // Groups have parameters where values have blockName property
@@ -700,7 +700,7 @@ function generateHTMLFromZenProperties(ZenProperties, zenBlocks, zenGroups, conf
         
         for (const groupName of groupNames) {
             const group = zenGroups[groupName];
-            const totalBytes = group.totalByteLength || 0;
+            const totalBytes = group.byteLength || 0;
             const decimalPadded = String(totalBytes).padStart(3, " ");
             const totalBytesFormatted = `0x${totalBytes.toString(16).padStart(4, "0")} ${decimalPadded}`;
             const totalBytesFormattedHTML = `0x${totalBytes.toString(16).padStart(4, "0")} ${decimalPadded.replace(/ /g, "&nbsp;")}`;
@@ -801,13 +801,13 @@ function generateHTMLFromZenProperties(ZenProperties, zenBlocks, zenGroups, conf
                     }
 
                     if (i === 0) {
-                        table.put(blockRef.blockByteLength, blockRef.totalByteLength);
+                        table.put(blockRef.blockByteLength, blockRef.byteLength);
                     }
                 }
             }
         }
         
-        table.footer = `Group: ${groupName} : Total Length Bytes: 0x${group.totalByteLength.toString(16).padStart(4, "0")} ${group.totalByteLength}`;
+        table.footer = `Group: ${groupName} : Total Length Bytes: 0x${group.byteLength.toString(16).padStart(4, "0")} ${group.byteLength}`;
         htmlTableContent += table.renderHTML();
     }
 
@@ -933,7 +933,7 @@ function generateHTMLFromZenProperties(ZenProperties, zenBlocks, zenGroups, conf
                         if (settings.includeSysex) {
                             const sxOff = getSysexValueArray(param.sysexOffset || 0, 2);
                             const sysexFormatted = ` ${sxOff[0]} ${sxOff[1]} - ${(param.lengthSysex || 0).toString(16).padStart(2, "0")}`;
-                            const byteOffsetFormatted = `0x${param.byteOffset.toString(16).padStart(4, "0")} ${String(param.byteOffset).padStart(4, "0")} - 0x${param.lengthBytes.toString(16).padStart(4, "0")} ${String(param.lengthBytes).padStart(2, "0")}`;
+                            const byteOffsetFormatted = `0x${param.byteOffset.toString(16).padStart(4, "0")} ${String(param.byteOffset).padStart(4, "0")} - 0x${param.byteLength.toString(16).padStart(4, "0")} ${String(param.byteLength).padStart(2, "0")}`;
                             table.putNewline(
                                 param.id,
                                 param.description,
@@ -949,7 +949,7 @@ function generateHTMLFromZenProperties(ZenProperties, zenBlocks, zenGroups, conf
                             table.setCellHTML(paramRow, 2, `<span class="mono">${sysexFormatted}</span>`);
                             table.setCellHTML(paramRow, 3, `<span class="mono">${byteOffsetFormatted}</span>`);
                         } else {
-                            const byteOffsetFormatted = `0x${param.byteOffset.toString(16).padStart(4, "0")} ${String(param.byteOffset).padStart(4, "0")} - 0x${param.lengthBytes.toString(16).padStart(4, "0")} ${String(param.lengthBytes).padStart(2, "0")}`;
+                            const byteOffsetFormatted = `0x${param.byteOffset.toString(16).padStart(4, "0")} ${String(param.byteOffset).padStart(4, "0")} - 0x${param.byteLength.toString(16).padStart(4, "0")} ${String(param.byteLength).padStart(2, "0")}`;
                             table.putNewline(
                                 param.id,
                                 param.description,
@@ -1102,13 +1102,13 @@ function generateTXTFromZenProperties(zenBlocks, zenGroups, settings) {
                     }
 
                     if (i === 0) {
-                        table.put(blockRef.blockByteLength, blockRef.totalByteLength);
+                        table.put(blockRef.blockByteLength, blockRef.byteLength);
                     }
                 }
             }
         }
         
-        table.footer = `Group: ${groupName} : Total Length Bytes: 0x${group.totalByteLength.toString(16).padStart(4, "0")} ${group.totalByteLength}`;
+        table.footer = `Group: ${groupName} : Total Length Bytes: 0x${group.byteLength.toString(16).padStart(4, "0")} ${group.byteLength}`;
         textOutput += table.renderText() + "\r\n";
     }
     
@@ -1216,7 +1216,7 @@ function generateTXTFromZenProperties(zenBlocks, zenGroups, settings) {
                             param.id,
                             param.description,
                             ` ${sxOff[0]} ${sxOff[1]} - ${(param.lengthSysex || 0).toString(16).padStart(2, "0")}`,
-                            `0x${param.byteOffset.toString(16).padStart(4, "0")} ${String(param.byteOffset).padStart(4, "0")} - ${String(param.lengthBytes).padStart(2, "0")}`,
+                            `0x${param.byteOffset.toString(16).padStart(4, "0")} ${String(param.byteOffset).padStart(4, "0")} - ${String(param.byteLength).padStart(2, "0")}`,
                             dataRange0,
                             dataRange1,
                             param.sysexValueOffset || 0,
@@ -1227,7 +1227,7 @@ function generateTXTFromZenProperties(zenBlocks, zenGroups, settings) {
                         table.putNewline(
                             param.id,
                             param.description,
-                            `0x${param.byteOffset.toString(16).padStart(4, "0")} ${String(param.byteOffset).padStart(4, "0")} - ${String(param.lengthBytes).padStart(2, "0")}`,
+                            `0x${param.byteOffset.toString(16).padStart(4, "0")} ${String(param.byteOffset).padStart(4, "0")} - ${String(param.byteLength).padStart(2, "0")}`,
                             dataRange0,
                             dataRange1,
                             param.initValue || 0,
