@@ -1,0 +1,7 @@
+/jupiter_xml/*
+/juno_xml/*
+/node_modules/*
+/out_php/*
+/.idea
+old_php_version/*
+tmp/*
