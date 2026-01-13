@@ -1,4 +1,3 @@
-"use strict";
 const ZenProperties = {};
 
 ZenProperties["INST_CMN_WMT"] = {
@@ -471,12 +470,7 @@ ZenProperties["INST_CMN"] = {
     },
     "WMT": {
       "id": "WMT",
-      "byteOffset": [
-        28,
-        56,
-        84,
-        112
-      ],
+      "byteOffset": 28,
       "lengthBytes": 112,
       "description": "WMT",
       "blockName": "INST_CMN_WMT",
@@ -7748,12 +7742,7 @@ ZenProperties["PCMT_PMT"] = {
     },
     "PMT": {
       "id": "PMT",
-      "byteOffset": [
-        4,
-        16,
-        28,
-        40
-      ],
+      "byteOffset": 4,
       "lengthBytes": 48,
       "description": "PMT",
       "blockName": "PCMT_PMT_PMT",
@@ -8835,12 +8824,7 @@ ZenProperties["PCMT_PTL"] = {
     },
     "MCTL": {
       "id": "MCTL",
-      "byteOffset": [
-        60,
-        72,
-        84,
-        96
-      ],
+      "byteOffset": 60,
       "lengthBytes": 48,
       "description": "Matrix Control",
       "blockName": "PCMT_PTL_MCTL",
@@ -9724,10 +9708,7 @@ ZenProperties["PTL_LFO"] = {
   "parameters": {
     "LFO": {
       "id": "LFO",
-      "byteOffset": [
-        0,
-        52
-      ],
+      "byteOffset": 0,
       "lengthBytes": 104,
       "description": "LFO",
       "blockName": "PTL_LFO_LFO",
@@ -10261,9 +10242,7 @@ ZenProperties["PCMEX"] = {
     "PCMT_CMN": {
       "blockName": "PCMT_CMN",
       "count": 1,
-      "byteOffset": [
-        0
-      ],
+      "byteOffset": 0,
       "blockByteLength": 64,
       "totalByteLength": 64,
       "block": ZenProperties["PCMT_CMN"]
@@ -10271,9 +10250,7 @@ ZenProperties["PCMEX"] = {
     "MFX": {
       "blockName": "MFX",
       "count": 1,
-      "byteOffset": [
-        64
-      ],
+      "byteOffset": 64,
       "blockByteLength": 84,
       "totalByteLength": 84,
       "block": ZenProperties["MFX"]
@@ -10281,9 +10258,7 @@ ZenProperties["PCMEX"] = {
     "PCMT_PMT": {
       "blockName": "PCMT_PMT",
       "count": 1,
-      "byteOffset": [
-        148
-      ],
+      "byteOffset": 148,
       "blockByteLength": 52,
       "totalByteLength": 52,
       "block": ZenProperties["PCMT_PMT"]
@@ -10291,12 +10266,7 @@ ZenProperties["PCMEX"] = {
     "PCMT_PTL": {
       "blockName": "PCMT_PTL",
       "count": 4,
-      "byteOffset": [
-        200,
-        324,
-        448,
-        572
-      ],
+      "byteOffset": 200,
       "blockByteLength": 124,
       "totalByteLength": 496,
       "block": ZenProperties["PCMT_PTL"]
@@ -10304,12 +10274,7 @@ ZenProperties["PCMEX"] = {
     "PTL_PENV": {
       "blockName": "PTL_PENV",
       "count": 4,
-      "byteOffset": [
-        696,
-        720,
-        744,
-        768
-      ],
+      "byteOffset": 696,
       "blockByteLength": 24,
       "totalByteLength": 96,
       "block": ZenProperties["PTL_PENV"]
@@ -10317,12 +10282,7 @@ ZenProperties["PCMEX"] = {
     "PTL_FENV": {
       "blockName": "PTL_FENV",
       "count": 4,
-      "byteOffset": [
-        792,
-        816,
-        840,
-        864
-      ],
+      "byteOffset": 792,
       "blockByteLength": 24,
       "totalByteLength": 96,
       "block": ZenProperties["PTL_FENV"]
@@ -10330,12 +10290,7 @@ ZenProperties["PCMEX"] = {
     "PTL_AENV": {
       "blockName": "PTL_AENV",
       "count": 4,
-      "byteOffset": [
-        888,
-        904,
-        920,
-        936
-      ],
+      "byteOffset": 888,
       "blockByteLength": 16,
       "totalByteLength": 64,
       "block": ZenProperties["PTL_AENV"]
@@ -10343,12 +10298,7 @@ ZenProperties["PCMEX"] = {
     "PTL_LFO": {
       "blockName": "PTL_LFO",
       "count": 4,
-      "byteOffset": [
-        952,
-        1056,
-        1160,
-        1264
-      ],
+      "byteOffset": 952,
       "blockByteLength": 104,
       "totalByteLength": 416,
       "block": ZenProperties["PTL_LFO"]
@@ -10356,12 +10306,7 @@ ZenProperties["PCMEX"] = {
     "PTL_EQ": {
       "blockName": "PTL_EQ",
       "count": 4,
-      "byteOffset": [
-        1368,
-        1384,
-        1400,
-        1416
-      ],
+      "byteOffset": 1368,
       "blockByteLength": 16,
       "totalByteLength": 64,
       "block": ZenProperties["PTL_EQ"]
@@ -10369,9 +10314,7 @@ ZenProperties["PCMEX"] = {
     "PCMS_CMN": {
       "blockName": "PCMS_CMN",
       "count": 1,
-      "byteOffset": [
-        1432
-      ],
+      "byteOffset": 1432,
       "blockByteLength": 20,
       "totalByteLength": 20,
       "block": ZenProperties["PCMS_CMN"]
@@ -10379,9 +10322,7 @@ ZenProperties["PCMEX"] = {
     "PCMS_PMT": {
       "blockName": "PCMS_PMT",
       "count": 1,
-      "byteOffset": [
-        1452
-      ],
+      "byteOffset": 1452,
       "blockByteLength": 36,
       "totalByteLength": 36,
       "block": ZenProperties["PCMS_PMT"]
@@ -10389,12 +10330,7 @@ ZenProperties["PCMEX"] = {
     "PCMS_PTL": {
       "blockName": "PCMS_PTL",
       "count": 4,
-      "byteOffset": [
-        1488,
-        1524,
-        1560,
-        1596
-      ],
+      "byteOffset": 1488,
       "blockByteLength": 36,
       "totalByteLength": 144,
       "block": ZenProperties["PCMS_PTL"]
@@ -10409,9 +10345,7 @@ ZenProperties["PCMR"] = {
     "PCMR_CMN": {
       "blockName": "PCMR_CMN",
       "count": 1,
-      "byteOffset": [
-        0
-      ],
+      "byteOffset": 0,
       "blockByteLength": 28,
       "totalByteLength": 28,
       "block": ZenProperties["PCMR_CMN"]
@@ -10419,9 +10353,7 @@ ZenProperties["PCMR"] = {
     "MFX": {
       "blockName": "MFX",
       "count": 1,
-      "byteOffset": [
-        28
-      ],
+      "byteOffset": 28,
       "blockByteLength": 84,
       "totalByteLength": 84,
       "block": ZenProperties["MFX"]
@@ -10429,14 +10361,7 @@ ZenProperties["PCMR"] = {
     "RCMP": {
       "blockName": "RCMP",
       "count": 6,
-      "byteOffset": [
-        112,
-        120,
-        128,
-        136,
-        144,
-        152
-      ],
+      "byteOffset": 112,
       "blockByteLength": 8,
       "totalByteLength": 48,
       "block": ZenProperties["RCMP"]
@@ -10444,96 +10369,7 @@ ZenProperties["PCMR"] = {
     "PCMR_PTL": {
       "blockName": "PCMR_PTL",
       "count": 88,
-      "byteOffset": [
-        160,
-        180,
-        200,
-        220,
-        240,
-        260,
-        280,
-        300,
-        320,
-        340,
-        360,
-        380,
-        400,
-        420,
-        440,
-        460,
-        480,
-        500,
-        520,
-        540,
-        560,
-        580,
-        600,
-        620,
-        640,
-        660,
-        680,
-        700,
-        720,
-        740,
-        760,
-        780,
-        800,
-        820,
-        840,
-        860,
-        880,
-        900,
-        920,
-        940,
-        960,
-        980,
-        1000,
-        1020,
-        1040,
-        1060,
-        1080,
-        1100,
-        1120,
-        1140,
-        1160,
-        1180,
-        1200,
-        1220,
-        1240,
-        1260,
-        1280,
-        1300,
-        1320,
-        1340,
-        1360,
-        1380,
-        1400,
-        1420,
-        1440,
-        1460,
-        1480,
-        1500,
-        1520,
-        1540,
-        1560,
-        1580,
-        1600,
-        1620,
-        1640,
-        1660,
-        1680,
-        1700,
-        1720,
-        1740,
-        1760,
-        1780,
-        1800,
-        1820,
-        1840,
-        1860,
-        1880,
-        1900
-      ],
+      "byteOffset": 160,
       "blockByteLength": 20,
       "totalByteLength": 1760,
       "block": ZenProperties["PCMR_PTL"]
@@ -10541,96 +10377,7 @@ ZenProperties["PCMR"] = {
     "PTL_EQ": {
       "blockName": "PTL_EQ",
       "count": 88,
-      "byteOffset": [
-        1920,
-        1936,
-        1952,
-        1968,
-        1984,
-        2000,
-        2016,
-        2032,
-        2048,
-        2064,
-        2080,
-        2096,
-        2112,
-        2128,
-        2144,
-        2160,
-        2176,
-        2192,
-        2208,
-        2224,
-        2240,
-        2256,
-        2272,
-        2288,
-        2304,
-        2320,
-        2336,
-        2352,
-        2368,
-        2384,
-        2400,
-        2416,
-        2432,
-        2448,
-        2464,
-        2480,
-        2496,
-        2512,
-        2528,
-        2544,
-        2560,
-        2576,
-        2592,
-        2608,
-        2624,
-        2640,
-        2656,
-        2672,
-        2688,
-        2704,
-        2720,
-        2736,
-        2752,
-        2768,
-        2784,
-        2800,
-        2816,
-        2832,
-        2848,
-        2864,
-        2880,
-        2896,
-        2912,
-        2928,
-        2944,
-        2960,
-        2976,
-        2992,
-        3008,
-        3024,
-        3040,
-        3056,
-        3072,
-        3088,
-        3104,
-        3120,
-        3136,
-        3152,
-        3168,
-        3184,
-        3200,
-        3216,
-        3232,
-        3248,
-        3264,
-        3280,
-        3296,
-        3312
-      ],
+      "byteOffset": 1920,
       "blockByteLength": 16,
       "totalByteLength": 1408,
       "block": ZenProperties["PTL_EQ"]
@@ -10645,9 +10392,7 @@ ZenProperties["MdlSynPrm0"] = {
     "MDLSYN0": {
       "blockName": "MDLSYN0",
       "count": 1,
-      "byteOffset": [
-        0
-      ],
+      "byteOffset": 0,
       "blockByteLength": 112,
       "totalByteLength": 112,
       "block": ZenProperties["MDLSYN0"]
@@ -10655,9 +10400,7 @@ ZenProperties["MdlSynPrm0"] = {
     "MFX": {
       "blockName": "MFX",
       "count": 1,
-      "byteOffset": [
-        112
-      ],
+      "byteOffset": 112,
       "blockByteLength": 84,
       "totalByteLength": 84,
       "block": ZenProperties["MFX"]
@@ -10665,9 +10408,7 @@ ZenProperties["MdlSynPrm0"] = {
     "TONECOM": {
       "blockName": "TONECOM",
       "count": 1,
-      "byteOffset": [
-        196
-      ],
+      "byteOffset": 196,
       "blockByteLength": 20,
       "totalByteLength": 20,
       "block": ZenProperties["TONECOM"]
@@ -10682,9 +10423,7 @@ ZenProperties["MdlJD800"] = {
     "MDLJD800COM": {
       "blockName": "MDLJD800COM",
       "count": 1,
-      "byteOffset": [
-        0
-      ],
+      "byteOffset": 0,
       "blockByteLength": 44,
       "totalByteLength": 44,
       "block": ZenProperties["MDLJD800COM"]
@@ -10692,12 +10431,7 @@ ZenProperties["MdlJD800"] = {
     "MDLJD800PTL": {
       "blockName": "MDLJD800PTL",
       "count": 4,
-      "byteOffset": [
-        44,
-        124,
-        204,
-        284
-      ],
+      "byteOffset": 44,
       "blockByteLength": 80,
       "totalByteLength": 320,
       "block": ZenProperties["MDLJD800PTL"]
@@ -10705,9 +10439,7 @@ ZenProperties["MdlJD800"] = {
     "MFX": {
       "blockName": "MFX",
       "count": 1,
-      "byteOffset": [
-        364
-      ],
+      "byteOffset": 364,
       "blockByteLength": 84,
       "totalByteLength": 84,
       "block": ZenProperties["MFX"]
@@ -10715,9 +10447,7 @@ ZenProperties["MdlJD800"] = {
     "MDLJD800FxB": {
       "blockName": "MDLJD800FxB",
       "count": 1,
-      "byteOffset": [
-        448
-      ],
+      "byteOffset": 448,
       "blockByteLength": 32,
       "totalByteLength": 32,
       "block": ZenProperties["MDLJD800FxB"]
@@ -10725,9 +10455,7 @@ ZenProperties["MdlJD800"] = {
     "TONECOM": {
       "blockName": "TONECOM",
       "count": 1,
-      "byteOffset": [
-        480
-      ],
+      "byteOffset": 480,
       "blockByteLength": 20,
       "totalByteLength": 20,
       "block": ZenProperties["TONECOM"]
@@ -10742,9 +10470,7 @@ ZenProperties["VoDsgn"] = {
     "MDLVDN": {
       "blockName": "MDLVDN",
       "count": 1,
-      "byteOffset": [
-        0
-      ],
+      "byteOffset": 0,
       "blockByteLength": 32,
       "totalByteLength": 32,
       "block": ZenProperties["MDLVDN"]
@@ -10752,9 +10478,7 @@ ZenProperties["VoDsgn"] = {
     "TONECOM": {
       "blockName": "TONECOM",
       "count": 1,
-      "byteOffset": [
-        32
-      ],
+      "byteOffset": 32,
       "blockByteLength": 20,
       "totalByteLength": 20,
       "block": ZenProperties["TONECOM"]
@@ -10762,9 +10486,7 @@ ZenProperties["VoDsgn"] = {
     "MFX": {
       "blockName": "MFX",
       "count": 1,
-      "byteOffset": [
-        52
-      ],
+      "byteOffset": 52,
       "blockByteLength": 84,
       "totalByteLength": 84,
       "block": ZenProperties["MFX"]

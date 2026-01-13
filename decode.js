@@ -247,9 +247,10 @@ function parseBaseBlock(children, blockName, description, blocks, settings) {
         const totalSysexLength = (subBlock.sysexLength || 0) * arraySize;
         
         // Create a parameter entry for the subblock reference (matching group pattern)
+        // byteOffset is the address of item #0 (code will calculate addresses in real time)
         const subblockEntry = {
             id: subblockId,
-            byteOffset: [],
+            byteOffset: startByteOffset,
             lengthBytes: totalByteLength,
             description: attrs["@_desc"] || subblockId,
             blockName: subblockName,
@@ -258,22 +259,8 @@ function parseBaseBlock(children, blockName, description, blocks, settings) {
         };
         
         if (includeSysex) {
-            subblockEntry.sysexOffset = [];
+            subblockEntry.sysexOffset = getSysexValueArray(startSysexOffset, 3).join(" ");
             subblockEntry.lengthSysex = totalSysexLength;
-        }
-        
-        // Populate byteOffset array (and sysexOffset if needed) for each array element
-        let currentByteOffset = startByteOffset;
-        let currentSysexOffset = startSysexOffset;
-        for (let i = 0; i < arraySize; i++) {
-            subblockEntry.byteOffset.push(currentByteOffset);
-            if (includeSysex) {
-                subblockEntry.sysexOffset.push(getSysexValueArray(currentSysexOffset, 3).join(" "));
-            }
-            currentByteOffset += subBlock.byteLength;
-            if (includeSysex) {
-                currentSysexOffset += (subBlock.sysexLength || 0);
-            }
         }
         
         // Insert the subblock reference into the parameters object
@@ -374,26 +361,26 @@ function parseGroup(children, groupName, blocks, settings) {
                 throw new Error(`Unable to find block named '${baseBlockName}'`);
             }
 
+            // Store the starting offset for item #0 (code will calculate addresses in real time)
+            const startByteOffset = byteOffset;
+            const startSysexOffset = sysexOffset;
+
             const child = {
                 blockName: baseBlockName,
                 count: arrayCount,
-                byteOffset: [],
+                byteOffset: startByteOffset,
                 blockByteLength: block.byteLength,
                 totalByteLength: arrayCount * block.byteLength
             };
 
             if (includeSysex) {
-                child.sysexOffset = [];
+                child.sysexOffset = getSysexValueArray(startSysexOffset, 3).join(" ");
+                child.sysexItemSize = sysexSize; // Store sysex item size for calculating array offsets
             }
 
-            for (let i = 0; i < arrayCount; i++) {
-                child.byteOffset.push(byteOffset);
-                if (includeSysex) {
-                    child.sysexOffset.push(getSysexValueArray(sysexOffset, 3).join(" "));
-                }
-                byteOffset += block.byteLength;
-                sysexOffset += sysexSize;
-            }
+            // Update offsets for the next block
+            byteOffset += arrayCount * block.byteLength;
+            sysexOffset += arrayCount * sysexSize;
 
             // Add as a property keyed by blockName
             groupChildren[baseBlockName] = child;
@@ -790,13 +777,19 @@ function generateHTMLFromZenProperties(ZenProperties, zenBlocks, zenGroups, conf
                     }
 
                     const indexDisplay = blockRef.count > 1 ? `[${String(i + 1).padStart(2, " ")}]` : "";
-                    const byteOffset = blockRef.byteOffset[i];
+                    // Calculate byteOffset for this array item: base + (index * blockByteLength)
+                    const byteOffset = blockRef.byteOffset + (i * blockRef.blockByteLength);
                     const byteOffsetFormatted = `${indexDisplay} 0x${byteOffset.toString(16).padStart(4, "0")} ${String(byteOffset).padStart(4, "0")}`;
                     const sysexCol = 3;
                     const byteOffsetCol = hasSysex ? 4 : 3;
 
                     if (hasSysex) {
-                        const sysexOffset = blockRef.sysexOffset[i];
+                        // Calculate sysexOffset for this array item
+                        // Parse the base sysexOffset (format: "XX XX XX")
+                        const baseSysexParts = blockRef.sysexOffset.split(" ").map(s => parseInt(s, 16));
+                        const sysexItemSize = blockRef.sysexItemSize || blockRef.blockByteLength; // Use stored sysexItemSize or fallback
+                        const sysexOffsetValue = baseSysexParts[0] * 0x10000 + baseSysexParts[1] * 0x100 + baseSysexParts[2] + (i * sysexItemSize);
+                        const sysexOffset = getSysexValueArray(sysexOffsetValue, 3).join(" ");
                         table.put("", sysexOffset, byteOffsetFormatted);
                         // Wrap sysex and byte offset in mono class
                         table.setCellHTML(currentRow, sysexCol, `<span class="mono">${sysexOffset}</span>`);
@@ -855,13 +848,20 @@ function generateHTMLFromZenProperties(ZenProperties, zenBlocks, zenGroups, conf
                         for (let i = 0; i < param.count; i++) {
                             paramRow++;
                             const indexDisplay = param.count > 1 ? `[${String(i + 1).padStart(2, " ")}]` : "";
-                            const byteOffset = param.byteOffset[i];
+                            // Calculate byteOffset for this array item: base + (index * blockByteLength)
+                            const byteOffset = param.byteOffset + (i * param.blockByteLength);
                             const byteOffsetFormatted = `${indexDisplay} 0x${byteOffset.toString(16).padStart(4, "0")} ${String(byteOffset).padStart(4, "0")} - 0x${param.blockByteLength.toString(16).padStart(4, "0")} ${String(param.blockByteLength).padStart(2, "0")}`;
                             
                             if (i === 0) {
                                 // First row: show subblock name (as link) and description
                                 if (settings.includeSysex) {
-                                    const sysexOffset = param.sysexOffset[i];
+                                    // Calculate sysexOffset for this array item
+                                    // Get sysex item size from the referenced subblock
+                                    const subBlockObj = zenBlocks[param.blockName];
+                                    const sysexItemSize = subBlockObj?.sysexLength || param.blockByteLength;
+                                    const baseSysexParts = param.sysexOffset.split(" ").map(s => parseInt(s, 16));
+                                    const sysexOffsetValue = baseSysexParts[0] * 0x10000 + baseSysexParts[1] * 0x100 + baseSysexParts[2] + (i * sysexItemSize);
+                                    const sysexOffset = getSysexValueArray(sysexOffsetValue, 3).join(" ");
                                     table.putNewline(
                                         param.id,
                                         subBlockName,
@@ -892,7 +892,13 @@ function generateHTMLFromZenProperties(ZenProperties, zenBlocks, zenGroups, conf
                             } else {
                                 // Subsequent rows: empty name/description, show index and offset
                                 if (settings.includeSysex) {
-                                    const sysexOffset = param.sysexOffset[i];
+                                    // Calculate sysexOffset for this array item
+                                    const baseSysexParts = param.sysexOffset.split(" ").map(s => parseInt(s, 16));
+                                    // Get sysex item size from the referenced subblock
+                                    const subBlockObj = zenBlocks[param.blockName];
+                                    const sysexItemSize = subBlockObj?.sysexLength || param.blockByteLength;
+                                    const sysexOffsetValue = baseSysexParts[0] * 0x10000 + baseSysexParts[1] * 0x100 + baseSysexParts[2] + (i * sysexItemSize);
+                                    const sysexOffset = getSysexValueArray(sysexOffsetValue, 3).join(" ");
                                     table.putNewline(
                                         "",
                                         "",
@@ -1080,11 +1086,16 @@ function generateTXTFromZenProperties(zenBlocks, zenGroups, settings) {
                     }
 
                     const indexDisplay = blockRef.count > 1 ? `[${String(i + 1).padStart(2, " ")}]` : "";
-                    const byteOffset = blockRef.byteOffset[i];
+                    // Calculate byteOffset for this array item: base + (index * blockByteLength)
+                    const byteOffset = blockRef.byteOffset + (i * blockRef.blockByteLength);
                     const byteOffsetFormatted = `${indexDisplay} 0x${byteOffset.toString(16).padStart(4, "0")} ${String(byteOffset).padStart(4, "0")}`;
 
                     if (hasSysex) {
-                        const sysexOffset = blockRef.sysexOffset[i];
+                        // Calculate sysexOffset for this array item
+                        const baseSysexParts = blockRef.sysexOffset.split(" ").map(s => parseInt(s, 16));
+                        const sysexItemSize = blockRef.sysexItemSize || blockRef.blockByteLength; // Use stored sysexItemSize or fallback
+                        const sysexOffsetValue = baseSysexParts[0] * 0x10000 + baseSysexParts[1] * 0x100 + baseSysexParts[2] + (i * sysexItemSize);
+                        const sysexOffset = getSysexValueArray(sysexOffsetValue, 3).join(" ");
                         table.put("", sysexOffset, byteOffsetFormatted);
                     } else {
                         table.put("", byteOffsetFormatted);
@@ -1125,13 +1136,20 @@ function generateTXTFromZenProperties(zenBlocks, zenGroups, settings) {
                     // Show each array entry on a separate line
                     for (let i = 0; i < param.count; i++) {
                         const indexDisplay = param.count > 1 ? `[${String(i + 1).padStart(2, " ")}]` : "";
-                        const byteOffset = param.byteOffset[i];
+                        // Calculate byteOffset for this array item: base + (index * blockByteLength)
+                        const byteOffset = param.byteOffset + (i * param.blockByteLength);
                         const byteOffsetFormatted = `${indexDisplay} 0x${byteOffset.toString(16).padStart(4, "0")} ${String(byteOffset).padStart(4, "0")} - ${String(param.blockByteLength).padStart(2, "0")}`;
                         
                         if (i === 0) {
                             // First row: show subblock name
                             if (settings.includeSysex) {
-                                const sysexOffset = param.sysexOffset[i];
+                                // Calculate sysexOffset for this array item
+                                // Get sysex item size from the referenced subblock
+                                const subBlockObj = zenBlocks[param.blockName];
+                                const sysexItemSize = subBlockObj?.sysexLength || param.blockByteLength;
+                                const baseSysexParts = param.sysexOffset.split(" ").map(s => parseInt(s, 16));
+                                const sysexOffsetValue = baseSysexParts[0] * 0x10000 + baseSysexParts[1] * 0x100 + baseSysexParts[2] + (i * sysexItemSize);
+                                const sysexOffset = getSysexValueArray(sysexOffsetValue, 3).join(" ");
                                 table.putNewline(
                                     param.id,
                                     subBlockName,
@@ -1154,10 +1172,16 @@ function generateTXTFromZenProperties(zenBlocks, zenGroups, settings) {
                                     ""
                                 );
                             }
-                        } else {
-                            // Subsequent rows: empty name/description, show index and offset
-                            if (settings.includeSysex) {
-                                const sysexOffset = param.sysexOffset[i];
+                            } else {
+                                // Subsequent rows: empty name/description, show index and offset
+                                if (settings.includeSysex) {
+                                    // Calculate sysexOffset for this array item
+                                    const baseSysexParts = param.sysexOffset.split(" ").map(s => parseInt(s, 16));
+                                    // Get sysex item size from the referenced subblock
+                                    const subBlockObj = zenBlocks[param.blockName];
+                                    const sysexItemSize = subBlockObj?.sysexLength || param.blockByteLength;
+                                    const sysexOffsetValue = baseSysexParts[0] * 0x10000 + baseSysexParts[1] * 0x100 + baseSysexParts[2] + (i * sysexItemSize);
+                                    const sysexOffset = getSysexValueArray(sysexOffsetValue, 3).join(" ");
                                 table.putNewline(
                                     "",
                                     "",
