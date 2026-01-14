@@ -1,6 +1,6 @@
 {
     "settings": {
-        "includePadding":false,
+        "includePadding":true,
         "textTableToConsole": false,
         "prettyJSON" : true,
         "includeSysex": false,

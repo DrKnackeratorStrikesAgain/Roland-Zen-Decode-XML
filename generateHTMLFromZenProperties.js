@@ -187,14 +187,27 @@ function generateHTMLFromZenProperties(ZenProperties, title, settings = {}) {
         ...settings
     };
 
-    // Separate blocks and groups from ZenProperties
+    // Separate blocks and groups from ZenProperties and group by category
     const zenBlocks = {};
     const zenGroups = {};
+    const categories = new Set();
+    const defaultCategory = "Unnamed Category";
+    
     for (const [key, value] of Object.entries(ZenProperties)) {
         if (isGroup(value)) {
             zenGroups[key] = value;
+            // Set default category if not present
+            if (!value.category) {
+                value.category = defaultCategory;
+            }
+            categories.add(value.category);
         } else if (isBlock(value)) {
             zenBlocks[key] = value;
+            // Set default category if not present
+            if (!value.category) {
+                value.category = defaultCategory;
+            }
+            categories.add(value.category);
         }
     }
 
@@ -214,71 +227,108 @@ function generateHTMLFromZenProperties(ZenProperties, title, settings = {}) {
         return false;
     }
 
+    // Top-level TOC with categories
     let htmlTOC = `<a id="table-of-contents"></a><h2>Table of Contents</h2>`;
-
-    // Build TOC as tables - Groups first
-    const groupNames = Object.keys(zenGroups).sort();
-    if (groupNames.length > 0) {
-        htmlTOC += `<h3>Groups</h3>`;
-        const tocRows = [];
-        
-        for (const groupName of groupNames) {
-            const group = zenGroups[groupName];
-            const totalBytes = group.byteLength || 0;
-            const decimalPadded = String(totalBytes).padStart(3, " ");
-            const totalBytesFormattedHTML = `0x${totalBytes.toString(16).padStart(4, "0")} ${decimalPadded.replace(/ /g, "&nbsp;")}`;
-            const paramCount = group.parameters ? Object.keys(group.parameters).length : 0;
-            tocRows.push([
-                { html: `<a href="#group-${escapeHtml(groupName)}">${escapeHtml(groupName)}</a>` },
-                escapeHtml(group.description || ""),
-                paramCount,
-                { html: `<span class="mono">${totalBytesFormattedHTML}</span>` }
+    
+    if (categories.size > 0) {
+        const categoryTocRows = [];
+        for (const category of Array.from(categories).sort()) {
+            categoryTocRows.push([
+                { html: `<a href="#category-${escapeHtml(category.replace(/[^a-zA-Z0-9]/g, '-'))}">${escapeHtml(category)}</a>` }
             ]);
         }
         
         htmlTOC += generateTable({
             tableClass: "table table-bordered table-striped noWrap autoWidth",
-            headers: ["Name", "Description", "Parameters", "Total Byte Length"],
-            colClass: { 2: "right", 3: "right" },
-            rows: tocRows
-        });
-    }
-
-    // Blocks in TOC - include blocks with parameters OR nested blocks
-    const blockNames = Object.keys(zenBlocks).filter(name => {
-        const block = zenBlocks[name];
-        return (block.parameters && Object.keys(block.parameters).length > 0) || hasNestedBlocks(block);
-    }).sort();
-    if (blockNames.length > 0) {
-        htmlTOC += `<h3>Blocks</h3>`;
-        const tocRows = [];
-        
-        for (const blockName of blockNames) {
-            const block = zenBlocks[blockName];
-            const totalBytes = block.byteLength || 0;
-            const decimalPadded = String(totalBytes).padStart(3, " ");
-            const totalBytesFormattedHTML = `0x${totalBytes.toString(16).padStart(4, "0")} ${decimalPadded.replace(/ /g, "&nbsp;")}`;
-            const paramCount = block.parameters ? Object.keys(block.parameters).length : 0;
-            tocRows.push([
-                { html: `<a href="#block-${escapeHtml(blockName)}">${escapeHtml(blockName)}</a>` },
-                escapeHtml(block.description || ""),
-                paramCount,
-                { html: `<span class="mono">${totalBytesFormattedHTML}</span>` }
-            ]);
-        }
-        
-        htmlTOC += generateTable({
-            tableClass: "table table-bordered table-striped noWrap autoWidth",
-            headers: ["Name", "Description", "Parameters", "Total Byte Length"],
-            colClass: { 2: "right", 3: "right" },
-            rows: tocRows
+            headers: ["Category"],
+            rows: categoryTocRows
         });
     }
 
     let htmlTableContent = "";
+    
+    // Process each category
+    for (const category of Array.from(categories).sort()) {
+        const categoryAnchor = `category-${category.replace(/[^a-zA-Z0-9]/g, '-')}`;
+        htmlTableContent += `<a id="${escapeHtml(categoryAnchor)}"></a><h2>${escapeHtml(category)}</h2>`;
+        
+        // Get groups and blocks for this category
+        const categoryGroups = {};
+        const categoryBlocks = {};
+        
+        for (const [key, value] of Object.entries(zenGroups)) {
+            if (value.category === category) {
+                categoryGroups[key] = value;
+            }
+        }
+        
+        for (const [key, value] of Object.entries(zenBlocks)) {
+            if (value.category === category) {
+                categoryBlocks[key] = value;
+            }
+        }
+        
+        // Category-level TOC - Groups first
+        const groupNames = Object.keys(categoryGroups).sort();
+        if (groupNames.length > 0) {
+            htmlTableContent += `<h3>Groups</h3>`;
+            const tocRows = [];
+            
+            for (const groupName of groupNames) {
+                const group = categoryGroups[groupName];
+                const totalBytes = group.byteLength || 0;
+                const decimalPadded = String(totalBytes).padStart(3, " ");
+                const totalBytesFormattedHTML = `0x${totalBytes.toString(16).padStart(4, "0")} ${decimalPadded.replace(/ /g, "&nbsp;")}`;
+                const paramCount = group.parameters ? Object.keys(group.parameters).length : 0;
+                tocRows.push([
+                    { html: `<a href="#group-${escapeHtml(groupName)}">${escapeHtml(groupName)}</a>` },
+                    escapeHtml(group.description || ""),
+                    paramCount,
+                    { html: `<span class="mono">${totalBytesFormattedHTML}</span>` }
+                ]);
+            }
+            
+            htmlTableContent += generateTable({
+                tableClass: "table table-bordered table-striped noWrap autoWidth",
+                headers: ["Name", "Description", "Parameters", "Total Byte Length"],
+                colClass: { 2: "right", 3: "right" },
+                rows: tocRows
+            });
+        }
 
-    // Generate group tables
-    for (const [groupName, group] of Object.entries(zenGroups)) {
+        // Category-level TOC - Blocks
+        const blockNames = Object.keys(categoryBlocks).filter(name => {
+            const block = categoryBlocks[name];
+            return (block.parameters && Object.keys(block.parameters).length > 0) || hasNestedBlocks(block);
+        }).sort();
+        if (blockNames.length > 0) {
+            htmlTableContent += `<h3>Blocks</h3>`;
+            const tocRows = [];
+            
+            for (const blockName of blockNames) {
+                const block = categoryBlocks[blockName];
+                const totalBytes = block.byteLength || 0;
+                const decimalPadded = String(totalBytes).padStart(3, " ");
+                const totalBytesFormattedHTML = `0x${totalBytes.toString(16).padStart(4, "0")} ${decimalPadded.replace(/ /g, "&nbsp;")}`;
+                const paramCount = block.parameters ? Object.keys(block.parameters).length : 0;
+                tocRows.push([
+                    { html: `<a href="#block-${escapeHtml(blockName)}">${escapeHtml(blockName)}</a>` },
+                    escapeHtml(block.description || ""),
+                    paramCount,
+                    { html: `<span class="mono">${totalBytesFormattedHTML}</span>` }
+                ]);
+            }
+            
+            htmlTableContent += generateTable({
+                tableClass: "table table-bordered table-striped noWrap autoWidth",
+                headers: ["Name", "Description", "Parameters", "Total Byte Length"],
+                colClass: { 2: "right", 3: "right" },
+                rows: tocRows
+            });
+        }
+
+        // Generate group tables for this category
+        for (const [groupName, group] of Object.entries(categoryGroups)) {
         const hasSysex = defaultSettings.includeSysex && Object.values(group.parameters).some(b => b && b.blockName && b.sysexOffset && b.sysexOffset.length > 0);
         
         const headers = hasSysex 
@@ -293,7 +343,7 @@ function generateHTMLFromZenProperties(ZenProperties, title, settings = {}) {
         for (const [key, blockRef] of Object.entries(group.parameters)) {
             if (blockRef && blockRef.blockName) {
                 // Get block description from the referenced block
-                const blockObj = blockRef.block || zenBlocks[blockRef.blockName];
+                const blockObj = blockRef.block || categoryBlocks[blockRef.blockName] || zenBlocks[blockRef.blockName];
                 const blockDesc = blockObj?.description || "";
 
                 for (let i = 0; i < blockRef.count; i++) {
@@ -340,7 +390,7 @@ function generateHTMLFromZenProperties(ZenProperties, title, settings = {}) {
         htmlTableContent += generateTable({
             title: `Group: ${groupName}`,
             anchor: `group-${groupName}`,
-            titleLink: "#table-of-contents",
+            titleLink: `#${escapeHtml(categoryAnchor)}`,
             tableClass: "table table-bordered table-striped noWrap autoWidth",
             headers,
             colClass,
@@ -349,8 +399,8 @@ function generateHTMLFromZenProperties(ZenProperties, title, settings = {}) {
         });
     }
 
-    // Generate block tables
-    for (const [blockName, block] of Object.entries(zenBlocks)) {
+        // Generate block tables for this category
+        for (const [blockName, block] of Object.entries(categoryBlocks)) {
         const hasParams = block.parameters && Object.keys(block.parameters).length > 0;
         const hasNested = hasNestedBlocks(block);
         
@@ -372,7 +422,7 @@ function generateHTMLFromZenProperties(ZenProperties, title, settings = {}) {
                     // Check if this is a subblock - show each array entry on a new line like groups
                     if (param.blockName) {
                         // Get the referenced block for name and description
-                        const subBlockObj = zenBlocks[param.blockName];
+                        const subBlockObj = categoryBlocks[param.blockName] || zenBlocks[param.blockName];
                         const subBlockName = subBlockObj?.name || param.blockName;
                         const subBlockDesc = subBlockObj?.description || param.description;
                         
@@ -464,7 +514,7 @@ function generateHTMLFromZenProperties(ZenProperties, title, settings = {}) {
                 htmlTableContent += generateTable({
                     title: `Block: ${block.name}${block.description ? ` - ${block.description}` : ""}`,
                     anchor: `block-${block.name}`,
-                    titleLink: "#table-of-contents",
+                    titleLink: `#${escapeHtml(categoryAnchor)}`,
                     tableClass: "table table-bordered table-striped noWrap autoWidth",
                     headers,
                     colClass,
@@ -476,12 +526,12 @@ function generateHTMLFromZenProperties(ZenProperties, title, settings = {}) {
                 const nestedRows = [];
                 for (const [key, nestedBlock] of Object.entries(block)) {
                     // Skip standard block properties
-                    if (key === 'name' || key === 'description' || key === 'byteLength' || key === 'sysexLength' || key === 'parameters') {
+                    if (key === 'name' || key === 'description' || key === 'byteLength' || key === 'sysexLength' || key === 'parameters' || key === 'category') {
                         continue;
                     }
                     // Check if this is a nested block reference
                     if (nestedBlock && typeof nestedBlock === 'object' && nestedBlock.blockName && typeof nestedBlock.count === 'number') {
-                        const nestedBlockObj = zenBlocks[nestedBlock.blockName];
+                        const nestedBlockObj = categoryBlocks[nestedBlock.blockName] || zenBlocks[nestedBlock.blockName];
                         const nestedDesc = nestedBlockObj?.description || "";
                         nestedRows.push([
                             { html: `<a href="#block-${escapeHtml(nestedBlock.blockName)}">${escapeHtml(nestedBlock.blockName)}</a>` },
@@ -501,7 +551,7 @@ function generateHTMLFromZenProperties(ZenProperties, title, settings = {}) {
                 htmlTableContent += generateTable({
                     title: `Block: ${block.name}${block.description ? ` - ${block.description}` : ""}`,
                     anchor: `block-${block.name}`,
-                    titleLink: "#table-of-contents",
+                    titleLink: `#${escapeHtml(categoryAnchor)}`,
                     tableClass: "table table-bordered table-striped noWrap autoWidth",
                     headers: ["Nested Block", "Description", "Count"],
                     colClass: { 2: "right" },
@@ -515,12 +565,12 @@ function generateHTMLFromZenProperties(ZenProperties, title, settings = {}) {
                 const nestedRows = [];
                 for (const [key, nestedBlock] of Object.entries(block)) {
                     // Skip standard block properties
-                    if (key === 'name' || key === 'description' || key === 'byteLength' || key === 'sysexLength' || key === 'parameters') {
+                    if (key === 'name' || key === 'description' || key === 'byteLength' || key === 'sysexLength' || key === 'parameters' || key === 'category') {
                         continue;
                     }
                     // Check if this is a nested block reference
                     if (nestedBlock && typeof nestedBlock === 'object' && nestedBlock.blockName && typeof nestedBlock.count === 'number') {
-                        const nestedBlockObj = zenBlocks[nestedBlock.blockName];
+                        const nestedBlockObj = categoryBlocks[nestedBlock.blockName] || zenBlocks[nestedBlock.blockName];
                         const nestedDesc = nestedBlockObj?.description || "";
                         nestedRows.push([
                             { html: `<a href="#block-${escapeHtml(nestedBlock.blockName)}">${escapeHtml(nestedBlock.blockName)}</a>` },
@@ -540,7 +590,7 @@ function generateHTMLFromZenProperties(ZenProperties, title, settings = {}) {
                 htmlTableContent += generateTable({
                     title: `Block: ${block.name}${block.description ? ` - ${block.description}` : ""} - Nested Blocks`,
                     anchor: `block-${block.name}-nested`,
-                    titleLink: "#table-of-contents",
+                    titleLink: `#${escapeHtml(categoryAnchor)}`,
                     tableClass: "table table-bordered table-striped noWrap autoWidth",
                     headers: ["Nested Block", "Description", "Count"],
                     colClass: { 2: "right" },
@@ -548,6 +598,7 @@ function generateHTMLFromZenProperties(ZenProperties, title, settings = {}) {
                     footer
                 });
             }
+        }
         }
     }
 
