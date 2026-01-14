@@ -10,6 +10,8 @@ If you are interested in pulling apart these files or project/sound files to cre
 
 Also available is a tool for peeking into the structure of SVZ and MC-707/101 PRJ files at [**ZenInspector**](https://splunge.foo/zeninspector/) which I update when I figure out new information.
 
+Conversion from the original PHP and all following work done with AI.
+
 ## Limitations
 
 Does not work with Altenate type blocks (SURFACE is a good example)
