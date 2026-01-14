@@ -1,6 +1,6 @@
-# RolandZenDecodeXML Build 5
+# RolandZenDecodeXML Build 6
 A tool to decode Roland editor XML files (initially Jupiter X/Xm and ZenCore) and generate JSON and a Javascript module with byte offsets (for files)
-and SYSEX locations/length, with plain text and HTML output tables for easy reading. 
+and SYSEX locations/length, with HTML output tables for easy reading. 
 
 The data generated here is going to work with the Roland Jupiter X/Xm, Fantom 6/7/8 and 06/07/08, Juno-X, Zenology files etc. 
 
@@ -65,12 +65,11 @@ node decode.js jupiter custom_output
 This will write output files to the `custom_output` directory (created automatically if it doesn't exist).
 
 ## Output
-In the output directory four files will be created:
+In the output directory three files will be created:
 
 - `<config_name>.json` the full data
 - `<config_name>.js` the full data formatted as a module (so like above but starts with `export default`)
 - `<config_name>.html` a reference in HTML
-- `<config_name>.txt` a reference in text (note, parameter lists are truncated)
 
 ## Config files
 
@@ -86,14 +85,12 @@ Configuration settings:
 
     "settings": {
         "includePadding":false,
-        "textTableToConsole": false,
         "prettyJSON" : false,
         "includeSysex": true,
         "truncateName": false
     },
 
 - `includePadding` - the binary layout of the information has padding added in places, which is invisible to the SYSEX layout. Turning this to `true` will include entries for the padding. Mainly useful to check generation as otherwise the padding is included but not listed as an actual element, so might be difficult to spot.
-- `textTableToConsole` - instead of outputting `<config_name>.txt` the text version of the table is output to the console. Useful for checking/debugging.
 - `prettyJSON` - Will pretty print the JSON and JS output. Not recommended as it makes the file huge.
 - `includeSysex` - Include SYSEX-related data in the output (offset, length, value offset). Default `true`. Set to `false` to output only byte offset information.
 - `truncateName` - In table output, only show the first entry of numbered sequences (e.g., show `NAME_1` but skip `NAME_2` through `NAME_16`). Default `false`. The JSON output still contains all entries.
@@ -252,7 +249,7 @@ When a block contains a subblock (whether from a `group->block` or a `block->sub
 
 The referenced block (`INST_CMN_WMT` in this example) exists as a separate top-level block with its own `parameters` object. Subblock parameters are identified by the presence of the `blockName` field.
 
-**Array Item Address Calculation**: For array items (subblocks or blocks in groups), `byteOffset` stores the address of item #0. To calculate the address of item `i`, use: `address = byteOffset + (i * blockByteLength)`. The HTML and TXT documentation output shows all array items with their calculated addresses, but the JSON/JS output stores only the base offset for efficiency.
+**Array Item Address Calculation**: For array items (subblocks or blocks in groups), `byteOffset` stores the address of item #0. To calculate the address of item `i`, use: `address = byteOffset + (i * blockByteLength)`. The HTML documentation output shows all array items with their calculated addresses, but the JSON/JS output stores only the base offset for efficiency.
 
 ### Group Structure
 
@@ -285,9 +282,19 @@ Groups are containers for blocks and have a similar structure to blocks:
 Groups contain a `parameters` object where each entry references a block. Block references within groups use the same structure as subblock parameters: `byteOffset` stores the address of item #0, and addresses for array items are calculated at runtime.
 
 ## Changelog
+**Build 6 - Standalone HTML Generation**
+
+- **Removed TableGen dependency**: HTML tables are now generated directly without the TableGen library. All table generation code is self-contained in `generateHTMLFromZenProperties.js`.
+
+- **Removed text output**: Plain text (`.txt`) output has been removed. Only HTML output is generated for documentation.
+
+- **Standalone generateHTML module**: The `generateHTMLFromZenProperties.js` module is now fully standalone and can be used independently. It takes a ZenProperties object and generates HTML without requiring external template files or dependencies.
+
+- **Integrated HTML template**: The HTML template is now embedded directly in `generateHTMLFromZenProperties.js`, eliminating the need for a separate `template.html` file.
+
 **Build 5**
 
-- **Subblock parameters use single byteOffset value**: When a parameter references a subblock (indicated by the presence of a `blockName` field), the `byteOffset` field contains the address of item #0. Addresses for other array items are calculated at runtime using: `address = byteOffset + (index * blockByteLength)`. This applies to both subblocks within blocks and block references within groups. The HTML and TXT documentation output shows all array items with their calculated addresses for reference.
+- **Subblock parameters use single byteOffset value**: When a parameter references a subblock (indicated by the presence of a `blockName` field), the `byteOffset` field contains the address of item #0. Addresses for other array items are calculated at runtime using: `address = byteOffset + (index * blockByteLength)`. This applies to both subblocks within blocks and block references within groups. The HTML documentation output shows all array items with their calculated addresses for reference.
 
 - **Property name changes**: 
   - `lengthBytes` has been renamed to `byteLength` for consistency with the `byteLength` property used at the block level.
