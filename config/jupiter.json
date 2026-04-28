@@ -3,7 +3,7 @@
         "includePadding":true,
         "textTableToConsole": false,
         "prettyJSON" : true,
-        "includeSysex": false,
+        "includeSysex": true,
         "truncateName": true
     },
     "importXML": [
@@ -51,6 +51,24 @@
             "file": "jupiter_xml/db_bmc0_vd.xml",
             "blocks": [
                 "MDLVDN"
+            ]
+        },
+        {
+            "file": "jupiter_xml/db_bmc0_jpX.xml",
+            "blocks": [
+                "MDLJPX"
+            ]
+        },        
+        {
+            "file": "jupiter_xml/db_bmc0_vd.xml",
+            "blocks": [
+                "MDLVDN"
+            ]
+        },
+        {
+            "file": "jupiter_xml/db_bmc0_model.xml",
+            "blocks": [
+                "MDLSYN0"
             ]
         },
         {

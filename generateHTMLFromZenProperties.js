@@ -62,12 +62,108 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
     li {
         margin-bottom: 0.2em;
     }
+    .array-hidden { display: none; }
+    .array-toggle {
+        cursor: pointer;
+        display: inline-block;
+        min-width: 1.4em;
+        text-align: center;
+        font-weight: bold;
+        border: 1px solid #aaa;
+        border-radius: 3px;
+        background: #f0f0f0;
+        font-size: 0.85em;
+        line-height: 1.4;
+        padding: 0 3px;
+        margin-right: 4px;
+        vertical-align: middle;
+        font-family: monospace;
+        user-select: none;
+    }
+    .array-toggle:hover { background: #dde; border-color: #88a; }
+    .values-cell {
+        cursor: pointer;
+    }
+    .values-cell:hover { color: #226; }
+    .modal-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.45);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box {
+        background: #fff;
+        border-radius: 6px;
+        padding: 1.2em 1.5em 1.5em;
+        max-height: 80vh;
+        overflow-y: auto;
+        min-width: 280px;
+        max-width: 480px;
+        box-shadow: 0 6px 32px rgba(0,0,0,0.28);
+        font-size: 10pt;
+    }
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 0.7em;
+    }
+    .modal-title { font-weight: bold; font-size: 1.05em; margin: 0; }
+    .modal-close {
+        cursor: pointer;
+        font-size: 1.3em;
+        line-height: 1;
+        color: #666;
+        user-select: none;
+        padding: 0 0 0 1em;
+    }
+    .modal-close:hover { color: #000; }
+    .modal-box table { margin: 0; width: 100%; }
+    .modal-box td:first-child { text-align: right; color: #888; padding-right: 0.8em; width: 2.5em; font-family: monospace; }
 
 </style>
 
 </head>
 <body class="p-4">
 <REPLACE/>
+<div id="values-modal" class="modal-overlay" onclick="if(event.target===this)closeValuesModal()">
+  <div class="modal-box">
+    <div class="modal-header">
+      <span class="modal-title" id="values-modal-title"></span>
+      <span class="modal-close" onclick="closeValuesModal()">&times;</span>
+    </div>
+    <table id="values-modal-table"></table>
+  </div>
+</div>
+<script>
+function toggleArrayGroup(id) {
+    const rows = document.querySelectorAll('.ag-' + id);
+    const btn = document.getElementById('atb-' + id);
+    if (!rows.length) return;
+    const isHidden = rows[0].classList.contains('array-hidden');
+    rows.forEach(r => r.classList.toggle('array-hidden', !isHidden));
+    if (btn) btn.textContent = isHidden ? '−' : '+';
+}
+function openValuesModal(cell) {
+    const values = JSON.parse(cell.dataset.values);
+    document.getElementById('values-modal-title').textContent = cell.dataset.title || 'Values';
+    const table = document.getElementById('values-modal-table');
+    let html = '';
+    for (const [idx, name] of Object.entries(values)) {
+        html += '<tr><td>' + idx + '</td><td>' + name + '</td></tr>';
+    }
+    table.innerHTML = html;
+    document.getElementById('values-modal').classList.add('active');
+}
+function closeValuesModal() {
+    document.getElementById('values-modal').classList.remove('active');
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeValuesModal(); });
+</script>
 </body>
 </html>`;
 
@@ -117,16 +213,18 @@ function generateTable(options = {}) {
         for (let i = 0; i < headers.length; i++) {
             const header = headers[i];
             const colClassAttr = colClass[i] ? ` class='${colClass[i]}'` : "";
-            html += `<th${colClassAttr}>${escapeHtml(header)}</th>`;
+            html += `<th${colClassAttr}>${header}</th>`;
         }
         html += "</tr>\r\n";
     }
 
     // Data rows
     for (const row of rows) {
-        html += "<tr>";
+        const cells = Array.isArray(row) ? row : row.cells;
+        const trClass = !Array.isArray(row) && row.trClass ? ` class="${row.trClass}"` : "";
+        html += `<tr${trClass}>`;
         for (let i = 0; i < headers.length; i++) {
-            const cell = row[i] !== undefined ? row[i] : "&nbsp;";
+            const cell = cells[i] !== undefined ? cells[i] : "&nbsp;";
             const colClassAttr = colClass[i] ? ` class='${colClass[i]}'` : "";
             // Cell can be a string (will be escaped) or already HTML
             const cellContent = typeof cell === 'object' && cell.html ? cell.html : escapeHtml(cell);
@@ -152,6 +250,14 @@ function getSysexValueArray(value, length = 2) {
         value >>= 7;
     }
     return rv.reverse();
+}
+
+// convert stored "AA BB CC" sysex string back to a linear integer (base-128 encoding)
+function parseSysexAddress(str) {
+    const parts = str.split(" ").map(s => parseInt(s, 16));
+    let v = 0;
+    for (const p of parts) v = v * 128 + p;
+    return v;
 }
 
 // Helper function to determine if an entry is a group (has byteLength and parameters with blockName references)
@@ -346,15 +452,23 @@ function generateHTMLFromZenProperties(ZenProperties, title, settings = {}) {
                 const blockObj = blockRef.block || categoryBlocks[blockRef.blockName] || zenBlocks[blockRef.blockName];
                 const blockDesc = blockObj?.description || "";
 
+                const isArray = blockRef.count > 1;
+                const arrayId = isArray ? `${groupName}_${key}`.replace(/[^a-zA-Z0-9]/g, '_') : null;
+                const hasHiddenRows = isArray && blockRef.count >= 5;
+
                 for (let i = 0; i < blockRef.count; i++) {
-                    const indexDisplay = blockRef.count > 1 ? `[${String(i + 1).padStart(2, " ")}]` : "";
+                    const indexDisplay = isArray ? `[${String(i + 1).padStart(2, " ")}]` : "";
                     // Calculate byteOffset for this array item: base + (index * blockByteLength)
                     const byteOffset = blockRef.byteOffset + (i * blockRef.blockByteLength);
                     const byteOffsetFormatted = `${indexDisplay} 0x${byteOffset.toString(16).padStart(4, "0")} ${String(byteOffset).padStart(4, "0")}`;
 
                     const row = [];
                     if (i === 0) {
-                        row.push({ html: `<a href="#block-${escapeHtml(blockRef.blockName)}">${escapeHtml(blockRef.blockName)}</a>` });
+                        const toggleHtml = hasHiddenRows
+                            ? `<span class="array-toggle" id="atb-${arrayId}" onclick="toggleArrayGroup('${arrayId}')">+</span> `
+                            : "";
+                        const countHtml = isArray ? ` <span style="color:#888">[${blockRef.count}]</span>` : "";
+                        row.push({ html: `${toggleHtml}<a href="#block-${escapeHtml(blockRef.blockName)}">${escapeHtml(blockRef.blockName)}</a>${countHtml}` });
                         row.push(escapeHtml(blockDesc));
                     } else {
                         row.push("");
@@ -365,9 +479,8 @@ function generateHTMLFromZenProperties(ZenProperties, title, settings = {}) {
 
                     if (hasSysex) {
                         // Calculate sysexOffset for this array item
-                        const baseSysexParts = blockRef.sysexOffset.split(" ").map(s => parseInt(s, 16));
                         const sysexItemSize = blockRef.sysexItemSize || blockRef.blockByteLength;
-                        const sysexOffsetValue = baseSysexParts[0] * 0x10000 + baseSysexParts[1] * 0x100 + baseSysexParts[2] + (i * sysexItemSize);
+                        const sysexOffsetValue = parseSysexAddress(blockRef.sysexOffset) + (i * sysexItemSize);
                         const sysexOffset = getSysexValueArray(sysexOffsetValue, 3).join(" ");
                         row.push({ html: `<span class="mono">${sysexOffset}</span>` });
                     }
@@ -382,7 +495,12 @@ function generateHTMLFromZenProperties(ZenProperties, title, settings = {}) {
                         row.push("");
                     }
 
-                    rows.push(row);
+                    const rowHidden = hasHiddenRows && i >= 2 && i < blockRef.count - 1;
+                    if (rowHidden) {
+                        rows.push({ cells: row, trClass: `ag-${arrayId} array-hidden` });
+                    } else {
+                        rows.push(row);
+                    }
                 }
             }
         }
@@ -408,12 +526,12 @@ function generateHTMLFromZenProperties(ZenProperties, title, settings = {}) {
             if (hasParams) {
                 // Block with parameters - show parameter table
                 const headers = defaultSettings.includeSysex
-                    ? ["ID", "Description", "SXOff - len", "Byte offset - len", "Min", "Max", "Offset", "Init", "Values"]
-                    : ["ID", "Description", "Byte offset - len", "Min", "Max", "Init", "Values"];
-                
+                    ? ["ID", "Description", "SXOffset - len", "Byte Offset - Length", "Min", "Max", "Unit", "SX Val<br/>Offset", "Init", "Values"]
+                    : ["ID", "Description", "Byte Offset - Length", "Min", "Max", "Unit", "Init", "Values"];
+
                 const colClass = defaultSettings.includeSysex
-                    ? { 4: "right", 5: "right", 6: "right", 7: "right", 8: "wrap" }
-                    : { 3: "right", 4: "right", 5: "right", 6: "wrap" };
+                    ? { 4: "right", 5: "right", 7: "right", 8: "right", 9: "wrap" }
+                    : { 3: "right", 4: "right", 6: "right", 7: "wrap" };
 
                 const rows = [];
                 for (const param of Object.values(block.parameters)) {
@@ -427,61 +545,80 @@ function generateHTMLFromZenProperties(ZenProperties, title, settings = {}) {
                         const subBlockDesc = subBlockObj?.description || param.description;
                         
                         // Show each array entry on a separate line
+                        const isSubArray = param.count > 1;
+                        const subArrayId = isSubArray ? `${blockName}_${param.id}`.replace(/[^a-zA-Z0-9]/g, '_') : null;
+                        const subHasHiddenRows = isSubArray && param.count >= 5;
+
                         for (let i = 0; i < param.count; i++) {
-                            const indexDisplay = param.count > 1 ? `[${String(i + 1).padStart(2, " ")}]` : "";
+                            const indexDisplay = isSubArray ? `[${String(i + 1).padStart(2, " ")}]` : "";
                             // Calculate byteOffset for this array item: base + (index * blockByteLength)
                             const byteOffset = param.byteOffset + (i * param.blockByteLength);
                             const byteOffsetFormatted = `${indexDisplay} 0x${byteOffset.toString(16).padStart(4, "0")} ${String(byteOffset).padStart(4, "0")} - 0x${param.blockByteLength.toString(16).padStart(4, "0")} ${String(param.blockByteLength).padStart(2, "0")}`;
-                            
+
                             const row = [];
                             if (i === 0) {
                                 // First row: show subblock name (as link) and description
-                                row.push(param.id);
+                                const toggleHtml = subHasHiddenRows
+                                    ? `<span class="array-toggle" id="atb-${subArrayId}" onclick="toggleArrayGroup('${subArrayId}')">+</span> `
+                                    : "";
+                                const countHtml = isSubArray ? ` <span style="color:#888">[${param.count}]</span>` : "";
+                                row.push({ html: `${toggleHtml}${escapeHtml(param.id)}${countHtml}` });
                                 row.push({ html: `<a href="#block-${escapeHtml(param.blockName)}">${escapeHtml(subBlockName)}</a>` });
-                                
+
                                 if (defaultSettings.includeSysex) {
                                     // Calculate sysexOffset for this array item
                                     const subBlockObj = zenBlocks[param.blockName];
                                     const sysexItemSize = subBlockObj?.sysexLength || param.blockByteLength;
-                                    const baseSysexParts = param.sysexOffset.split(" ").map(s => parseInt(s, 16));
-                                    const sysexOffsetValue = baseSysexParts[0] * 0x10000 + baseSysexParts[1] * 0x100 + baseSysexParts[2] + (i * sysexItemSize);
+                                    const sysexOffsetValue = parseSysexAddress(param.sysexOffset) + (i * sysexItemSize);
                                     const sysexOffset = getSysexValueArray(sysexOffsetValue, 3).join(" ");
                                     row.push({ html: `<span class="mono">${sysexOffset}</span>` });
                                     row.push({ html: `<span class="mono">${byteOffsetFormatted}</span>` });
                                 } else {
                                     row.push({ html: `<span class="mono">${byteOffsetFormatted}</span>` });
                                 }
-                                
-                                row.push("-", "-", "-", "-", "");
+
+                                row.push("-", "-", "-", "-", "-", "");
                             } else {
                                 // Subsequent rows: empty name/description, show index and offset
                                 row.push("");
                                 row.push("");
-                                
+
                                 if (defaultSettings.includeSysex) {
-                                    const baseSysexParts = param.sysexOffset.split(" ").map(s => parseInt(s, 16));
                                     const subBlockObj = zenBlocks[param.blockName];
                                     const sysexItemSize = subBlockObj?.sysexLength || param.blockByteLength;
-                                    const sysexOffsetValue = baseSysexParts[0] * 0x10000 + baseSysexParts[1] * 0x100 + baseSysexParts[2] + (i * sysexItemSize);
+                                    const sysexOffsetValue = parseSysexAddress(param.sysexOffset) + (i * sysexItemSize);
                                     const sysexOffset = getSysexValueArray(sysexOffsetValue, 3).join(" ");
                                     row.push({ html: `<span class="mono">${sysexOffset}</span>` });
                                     row.push({ html: `<span class="mono">${byteOffsetFormatted}</span>` });
                                 } else {
                                     row.push({ html: `<span class="mono">${byteOffsetFormatted}</span>` });
                                 }
-                                
-                                row.push("-", "-", "-", "-", "");
+
+                                row.push("-", "-", "-", "-", "-", "");
                             }
-                            
-                            rows.push(row);
+
+                            const subRowHidden = subHasHiddenRows && i >= 2 && i < param.count - 1;
+                            if (subRowHidden) {
+                                rows.push({ cells: row, trClass: `ag-${subArrayId} array-hidden` });
+                            } else {
+                                rows.push(row);
+                            }
                         }
                     } else {
                         // Regular parameter
                         const valuesStr = param.values ? Object.values(param.values).join(", ") : "";
+                        const valuesCell = param.values
+                            ? (() => {
+                                const display = valuesStr.length > 200 ? valuesStr.slice(0, 200) + ' …' : valuesStr;
+                                const titleAttr = escapeHtml(`${param.id}: ${param.description || param.id}`);
+                                const dataAttr = escapeHtml(JSON.stringify(param.values));
+                                return { html: `<span class="values-cell" data-values="${dataAttr}" data-title="${titleAttr}" onclick="openValuesModal(this)">${escapeHtml(display)}</span>` };
+                            })()
+                            : "";
                         const row = [];
                         row.push(param.id);
                         row.push(escapeHtml(param.description));
-                        
+
                         if (defaultSettings.includeSysex) {
                             const sxOff = getSysexValueArray(param.sysexOffset || 0, 2);
                             const sysexFormatted = ` ${sxOff[0]} ${sxOff[1]} - ${(param.lengthSysex || 0).toString(16).padStart(2, "0")}`;
@@ -490,15 +627,15 @@ function generateHTMLFromZenProperties(ZenProperties, title, settings = {}) {
                             const dataRange1 = param.dataRange ? param.dataRange[1] : "-";
                             row.push({ html: `<span class="mono">${sysexFormatted}</span>` });
                             row.push({ html: `<span class="mono">${byteOffsetFormatted}</span>` });
-                            row.push(dataRange0, dataRange1, param.sysexValueOffset || 0, param.initValue || 0, valuesStr);
+                            row.push(dataRange0, dataRange1, param.displayMeasurement || "", param.sysexValueOffset || "", param.initValue || 0, valuesCell);
                         } else {
                             const byteOffsetFormatted = `0x${param.byteOffset.toString(16).padStart(4, "0")} ${String(param.byteOffset).padStart(4, "0")} - 0x${param.byteLength.toString(16).padStart(4, "0")} ${String(param.byteLength).padStart(2, "0")}`;
                             const dataRange0 = param.dataRange ? param.dataRange[0] : "-";
                             const dataRange1 = param.dataRange ? param.dataRange[1] : "-";
                             row.push({ html: `<span class="mono">${byteOffsetFormatted}</span>` });
-                            row.push(dataRange0, dataRange1, param.initValue || 0, valuesStr);
+                            row.push(dataRange0, dataRange1, param.displayMeasurement || "", param.initValue || 0, valuesCell);
                         }
-                        
+
                         rows.push(row);
                     }
                 }

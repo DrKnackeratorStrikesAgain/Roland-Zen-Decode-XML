@@ -54,7 +54,7 @@ Standard parameter with data values:
   // Optional fields:
   sysexOffset?: number;          // Sysex offset (if includeSysex)
   lengthSysex?: number;          // Sysex length (1, 2, or 4)
-  sysexValueOffset?: number;     // Binary-to-sysex value offset
+  sysexValueOffset?: number;     // Binary-to-sysex value offset if not 0
   values?: { [key: string]: string };  // Value map: "0" => "OFF", "1" => "ON"
   displayMeasurement?: string;    // Unit: "ms", "db", "cent", "ASCII"
   displayRange?: [string, string]; // Scaled display range

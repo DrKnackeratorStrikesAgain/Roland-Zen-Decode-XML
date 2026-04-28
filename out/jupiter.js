@@ -4,6 +4,7 @@ ZenProperties["INST_CMN_WMT"] = {
   "name": "INST_CMN_WMT",
   "description": "WMT",
   "byteLength": 28,
+  "sysexLength": 35,
   "parameters": {
     "SW": {
       "id": "SW",
@@ -15,6 +16,7 @@ ZenProperties["INST_CMN_WMT"] = {
         1
       ],
       "initValue": 0,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -30,6 +32,8 @@ ZenProperties["INST_CMN_WMT"] = {
         2
       ],
       "initValue": 0,
+      "sysexOffset": 1,
+      "lengthSysex": 1,
       "values": {
         "0": "INT",
         "1": "EXP",
@@ -45,7 +49,9 @@ ZenProperties["INST_CMN_WMT"] = {
         0,
         16383
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 2,
+      "lengthSysex": 4
     },
     "WAV_NUM_L": {
       "id": "WAV_NUM_L",
@@ -56,7 +62,9 @@ ZenProperties["INST_CMN_WMT"] = {
         0,
         16383
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 6,
+      "lengthSysex": 4
     },
     "WAV_NUM_R": {
       "id": "WAV_NUM_R",
@@ -67,7 +75,9 @@ ZenProperties["INST_CMN_WMT"] = {
         0,
         16383
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 10,
+      "lengthSysex": 4
     },
     "WAV_GAIN": {
       "id": "WAV_GAIN",
@@ -79,6 +89,8 @@ ZenProperties["INST_CMN_WMT"] = {
         5
       ],
       "initValue": 3,
+      "sysexOffset": 14,
+      "lengthSysex": 1,
       "displayMeasurement": "dB",
       "values": {
         "0": "-18",
@@ -99,6 +111,8 @@ ZenProperties["INST_CMN_WMT"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 15,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -113,7 +127,9 @@ ZenProperties["INST_CMN_WMT"] = {
         1,
         4
       ],
-      "initValue": 1
+      "initValue": 1,
+      "sysexOffset": 16,
+      "lengthSysex": 1
     },
     "FXM_DEPTH": {
       "id": "FXM_DEPTH",
@@ -124,7 +140,9 @@ ZenProperties["INST_CMN_WMT"] = {
         0,
         16
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 17,
+      "lengthSysex": 1
     },
     "PIT_CRS": {
       "id": "PIT_CRS",
@@ -135,7 +153,10 @@ ZenProperties["INST_CMN_WMT"] = {
         -48,
         48
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 18,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "PIT_FINE": {
       "id": "PIT_FINE",
@@ -146,7 +167,10 @@ ZenProperties["INST_CMN_WMT"] = {
         -50,
         50
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 19,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "PAN": {
       "id": "PAN",
@@ -157,7 +181,10 @@ ZenProperties["INST_CMN_WMT"] = {
         -64,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 20,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "PAN_RND_SW": {
       "id": "PAN_RND_SW",
@@ -169,6 +196,8 @@ ZenProperties["INST_CMN_WMT"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 21,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -184,6 +213,8 @@ ZenProperties["INST_CMN_WMT"] = {
         2
       ],
       "initValue": 0,
+      "sysexOffset": 22,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON",
@@ -199,7 +230,9 @@ ZenProperties["INST_CMN_WMT"] = {
         0,
         127
       ],
-      "initValue": 127
+      "initValue": 127,
+      "sysexOffset": 23,
+      "lengthSysex": 1
     },
     "PADDING1": {
       "id": "PADDING1",
@@ -211,7 +244,8 @@ ZenProperties["INST_CMN_WMT"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     },
     "DELAY_MODE": {
       "id": "DELAY_MODE",
@@ -223,6 +257,8 @@ ZenProperties["INST_CMN_WMT"] = {
         3
       ],
       "initValue": 0,
+      "sysexOffset": 24,
+      "lengthSysex": 1,
       "values": {
         "0": "NORMAL",
         "1": "HOLD",
@@ -240,6 +276,8 @@ ZenProperties["INST_CMN_WMT"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 25,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -255,6 +293,8 @@ ZenProperties["INST_CMN_WMT"] = {
         21
       ],
       "initValue": 12,
+      "sysexOffset": 26,
+      "lengthSysex": 1,
       "values": {
         "0": "1/64T",
         "1": "1/64",
@@ -289,7 +329,9 @@ ZenProperties["INST_CMN_WMT"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 27,
+      "lengthSysex": 4
     },
     "VRANGE_LO": {
       "id": "VRANGE_LO",
@@ -300,7 +342,9 @@ ZenProperties["INST_CMN_WMT"] = {
         1,
         127
       ],
-      "initValue": 1
+      "initValue": 1,
+      "sysexOffset": 31,
+      "lengthSysex": 1
     },
     "VRANGE_UP": {
       "id": "VRANGE_UP",
@@ -311,7 +355,9 @@ ZenProperties["INST_CMN_WMT"] = {
         1,
         127
       ],
-      "initValue": 127
+      "initValue": 127,
+      "sysexOffset": 32,
+      "lengthSysex": 1
     },
     "VFADE_LO": {
       "id": "VFADE_LO",
@@ -322,7 +368,9 @@ ZenProperties["INST_CMN_WMT"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 33,
+      "lengthSysex": 1
     },
     "VFADE_UP": {
       "id": "VFADE_UP",
@@ -333,7 +381,9 @@ ZenProperties["INST_CMN_WMT"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 34,
+      "lengthSysex": 1
     }
   },
   "category": "Autogenerated: jupiter"
@@ -343,6 +393,7 @@ ZenProperties["INST_CMN"] = {
   "name": "INST_CMN",
   "description": "PCMRhythm Inst Common",
   "byteLength": 152,
+  "sysexLength": 187,
   "parameters": {
     "NAME_1": {
       "id": "NAME_1",
@@ -354,6 +405,7 @@ ZenProperties["INST_CMN"] = {
         127
       ],
       "initValue": 32,
+      "lengthSysex": 1,
       "displayMeasurement": "ASCII"
     },
     "CATEGORY": {
@@ -365,7 +417,9 @@ ZenProperties["INST_CMN"] = {
         0,
         21
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 16,
+      "lengthSysex": 1
     },
     "LEVEL": {
       "id": "LEVEL",
@@ -376,7 +430,9 @@ ZenProperties["INST_CMN"] = {
         0,
         127
       ],
-      "initValue": 127
+      "initValue": 127,
+      "sysexOffset": 17,
+      "lengthSysex": 1
     },
     "SRC_KEY": {
       "id": "SRC_KEY",
@@ -387,7 +443,9 @@ ZenProperties["INST_CMN"] = {
         0,
         127
       ],
-      "initValue": 60
+      "initValue": 60,
+      "sysexOffset": 18,
+      "lengthSysex": 1
     },
     "PIT_FINE": {
       "id": "PIT_FINE",
@@ -399,6 +457,9 @@ ZenProperties["INST_CMN"] = {
         50
       ],
       "initValue": 0,
+      "sysexOffset": 19,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64,
       "displayMeasurement": "cent"
     },
     "PIT_RND": {
@@ -411,6 +472,8 @@ ZenProperties["INST_CMN"] = {
         1200
       ],
       "initValue": 0,
+      "sysexOffset": 20,
+      "lengthSysex": 4,
       "displayMeasurement": "cent"
     },
     "PAN_RND": {
@@ -422,7 +485,9 @@ ZenProperties["INST_CMN"] = {
         0,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 24,
+      "lengthSysex": 1
     },
     "PAN_ALT": {
       "id": "PAN_ALT",
@@ -433,7 +498,10 @@ ZenProperties["INST_CMN"] = {
         -64,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 25,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "ASGN_TYPE": {
       "id": "ASGN_TYPE",
@@ -445,6 +513,8 @@ ZenProperties["INST_CMN"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 26,
+      "lengthSysex": 1,
       "values": {
         "0": "MULTI",
         "1": "SINGLE"
@@ -460,6 +530,8 @@ ZenProperties["INST_CMN"] = {
         1
       ],
       "initValue": 1,
+      "sysexOffset": 27,
+      "lengthSysex": 1,
       "values": {
         "0": "NO-SUS",
         "1": "SUSTAIN"
@@ -475,6 +547,8 @@ ZenProperties["INST_CMN"] = {
         2
       ],
       "initValue": 1,
+      "sysexOffset": 28,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON",
@@ -491,7 +565,8 @@ ZenProperties["INST_CMN"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     },
     "WMT": {
       "id": "WMT",
@@ -501,6 +576,8 @@ ZenProperties["INST_CMN"] = {
       "blockName": "INST_CMN_WMT",
       "count": 4,
       "blockByteLength": 28,
+      "sysexOffset": "00 00 1d",
+      "lengthSysex": 140,
       "block": ZenProperties["INST_CMN_WMT"]
     },
     "FILTER_TYPE": {
@@ -513,6 +590,8 @@ ZenProperties["INST_CMN"] = {
         6
       ],
       "initValue": 1,
+      "sysexOffset": 169,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "LPF",
@@ -533,7 +612,8 @@ ZenProperties["INST_CMN"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     },
     "CUTOFF": {
       "id": "CUTOFF",
@@ -544,7 +624,9 @@ ZenProperties["INST_CMN"] = {
         0,
         1023
       ],
-      "initValue": 1023
+      "initValue": 1023,
+      "sysexOffset": 170,
+      "lengthSysex": 4
     },
     "CUTOFF_VCRV": {
       "id": "CUTOFF_VCRV",
@@ -556,6 +638,8 @@ ZenProperties["INST_CMN"] = {
         7
       ],
       "initValue": 1,
+      "sysexOffset": 174,
+      "lengthSysex": 1,
       "values": {
         "0": "FIXED",
         "1": "1",
@@ -576,7 +660,10 @@ ZenProperties["INST_CMN"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 175,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "RESO": {
       "id": "RESO",
@@ -587,7 +674,9 @@ ZenProperties["INST_CMN"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 177,
+      "lengthSysex": 4
     },
     "RESO_VSENS": {
       "id": "RESO_VSENS",
@@ -598,7 +687,10 @@ ZenProperties["INST_CMN"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 181,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "LEVEL_VCRV": {
       "id": "LEVEL_VCRV",
@@ -610,6 +702,8 @@ ZenProperties["INST_CMN"] = {
         7
       ],
       "initValue": 1,
+      "sysexOffset": 183,
+      "lengthSysex": 1,
       "values": {
         "0": "FIXED",
         "1": "1",
@@ -630,7 +724,10 @@ ZenProperties["INST_CMN"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 184,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "TEMPO_SYNC": {
       "id": "TEMPO_SYNC",
@@ -642,6 +739,8 @@ ZenProperties["INST_CMN"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 186,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -655,6 +754,7 @@ ZenProperties["MDLCORE"] = {
   "name": "MDLCORE",
   "description": "Model Core Parameter",
   "byteLength": 112,
+  "sysexLength": 167,
   "parameters": {
     "MODEL": {
       "id": "MODEL",
@@ -666,6 +766,7 @@ ZenProperties["MDLCORE"] = {
         5
       ],
       "initValue": 0,
+      "lengthSysex": 2,
       "values": {
         "0": "---",
         "1": "JP8",
@@ -685,6 +786,8 @@ ZenProperties["MDLCORE"] = {
         10
       ],
       "initValue": 0,
+      "sysexOffset": 2,
+      "lengthSysex": 1,
       "values": {
         "0": "SIN",
         "1": "TRI",
@@ -708,7 +811,9 @@ ZenProperties["MDLCORE"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 3,
+      "lengthSysex": 4
     },
     "LFODLY": {
       "id": "LFODLY",
@@ -719,7 +824,9 @@ ZenProperties["MDLCORE"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 7,
+      "lengthSysex": 4
     },
     "OSC1MOD": {
       "id": "OSC1MOD",
@@ -730,7 +837,10 @@ ZenProperties["MDLCORE"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 11,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "OSC1PENV": {
       "id": "OSC1PENV",
@@ -741,7 +851,10 @@ ZenProperties["MDLCORE"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 13,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "OSC1DEST": {
       "id": "OSC1DEST",
@@ -753,6 +866,8 @@ ZenProperties["MDLCORE"] = {
         2
       ],
       "initValue": 0,
+      "sysexOffset": 15,
+      "lengthSysex": 1,
       "values": {
         "0": "OSC1",
         "1": "BOTH",
@@ -769,6 +884,8 @@ ZenProperties["MDLCORE"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 16,
+      "lengthSysex": 1,
       "values": {
         "0": "1",
         "1": "2"
@@ -784,6 +901,8 @@ ZenProperties["MDLCORE"] = {
         27
       ],
       "initValue": 0,
+      "sysexOffset": 17,
+      "lengthSysex": 4,
       "values": {
         "0": "PW",
         "1": "SAW",
@@ -825,6 +944,8 @@ ZenProperties["MDLCORE"] = {
         4
       ],
       "initValue": 0,
+      "sysexOffset": 21,
+      "lengthSysex": 1,
       "values": {
         "0": "32'",
         "1": "16'",
@@ -842,7 +963,10 @@ ZenProperties["MDLCORE"] = {
         -48,
         48
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 22,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "OSC1FINE": {
       "id": "OSC1FINE",
@@ -853,7 +977,10 @@ ZenProperties["MDLCORE"] = {
         -50,
         50
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 23,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "OSC1LOWFREQ": {
       "id": "OSC1LOWFREQ",
@@ -864,7 +991,9 @@ ZenProperties["MDLCORE"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 24,
+      "lengthSysex": 1
     },
     "OSC1MODE": {
       "id": "OSC1MODE",
@@ -876,6 +1005,8 @@ ZenProperties["MDLCORE"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 25,
+      "lengthSysex": 1,
       "values": {
         "0": "NORMAL",
         "1": "LOW FREQ"
@@ -890,7 +1021,10 @@ ZenProperties["MDLCORE"] = {
         -63,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 26,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "OSC1PLSW": {
       "id": "OSC1PLSW",
@@ -901,7 +1035,9 @@ ZenProperties["MDLCORE"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 27,
+      "lengthSysex": 1
     },
     "OSC1PLSM": {
       "id": "OSC1PLSM",
@@ -913,6 +1049,8 @@ ZenProperties["MDLCORE"] = {
         2
       ],
       "initValue": 0,
+      "sysexOffset": 28,
+      "lengthSysex": 1,
       "values": {
         "0": "LFO",
         "1": "MANUAL",
@@ -928,7 +1066,10 @@ ZenProperties["MDLCORE"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 29,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "OSC2PENV": {
       "id": "OSC2PENV",
@@ -939,7 +1080,10 @@ ZenProperties["MDLCORE"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 31,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "OSC2WAVE": {
       "id": "OSC2WAVE",
@@ -951,6 +1095,8 @@ ZenProperties["MDLCORE"] = {
         27
       ],
       "initValue": 0,
+      "sysexOffset": 33,
+      "lengthSysex": 4,
       "values": {
         "0": "PW",
         "1": "SAW",
@@ -992,6 +1138,8 @@ ZenProperties["MDLCORE"] = {
         4
       ],
       "initValue": 0,
+      "sysexOffset": 37,
+      "lengthSysex": 1,
       "values": {
         "0": "32'",
         "1": "16'",
@@ -1009,7 +1157,10 @@ ZenProperties["MDLCORE"] = {
         -48,
         48
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 38,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "OSC2FINE": {
       "id": "OSC2FINE",
@@ -1020,7 +1171,10 @@ ZenProperties["MDLCORE"] = {
         -50,
         50
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 39,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "OSC2LOWFREQ": {
       "id": "OSC2LOWFREQ",
@@ -1031,7 +1185,9 @@ ZenProperties["MDLCORE"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 40,
+      "lengthSysex": 1
     },
     "OSC2MODE": {
       "id": "OSC2MODE",
@@ -1043,6 +1199,8 @@ ZenProperties["MDLCORE"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 41,
+      "lengthSysex": 1,
       "values": {
         "0": "NORMAL",
         "1": "LO FREQ"
@@ -1057,7 +1215,9 @@ ZenProperties["MDLCORE"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 42,
+      "lengthSysex": 1
     },
     "OSC3MOD": {
       "id": "OSC3MOD",
@@ -1068,7 +1228,10 @@ ZenProperties["MDLCORE"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 43,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "OSC3PENV": {
       "id": "OSC3PENV",
@@ -1079,7 +1242,10 @@ ZenProperties["MDLCORE"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 45,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "OSC3WAVE": {
       "id": "OSC3WAVE",
@@ -1091,6 +1257,8 @@ ZenProperties["MDLCORE"] = {
         27
       ],
       "initValue": 0,
+      "sysexOffset": 47,
+      "lengthSysex": 4,
       "values": {
         "0": "PW",
         "1": "SAW",
@@ -1132,6 +1300,8 @@ ZenProperties["MDLCORE"] = {
         4
       ],
       "initValue": 0,
+      "sysexOffset": 51,
+      "lengthSysex": 1,
       "values": {
         "0": "32'",
         "1": "16'",
@@ -1149,7 +1319,10 @@ ZenProperties["MDLCORE"] = {
         -48,
         48
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 52,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "OSC3FINE": {
       "id": "OSC3FINE",
@@ -1160,7 +1333,10 @@ ZenProperties["MDLCORE"] = {
         -50,
         50
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 53,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "OSC3LOWFREQ": {
       "id": "OSC3LOWFREQ",
@@ -1171,7 +1347,9 @@ ZenProperties["MDLCORE"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 54,
+      "lengthSysex": 1
     },
     "OSC3MODE": {
       "id": "OSC3MODE",
@@ -1183,6 +1361,8 @@ ZenProperties["MDLCORE"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 55,
+      "lengthSysex": 1,
       "values": {
         "0": "NORMAL",
         "1": "LO FREQ"
@@ -1198,6 +1378,8 @@ ZenProperties["MDLCORE"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 56,
+      "lengthSysex": 1,
       "values": {
         "0": "WHITE",
         "1": "PINK"
@@ -1212,7 +1394,9 @@ ZenProperties["MDLCORE"] = {
         0,
         10800
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 57,
+      "lengthSysex": 4
     },
     "MODMODE": {
       "id": "MODMODE",
@@ -1224,6 +1408,8 @@ ZenProperties["MDLCORE"] = {
         3
       ],
       "initValue": 0,
+      "sysexOffset": 61,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "SYNC",
@@ -1240,7 +1426,9 @@ ZenProperties["MDLCORE"] = {
         0,
         255
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 62,
+      "lengthSysex": 2
     },
     "MXROSC2": {
       "id": "MXROSC2",
@@ -1251,7 +1439,9 @@ ZenProperties["MDLCORE"] = {
         0,
         255
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 64,
+      "lengthSysex": 2
     },
     "MXROSC3": {
       "id": "MXROSC3",
@@ -1262,7 +1452,9 @@ ZenProperties["MDLCORE"] = {
         0,
         255
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 66,
+      "lengthSysex": 2
     },
     "MXRNOISE": {
       "id": "MXRNOISE",
@@ -1273,7 +1465,9 @@ ZenProperties["MDLCORE"] = {
         0,
         255
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 68,
+      "lengthSysex": 2
     },
     "MXRENVD": {
       "id": "MXRENVD",
@@ -1284,7 +1478,10 @@ ZenProperties["MDLCORE"] = {
         -63,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 70,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "MXRENVS": {
       "id": "MXRENVS",
@@ -1296,6 +1493,8 @@ ZenProperties["MDLCORE"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 71,
+      "lengthSysex": 1,
       "values": {
         "0": "1",
         "1": "2"
@@ -1310,7 +1509,9 @@ ZenProperties["MDLCORE"] = {
         0,
         3
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 72,
+      "lengthSysex": 1
     },
     "FLTTYPE": {
       "id": "FLTTYPE",
@@ -1321,7 +1522,9 @@ ZenProperties["MDLCORE"] = {
         0,
         3
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 73,
+      "lengthSysex": 1
     },
     "FLTHPF2": {
       "id": "FLTHPF2",
@@ -1332,7 +1535,9 @@ ZenProperties["MDLCORE"] = {
         0,
         3
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 74,
+      "lengthSysex": 1
     },
     "FLTHPF1": {
       "id": "FLTHPF1",
@@ -1343,7 +1548,9 @@ ZenProperties["MDLCORE"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 75,
+      "lengthSysex": 4
     },
     "FLTFREQ": {
       "id": "FLTFREQ",
@@ -1354,7 +1561,9 @@ ZenProperties["MDLCORE"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 79,
+      "lengthSysex": 4
     },
     "FLTRESO": {
       "id": "FLTRESO",
@@ -1365,7 +1574,9 @@ ZenProperties["MDLCORE"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 83,
+      "lengthSysex": 4
     },
     "FLTENVD": {
       "id": "FLTENVD",
@@ -1376,7 +1587,10 @@ ZenProperties["MDLCORE"] = {
         -1023,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 87,
+      "lengthSysex": 4,
+      "sysexValueOffset": 1024
     },
     "FLTENVS": {
       "id": "FLTENVS",
@@ -1388,6 +1602,8 @@ ZenProperties["MDLCORE"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 91,
+      "lengthSysex": 1,
       "values": {
         "0": "1",
         "1": "2"
@@ -1403,6 +1619,8 @@ ZenProperties["MDLCORE"] = {
         2
       ],
       "initValue": 0,
+      "sysexOffset": 92,
+      "lengthSysex": 1,
       "values": {
         "0": "-12dB",
         "1": "-18db",
@@ -1418,7 +1636,10 @@ ZenProperties["MDLCORE"] = {
         -200,
         200
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 93,
+      "lengthSysex": 4,
+      "sysexValueOffset": 1024
     },
     "FLTMOD": {
       "id": "FLTMOD",
@@ -1429,7 +1650,10 @@ ZenProperties["MDLCORE"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 97,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "PADDING1": {
       "id": "PADDING1",
@@ -1441,7 +1665,8 @@ ZenProperties["MDLCORE"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     },
     "AMPLVL": {
       "id": "AMPLVL",
@@ -1452,7 +1677,9 @@ ZenProperties["MDLCORE"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 99,
+      "lengthSysex": 1
     },
     "AMPMOD1": {
       "id": "AMPMOD1",
@@ -1463,7 +1690,9 @@ ZenProperties["MDLCORE"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 100,
+      "lengthSysex": 2
     },
     "AMPMOD2": {
       "id": "AMPMOD2",
@@ -1474,7 +1703,9 @@ ZenProperties["MDLCORE"] = {
         0,
         3
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 102,
+      "lengthSysex": 1
     },
     "AMPENVS": {
       "id": "AMPENVS",
@@ -1486,6 +1717,8 @@ ZenProperties["MDLCORE"] = {
         3
       ],
       "initValue": 0,
+      "sysexOffset": 103,
+      "lengthSysex": 1,
       "values": {
         "0": "ENV F&A",
         "1": "ENV2",
@@ -1502,7 +1735,9 @@ ZenProperties["MDLCORE"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 104,
+      "lengthSysex": 4
     },
     "ENV1D": {
       "id": "ENV1D",
@@ -1513,7 +1748,9 @@ ZenProperties["MDLCORE"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 108,
+      "lengthSysex": 4
     },
     "ENV1S": {
       "id": "ENV1S",
@@ -1524,7 +1761,9 @@ ZenProperties["MDLCORE"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 112,
+      "lengthSysex": 4
     },
     "ENV1R": {
       "id": "ENV1R",
@@ -1535,7 +1774,9 @@ ZenProperties["MDLCORE"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 116,
+      "lengthSysex": 4
     },
     "ENV1KYBD1": {
       "id": "ENV1KYBD1",
@@ -1546,7 +1787,10 @@ ZenProperties["MDLCORE"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 120,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "ENV1KYBD2": {
       "id": "ENV1KYBD2",
@@ -1557,7 +1801,9 @@ ZenProperties["MDLCORE"] = {
         0,
         6
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 122,
+      "lengthSysex": 1
     },
     "ENV2A": {
       "id": "ENV2A",
@@ -1568,7 +1814,9 @@ ZenProperties["MDLCORE"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 123,
+      "lengthSysex": 4
     },
     "ENV2D": {
       "id": "ENV2D",
@@ -1579,7 +1827,9 @@ ZenProperties["MDLCORE"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 127,
+      "lengthSysex": 4
     },
     "ENV2S": {
       "id": "ENV2S",
@@ -1590,7 +1840,9 @@ ZenProperties["MDLCORE"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 131,
+      "lengthSysex": 4
     },
     "ENV2R": {
       "id": "ENV2R",
@@ -1601,7 +1853,9 @@ ZenProperties["MDLCORE"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 135,
+      "lengthSysex": 4
     },
     "ENV2MODE": {
       "id": "ENV2MODE",
@@ -1613,6 +1867,8 @@ ZenProperties["MDLCORE"] = {
         2
       ],
       "initValue": 0,
+      "sysexOffset": 139,
+      "lengthSysex": 1,
       "values": {
         "0": "GATE+TRIG",
         "1": "GATE",
@@ -1628,7 +1884,10 @@ ZenProperties["MDLCORE"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 140,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "ENV2KYBD2": {
       "id": "ENV2KYBD2",
@@ -1639,7 +1898,9 @@ ZenProperties["MDLCORE"] = {
         0,
         3
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 142,
+      "lengthSysex": 1
     },
     "DYNPTCH": {
       "id": "DYNPTCH",
@@ -1650,7 +1911,9 @@ ZenProperties["MDLCORE"] = {
         0,
         3
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 143,
+      "lengthSysex": 1
     },
     "DYNFLTT": {
       "id": "DYNFLTT",
@@ -1661,7 +1924,9 @@ ZenProperties["MDLCORE"] = {
         0,
         3
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 144,
+      "lengthSysex": 1
     },
     "DYNAMP": {
       "id": "DYNAMP",
@@ -1672,7 +1937,9 @@ ZenProperties["MDLCORE"] = {
         0,
         3
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 145,
+      "lengthSysex": 1
     },
     "PCHDRFT": {
       "id": "PCHDRFT",
@@ -1683,7 +1950,9 @@ ZenProperties["MDLCORE"] = {
         0,
         255
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 146,
+      "lengthSysex": 2
     },
     "BNDPTCH2": {
       "id": "BNDPTCH2",
@@ -1695,6 +1964,8 @@ ZenProperties["MDLCORE"] = {
         3
       ],
       "initValue": 0,
+      "sysexOffset": 148,
+      "lengthSysex": 1,
       "values": {
         "0": "2",
         "1": "3",
@@ -1711,7 +1982,10 @@ ZenProperties["MDLCORE"] = {
         -63,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 149,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "BNDLFO": {
       "id": "BNDLFO",
@@ -1722,7 +1996,10 @@ ZenProperties["MDLCORE"] = {
         -63,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 150,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "BNDPTCH1": {
       "id": "BNDPTCH1",
@@ -1733,7 +2010,9 @@ ZenProperties["MDLCORE"] = {
         0,
         4800
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 151,
+      "lengthSysex": 4
     },
     "PTATIME": {
       "id": "PTATIME",
@@ -1744,7 +2023,9 @@ ZenProperties["MDLCORE"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 155,
+      "lengthSysex": 4
     },
     "PTAMODE": {
       "id": "PTAMODE",
@@ -1756,6 +2037,8 @@ ZenProperties["MDLCORE"] = {
         2
       ],
       "initValue": 0,
+      "sysexOffset": 159,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON",
@@ -1772,6 +2055,8 @@ ZenProperties["MDLCORE"] = {
         3
       ],
       "initValue": 0,
+      "sysexOffset": 160,
+      "lengthSysex": 1,
       "values": {
         "0": "POLY",
         "1": "SOLO",
@@ -1789,6 +2074,8 @@ ZenProperties["MDLCORE"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 161,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -1803,7 +2090,9 @@ ZenProperties["MDLCORE"] = {
         0,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 162,
+      "lengthSysex": 1
     },
     "PTACRV": {
       "id": "PTACRV",
@@ -1815,6 +2104,8 @@ ZenProperties["MDLCORE"] = {
         3
       ],
       "initValue": 0,
+      "sysexOffset": 163,
+      "lengthSysex": 1,
       "values": {
         "0": "ORIGINAL",
         "1": "LINER",
@@ -1831,7 +2122,10 @@ ZenProperties["MDLCORE"] = {
         -63,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 164,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "AFT_FREQ": {
       "id": "AFT_FREQ",
@@ -1842,7 +2136,10 @@ ZenProperties["MDLCORE"] = {
         -63,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 165,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "AFT_LEV": {
       "id": "AFT_LEV",
@@ -1853,7 +2150,10 @@ ZenProperties["MDLCORE"] = {
         -63,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 166,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "PADDING2": {
       "id": "PADDING2",
@@ -1865,7 +2165,8 @@ ZenProperties["MDLCORE"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     }
   },
   "category": "Autogenerated: jupiter"
@@ -1875,6 +2176,7 @@ ZenProperties["MDLJD800COM"] = {
   "name": "MDLJD800COM",
   "description": "JD-800 Model Common",
   "byteLength": 44,
+  "sysexLength": 45,
   "parameters": {
     "LEVEL": {
       "id": "LEVEL",
@@ -1885,7 +2187,8 @@ ZenProperties["MDLJD800COM"] = {
         0,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "lengthSysex": 1
     },
     "KEYA_RNG_LO": {
       "id": "KEYA_RNG_LO",
@@ -1896,7 +2199,9 @@ ZenProperties["MDLJD800COM"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 1,
+      "lengthSysex": 1
     },
     "KEYA_RNG_HI": {
       "id": "KEYA_RNG_HI",
@@ -1907,7 +2212,9 @@ ZenProperties["MDLJD800COM"] = {
         0,
         127
       ],
-      "initValue": 127
+      "initValue": 127,
+      "sysexOffset": 2,
+      "lengthSysex": 1
     },
     "KEYB_RNG_LO": {
       "id": "KEYB_RNG_LO",
@@ -1918,7 +2225,9 @@ ZenProperties["MDLJD800COM"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 3,
+      "lengthSysex": 1
     },
     "KEYB_RNG_HI": {
       "id": "KEYB_RNG_HI",
@@ -1929,7 +2238,9 @@ ZenProperties["MDLJD800COM"] = {
         0,
         127
       ],
-      "initValue": 127
+      "initValue": 127,
+      "sysexOffset": 4,
+      "lengthSysex": 1
     },
     "KEYC_RNG_LO": {
       "id": "KEYC_RNG_LO",
@@ -1940,7 +2251,9 @@ ZenProperties["MDLJD800COM"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 5,
+      "lengthSysex": 1
     },
     "KEYC_RNG_HI": {
       "id": "KEYC_RNG_HI",
@@ -1951,7 +2264,9 @@ ZenProperties["MDLJD800COM"] = {
         0,
         127
       ],
-      "initValue": 127
+      "initValue": 127,
+      "sysexOffset": 6,
+      "lengthSysex": 1
     },
     "KEYD_RNG_LO": {
       "id": "KEYD_RNG_LO",
@@ -1962,7 +2277,9 @@ ZenProperties["MDLJD800COM"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 7,
+      "lengthSysex": 1
     },
     "KEYD_RNG_HI": {
       "id": "KEYD_RNG_HI",
@@ -1973,7 +2290,9 @@ ZenProperties["MDLJD800COM"] = {
         0,
         127
       ],
-      "initValue": 127
+      "initValue": 127,
+      "sysexOffset": 8,
+      "lengthSysex": 1
     },
     "BND_RNG_DW": {
       "id": "BND_RNG_DW",
@@ -1984,7 +2303,9 @@ ZenProperties["MDLJD800COM"] = {
         0,
         48
       ],
-      "initValue": 2
+      "initValue": 2,
+      "sysexOffset": 9,
+      "lengthSysex": 1
     },
     "BND_RNG_UP": {
       "id": "BND_RNG_UP",
@@ -1995,7 +2316,9 @@ ZenProperties["MDLJD800COM"] = {
         0,
         12
       ],
-      "initValue": 2
+      "initValue": 2,
+      "sysexOffset": 10,
+      "lengthSysex": 1
     },
     "AFT_BEND": {
       "id": "AFT_BEND",
@@ -2007,6 +2330,8 @@ ZenProperties["MDLJD800COM"] = {
         26
       ],
       "initValue": 16,
+      "sysexOffset": 11,
+      "lengthSysex": 1,
       "values": {
         "0": "-36",
         "1": "-24",
@@ -2047,6 +2372,8 @@ ZenProperties["MDLJD800COM"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 12,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -2062,6 +2389,8 @@ ZenProperties["MDLJD800COM"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 13,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -2077,6 +2406,8 @@ ZenProperties["MDLJD800COM"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 14,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -2092,6 +2423,8 @@ ZenProperties["MDLJD800COM"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 15,
+      "lengthSysex": 1,
       "values": {
         "0": "NORMAL",
         "1": "LEGATO"
@@ -2106,7 +2439,9 @@ ZenProperties["MDLJD800COM"] = {
         0,
         100
       ],
-      "initValue": 10
+      "initValue": 10,
+      "sysexOffset": 16,
+      "lengthSysex": 1
     },
     "EQ_MID_Q": {
       "id": "EQ_MID_Q",
@@ -2118,6 +2453,8 @@ ZenProperties["MDLJD800COM"] = {
         160
       ],
       "initValue": 10,
+      "sysexOffset": 17,
+      "lengthSysex": 2,
       "displayMeasurement": "EQQ",
       "displayRange": [
         0.5,
@@ -2133,7 +2470,9 @@ ZenProperties["MDLJD800COM"] = {
         20,
         16000
       ],
-      "initValue": 200
+      "initValue": 200,
+      "sysexOffset": 19,
+      "lengthSysex": 4
     },
     "EQ_MID_F": {
       "id": "EQ_MID_F",
@@ -2144,7 +2483,9 @@ ZenProperties["MDLJD800COM"] = {
         20,
         16000
       ],
-      "initValue": 1000
+      "initValue": 1000,
+      "sysexOffset": 23,
+      "lengthSysex": 4
     },
     "EQ_HI_F": {
       "id": "EQ_HI_F",
@@ -2155,7 +2496,9 @@ ZenProperties["MDLJD800COM"] = {
         20,
         16000
       ],
-      "initValue": 2000
+      "initValue": 2000,
+      "sysexOffset": 27,
+      "lengthSysex": 4
     },
     "EQ_LO_G": {
       "id": "EQ_LO_G",
@@ -2167,6 +2510,9 @@ ZenProperties["MDLJD800COM"] = {
         240
       ],
       "initValue": 0,
+      "sysexOffset": 31,
+      "lengthSysex": 4,
+      "sysexValueOffset": 1024,
       "displayMeasurement": "EQGAIN",
       "displayRange": [
         -24,
@@ -2183,6 +2529,9 @@ ZenProperties["MDLJD800COM"] = {
         240
       ],
       "initValue": 0,
+      "sysexOffset": 35,
+      "lengthSysex": 4,
+      "sysexValueOffset": 1024,
       "displayMeasurement": "EQGAIN",
       "displayRange": [
         -24,
@@ -2199,6 +2548,9 @@ ZenProperties["MDLJD800COM"] = {
         240
       ],
       "initValue": 0,
+      "sysexOffset": 39,
+      "lengthSysex": 4,
+      "sysexValueOffset": 1024,
       "displayMeasurement": "EQGAIN",
       "displayRange": [
         -24,
@@ -2215,6 +2567,8 @@ ZenProperties["MDLJD800COM"] = {
         1
       ],
       "initValue": 1,
+      "sysexOffset": 43,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -2230,6 +2584,8 @@ ZenProperties["MDLJD800COM"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 44,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -2245,7 +2601,8 @@ ZenProperties["MDLJD800COM"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     }
   },
   "category": "Autogenerated: jupiter"
@@ -2255,6 +2612,7 @@ ZenProperties["MDLJD800FxB"] = {
   "name": "MDLJD800FxB",
   "description": "JD-800 Model Group B Effect",
   "byteLength": 32,
+  "sysexLength": 30,
   "parameters": {
     "SEQUENCE": {
       "id": "SEQUENCE",
@@ -2266,6 +2624,7 @@ ZenProperties["MDLJD800FxB"] = {
         5
       ],
       "initValue": 0,
+      "lengthSysex": 1,
       "values": {
         "0": "CHO-DLY-REV",
         "1": "CHO-REV-DLY",
@@ -2285,6 +2644,8 @@ ZenProperties["MDLJD800FxB"] = {
         1
       ],
       "initValue": 1,
+      "sysexOffset": 1,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -2300,6 +2661,8 @@ ZenProperties["MDLJD800FxB"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 2,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -2315,6 +2678,8 @@ ZenProperties["MDLJD800FxB"] = {
         125
       ],
       "initValue": 125,
+      "sysexOffset": 3,
+      "lengthSysex": 1,
       "displayMeasurement": "msec",
       "values": {
         "0": "0.1",
@@ -2455,6 +2820,8 @@ ZenProperties["MDLJD800FxB"] = {
         21
       ],
       "initValue": 15,
+      "sysexOffset": 4,
+      "lengthSysex": 1,
       "values": {
         "0": "MUSICAL-NOTES"
       }
@@ -2469,6 +2836,8 @@ ZenProperties["MDLJD800FxB"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 5,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -2484,6 +2853,8 @@ ZenProperties["MDLJD800FxB"] = {
         125
       ],
       "initValue": 105,
+      "sysexOffset": 6,
+      "lengthSysex": 1,
       "displayMeasurement": "msec",
       "values": {
         "0": "0.1",
@@ -2624,6 +2995,8 @@ ZenProperties["MDLJD800FxB"] = {
         21
       ],
       "initValue": 10,
+      "sysexOffset": 7,
+      "lengthSysex": 1,
       "values": {
         "0": "MUSICAL-NOTES"
       }
@@ -2638,6 +3011,8 @@ ZenProperties["MDLJD800FxB"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 8,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -2653,6 +3028,8 @@ ZenProperties["MDLJD800FxB"] = {
         125
       ],
       "initValue": 115,
+      "sysexOffset": 9,
+      "lengthSysex": 1,
       "displayMeasurement": "msec",
       "values": {
         "0": "0.1",
@@ -2793,6 +3170,8 @@ ZenProperties["MDLJD800FxB"] = {
         21
       ],
       "initValue": 13,
+      "sysexOffset": 10,
+      "lengthSysex": 1,
       "values": {
         "0": "MUSICAL-NOTES"
       }
@@ -2806,7 +3185,9 @@ ZenProperties["MDLJD800FxB"] = {
         0,
         100
       ],
-      "initValue": 100
+      "initValue": 100,
+      "sysexOffset": 11,
+      "lengthSysex": 1
     },
     "DLY_L_LEV": {
       "id": "DLY_L_LEV",
@@ -2817,7 +3198,9 @@ ZenProperties["MDLJD800FxB"] = {
         0,
         100
       ],
-      "initValue": 100
+      "initValue": 100,
+      "sysexOffset": 12,
+      "lengthSysex": 1
     },
     "DLY_R_LEV": {
       "id": "DLY_R_LEV",
@@ -2828,7 +3211,9 @@ ZenProperties["MDLJD800FxB"] = {
         0,
         100
       ],
-      "initValue": 100
+      "initValue": 100,
+      "sysexOffset": 13,
+      "lengthSysex": 1
     },
     "DLY_FB": {
       "id": "DLY_FB",
@@ -2840,6 +3225,8 @@ ZenProperties["MDLJD800FxB"] = {
         98
       ],
       "initValue": 59,
+      "sysexOffset": 14,
+      "lengthSysex": 1,
       "displayMeasurement": "%",
       "displayRange": [
         -98,
@@ -2856,6 +3243,8 @@ ZenProperties["MDLJD800FxB"] = {
         1
       ],
       "initValue": 1,
+      "sysexOffset": 15,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -2871,6 +3260,8 @@ ZenProperties["MDLJD800FxB"] = {
         99
       ],
       "initValue": 5,
+      "sysexOffset": 16,
+      "lengthSysex": 1,
       "displayMeasurement": "Hz",
       "displayRange": [
         0.1,
@@ -2886,7 +3277,9 @@ ZenProperties["MDLJD800FxB"] = {
         0,
         100
       ],
-      "initValue": 20
+      "initValue": 20,
+      "sysexOffset": 17,
+      "lengthSysex": 1
     },
     "CHO_DLY": {
       "id": "CHO_DLY",
@@ -2898,6 +3291,8 @@ ZenProperties["MDLJD800FxB"] = {
         99
       ],
       "initValue": 19,
+      "sysexOffset": 18,
+      "lengthSysex": 1,
       "displayMeasurement": "msec",
       "values": {
         "0": "0.1",
@@ -3012,6 +3407,8 @@ ZenProperties["MDLJD800FxB"] = {
         98
       ],
       "initValue": 49,
+      "sysexOffset": 19,
+      "lengthSysex": 1,
       "displayMeasurement": "%",
       "displayRange": [
         -98,
@@ -3027,7 +3424,9 @@ ZenProperties["MDLJD800FxB"] = {
         0,
         100
       ],
-      "initValue": 100
+      "initValue": 100,
+      "sysexOffset": 20,
+      "lengthSysex": 1
     },
     "REV_SW": {
       "id": "REV_SW",
@@ -3039,6 +3438,8 @@ ZenProperties["MDLJD800FxB"] = {
         1
       ],
       "initValue": 1,
+      "sysexOffset": 21,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -3054,6 +3455,8 @@ ZenProperties["MDLJD800FxB"] = {
         9
       ],
       "initValue": 5,
+      "sysexOffset": 22,
+      "lengthSysex": 1,
       "values": {
         "0": "ROOM1",
         "1": "ROOM2",
@@ -3077,6 +3480,8 @@ ZenProperties["MDLJD800FxB"] = {
         120
       ],
       "initValue": 20,
+      "sysexOffset": 23,
+      "lengthSysex": 1,
       "displayMeasurement": "msec"
     },
     "REV_ER_LEV": {
@@ -3088,7 +3493,9 @@ ZenProperties["MDLJD800FxB"] = {
         0,
         100
       ],
-      "initValue": 100
+      "initValue": 100,
+      "sysexOffset": 24,
+      "lengthSysex": 1
     },
     "REV_HF_DAMP": {
       "id": "REV_HF_DAMP",
@@ -3100,6 +3507,8 @@ ZenProperties["MDLJD800FxB"] = {
         16
       ],
       "initValue": 16,
+      "sysexOffset": 25,
+      "lengthSysex": 1,
       "values": {
         "0": "500Hz",
         "1": "630Hz",
@@ -3130,6 +3539,8 @@ ZenProperties["MDLJD800FxB"] = {
         99
       ],
       "initValue": 19,
+      "sysexOffset": 26,
+      "lengthSysex": 1,
       "displayMeasurement": "sec",
       "values": {
         "0": "0.1",
@@ -3243,7 +3654,9 @@ ZenProperties["MDLJD800FxB"] = {
         0,
         100
       ],
-      "initValue": 100
+      "initValue": 100,
+      "sysexOffset": 27,
+      "lengthSysex": 1
     },
     "BAL": {
       "id": "BAL",
@@ -3255,6 +3668,8 @@ ZenProperties["MDLJD800FxB"] = {
         100
       ],
       "initValue": 50,
+      "sysexOffset": 28,
+      "lengthSysex": 1,
       "values": {
         "0": "D100:0W - D0:100W"
       }
@@ -3268,7 +3683,9 @@ ZenProperties["MDLJD800FxB"] = {
         0,
         127
       ],
-      "initValue": 127
+      "initValue": 127,
+      "sysexOffset": 29,
+      "lengthSysex": 1
     },
     "PADDING1": {
       "id": "PADDING1",
@@ -3280,7 +3697,8 @@ ZenProperties["MDLJD800FxB"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     }
   },
   "category": "Autogenerated: jupiter"
@@ -3290,6 +3708,7 @@ ZenProperties["MDLJD800PTL"] = {
   "name": "MDLJD800PTL",
   "description": "JD-800 Model Partial",
   "byteLength": 80,
+  "sysexLength": 81,
   "parameters": {
     "PTL_SW": {
       "id": "PTL_SW",
@@ -3301,6 +3720,7 @@ ZenProperties["MDLJD800PTL"] = {
         1
       ],
       "initValue": 0,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -3316,6 +3736,8 @@ ZenProperties["MDLJD800PTL"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 1,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -3331,6 +3753,8 @@ ZenProperties["MDLJD800PTL"] = {
         3
       ],
       "initValue": 0,
+      "sysexOffset": 2,
+      "lengthSysex": 1,
       "displayRange": [
         1,
         4
@@ -3346,6 +3770,8 @@ ZenProperties["MDLJD800PTL"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 3,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -3361,6 +3787,8 @@ ZenProperties["MDLJD800PTL"] = {
         4
       ],
       "initValue": 0,
+      "sysexOffset": 4,
+      "lengthSysex": 1,
       "values": {
         "0": "TRI",
         "1": "SAW",
@@ -3379,6 +3807,8 @@ ZenProperties["MDLJD800PTL"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 5,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -3393,7 +3823,9 @@ ZenProperties["MDLJD800PTL"] = {
         0,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 6,
+      "lengthSysex": 1
     },
     "LFO1_NOTE": {
       "id": "LFO1_NOTE",
@@ -3405,6 +3837,8 @@ ZenProperties["MDLJD800PTL"] = {
         22
       ],
       "initValue": 12,
+      "sysexOffset": 7,
+      "lengthSysex": 1,
       "values": {
         "0": "1/64T",
         "1": "1/64",
@@ -3440,7 +3874,9 @@ ZenProperties["MDLJD800PTL"] = {
         0,
         101
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 8,
+      "lengthSysex": 1
     },
     "LFO1_FADE": {
       "id": "LFO1_FADE",
@@ -3451,7 +3887,10 @@ ZenProperties["MDLJD800PTL"] = {
         -50,
         50
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 9,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "LFO1_OFST": {
       "id": "LFO1_OFST",
@@ -3463,6 +3902,8 @@ ZenProperties["MDLJD800PTL"] = {
         2
       ],
       "initValue": 0,
+      "sysexOffset": 10,
+      "lengthSysex": 1,
       "values": {
         "0": "-",
         "1": "0",
@@ -3479,6 +3920,8 @@ ZenProperties["MDLJD800PTL"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 11,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -3494,6 +3937,8 @@ ZenProperties["MDLJD800PTL"] = {
         4
       ],
       "initValue": 0,
+      "sysexOffset": 12,
+      "lengthSysex": 1,
       "values": {
         "0": "TRI",
         "1": "SAW",
@@ -3512,6 +3957,8 @@ ZenProperties["MDLJD800PTL"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 13,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -3526,7 +3973,9 @@ ZenProperties["MDLJD800PTL"] = {
         0,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 14,
+      "lengthSysex": 1
     },
     "LFO2_NOTE": {
       "id": "LFO2_NOTE",
@@ -3538,6 +3987,8 @@ ZenProperties["MDLJD800PTL"] = {
         22
       ],
       "initValue": 12,
+      "sysexOffset": 15,
+      "lengthSysex": 1,
       "values": {
         "0": "1/64T",
         "1": "1/64",
@@ -3573,7 +4024,9 @@ ZenProperties["MDLJD800PTL"] = {
         0,
         101
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 16,
+      "lengthSysex": 1
     },
     "LFO2_FADE": {
       "id": "LFO2_FADE",
@@ -3584,7 +4037,10 @@ ZenProperties["MDLJD800PTL"] = {
         -50,
         50
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 17,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "LFO2_OFST": {
       "id": "LFO2_OFST",
@@ -3596,6 +4052,8 @@ ZenProperties["MDLJD800PTL"] = {
         2
       ],
       "initValue": 0,
+      "sysexOffset": 18,
+      "lengthSysex": 1,
       "values": {
         "0": "-",
         "1": "0",
@@ -3612,6 +4070,8 @@ ZenProperties["MDLJD800PTL"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 19,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -3626,7 +4086,9 @@ ZenProperties["MDLJD800PTL"] = {
         0,
         16383
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 20,
+      "lengthSysex": 4
     },
     "WAV_SRC": {
       "id": "WAV_SRC",
@@ -3637,7 +4099,9 @@ ZenProperties["MDLJD800PTL"] = {
         0,
         49
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 24,
+      "lengthSysex": 1
     },
     "WAV_GAIN": {
       "id": "WAV_GAIN",
@@ -3649,6 +4113,8 @@ ZenProperties["MDLJD800PTL"] = {
         5
       ],
       "initValue": 3,
+      "sysexOffset": 25,
+      "lengthSysex": 1,
       "displayMeasurement": "dB",
       "values": {
         "0": "-18",
@@ -3668,7 +4134,10 @@ ZenProperties["MDLJD800PTL"] = {
         -48,
         48
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 26,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "PIT_FINE": {
       "id": "PIT_FINE",
@@ -3679,7 +4148,10 @@ ZenProperties["MDLJD800PTL"] = {
         -50,
         50
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 27,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "PIT_RND": {
       "id": "PIT_RND",
@@ -3690,7 +4162,9 @@ ZenProperties["MDLJD800PTL"] = {
         0,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 28,
+      "lengthSysex": 1
     },
     "PIT_KF": {
       "id": "PIT_KF",
@@ -3702,6 +4176,8 @@ ZenProperties["MDLJD800PTL"] = {
         16
       ],
       "initValue": 5,
+      "sysexOffset": 29,
+      "lengthSysex": 1,
       "displayMeasurement": "%",
       "values": {
         "0": "-100",
@@ -3733,6 +4209,8 @@ ZenProperties["MDLJD800PTL"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 30,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -3748,6 +4226,8 @@ ZenProperties["MDLJD800PTL"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 31,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -3762,7 +4242,10 @@ ZenProperties["MDLJD800PTL"] = {
         -50,
         50
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 32,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "LFO2_DEP": {
       "id": "LFO2_DEP",
@@ -3773,7 +4256,10 @@ ZenProperties["MDLJD800PTL"] = {
         -50,
         50
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 33,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "LEVER_SENS": {
       "id": "LEVER_SENS",
@@ -3784,7 +4270,10 @@ ZenProperties["MDLJD800PTL"] = {
         -50,
         50
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 34,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "AFT_SENS": {
       "id": "AFT_SENS",
@@ -3795,7 +4284,10 @@ ZenProperties["MDLJD800PTL"] = {
         -50,
         50
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 35,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "PENV_VSENS": {
       "id": "PENV_VSENS",
@@ -3806,7 +4298,10 @@ ZenProperties["MDLJD800PTL"] = {
         -50,
         50
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 36,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "PENV_T_VS": {
       "id": "PENV_T_VS",
@@ -3817,7 +4312,10 @@ ZenProperties["MDLJD800PTL"] = {
         -50,
         50
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 37,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "PENV_T_KF": {
       "id": "PENV_T_KF",
@@ -3828,7 +4326,10 @@ ZenProperties["MDLJD800PTL"] = {
         -10,
         10
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 38,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "PENV_L0": {
       "id": "PENV_L0",
@@ -3839,7 +4340,10 @@ ZenProperties["MDLJD800PTL"] = {
         -50,
         50
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 39,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "PENV_L1": {
       "id": "PENV_L1",
@@ -3850,7 +4354,10 @@ ZenProperties["MDLJD800PTL"] = {
         -50,
         50
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 40,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "PENV_L2": {
       "id": "PENV_L2",
@@ -3861,7 +4368,10 @@ ZenProperties["MDLJD800PTL"] = {
         -50,
         50
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 41,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "PENV_T1": {
       "id": "PENV_T1",
@@ -3872,7 +4382,9 @@ ZenProperties["MDLJD800PTL"] = {
         0,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 42,
+      "lengthSysex": 1
     },
     "PENV_T2": {
       "id": "PENV_T2",
@@ -3883,7 +4395,9 @@ ZenProperties["MDLJD800PTL"] = {
         0,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 43,
+      "lengthSysex": 1
     },
     "PENV_T3": {
       "id": "PENV_T3",
@@ -3894,7 +4408,9 @@ ZenProperties["MDLJD800PTL"] = {
         0,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 44,
+      "lengthSysex": 1
     },
     "TVF_FLT": {
       "id": "TVF_FLT",
@@ -3906,6 +4422,8 @@ ZenProperties["MDLJD800PTL"] = {
         2
       ],
       "initValue": 0,
+      "sysexOffset": 45,
+      "lengthSysex": 1,
       "values": {
         "0": "LPF",
         "1": "BPF",
@@ -3921,7 +4439,9 @@ ZenProperties["MDLJD800PTL"] = {
         0,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 46,
+      "lengthSysex": 1
     },
     "TVF_RESO": {
       "id": "TVF_RESO",
@@ -3932,7 +4452,9 @@ ZenProperties["MDLJD800PTL"] = {
         0,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 47,
+      "lengthSysex": 1
     },
     "TVF_KF": {
       "id": "TVF_KF",
@@ -3944,6 +4466,8 @@ ZenProperties["MDLJD800PTL"] = {
         40
       ],
       "initValue": 0,
+      "sysexOffset": 48,
+      "lengthSysex": 1,
       "displayMeasurement": "%",
       "values": {
         "0": "-100 ",
@@ -3998,7 +4522,10 @@ ZenProperties["MDLJD800PTL"] = {
         -50,
         50
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 49,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "TVF_LFO": {
       "id": "TVF_LFO",
@@ -4010,6 +4537,8 @@ ZenProperties["MDLJD800PTL"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 50,
+      "lengthSysex": 1,
       "values": {
         "0": "LFO1 ",
         "1": "LFO2"
@@ -4024,7 +4553,10 @@ ZenProperties["MDLJD800PTL"] = {
         -50,
         50
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 51,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "TVF_ENV_DEP": {
       "id": "TVF_ENV_DEP",
@@ -4035,7 +4567,10 @@ ZenProperties["MDLJD800PTL"] = {
         -50,
         50
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 52,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "FENV_VSENS": {
       "id": "FENV_VSENS",
@@ -4046,7 +4581,10 @@ ZenProperties["MDLJD800PTL"] = {
         -50,
         50
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 53,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "FENV_T_VS": {
       "id": "FENV_T_VS",
@@ -4057,7 +4595,10 @@ ZenProperties["MDLJD800PTL"] = {
         -50,
         50
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 54,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "FENV_T_KF": {
       "id": "FENV_T_KF",
@@ -4068,7 +4609,10 @@ ZenProperties["MDLJD800PTL"] = {
         -10,
         10
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 55,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "FENV_L1": {
       "id": "FENV_L1",
@@ -4079,7 +4623,9 @@ ZenProperties["MDLJD800PTL"] = {
         0,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 56,
+      "lengthSysex": 1
     },
     "FENV_L2": {
       "id": "FENV_L2",
@@ -4090,7 +4636,9 @@ ZenProperties["MDLJD800PTL"] = {
         0,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 57,
+      "lengthSysex": 1
     },
     "FENV_SUS": {
       "id": "FENV_SUS",
@@ -4101,7 +4649,9 @@ ZenProperties["MDLJD800PTL"] = {
         0,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 58,
+      "lengthSysex": 1
     },
     "FENV_L4": {
       "id": "FENV_L4",
@@ -4112,7 +4662,9 @@ ZenProperties["MDLJD800PTL"] = {
         0,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 59,
+      "lengthSysex": 1
     },
     "FENV_T1": {
       "id": "FENV_T1",
@@ -4123,7 +4675,9 @@ ZenProperties["MDLJD800PTL"] = {
         0,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 60,
+      "lengthSysex": 1
     },
     "FENV_T2": {
       "id": "FENV_T2",
@@ -4134,7 +4688,9 @@ ZenProperties["MDLJD800PTL"] = {
         0,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 61,
+      "lengthSysex": 1
     },
     "FENV_T3": {
       "id": "FENV_T3",
@@ -4145,7 +4701,9 @@ ZenProperties["MDLJD800PTL"] = {
         0,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 62,
+      "lengthSysex": 1
     },
     "FENV_T4": {
       "id": "FENV_T4",
@@ -4156,7 +4714,9 @@ ZenProperties["MDLJD800PTL"] = {
         0,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 63,
+      "lengthSysex": 1
     },
     "TVA_BS_DIR": {
       "id": "TVA_BS_DIR",
@@ -4168,6 +4728,8 @@ ZenProperties["MDLJD800PTL"] = {
         2
       ],
       "initValue": 0,
+      "sysexOffset": 64,
+      "lengthSysex": 1,
       "values": {
         "0": "UP ",
         "1": "LOW",
@@ -4183,7 +4745,9 @@ ZenProperties["MDLJD800PTL"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 65,
+      "lengthSysex": 1
     },
     "TVA_BS_LVL": {
       "id": "TVA_BS_LVL",
@@ -4194,7 +4758,10 @@ ZenProperties["MDLJD800PTL"] = {
         -10,
         10
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 66,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "TVA_LEVEL": {
       "id": "TVA_LEVEL",
@@ -4205,7 +4772,9 @@ ZenProperties["MDLJD800PTL"] = {
         0,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 67,
+      "lengthSysex": 1
     },
     "TVA_AFT": {
       "id": "TVA_AFT",
@@ -4216,7 +4785,10 @@ ZenProperties["MDLJD800PTL"] = {
         -50,
         50
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 68,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "TVA_LFO": {
       "id": "TVA_LFO",
@@ -4228,6 +4800,8 @@ ZenProperties["MDLJD800PTL"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 69,
+      "lengthSysex": 1,
       "values": {
         "0": "LFO1 ",
         "1": "LFO2"
@@ -4242,7 +4816,10 @@ ZenProperties["MDLJD800PTL"] = {
         -50,
         50
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 70,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "AENV_VSENS": {
       "id": "AENV_VSENS",
@@ -4253,7 +4830,10 @@ ZenProperties["MDLJD800PTL"] = {
         -50,
         50
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 71,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "AENV_T_VS": {
       "id": "AENV_T_VS",
@@ -4264,7 +4844,10 @@ ZenProperties["MDLJD800PTL"] = {
         -50,
         50
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 72,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "AENV_T_KF": {
       "id": "AENV_T_KF",
@@ -4275,7 +4858,10 @@ ZenProperties["MDLJD800PTL"] = {
         -10,
         10
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 73,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "AENV_L1": {
       "id": "AENV_L1",
@@ -4286,7 +4872,9 @@ ZenProperties["MDLJD800PTL"] = {
         0,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 74,
+      "lengthSysex": 1
     },
     "AENV_L2": {
       "id": "AENV_L2",
@@ -4297,7 +4885,9 @@ ZenProperties["MDLJD800PTL"] = {
         0,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 75,
+      "lengthSysex": 1
     },
     "AENV_SUS": {
       "id": "AENV_SUS",
@@ -4308,7 +4898,9 @@ ZenProperties["MDLJD800PTL"] = {
         0,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 76,
+      "lengthSysex": 1
     },
     "AENV_T1": {
       "id": "AENV_T1",
@@ -4319,7 +4911,9 @@ ZenProperties["MDLJD800PTL"] = {
         0,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 77,
+      "lengthSysex": 1
     },
     "AENV_T2": {
       "id": "AENV_T2",
@@ -4330,7 +4924,9 @@ ZenProperties["MDLJD800PTL"] = {
         0,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 78,
+      "lengthSysex": 1
     },
     "AENV_T3": {
       "id": "AENV_T3",
@@ -4341,7 +4937,9 @@ ZenProperties["MDLJD800PTL"] = {
         0,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 79,
+      "lengthSysex": 1
     },
     "AENV_T4": {
       "id": "AENV_T4",
@@ -4352,7 +4950,9 @@ ZenProperties["MDLJD800PTL"] = {
         0,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 80,
+      "lengthSysex": 1
     },
     "PADDING1": {
       "id": "PADDING1",
@@ -4364,7 +4964,1184 @@ ZenProperties["MDLJD800PTL"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
+    }
+  },
+  "category": "Autogenerated: jupiter"
+};
+
+ZenProperties["MDLJPX_FENV"] = {
+  "name": "MDLJPX_FENV",
+  "description": "FENV",
+  "byteLength": 12,
+  "sysexLength": 24,
+  "parameters": {
+    "A": {
+      "id": "A",
+      "byteOffset": 0,
+      "byteLength": 2,
+      "description": "FILTER ENV01$ ATTACK",
+      "dataRange": [
+        0,
+        1023
+      ],
+      "initValue": 0,
+      "lengthSysex": 4
+    },
+    "D": {
+      "id": "D",
+      "byteOffset": 2,
+      "byteLength": 2,
+      "description": "FILTER ENV01$ DECAY",
+      "dataRange": [
+        0,
+        1023
+      ],
+      "initValue": 0,
+      "sysexOffset": 4,
+      "lengthSysex": 4
+    },
+    "S": {
+      "id": "S",
+      "byteOffset": 4,
+      "byteLength": 2,
+      "description": "FILTER ENV01$ SUSTAIN",
+      "dataRange": [
+        0,
+        1023
+      ],
+      "initValue": 1023,
+      "sysexOffset": 8,
+      "lengthSysex": 4
+    },
+    "R": {
+      "id": "R",
+      "byteOffset": 6,
+      "byteLength": 2,
+      "description": "FILTER ENV01$ RELEASE",
+      "dataRange": [
+        0,
+        1023
+      ],
+      "initValue": 0,
+      "sysexOffset": 12,
+      "lengthSysex": 4
+    },
+    "DEPTH": {
+      "id": "DEPTH",
+      "byteOffset": 8,
+      "byteLength": 2,
+      "description": "FILTER ENV01$ DEPTH",
+      "dataRange": [
+        -1023,
+        1023
+      ],
+      "initValue": 0,
+      "sysexOffset": 16,
+      "lengthSysex": 4,
+      "sysexValueOffset": 1024
+    },
+    "VSENS": {
+      "id": "VSENS",
+      "byteOffset": 10,
+      "byteLength": 1,
+      "description": "FILTER ENV01$ VELOCITY SENS",
+      "dataRange": [
+        -100,
+        100
+      ],
+      "initValue": 0,
+      "sysexOffset": 20,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
+    },
+    "KYBD": {
+      "id": "KYBD",
+      "byteOffset": 11,
+      "byteLength": 1,
+      "description": "FILTER ENV01$ KEY FOLLOW",
+      "dataRange": [
+        -100,
+        100
+      ],
+      "initValue": 0,
+      "sysexOffset": 22,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
+    }
+  },
+  "category": "Autogenerated: jupiter"
+};
+
+ZenProperties["MDLJPX_LFO"] = {
+  "name": "MDLJPX_LFO",
+  "description": "LFO",
+  "byteLength": 16,
+  "sysexLength": 20,
+  "parameters": {
+    "WAVE": {
+      "id": "WAVE",
+      "byteOffset": 0,
+      "byteLength": 1,
+      "description": "LFO01$ WAVE FORM",
+      "dataRange": [
+        0,
+        9
+      ],
+      "initValue": 0,
+      "lengthSysex": 1,
+      "values": {
+        "0": "SIN",
+        "1": "TRI",
+        "2": "SAW-UP",
+        "3": "SAW-DW",
+        "4": "SQR",
+        "5": "RND",
+        "6": "TRP",
+        "7": "S&H",
+        "8": "CHS",
+        "9": "VSIN"
+      }
+    },
+    "NOTE": {
+      "id": "NOTE",
+      "byteOffset": 1,
+      "byteLength": 1,
+      "description": "LFO01$ RATE (Note)",
+      "dataRange": [
+        0,
+        22
+      ],
+      "initValue": 9,
+      "sysexOffset": 1,
+      "lengthSysex": 1,
+      "values": {
+        "0": "1/64T",
+        "1": "1/64",
+        "2": "1/32T",
+        "3": "1/32",
+        "4": "1/16T",
+        "5": "1/32.",
+        "6": "1/16",
+        "7": "1/8T",
+        "8": "1/16.",
+        "9": "1/8",
+        "10": "1/4T",
+        "11": "1/8.",
+        "12": "1/4",
+        "13": "1/2T",
+        "14": "1/4.",
+        "15": "1/2",
+        "16": "1T",
+        "17": "1/2.",
+        "18": "1",
+        "19": "2T",
+        "20": "1.",
+        "21": "2",
+        "22": "4"
+      }
+    },
+    "RATE": {
+      "id": "RATE",
+      "byteOffset": 2,
+      "byteLength": 2,
+      "description": "LFO01$ RATE",
+      "dataRange": [
+        0,
+        1023
+      ],
+      "initValue": 621,
+      "sysexOffset": 2,
+      "lengthSysex": 4
+    },
+    "DELAY": {
+      "id": "DELAY",
+      "byteOffset": 4,
+      "byteLength": 2,
+      "description": "LFO01$ DELAY TIME",
+      "dataRange": [
+        0,
+        1023
+      ],
+      "initValue": 0,
+      "sysexOffset": 6,
+      "lengthSysex": 4
+    },
+    "DEPTH_P": {
+      "id": "DEPTH_P",
+      "byteOffset": 6,
+      "byteLength": 1,
+      "description": "LFO01$ PITCH DEPTH",
+      "dataRange": [
+        -100,
+        100
+      ],
+      "initValue": 0,
+      "sysexOffset": 10,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
+    },
+    "DEPTH_F": {
+      "id": "DEPTH_F",
+      "byteOffset": 7,
+      "byteLength": 1,
+      "description": "LFO01$ FILTER DEPTH",
+      "dataRange": [
+        -100,
+        100
+      ],
+      "initValue": 0,
+      "sysexOffset": 12,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
+    },
+    "DEPTH_A": {
+      "id": "DEPTH_A",
+      "byteOffset": 8,
+      "byteLength": 1,
+      "description": "LFO01$ AMP DEPTH",
+      "dataRange": [
+        -100,
+        100
+      ],
+      "initValue": 0,
+      "sysexOffset": 14,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
+    },
+    "DEST_P": {
+      "id": "DEST_P",
+      "byteOffset": 9,
+      "byteLength": 1,
+      "description": "LFO01$ PITCH DESTINATION SELECT",
+      "dataRange": [
+        0,
+        6
+      ],
+      "initValue": 0,
+      "sysexOffset": 16,
+      "lengthSysex": 1,
+      "values": {
+        "0": "ALL",
+        "1": "OSC1",
+        "2": "OSC2",
+        "3": "OSC3",
+        "4": "OSC4",
+        "5": "OSC12",
+        "6": "OSC34"
+      }
+    },
+    "SYNC": {
+      "id": "SYNC",
+      "byteOffset": 10,
+      "byteLength": 1,
+      "description": "LFO01$ SYNC SWITCH",
+      "dataRange": [
+        0,
+        1
+      ],
+      "initValue": 0,
+      "sysexOffset": 17,
+      "lengthSysex": 1,
+      "values": {
+        "0": "OFF",
+        "1": "ON"
+      }
+    },
+    "KEY_TRG": {
+      "id": "KEY_TRG",
+      "byteOffset": 11,
+      "byteLength": 1,
+      "description": "LFO01$ KEY TRIGGER",
+      "dataRange": [
+        0,
+        1
+      ],
+      "initValue": 0,
+      "sysexOffset": 18,
+      "lengthSysex": 1,
+      "values": {
+        "0": "OFF",
+        "1": "ON"
+      }
+    },
+    "PAN_DEPTH": {
+      "id": "PAN_DEPTH",
+      "byteOffset": 12,
+      "byteLength": 1,
+      "description": "LFO01$ PAN DEPTH",
+      "dataRange": [
+        -63,
+        63
+      ],
+      "initValue": 0,
+      "sysexOffset": 19,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
+    },
+    "PADDING1": {
+      "id": "PADDING1",
+      "byteOffset": 13,
+      "byteLength": 3,
+      "description": "__padding",
+      "dataRange": [
+        0,
+        0
+      ],
+      "initValue": null,
+      "isPadding": true,
+      "lengthSysex": 0
+    }
+  },
+  "category": "Autogenerated: jupiter"
+};
+
+ZenProperties["MDLJPX_OSC"] = {
+  "name": "MDLJPX_OSC",
+  "description": "OSC",
+  "byteLength": 12,
+  "sysexLength": 15,
+  "parameters": {
+    "WAVE": {
+      "id": "WAVE",
+      "byteOffset": 0,
+      "byteLength": 1,
+      "description": "OSC01$ WAVEFORM",
+      "dataRange": [
+        0,
+        6
+      ],
+      "initValue": 0,
+      "lengthSysex": 1,
+      "values": {
+        "0": "SAW",
+        "1": "SQR",
+        "2": "TRI",
+        "3": "SIN",
+        "4": "JUNO",
+        "5": "SUPSAW",
+        "6": "NOISE"
+      }
+    },
+    "COARSE": {
+      "id": "COARSE",
+      "byteOffset": 1,
+      "byteLength": 1,
+      "description": "OSC01$ COARSE TUNE",
+      "dataRange": [
+        -24,
+        24
+      ],
+      "initValue": 0,
+      "sysexOffset": 1,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
+    },
+    "FINE": {
+      "id": "FINE",
+      "byteOffset": 2,
+      "byteLength": 1,
+      "description": "OSC01$ FINE TUNE",
+      "dataRange": [
+        -50,
+        50
+      ],
+      "initValue": 0,
+      "sysexOffset": 2,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
+    },
+    "LEVEL": {
+      "id": "LEVEL",
+      "byteOffset": 3,
+      "byteLength": 1,
+      "description": "OSC01$ LEVEL",
+      "dataRange": [
+        0,
+        255
+      ],
+      "initValue": 255,
+      "sysexOffset": 3,
+      "lengthSysex": 2
+    },
+    "PW_PWM": {
+      "id": "PW_PWM",
+      "byteOffset": 4,
+      "byteLength": 1,
+      "description": "OSC01$ PW PWM",
+      "dataRange": [
+        0,
+        127
+      ],
+      "initValue": 0,
+      "sysexOffset": 5,
+      "lengthSysex": 1
+    },
+    "PW_MODE": {
+      "id": "PW_MODE",
+      "byteOffset": 5,
+      "byteLength": 1,
+      "description": "OSC01$ PW MODE",
+      "dataRange": [
+        0,
+        3
+      ],
+      "initValue": 1,
+      "sysexOffset": 6,
+      "lengthSysex": 1,
+      "values": {
+        "0": "MANUAL",
+        "1": "LFO2",
+        "2": "P-ENV",
+        "3": "F-ENV"
+      }
+    },
+    "DELAY": {
+      "id": "DELAY",
+      "byteOffset": 6,
+      "byteLength": 2,
+      "description": "OSC01$ DELAY TIME",
+      "dataRange": [
+        0,
+        1023
+      ],
+      "initValue": 0,
+      "sysexOffset": 7,
+      "lengthSysex": 4
+    },
+    "DELAY_SYNC": {
+      "id": "DELAY_SYNC",
+      "byteOffset": 8,
+      "byteLength": 1,
+      "description": "OSC01$ DELAY TIME SYNC",
+      "dataRange": [
+        0,
+        1
+      ],
+      "initValue": 0,
+      "sysexOffset": 11,
+      "lengthSysex": 1,
+      "values": {
+        "0": "OFF",
+        "1": "ON"
+      }
+    },
+    "DELAY_NOTE": {
+      "id": "DELAY_NOTE",
+      "byteOffset": 9,
+      "byteLength": 1,
+      "description": "OSC01$ DELAY TIME (Note)",
+      "dataRange": [
+        0,
+        21
+      ],
+      "initValue": 9,
+      "sysexOffset": 12,
+      "lengthSysex": 1,
+      "values": {
+        "0": "1/64T",
+        "1": "1/64",
+        "2": "1/32T",
+        "3": "1/32",
+        "4": "1/16T",
+        "5": "1/32.",
+        "6": "1/16",
+        "7": "1/8T",
+        "8": "1/16.",
+        "9": "1/8",
+        "10": "1/4T",
+        "11": "1/8.",
+        "12": "1/4",
+        "13": "1/2T",
+        "14": "1/4.",
+        "15": "1/2",
+        "16": "1T",
+        "17": "1/2.",
+        "18": "1",
+        "19": "2T",
+        "20": "1.",
+        "21": "2"
+      }
+    },
+    "PAN": {
+      "id": "PAN",
+      "byteOffset": 10,
+      "byteLength": 1,
+      "description": "OSC01$ PAN",
+      "dataRange": [
+        -64,
+        63
+      ],
+      "initValue": 0,
+      "sysexOffset": 13,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
+    },
+    "PAN_ALT": {
+      "id": "PAN_ALT",
+      "byteOffset": 11,
+      "byteLength": 1,
+      "description": "OSC01$ ALTERNATE PAN DEPTH",
+      "dataRange": [
+        -64,
+        63
+      ],
+      "initValue": 0,
+      "sysexOffset": 14,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
+    }
+  },
+  "category": "Autogenerated: jupiter"
+};
+
+ZenProperties["MDLJPX_PENV"] = {
+  "name": "MDLJPX_PENV",
+  "description": "PENV",
+  "byteLength": 12,
+  "sysexLength": 23,
+  "parameters": {
+    "A": {
+      "id": "A",
+      "byteOffset": 0,
+      "byteLength": 2,
+      "description": "PITCH ENV01$ ATTACK",
+      "dataRange": [
+        0,
+        1023
+      ],
+      "initValue": 0,
+      "lengthSysex": 4
+    },
+    "D": {
+      "id": "D",
+      "byteOffset": 2,
+      "byteLength": 2,
+      "description": "PITCH ENV01$ DECAY",
+      "dataRange": [
+        0,
+        1023
+      ],
+      "initValue": 0,
+      "sysexOffset": 4,
+      "lengthSysex": 4
+    },
+    "S": {
+      "id": "S",
+      "byteOffset": 4,
+      "byteLength": 2,
+      "description": "PITCH ENV01$ SUSTAIN",
+      "dataRange": [
+        0,
+        1023
+      ],
+      "initValue": 1023,
+      "sysexOffset": 8,
+      "lengthSysex": 4
+    },
+    "R": {
+      "id": "R",
+      "byteOffset": 6,
+      "byteLength": 2,
+      "description": "PITCH ENV01$ RELEASE",
+      "dataRange": [
+        0,
+        1023
+      ],
+      "initValue": 0,
+      "sysexOffset": 12,
+      "lengthSysex": 4
+    },
+    "DEPTH": {
+      "id": "DEPTH",
+      "byteOffset": 8,
+      "byteLength": 1,
+      "description": "PITCH ENV01$ DEPTH",
+      "dataRange": [
+        -100,
+        100
+      ],
+      "initValue": 0,
+      "sysexOffset": 16,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
+    },
+    "VSENS": {
+      "id": "VSENS",
+      "byteOffset": 9,
+      "byteLength": 1,
+      "description": "PITCH ENV01$ VELOCITY SENS",
+      "dataRange": [
+        -100,
+        100
+      ],
+      "initValue": 0,
+      "sysexOffset": 18,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
+    },
+    "DEST": {
+      "id": "DEST",
+      "byteOffset": 10,
+      "byteLength": 1,
+      "description": "PITCH ENV01$ DESTINATION SELECT",
+      "dataRange": [
+        0,
+        2
+      ],
+      "initValue": 0,
+      "sysexOffset": 20,
+      "lengthSysex": 1,
+      "values": {
+        "0": "OSC1",
+        "1": "BOTH",
+        "2": "OSC2"
+      }
+    },
+    "KYBD": {
+      "id": "KYBD",
+      "byteOffset": 11,
+      "byteLength": 1,
+      "description": "PITCH ENV01$ KEY FOLLOW",
+      "dataRange": [
+        -100,
+        100
+      ],
+      "initValue": 0,
+      "sysexOffset": 21,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
+    }
+  },
+  "category": "Autogenerated: jupiter"
+};
+
+ZenProperties["MDLJPX"] = {
+  "name": "MDLJPX",
+  "description": "JUPITER-X OSC Parameter",
+  "byteLength": 108,
+  "sysexLength": 157,
+  "parameters": {
+    "OSC": {
+      "id": "OSC",
+      "byteOffset": 0,
+      "byteLength": 12,
+      "description": "OSC",
+      "blockName": "MDLJPX_OSC",
+      "count": 1,
+      "blockByteLength": 12,
+      "sysexOffset": "00 00 00",
+      "lengthSysex": 15,
+      "block": ZenProperties["MDLJPX_OSC"]
+    },
+    "LFO": {
+      "id": "LFO",
+      "byteOffset": 12,
+      "byteLength": 16,
+      "description": "LFO",
+      "blockName": "MDLJPX_LFO",
+      "count": 1,
+      "blockByteLength": 16,
+      "sysexOffset": "00 00 0f",
+      "lengthSysex": 20,
+      "block": ZenProperties["MDLJPX_LFO"]
+    },
+    "PENV": {
+      "id": "PENV",
+      "byteOffset": 28,
+      "byteLength": 12,
+      "description": "PENV",
+      "blockName": "MDLJPX_PENV",
+      "count": 1,
+      "blockByteLength": 12,
+      "sysexOffset": "00 00 23",
+      "lengthSysex": 23,
+      "block": ZenProperties["MDLJPX_PENV"]
+    },
+    "FENV": {
+      "id": "FENV",
+      "byteOffset": 40,
+      "byteLength": 12,
+      "description": "FENV",
+      "blockName": "MDLJPX_FENV",
+      "count": 1,
+      "blockByteLength": 12,
+      "sysexOffset": "00 00 3a",
+      "lengthSysex": 24,
+      "block": ZenProperties["MDLJPX_FENV"]
+    },
+    "FLT_FREQ": {
+      "id": "FLT_FREQ",
+      "byteOffset": 52,
+      "byteLength": 2,
+      "description": "FILTER CUTOFF FREQ",
+      "dataRange": [
+        0,
+        1023
+      ],
+      "initValue": 1023,
+      "sysexOffset": 82,
+      "lengthSysex": 4
+    },
+    "FLT_RESO": {
+      "id": "FLT_RESO",
+      "byteOffset": 54,
+      "byteLength": 2,
+      "description": "FILTER RESONANCE",
+      "dataRange": [
+        0,
+        1023
+      ],
+      "initValue": 0,
+      "sysexOffset": 86,
+      "lengthSysex": 4
+    },
+    "FLT_HPF": {
+      "id": "FLT_HPF",
+      "byteOffset": 56,
+      "byteLength": 2,
+      "description": "FILTER HPF",
+      "dataRange": [
+        0,
+        1023
+      ],
+      "initValue": 0,
+      "sysexOffset": 90,
+      "lengthSysex": 4
+    },
+    "FLT_SLOPE": {
+      "id": "FLT_SLOPE",
+      "byteOffset": 58,
+      "byteLength": 1,
+      "description": "FILTER SLOPE",
+      "dataRange": [
+        0,
+        2
+      ],
+      "initValue": 0,
+      "sysexOffset": 94,
+      "lengthSysex": 1,
+      "values": {
+        "0": "-12",
+        "1": "-18",
+        "2": "-24"
+      }
+    },
+    "FLT_TYPE": {
+      "id": "FLT_TYPE",
+      "byteOffset": 59,
+      "byteLength": 1,
+      "description": "FILTER TYPE",
+      "dataRange": [
+        0,
+        2
+      ],
+      "initValue": 0,
+      "sysexOffset": 95,
+      "lengthSysex": 1,
+      "values": {
+        "0": "R",
+        "1": "M",
+        "2": "S"
+      }
+    },
+    "FLT_KYBD": {
+      "id": "FLT_KYBD",
+      "byteOffset": 60,
+      "byteLength": 1,
+      "description": "FILTER KEY FOLLOW",
+      "dataRange": [
+        0,
+        200
+      ],
+      "initValue": 0,
+      "sysexOffset": 96,
+      "lengthSysex": 2
+    },
+    "FLT_VSENS": {
+      "id": "FLT_VSENS",
+      "byteOffset": 61,
+      "byteLength": 1,
+      "description": "FILTER VELOCITY SENS",
+      "dataRange": [
+        -100,
+        100
+      ],
+      "initValue": 0,
+      "sysexOffset": 98,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
+    },
+    "AENV_A": {
+      "id": "AENV_A",
+      "byteOffset": 62,
+      "byteLength": 2,
+      "description": "AMP ENV ATTACK",
+      "dataRange": [
+        0,
+        1023
+      ],
+      "initValue": 0,
+      "sysexOffset": 100,
+      "lengthSysex": 4
+    },
+    "AENV_D": {
+      "id": "AENV_D",
+      "byteOffset": 64,
+      "byteLength": 2,
+      "description": "AMP ENV DECAY",
+      "dataRange": [
+        0,
+        1023
+      ],
+      "initValue": 0,
+      "sysexOffset": 104,
+      "lengthSysex": 4
+    },
+    "AENV_S": {
+      "id": "AENV_S",
+      "byteOffset": 66,
+      "byteLength": 2,
+      "description": "AMP ENV SUSTAIN",
+      "dataRange": [
+        0,
+        1023
+      ],
+      "initValue": 1023,
+      "sysexOffset": 108,
+      "lengthSysex": 4
+    },
+    "AENV_R": {
+      "id": "AENV_R",
+      "byteOffset": 68,
+      "byteLength": 2,
+      "description": "AMP ENV RELEASE",
+      "dataRange": [
+        0,
+        1023
+      ],
+      "initValue": 0,
+      "sysexOffset": 112,
+      "lengthSysex": 4
+    },
+    "AENV_VSENS": {
+      "id": "AENV_VSENS",
+      "byteOffset": 70,
+      "byteLength": 1,
+      "description": "AMP ENV VELOCITY SENS",
+      "dataRange": [
+        -100,
+        100
+      ],
+      "initValue": 0,
+      "sysexOffset": 116,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
+    },
+    "AENV_KYBD": {
+      "id": "AENV_KYBD",
+      "byteOffset": 71,
+      "byteLength": 1,
+      "description": "AMP ENV KEY FOLLOW",
+      "dataRange": [
+        -100,
+        100
+      ],
+      "initValue": 0,
+      "sysexOffset": 118,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
+    },
+    "PENVLINK": {
+      "id": "PENVLINK",
+      "byteOffset": 78,
+      "byteLength": 1,
+      "description": "PITCH ENV1/2 LINK SWITCH",
+      "dataRange": [
+        0,
+        1
+      ],
+      "initValue": 0,
+      "sysexOffset": 130,
+      "lengthSysex": 1,
+      "values": {
+        "0": "OFF",
+        "1": "ON"
+      }
+    },
+    "FENVLINK": {
+      "id": "FENVLINK",
+      "byteOffset": 79,
+      "byteLength": 1,
+      "description": "FILTER ENV1/2 LINK SWITCH",
+      "dataRange": [
+        0,
+        1
+      ],
+      "initValue": 0,
+      "sysexOffset": 131,
+      "lengthSysex": 1,
+      "values": {
+        "0": "OFF",
+        "1": "ON"
+      }
+    },
+    "AMP_LEVEL": {
+      "id": "AMP_LEVEL",
+      "byteOffset": 80,
+      "byteLength": 1,
+      "description": "AMP LEVEL",
+      "dataRange": [
+        0,
+        127
+      ],
+      "initValue": 96,
+      "sysexOffset": 132,
+      "lengthSysex": 1
+    },
+    "PTA_MODE": {
+      "id": "PTA_MODE",
+      "byteOffset": 83,
+      "byteLength": 1,
+      "description": "PORTAMENT MODE",
+      "dataRange": [
+        0,
+        2
+      ],
+      "initValue": 0,
+      "sysexOffset": 137,
+      "lengthSysex": 1,
+      "values": {
+        "0": "OFF",
+        "1": "NORMAL",
+        "2": "LEGATO"
+      }
+    },
+    "PTA_TIME": {
+      "id": "PTA_TIME",
+      "byteOffset": 84,
+      "byteLength": 2,
+      "description": "PORTAMENT TIME",
+      "dataRange": [
+        0,
+        1023
+      ],
+      "initValue": 180,
+      "sysexOffset": 138,
+      "lengthSysex": 4
+    },
+    "PTA_CRV": {
+      "id": "PTA_CRV",
+      "byteOffset": 86,
+      "byteLength": 1,
+      "description": "PORTAMENT CURVE TYPE",
+      "dataRange": [
+        0,
+        1
+      ],
+      "initValue": 0,
+      "sysexOffset": 142,
+      "lengthSysex": 1,
+      "values": {
+        "0": "LIN",
+        "1": "EXP"
+      }
+    },
+    "AFT_LFO": {
+      "id": "AFT_LFO",
+      "byteOffset": 87,
+      "byteLength": 1,
+      "description": "AFTER TOUCH SENS LFO",
+      "dataRange": [
+        -63,
+        63
+      ],
+      "initValue": 0,
+      "sysexOffset": 143,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
+    },
+    "AFT_FREQ": {
+      "id": "AFT_FREQ",
+      "byteOffset": 88,
+      "byteLength": 1,
+      "description": "AFTER TOUCH SENS FREQ",
+      "dataRange": [
+        -63,
+        63
+      ],
+      "initValue": 20,
+      "sysexOffset": 144,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
+    },
+    "AFT_LEV": {
+      "id": "AFT_LEV",
+      "byteOffset": 89,
+      "byteLength": 1,
+      "description": "AFTER TOUCH SENS LEVEL",
+      "dataRange": [
+        -63,
+        63
+      ],
+      "initValue": 0,
+      "sysexOffset": 145,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
+    },
+    "AFT_PITCH": {
+      "id": "AFT_PITCH",
+      "byteOffset": 90,
+      "byteLength": 1,
+      "description": "AFTER TOUCH SENS PITCH",
+      "dataRange": [
+        -63,
+        63
+      ],
+      "initValue": 0,
+      "sysexOffset": 146,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
+    },
+    "BND_PTCH_UP": {
+      "id": "BND_PTCH_UP",
+      "byteOffset": 91,
+      "byteLength": 1,
+      "description": "BENDER PITCH DEPTH UP",
+      "dataRange": [
+        0,
+        24
+      ],
+      "initValue": 2,
+      "sysexOffset": 147,
+      "lengthSysex": 1
+    },
+    "BND_PTCH_DW": {
+      "id": "BND_PTCH_DW",
+      "byteOffset": 92,
+      "byteLength": 1,
+      "description": "BENDER PITCH DEPTH DOWN",
+      "dataRange": [
+        0,
+        24
+      ],
+      "initValue": 2,
+      "sysexOffset": 148,
+      "lengthSysex": 1
+    },
+    "BND_FLT": {
+      "id": "BND_FLT",
+      "byteOffset": 93,
+      "byteLength": 1,
+      "description": "BENDER FILTER DEPTH",
+      "dataRange": [
+        -63,
+        63
+      ],
+      "initValue": 0,
+      "sysexOffset": 149,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
+    },
+    "BND_LFO": {
+      "id": "BND_LFO",
+      "byteOffset": 94,
+      "byteLength": 1,
+      "description": "MODULATION LFO DEPTH",
+      "dataRange": [
+        -63,
+        63
+      ],
+      "initValue": 14,
+      "sysexOffset": 150,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
+    },
+    "BND_LFO_RATE": {
+      "id": "BND_LFO_RATE",
+      "byteOffset": 95,
+      "byteLength": 1,
+      "description": "MODULATION LFO RATE SENS",
+      "dataRange": [
+        -63,
+        63
+      ],
+      "initValue": 0,
+      "sysexOffset": 151,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
+    },
+    "KBDMODE": {
+      "id": "KBDMODE",
+      "byteOffset": 96,
+      "byteLength": 1,
+      "description": "KEY MODE",
+      "dataRange": [
+        0,
+        3
+      ],
+      "initValue": 0,
+      "sysexOffset": 152,
+      "lengthSysex": 1,
+      "values": {
+        "0": "POLY",
+        "1": "SOLO",
+        "2": "UNISON",
+        "3": "SL-UNISON"
+      }
+    },
+    "PCHDRFT": {
+      "id": "PCHDRFT",
+      "byteOffset": 97,
+      "byteLength": 1,
+      "description": "PITCH DRIFT",
+      "dataRange": [
+        0,
+        255
+      ],
+      "initValue": 0,
+      "sysexOffset": 153,
+      "lengthSysex": 2
+    },
+    "UNISON_DETUNE": {
+      "id": "UNISON_DETUNE",
+      "byteOffset": 98,
+      "byteLength": 1,
+      "description": "UNISON DETUNE",
+      "dataRange": [
+        0,
+        100
+      ],
+      "initValue": 20,
+      "sysexOffset": 155,
+      "lengthSysex": 1
+    },
+    "CONDITION": {
+      "id": "CONDITION",
+      "byteOffset": 99,
+      "byteLength": 1,
+      "description": "CONDITION",
+      "dataRange": [
+        0,
+        100
+      ],
+      "initValue": 4,
+      "sysexOffset": 156,
+      "lengthSysex": 1
+    },
+    "PADDING1": {
+      "id": "PADDING1",
+      "byteOffset": 100,
+      "byteLength": 8,
+      "description": "__padding",
+      "dataRange": [
+        0,
+        0
+      ],
+      "initValue": null,
+      "isPadding": true,
+      "lengthSysex": 0
     }
   },
   "category": "Autogenerated: jupiter"
@@ -4374,6 +6151,7 @@ ZenProperties["MDLSYN0"] = {
   "name": "MDLSYN0",
   "description": "Model Synth Parameter Interface type0",
   "byteLength": 112,
+  "sysexLength": 167,
   "parameters": {
     "MODEL": {
       "id": "MODEL",
@@ -4385,6 +6163,7 @@ ZenProperties["MDLSYN0"] = {
         5
       ],
       "initValue": 0,
+      "lengthSysex": 2,
       "values": {
         "0": "---",
         "1": "JP8",
@@ -4404,6 +6183,8 @@ ZenProperties["MDLSYN0"] = {
         10
       ],
       "initValue": 0,
+      "sysexOffset": 2,
+      "lengthSysex": 1,
       "values": {
         "0": "SIN",
         "1": "TRI",
@@ -4427,7 +6208,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 3,
+      "lengthSysex": 4
     },
     "LFODLY": {
       "id": "LFODLY",
@@ -4438,7 +6221,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 7,
+      "lengthSysex": 4
     },
     "OSC1MOD": {
       "id": "OSC1MOD",
@@ -4449,7 +6234,10 @@ ZenProperties["MDLSYN0"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 11,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "OSC1PENV": {
       "id": "OSC1PENV",
@@ -4460,7 +6248,10 @@ ZenProperties["MDLSYN0"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 13,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "OSC1DEST": {
       "id": "OSC1DEST",
@@ -4472,6 +6263,8 @@ ZenProperties["MDLSYN0"] = {
         2
       ],
       "initValue": 0,
+      "sysexOffset": 15,
+      "lengthSysex": 1,
       "values": {
         "0": "OSC1",
         "1": "BOTH",
@@ -4488,6 +6281,8 @@ ZenProperties["MDLSYN0"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 16,
+      "lengthSysex": 1,
       "values": {
         "0": "1",
         "1": "2"
@@ -4503,6 +6298,8 @@ ZenProperties["MDLSYN0"] = {
         27
       ],
       "initValue": 0,
+      "sysexOffset": 17,
+      "lengthSysex": 4,
       "values": {
         "0": "PW",
         "1": "SAW",
@@ -4544,6 +6341,8 @@ ZenProperties["MDLSYN0"] = {
         4
       ],
       "initValue": 0,
+      "sysexOffset": 21,
+      "lengthSysex": 1,
       "values": {
         "0": "32'",
         "1": "16'",
@@ -4561,7 +6360,10 @@ ZenProperties["MDLSYN0"] = {
         -48,
         48
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 22,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "OSC1FINE": {
       "id": "OSC1FINE",
@@ -4572,7 +6374,10 @@ ZenProperties["MDLSYN0"] = {
         -50,
         50
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 23,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "OSC1LOWFREQ": {
       "id": "OSC1LOWFREQ",
@@ -4583,7 +6388,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 24,
+      "lengthSysex": 1
     },
     "OSC1MODE": {
       "id": "OSC1MODE",
@@ -4595,6 +6402,8 @@ ZenProperties["MDLSYN0"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 25,
+      "lengthSysex": 1,
       "values": {
         "0": "NORMAL",
         "1": "LOW FREQ"
@@ -4609,7 +6418,10 @@ ZenProperties["MDLSYN0"] = {
         -63,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 26,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "OSC1PLSW": {
       "id": "OSC1PLSW",
@@ -4620,7 +6432,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 27,
+      "lengthSysex": 1
     },
     "OSC1PLSM": {
       "id": "OSC1PLSM",
@@ -4632,6 +6446,8 @@ ZenProperties["MDLSYN0"] = {
         2
       ],
       "initValue": 0,
+      "sysexOffset": 28,
+      "lengthSysex": 1,
       "values": {
         "0": "LFO",
         "1": "MANUAL",
@@ -4647,7 +6463,10 @@ ZenProperties["MDLSYN0"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 29,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "OSC2PENV": {
       "id": "OSC2PENV",
@@ -4658,7 +6477,10 @@ ZenProperties["MDLSYN0"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 31,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "OSC2WAVE": {
       "id": "OSC2WAVE",
@@ -4670,6 +6492,8 @@ ZenProperties["MDLSYN0"] = {
         27
       ],
       "initValue": 0,
+      "sysexOffset": 33,
+      "lengthSysex": 4,
       "values": {
         "0": "PW",
         "1": "SAW",
@@ -4711,6 +6535,8 @@ ZenProperties["MDLSYN0"] = {
         4
       ],
       "initValue": 0,
+      "sysexOffset": 37,
+      "lengthSysex": 1,
       "values": {
         "0": "32'",
         "1": "16'",
@@ -4728,7 +6554,10 @@ ZenProperties["MDLSYN0"] = {
         -48,
         48
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 38,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "OSC2FINE": {
       "id": "OSC2FINE",
@@ -4739,7 +6568,10 @@ ZenProperties["MDLSYN0"] = {
         -50,
         50
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 39,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "OSC2LOWFREQ": {
       "id": "OSC2LOWFREQ",
@@ -4750,7 +6582,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 40,
+      "lengthSysex": 1
     },
     "OSC2MODE": {
       "id": "OSC2MODE",
@@ -4762,6 +6596,8 @@ ZenProperties["MDLSYN0"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 41,
+      "lengthSysex": 1,
       "values": {
         "0": "NORMAL",
         "1": "LO FREQ"
@@ -4776,7 +6612,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 42,
+      "lengthSysex": 1
     },
     "OSC3MOD": {
       "id": "OSC3MOD",
@@ -4787,7 +6625,10 @@ ZenProperties["MDLSYN0"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 43,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "OSC3PENV": {
       "id": "OSC3PENV",
@@ -4798,7 +6639,10 @@ ZenProperties["MDLSYN0"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 45,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "OSC3WAVE": {
       "id": "OSC3WAVE",
@@ -4810,6 +6654,8 @@ ZenProperties["MDLSYN0"] = {
         27
       ],
       "initValue": 0,
+      "sysexOffset": 47,
+      "lengthSysex": 4,
       "values": {
         "0": "PW",
         "1": "SAW",
@@ -4851,6 +6697,8 @@ ZenProperties["MDLSYN0"] = {
         4
       ],
       "initValue": 0,
+      "sysexOffset": 51,
+      "lengthSysex": 1,
       "values": {
         "0": "32'",
         "1": "16'",
@@ -4868,7 +6716,10 @@ ZenProperties["MDLSYN0"] = {
         -48,
         48
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 52,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "OSC3FINE": {
       "id": "OSC3FINE",
@@ -4879,7 +6730,10 @@ ZenProperties["MDLSYN0"] = {
         -50,
         50
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 53,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "OSC3LOWFREQ": {
       "id": "OSC3LOWFREQ",
@@ -4890,7 +6744,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 54,
+      "lengthSysex": 1
     },
     "OSC3MODE": {
       "id": "OSC3MODE",
@@ -4902,6 +6758,8 @@ ZenProperties["MDLSYN0"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 55,
+      "lengthSysex": 1,
       "values": {
         "0": "NORMAL",
         "1": "LO FREQ"
@@ -4917,6 +6775,8 @@ ZenProperties["MDLSYN0"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 56,
+      "lengthSysex": 1,
       "values": {
         "0": "WHITE",
         "1": "PINK"
@@ -4931,7 +6791,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         10800
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 57,
+      "lengthSysex": 4
     },
     "MODMODE": {
       "id": "MODMODE",
@@ -4943,6 +6805,8 @@ ZenProperties["MDLSYN0"] = {
         3
       ],
       "initValue": 0,
+      "sysexOffset": 61,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "SYNC",
@@ -4959,7 +6823,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         255
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 62,
+      "lengthSysex": 2
     },
     "MXROSC2": {
       "id": "MXROSC2",
@@ -4970,7 +6836,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         255
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 64,
+      "lengthSysex": 2
     },
     "MXROSC3": {
       "id": "MXROSC3",
@@ -4981,7 +6849,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         255
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 66,
+      "lengthSysex": 2
     },
     "MXRNOISE": {
       "id": "MXRNOISE",
@@ -4992,7 +6862,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         255
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 68,
+      "lengthSysex": 2
     },
     "MXRENVD": {
       "id": "MXRENVD",
@@ -5003,7 +6875,10 @@ ZenProperties["MDLSYN0"] = {
         -63,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 70,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "MXRENVS": {
       "id": "MXRENVS",
@@ -5015,6 +6890,8 @@ ZenProperties["MDLSYN0"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 71,
+      "lengthSysex": 1,
       "values": {
         "0": "1",
         "1": "2"
@@ -5029,7 +6906,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         3
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 72,
+      "lengthSysex": 1
     },
     "FLTTYPE": {
       "id": "FLTTYPE",
@@ -5040,7 +6919,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         3
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 73,
+      "lengthSysex": 1
     },
     "FLTHPF2": {
       "id": "FLTHPF2",
@@ -5051,7 +6932,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         3
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 74,
+      "lengthSysex": 1
     },
     "FLTHPF1": {
       "id": "FLTHPF1",
@@ -5062,7 +6945,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 75,
+      "lengthSysex": 4
     },
     "FLTFREQ": {
       "id": "FLTFREQ",
@@ -5073,7 +6958,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 79,
+      "lengthSysex": 4
     },
     "FLTRESO": {
       "id": "FLTRESO",
@@ -5084,7 +6971,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 83,
+      "lengthSysex": 4
     },
     "FLTENVD": {
       "id": "FLTENVD",
@@ -5095,7 +6984,10 @@ ZenProperties["MDLSYN0"] = {
         -1023,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 87,
+      "lengthSysex": 4,
+      "sysexValueOffset": 1024
     },
     "FLTENVS": {
       "id": "FLTENVS",
@@ -5107,6 +6999,8 @@ ZenProperties["MDLSYN0"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 91,
+      "lengthSysex": 1,
       "values": {
         "0": "1",
         "1": "2"
@@ -5122,6 +7016,8 @@ ZenProperties["MDLSYN0"] = {
         2
       ],
       "initValue": 0,
+      "sysexOffset": 92,
+      "lengthSysex": 1,
       "values": {
         "0": "-12dB",
         "1": "-18db",
@@ -5137,7 +7033,10 @@ ZenProperties["MDLSYN0"] = {
         -200,
         200
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 93,
+      "lengthSysex": 4,
+      "sysexValueOffset": 1024
     },
     "FLTMOD": {
       "id": "FLTMOD",
@@ -5148,7 +7047,10 @@ ZenProperties["MDLSYN0"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 97,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "PADDING1": {
       "id": "PADDING1",
@@ -5160,7 +7062,8 @@ ZenProperties["MDLSYN0"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     },
     "AMPLVL": {
       "id": "AMPLVL",
@@ -5171,7 +7074,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 99,
+      "lengthSysex": 1
     },
     "AMPMOD1": {
       "id": "AMPMOD1",
@@ -5182,7 +7087,9 @@ ZenProperties["MDLSYN0"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 100,
+      "lengthSysex": 2
     },
     "AMPMOD2": {
       "id": "AMPMOD2",
@@ -5193,7 +7100,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         3
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 102,
+      "lengthSysex": 1
     },
     "AMPENVS": {
       "id": "AMPENVS",
@@ -5205,6 +7114,8 @@ ZenProperties["MDLSYN0"] = {
         3
       ],
       "initValue": 0,
+      "sysexOffset": 103,
+      "lengthSysex": 1,
       "values": {
         "0": "ENV F&A",
         "1": "ENV2",
@@ -5221,7 +7132,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 104,
+      "lengthSysex": 4
     },
     "ENV1D": {
       "id": "ENV1D",
@@ -5232,7 +7145,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 108,
+      "lengthSysex": 4
     },
     "ENV1S": {
       "id": "ENV1S",
@@ -5243,7 +7158,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 112,
+      "lengthSysex": 4
     },
     "ENV1R": {
       "id": "ENV1R",
@@ -5254,7 +7171,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 116,
+      "lengthSysex": 4
     },
     "ENV1KYBD1": {
       "id": "ENV1KYBD1",
@@ -5265,7 +7184,10 @@ ZenProperties["MDLSYN0"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 120,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "ENV1KYBD2": {
       "id": "ENV1KYBD2",
@@ -5276,7 +7198,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         6
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 122,
+      "lengthSysex": 1
     },
     "ENV2A": {
       "id": "ENV2A",
@@ -5287,7 +7211,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 123,
+      "lengthSysex": 4
     },
     "ENV2D": {
       "id": "ENV2D",
@@ -5298,7 +7224,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 127,
+      "lengthSysex": 4
     },
     "ENV2S": {
       "id": "ENV2S",
@@ -5309,7 +7237,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 131,
+      "lengthSysex": 4
     },
     "ENV2R": {
       "id": "ENV2R",
@@ -5320,7 +7250,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 135,
+      "lengthSysex": 4
     },
     "ENV2MODE": {
       "id": "ENV2MODE",
@@ -5332,6 +7264,8 @@ ZenProperties["MDLSYN0"] = {
         2
       ],
       "initValue": 0,
+      "sysexOffset": 139,
+      "lengthSysex": 1,
       "values": {
         "0": "GATE+TRIG",
         "1": "GATE",
@@ -5347,7 +7281,10 @@ ZenProperties["MDLSYN0"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 140,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "ENV2KYBD2": {
       "id": "ENV2KYBD2",
@@ -5358,7 +7295,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         3
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 142,
+      "lengthSysex": 1
     },
     "DYNPTCH": {
       "id": "DYNPTCH",
@@ -5369,7 +7308,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         3
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 143,
+      "lengthSysex": 1
     },
     "DYNFLTT": {
       "id": "DYNFLTT",
@@ -5380,7 +7321,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         3
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 144,
+      "lengthSysex": 1
     },
     "DYNAMP": {
       "id": "DYNAMP",
@@ -5391,7 +7334,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         3
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 145,
+      "lengthSysex": 1
     },
     "PCHDRFT": {
       "id": "PCHDRFT",
@@ -5402,7 +7347,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         255
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 146,
+      "lengthSysex": 2
     },
     "BNDPTCH2": {
       "id": "BNDPTCH2",
@@ -5414,6 +7361,8 @@ ZenProperties["MDLSYN0"] = {
         3
       ],
       "initValue": 0,
+      "sysexOffset": 148,
+      "lengthSysex": 1,
       "values": {
         "0": "2",
         "1": "3",
@@ -5430,7 +7379,10 @@ ZenProperties["MDLSYN0"] = {
         -63,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 149,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "BNDLFO": {
       "id": "BNDLFO",
@@ -5441,7 +7393,10 @@ ZenProperties["MDLSYN0"] = {
         -63,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 150,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "BNDPTCH1": {
       "id": "BNDPTCH1",
@@ -5452,7 +7407,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         4800
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 151,
+      "lengthSysex": 4
     },
     "PTATIME": {
       "id": "PTATIME",
@@ -5463,7 +7420,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 155,
+      "lengthSysex": 4
     },
     "PTAMODE": {
       "id": "PTAMODE",
@@ -5475,6 +7434,8 @@ ZenProperties["MDLSYN0"] = {
         2
       ],
       "initValue": 0,
+      "sysexOffset": 159,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON",
@@ -5491,6 +7452,8 @@ ZenProperties["MDLSYN0"] = {
         3
       ],
       "initValue": 0,
+      "sysexOffset": 160,
+      "lengthSysex": 1,
       "values": {
         "0": "POLY",
         "1": "SOLO",
@@ -5508,6 +7471,8 @@ ZenProperties["MDLSYN0"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 161,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -5522,7 +7487,9 @@ ZenProperties["MDLSYN0"] = {
         0,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 162,
+      "lengthSysex": 1
     },
     "PTACRV": {
       "id": "PTACRV",
@@ -5534,6 +7501,8 @@ ZenProperties["MDLSYN0"] = {
         3
       ],
       "initValue": 0,
+      "sysexOffset": 163,
+      "lengthSysex": 1,
       "values": {
         "0": "ORIGINAL",
         "1": "LINER",
@@ -5550,7 +7519,10 @@ ZenProperties["MDLSYN0"] = {
         -63,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 164,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "AFT_FREQ": {
       "id": "AFT_FREQ",
@@ -5561,7 +7533,10 @@ ZenProperties["MDLSYN0"] = {
         -63,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 165,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "AFT_LEV": {
       "id": "AFT_LEV",
@@ -5572,7 +7547,10 @@ ZenProperties["MDLSYN0"] = {
         -63,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 166,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "PADDING2": {
       "id": "PADDING2",
@@ -5584,7 +7562,8 @@ ZenProperties["MDLSYN0"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     }
   },
   "category": "Autogenerated: jupiter"
@@ -5594,6 +7573,7 @@ ZenProperties["MDLVDN"] = {
   "name": "MDLVDN",
   "description": "Vocal Designer Model",
   "byteLength": 32,
+  "sysexLength": 11,
   "parameters": {
     "MSTR_LVL": {
       "id": "MSTR_LVL",
@@ -5604,7 +7584,8 @@ ZenProperties["MDLVDN"] = {
         0,
         127
       ],
-      "initValue": 100
+      "initValue": 100,
+      "lengthSysex": 1
     },
     "MIC_LVL": {
       "id": "MIC_LVL",
@@ -5615,7 +7596,9 @@ ZenProperties["MDLVDN"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 1,
+      "lengthSysex": 1
     },
     "VOC_LVL": {
       "id": "VOC_LVL",
@@ -5626,7 +7609,9 @@ ZenProperties["MDLVDN"] = {
         0,
         127
       ],
-      "initValue": 100
+      "initValue": 100,
+      "sysexOffset": 2,
+      "lengthSysex": 1
     },
     "ALGO": {
       "id": "ALGO",
@@ -5638,6 +7623,8 @@ ZenProperties["MDLVDN"] = {
         25
       ],
       "initValue": 0,
+      "sysexOffset": 3,
+      "lengthSysex": 1,
       "values": {
         "0": "Classic A",
         "1": "Classic B",
@@ -5677,6 +7664,8 @@ ZenProperties["MDLVDN"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 4,
+      "lengthSysex": 1,
       "values": {
         "0": "Basic",
         "1": "Custom"
@@ -5691,7 +7680,9 @@ ZenProperties["MDLVDN"] = {
         0,
         0
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 5,
+      "lengthSysex": 1
     },
     "LEVEL": {
       "id": "LEVEL",
@@ -5702,7 +7693,9 @@ ZenProperties["MDLVDN"] = {
         0,
         127
       ],
-      "initValue": 100
+      "initValue": 100,
+      "sysexOffset": 6,
+      "lengthSysex": 1
     },
     "PAN": {
       "id": "PAN",
@@ -5713,7 +7706,10 @@ ZenProperties["MDLVDN"] = {
         -64,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 7,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "PIT_CRS": {
       "id": "PIT_CRS",
@@ -5724,7 +7720,10 @@ ZenProperties["MDLVDN"] = {
         -48,
         48
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 8,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "PIT_FINE": {
       "id": "PIT_FINE",
@@ -5735,7 +7734,10 @@ ZenProperties["MDLVDN"] = {
         -50,
         50
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 9,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "OCTAVE": {
       "id": "OCTAVE",
@@ -5746,7 +7748,10 @@ ZenProperties["MDLVDN"] = {
         -2,
         2
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 10,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "PADDING1": {
       "id": "PADDING1",
@@ -5758,7 +7763,8 @@ ZenProperties["MDLVDN"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     }
   },
   "category": "Autogenerated: jupiter"
@@ -5768,6 +7774,7 @@ ZenProperties["MFX"] = {
   "name": "MFX",
   "description": "",
   "byteLength": 84,
+  "sysexLength": 144,
   "parameters": {
     "mfxType": {
       "id": "mfxType",
@@ -5778,7 +7785,8 @@ ZenProperties["MFX"] = {
         0,
         93
       ],
-      "initValue": 0
+      "initValue": 0,
+      "lengthSysex": 1
     },
     "mfxSwitch": {
       "id": "mfxSwitch",
@@ -5789,7 +7797,9 @@ ZenProperties["MFX"] = {
         0,
         1
       ],
-      "initValue": 1
+      "initValue": 1,
+      "sysexOffset": 1,
+      "lengthSysex": 1
     },
     "choSend": {
       "id": "choSend",
@@ -5800,7 +7810,9 @@ ZenProperties["MFX"] = {
         0,
         127
       ],
-      "initValue": 127
+      "initValue": 127,
+      "sysexOffset": 2,
+      "lengthSysex": 1
     },
     "revSend": {
       "id": "revSend",
@@ -5811,7 +7823,9 @@ ZenProperties["MFX"] = {
         0,
         127
       ],
-      "initValue": 127
+      "initValue": 127,
+      "sysexOffset": 3,
+      "lengthSysex": 1
     },
     "ctrlSrc1": {
       "id": "ctrlSrc1",
@@ -5823,6 +7837,8 @@ ZenProperties["MFX"] = {
         100
       ],
       "initValue": 0,
+      "sysexOffset": 4,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "MOD:CC01",
@@ -5936,7 +7952,10 @@ ZenProperties["MFX"] = {
         -63,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 5,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "ctrlSrc2": {
       "id": "ctrlSrc2",
@@ -5948,6 +7967,8 @@ ZenProperties["MFX"] = {
         100
       ],
       "initValue": 0,
+      "sysexOffset": 6,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "MOD:CC01",
@@ -6061,7 +8082,10 @@ ZenProperties["MFX"] = {
         -63,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 7,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "ctrlSrc3": {
       "id": "ctrlSrc3",
@@ -6073,6 +8097,8 @@ ZenProperties["MFX"] = {
         100
       ],
       "initValue": 0,
+      "sysexOffset": 8,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "MOD:CC01",
@@ -6186,7 +8212,10 @@ ZenProperties["MFX"] = {
         -63,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 9,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "ctrlSrc4": {
       "id": "ctrlSrc4",
@@ -6198,6 +8227,8 @@ ZenProperties["MFX"] = {
         100
       ],
       "initValue": 0,
+      "sysexOffset": 10,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "MOD:CC01",
@@ -6311,7 +8342,10 @@ ZenProperties["MFX"] = {
         -63,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 11,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "ctrlAsgn_1": {
       "id": "ctrlAsgn_1",
@@ -6322,7 +8356,9 @@ ZenProperties["MFX"] = {
         0,
         11
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 12,
+      "lengthSysex": 1
     },
     "param_1": {
       "id": "param_1",
@@ -6333,7 +8369,10 @@ ZenProperties["MFX"] = {
         -20000,
         20000
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 16,
+      "lengthSysex": 4,
+      "sysexValueOffset": 32768
     },
     "PADDING1": {
       "id": "PADDING1",
@@ -6345,7 +8384,8 @@ ZenProperties["MFX"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     }
   },
   "category": "Autogenerated: jupiter"
@@ -6355,6 +8395,7 @@ ZenProperties["PCMR_CMN"] = {
   "name": "PCMR_CMN",
   "description": "PCMRhythm Common",
   "byteLength": 28,
+  "sysexLength": 25,
   "parameters": {
     "NAME_1": {
       "id": "NAME_1",
@@ -6366,6 +8407,7 @@ ZenProperties["PCMR_CMN"] = {
         127
       ],
       "initValue": 32,
+      "lengthSysex": 1,
       "displayMeasurement": "ASCII"
     },
     "PADDING1": {
@@ -6378,7 +8420,8 @@ ZenProperties["PCMR_CMN"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     },
     "PHRASE": {
       "id": "PHRASE",
@@ -6389,7 +8432,9 @@ ZenProperties["PCMR_CMN"] = {
         0,
         65535
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 16,
+      "lengthSysex": 4
     },
     "LEVEL": {
       "id": "LEVEL",
@@ -6400,7 +8445,9 @@ ZenProperties["PCMR_CMN"] = {
         0,
         127
       ],
-      "initValue": 127
+      "initValue": 127,
+      "sysexOffset": 20,
+      "lengthSysex": 1
     },
     "PADDING2": {
       "id": "PADDING2",
@@ -6412,7 +8459,8 @@ ZenProperties["PCMR_CMN"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     },
     "PHRASE_VEL_RATE": {
       "id": "PHRASE_VEL_RATE",
@@ -6423,7 +8471,9 @@ ZenProperties["PCMR_CMN"] = {
         1,
         200
       ],
-      "initValue": 100
+      "initValue": 100,
+      "sysexOffset": 21,
+      "lengthSysex": 2
     },
     "PHRASE_VEL_SHIFT": {
       "id": "PHRASE_VEL_SHIFT",
@@ -6434,7 +8484,10 @@ ZenProperties["PCMR_CMN"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 23,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "PADDING3": {
       "id": "PADDING3",
@@ -6446,7 +8499,8 @@ ZenProperties["PCMR_CMN"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     }
   },
   "category": "Autogenerated: jupiter"
@@ -6456,6 +8510,7 @@ ZenProperties["PCMR_PTL"] = {
   "name": "PCMR_PTL",
   "description": "PCMRhythm Partial",
   "byteLength": 20,
+  "sysexLength": 27,
   "parameters": {
     "INST_NUM": {
       "id": "INST_NUM",
@@ -6466,7 +8521,8 @@ ZenProperties["PCMR_PTL"] = {
         0,
         32768
       ],
-      "initValue": 0
+      "initValue": 0,
+      "lengthSysex": 4
     },
     "INST_GTYPE": {
       "id": "INST_GTYPE",
@@ -6478,6 +8534,8 @@ ZenProperties["PCMR_PTL"] = {
         2
       ],
       "initValue": 0,
+      "sysexOffset": 4,
+      "lengthSysex": 1,
       "values": {
         "0": "PRESET",
         "1": "USER",
@@ -6494,7 +8552,8 @@ ZenProperties["PCMR_PTL"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     },
     "INST_GID": {
       "id": "INST_GID",
@@ -6505,7 +8564,9 @@ ZenProperties["PCMR_PTL"] = {
         0,
         16383
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 5,
+      "lengthSysex": 4
     },
     "LEVEL": {
       "id": "LEVEL",
@@ -6516,7 +8577,9 @@ ZenProperties["PCMR_PTL"] = {
         0,
         127
       ],
-      "initValue": 127
+      "initValue": 127,
+      "sysexOffset": 9,
+      "lengthSysex": 1
     },
     "PADDING2": {
       "id": "PADDING2",
@@ -6528,7 +8591,8 @@ ZenProperties["PCMR_PTL"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     },
     "PAN": {
       "id": "PAN",
@@ -6539,7 +8603,10 @@ ZenProperties["PCMR_PTL"] = {
         -64,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 10,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "CHO_SEND": {
       "id": "CHO_SEND",
@@ -6550,7 +8617,9 @@ ZenProperties["PCMR_PTL"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 11,
+      "lengthSysex": 1
     },
     "REV_SEND": {
       "id": "REV_SEND",
@@ -6561,7 +8630,9 @@ ZenProperties["PCMR_PTL"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 12,
+      "lengthSysex": 1
     },
     "MUTE_GRP": {
       "id": "MUTE_GRP",
@@ -6573,6 +8644,8 @@ ZenProperties["PCMR_PTL"] = {
         31
       ],
       "initValue": 0,
+      "sysexOffset": 13,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "1",
@@ -6618,6 +8691,8 @@ ZenProperties["PCMR_PTL"] = {
         7
       ],
       "initValue": 1,
+      "sysexOffset": 14,
+      "lengthSysex": 1,
       "values": {
         "0": "DRY",
         "1": "MFX",
@@ -6638,7 +8713,10 @@ ZenProperties["PCMR_PTL"] = {
         -24,
         24
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 15,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "PIT_FINE_OFST": {
       "id": "PIT_FINE_OFST",
@@ -6650,6 +8728,9 @@ ZenProperties["PCMR_PTL"] = {
         50
       ],
       "initValue": 0,
+      "sysexOffset": 16,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64,
       "displayMeasurement": "cent"
     },
     "CUTOFF_OFST": {
@@ -6661,7 +8742,10 @@ ZenProperties["PCMR_PTL"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 17,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "RESO_OFST": {
       "id": "RESO_OFST",
@@ -6672,7 +8756,10 @@ ZenProperties["PCMR_PTL"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 19,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "TVA_ATK_OFST": {
       "id": "TVA_ATK_OFST",
@@ -6683,7 +8770,10 @@ ZenProperties["PCMR_PTL"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 21,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "TVA_DCY_OFST": {
       "id": "TVA_DCY_OFST",
@@ -6694,7 +8784,10 @@ ZenProperties["PCMR_PTL"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 23,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "TVA_REL_OFST": {
       "id": "TVA_REL_OFST",
@@ -6705,7 +8798,10 @@ ZenProperties["PCMR_PTL"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 25,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     }
   },
   "category": "Autogenerated: jupiter"
@@ -6715,6 +8811,7 @@ ZenProperties["PCMS_CMN"] = {
   "name": "PCMS_CMN",
   "description": "PCMSynth Common",
   "byteLength": 20,
+  "sysexLength": 9,
   "parameters": {
     "UNISON_SW": {
       "id": "UNISON_SW",
@@ -6726,6 +8823,7 @@ ZenProperties["PCMS_CMN"] = {
         1
       ],
       "initValue": 0,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -6740,7 +8838,9 @@ ZenProperties["PCMS_CMN"] = {
         2,
         8
       ],
-      "initValue": 4
+      "initValue": 4,
+      "sysexOffset": 1,
+      "lengthSysex": 1
     },
     "UNISON_DETN": {
       "id": "UNISON_DETN",
@@ -6751,7 +8851,9 @@ ZenProperties["PCMS_CMN"] = {
         0,
         100
       ],
-      "initValue": 20
+      "initValue": 20,
+      "sysexOffset": 2,
+      "lengthSysex": 1
     },
     "PADDING1": {
       "id": "PADDING1",
@@ -6763,7 +8865,8 @@ ZenProperties["PCMS_CMN"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     },
     "BEND_RANGE_FINE_UP": {
       "id": "BEND_RANGE_FINE_UP",
@@ -6774,7 +8877,9 @@ ZenProperties["PCMS_CMN"] = {
         0,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 3,
+      "lengthSysex": 1
     },
     "BEND_RANGE_FINE_DW": {
       "id": "BEND_RANGE_FINE_DW",
@@ -6785,7 +8890,9 @@ ZenProperties["PCMS_CMN"] = {
         0,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 4,
+      "lengthSysex": 1
     },
     "RND_PIT_VAL": {
       "id": "RND_PIT_VAL",
@@ -6796,7 +8903,9 @@ ZenProperties["PCMS_CMN"] = {
         0,
         255
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 5,
+      "lengthSysex": 2
     },
     "RND_PIT_NUM": {
       "id": "RND_PIT_NUM",
@@ -6808,6 +8917,8 @@ ZenProperties["PCMS_CMN"] = {
         8
       ],
       "initValue": 0,
+      "sysexOffset": 7,
+      "lengthSysex": 1,
       "values": {
         "0": "FREE",
         "1": "1",
@@ -6829,7 +8940,9 @@ ZenProperties["PCMS_CMN"] = {
         0,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 8,
+      "lengthSysex": 1
     },
     "PADDING2": {
       "id": "PADDING2",
@@ -6841,7 +8954,8 @@ ZenProperties["PCMS_CMN"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     }
   },
   "category": "Autogenerated: jupiter"
@@ -6851,6 +8965,7 @@ ZenProperties["PCMS_PMT"] = {
   "name": "PCMS_PMT",
   "description": "PCMSynth PMT",
   "byteLength": 36,
+  "sysexLength": 23,
   "parameters": {
     "STRUCT12": {
       "id": "STRUCT12",
@@ -6862,6 +8977,7 @@ ZenProperties["PCMS_PMT"] = {
         4
       ],
       "initValue": 0,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "SYNC",
@@ -6880,6 +8996,8 @@ ZenProperties["PCMS_PMT"] = {
         4
       ],
       "initValue": 0,
+      "sysexOffset": 1,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "SYNC",
@@ -6898,7 +9016,8 @@ ZenProperties["PCMS_PMT"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     },
     "RING12_LEVEL": {
       "id": "RING12_LEVEL",
@@ -6909,7 +9028,9 @@ ZenProperties["PCMS_PMT"] = {
         0,
         127
       ],
-      "initValue": 127
+      "initValue": 127,
+      "sysexOffset": 2,
+      "lengthSysex": 1
     },
     "RING34_LEVEL": {
       "id": "RING34_LEVEL",
@@ -6920,7 +9041,9 @@ ZenProperties["PCMS_PMT"] = {
         0,
         127
       ],
-      "initValue": 127
+      "initValue": 127,
+      "sysexOffset": 3,
+      "lengthSysex": 1
     },
     "RING_OSC1_LEVEL": {
       "id": "RING_OSC1_LEVEL",
@@ -6931,7 +9054,9 @@ ZenProperties["PCMS_PMT"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 4,
+      "lengthSysex": 1
     },
     "RING_OSC2_LEVEL": {
       "id": "RING_OSC2_LEVEL",
@@ -6942,7 +9067,9 @@ ZenProperties["PCMS_PMT"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 5,
+      "lengthSysex": 1
     },
     "RING_OSC3_LEVEL": {
       "id": "RING_OSC3_LEVEL",
@@ -6953,7 +9080,9 @@ ZenProperties["PCMS_PMT"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 6,
+      "lengthSysex": 1
     },
     "RING_OSC4_LEVEL": {
       "id": "RING_OSC4_LEVEL",
@@ -6964,7 +9093,9 @@ ZenProperties["PCMS_PMT"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 7,
+      "lengthSysex": 1
     },
     "PADDING2": {
       "id": "PADDING2",
@@ -6976,7 +9107,8 @@ ZenProperties["PCMS_PMT"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     },
     "XMOD12_DEPTH": {
       "id": "XMOD12_DEPTH",
@@ -6988,6 +9120,8 @@ ZenProperties["PCMS_PMT"] = {
         10800
       ],
       "initValue": 1200,
+      "sysexOffset": 8,
+      "lengthSysex": 4,
       "displayMeasurement": "cent"
     },
     "XMOD34_DEPTH": {
@@ -7000,6 +9134,8 @@ ZenProperties["PCMS_PMT"] = {
         10800
       ],
       "initValue": 1200,
+      "sysexOffset": 12,
+      "lengthSysex": 4,
       "displayMeasurement": "cent"
     },
     "XMOD_OSC1_LEVEL": {
@@ -7011,7 +9147,9 @@ ZenProperties["PCMS_PMT"] = {
         0,
         127
       ],
-      "initValue": 127
+      "initValue": 127,
+      "sysexOffset": 16,
+      "lengthSysex": 1
     },
     "XMOD_OSC2_LEVEL": {
       "id": "XMOD_OSC2_LEVEL",
@@ -7022,7 +9160,9 @@ ZenProperties["PCMS_PMT"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 17,
+      "lengthSysex": 1
     },
     "XMOD_OSC3_LEVEL": {
       "id": "XMOD_OSC3_LEVEL",
@@ -7033,7 +9173,9 @@ ZenProperties["PCMS_PMT"] = {
         0,
         127
       ],
-      "initValue": 127
+      "initValue": 127,
+      "sysexOffset": 18,
+      "lengthSysex": 1
     },
     "XMOD_OSC4_LEVEL": {
       "id": "XMOD_OSC4_LEVEL",
@@ -7044,7 +9186,9 @@ ZenProperties["PCMS_PMT"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 19,
+      "lengthSysex": 1
     },
     "PTL_PHS_LOCK": {
       "id": "PTL_PHS_LOCK",
@@ -7056,6 +9200,8 @@ ZenProperties["PCMS_PMT"] = {
         1
       ],
       "initValue": 1,
+      "sysexOffset": 20,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -7070,7 +9216,9 @@ ZenProperties["PCMS_PMT"] = {
         0,
         127
       ],
-      "initValue": 100
+      "initValue": 100,
+      "sysexOffset": 21,
+      "lengthSysex": 1
     },
     "XMOD2_34_DEPTH": {
       "id": "XMOD2_34_DEPTH",
@@ -7081,7 +9229,9 @@ ZenProperties["PCMS_PMT"] = {
         0,
         127
       ],
-      "initValue": 100
+      "initValue": 100,
+      "sysexOffset": 22,
+      "lengthSysex": 1
     },
     "PADDING3": {
       "id": "PADDING3",
@@ -7093,7 +9243,8 @@ ZenProperties["PCMS_PMT"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     }
   },
   "category": "Autogenerated: jupiter"
@@ -7103,6 +9254,7 @@ ZenProperties["PCMS_PTL"] = {
   "name": "PCMS_PTL",
   "description": "PCMSynth Partial",
   "byteLength": 36,
+  "sysexLength": 30,
   "parameters": {
     "OSC_TYPE": {
       "id": "OSC_TYPE",
@@ -7114,6 +9266,7 @@ ZenProperties["PCMS_PTL"] = {
         4
       ],
       "initValue": 0,
+      "lengthSysex": 1,
       "values": {
         "0": "PCM",
         "1": "VA",
@@ -7132,6 +9285,8 @@ ZenProperties["PCMS_PTL"] = {
         8
       ],
       "initValue": 0,
+      "sysexOffset": 1,
+      "lengthSysex": 1,
       "values": {
         "0": "SAW",
         "1": "SQR",
@@ -7153,7 +9308,9 @@ ZenProperties["PCMS_PTL"] = {
         0,
         16383
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 2,
+      "lengthSysex": 4
     },
     "PW": {
       "id": "PW",
@@ -7164,7 +9321,9 @@ ZenProperties["PCMS_PTL"] = {
         0,
         127
       ],
-      "initValue": 64
+      "initValue": 64,
+      "sysexOffset": 6,
+      "lengthSysex": 1
     },
     "PWM_DEPTH": {
       "id": "PWM_DEPTH",
@@ -7175,7 +9334,10 @@ ZenProperties["PCMS_PTL"] = {
         -63,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 7,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "SSAW_DETUNE": {
       "id": "SSAW_DETUNE",
@@ -7186,7 +9348,9 @@ ZenProperties["PCMS_PTL"] = {
         0,
         127
       ],
-      "initValue": 64
+      "initValue": 64,
+      "sysexOffset": 8,
+      "lengthSysex": 1
     },
     "CLICK_TYPE": {
       "id": "CLICK_TYPE",
@@ -7198,6 +9362,8 @@ ZenProperties["PCMS_PTL"] = {
         3
       ],
       "initValue": 2,
+      "sysexOffset": 9,
+      "lengthSysex": 1,
       "values": {
         "0": "SOFT",
         "1": "HARD",
@@ -7214,7 +9380,9 @@ ZenProperties["PCMS_PTL"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 10,
+      "lengthSysex": 4
     },
     "FILTER_TYPE": {
       "id": "FILTER_TYPE",
@@ -7226,6 +9394,8 @@ ZenProperties["PCMS_PTL"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 14,
+      "lengthSysex": 1,
       "values": {
         "0": "TVF",
         "1": "VCF"
@@ -7241,6 +9411,8 @@ ZenProperties["PCMS_PTL"] = {
         2
       ],
       "initValue": 0,
+      "sysexOffset": 15,
+      "lengthSysex": 1,
       "displayMeasurement": "dB/Oct",
       "values": {
         "0": "-12",
@@ -7258,6 +9430,8 @@ ZenProperties["PCMS_PTL"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 16,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -7272,7 +9446,9 @@ ZenProperties["PCMS_PTL"] = {
         0,
         127
       ],
-      "initValue": 64
+      "initValue": 64,
+      "sysexOffset": 17,
+      "lengthSysex": 1
     },
     "VCF_TYPE": {
       "id": "VCF_TYPE",
@@ -7284,6 +9460,8 @@ ZenProperties["PCMS_PTL"] = {
         3
       ],
       "initValue": 0,
+      "sysexOffset": 18,
+      "lengthSysex": 1,
       "values": {
         "0": "VCF1",
         "1": "JP",
@@ -7300,7 +9478,9 @@ ZenProperties["PCMS_PTL"] = {
         0,
         255
       ],
-      "initValue": 255
+      "initValue": 255,
+      "sysexOffset": 19,
+      "lengthSysex": 2
     },
     "CUTOFF_KF_BP": {
       "id": "CUTOFF_KF_BP",
@@ -7311,7 +9491,9 @@ ZenProperties["PCMS_PTL"] = {
         0,
         127
       ],
-      "initValue": 60
+      "initValue": 60,
+      "sysexOffset": 21,
+      "lengthSysex": 1
     },
     "VA_INVERT_SW": {
       "id": "VA_INVERT_SW",
@@ -7323,6 +9505,8 @@ ZenProperties["PCMS_PTL"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 22,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -7337,7 +9521,10 @@ ZenProperties["PCMS_PTL"] = {
         -63,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 23,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "PENV_LFO_TRIG_SW": {
       "id": "PENV_LFO_TRIG_SW",
@@ -7349,6 +9536,8 @@ ZenProperties["PCMS_PTL"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 24,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -7364,6 +9553,8 @@ ZenProperties["PCMS_PTL"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 25,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -7379,6 +9570,8 @@ ZenProperties["PCMS_PTL"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 26,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -7393,7 +9586,9 @@ ZenProperties["PCMS_PTL"] = {
         0,
         120
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 27,
+      "lengthSysex": 1
     },
     "VCF_GC": {
       "id": "VCF_GC",
@@ -7404,7 +9599,9 @@ ZenProperties["PCMS_PTL"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 28,
+      "lengthSysex": 1
     },
     "VA_INIT_PHASE": {
       "id": "VA_INIT_PHASE",
@@ -7416,6 +9613,8 @@ ZenProperties["PCMS_PTL"] = {
         72
       ],
       "initValue": 0,
+      "sysexOffset": 29,
+      "lengthSysex": 1,
       "displayRange": [
         0,
         360
@@ -7431,7 +9630,8 @@ ZenProperties["PCMS_PTL"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     }
   },
   "category": "Autogenerated: jupiter"
@@ -7441,6 +9641,7 @@ ZenProperties["PCMT_CMN"] = {
   "name": "PCMT_CMN",
   "description": "PCMTone Common",
   "byteLength": 64,
+  "sysexLength": 54,
   "parameters": {
     "NAME_1": {
       "id": "NAME_1",
@@ -7452,6 +9653,7 @@ ZenProperties["PCMT_CMN"] = {
         127
       ],
       "initValue": 32,
+      "lengthSysex": 1,
       "displayMeasurement": "ASCII"
     },
     "CATEGORY": {
@@ -7464,6 +9666,8 @@ ZenProperties["PCMT_CMN"] = {
         50
       ],
       "initValue": 0,
+      "sysexOffset": 16,
+      "lengthSysex": 1,
       "values": {
         "0": "None",
         "1": "Ac.Piano",
@@ -7528,7 +9732,8 @@ ZenProperties["PCMT_CMN"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     },
     "PHRASE": {
       "id": "PHRASE",
@@ -7539,7 +9744,9 @@ ZenProperties["PCMT_CMN"] = {
         0,
         0
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 17,
+      "lengthSysex": 4
     },
     "LEVEL": {
       "id": "LEVEL",
@@ -7550,7 +9757,9 @@ ZenProperties["PCMT_CMN"] = {
         0,
         127
       ],
-      "initValue": 127
+      "initValue": 127,
+      "sysexOffset": 21,
+      "lengthSysex": 1
     },
     "PAN": {
       "id": "PAN",
@@ -7561,7 +9770,10 @@ ZenProperties["PCMT_CMN"] = {
         -64,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 22,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "PADDING2": {
       "id": "PADDING2",
@@ -7573,7 +9785,8 @@ ZenProperties["PCMT_CMN"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     },
     "PRIORITY": {
       "id": "PRIORITY",
@@ -7585,6 +9798,8 @@ ZenProperties["PCMT_CMN"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 23,
+      "lengthSysex": 1,
       "values": {
         "0": "LAST",
         "1": "LOUDEST"
@@ -7600,6 +9815,9 @@ ZenProperties["PCMT_CMN"] = {
         48
       ],
       "initValue": 0,
+      "sysexOffset": 24,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64,
       "displayMeasurement": "semitone"
     },
     "PIT_FINE": {
@@ -7612,6 +9830,9 @@ ZenProperties["PCMT_CMN"] = {
         50
       ],
       "initValue": 0,
+      "sysexOffset": 25,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64,
       "displayMeasurement": "cent"
     },
     "OCTAVE": {
@@ -7623,7 +9844,10 @@ ZenProperties["PCMT_CMN"] = {
         -3,
         3
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 26,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "STRETCH": {
       "id": "STRETCH",
@@ -7635,6 +9859,8 @@ ZenProperties["PCMT_CMN"] = {
         3
       ],
       "initValue": 0,
+      "sysexOffset": 27,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "1",
@@ -7651,7 +9877,9 @@ ZenProperties["PCMT_CMN"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 28,
+      "lengthSysex": 1
     },
     "MONO_POLY": {
       "id": "MONO_POLY",
@@ -7663,6 +9891,8 @@ ZenProperties["PCMT_CMN"] = {
         1
       ],
       "initValue": 1,
+      "sysexOffset": 29,
+      "lengthSysex": 1,
       "values": {
         "0": "MONO",
         "1": "POLY"
@@ -7678,6 +9908,8 @@ ZenProperties["PCMT_CMN"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 30,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -7693,6 +9925,8 @@ ZenProperties["PCMT_CMN"] = {
         13
       ],
       "initValue": 12,
+      "sysexOffset": 31,
+      "lengthSysex": 1,
       "values": {
         "0": "0",
         "1": "1",
@@ -7720,6 +9954,8 @@ ZenProperties["PCMT_CMN"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 32,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -7735,6 +9971,8 @@ ZenProperties["PCMT_CMN"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 33,
+      "lengthSysex": 1,
       "values": {
         "0": "NORMAL",
         "1": "LEGATO"
@@ -7750,6 +9988,8 @@ ZenProperties["PCMT_CMN"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 34,
+      "lengthSysex": 1,
       "values": {
         "0": "RATE",
         "1": "TIME"
@@ -7765,7 +10005,8 @@ ZenProperties["PCMT_CMN"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     },
     "PORTA_START": {
       "id": "PORTA_START",
@@ -7777,6 +10018,8 @@ ZenProperties["PCMT_CMN"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 35,
+      "lengthSysex": 1,
       "values": {
         "0": "PITCH",
         "1": "NOTE"
@@ -7791,7 +10034,9 @@ ZenProperties["PCMT_CMN"] = {
         0,
         1023
       ],
-      "initValue": 73
+      "initValue": 73,
+      "sysexOffset": 36,
+      "lengthSysex": 4
     },
     "BEND_RANGE_UP": {
       "id": "BEND_RANGE_UP",
@@ -7802,7 +10047,9 @@ ZenProperties["PCMT_CMN"] = {
         0,
         48
       ],
-      "initValue": 2
+      "initValue": 2,
+      "sysexOffset": 40,
+      "lengthSysex": 1
     },
     "BEND_RANGE_DW": {
       "id": "BEND_RANGE_DW",
@@ -7813,7 +10060,9 @@ ZenProperties["PCMT_CMN"] = {
         0,
         48
       ],
-      "initValue": 2
+      "initValue": 2,
+      "sysexOffset": 41,
+      "lengthSysex": 1
     },
     "BEND_MODE": {
       "id": "BEND_MODE",
@@ -7825,6 +10074,8 @@ ZenProperties["PCMT_CMN"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 42,
+      "lengthSysex": 1,
       "values": {
         "0": "NORMAL",
         "1": "CATCH+LAST"
@@ -7839,7 +10090,9 @@ ZenProperties["PCMT_CMN"] = {
         0,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 43,
+      "lengthSysex": 1
     },
     "PHRASE_OCT": {
       "id": "PHRASE_OCT",
@@ -7850,7 +10103,9 @@ ZenProperties["PCMT_CMN"] = {
         0,
         0
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 44,
+      "lengthSysex": 2
     },
     "PHRASE_VEL_RATE": {
       "id": "PHRASE_VEL_RATE",
@@ -7861,7 +10116,9 @@ ZenProperties["PCMT_CMN"] = {
         0,
         0
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 46,
+      "lengthSysex": 2
     },
     "PHRASE_VEL_SHIFT": {
       "id": "PHRASE_VEL_SHIFT",
@@ -7872,7 +10129,9 @@ ZenProperties["PCMT_CMN"] = {
         0,
         0
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 48,
+      "lengthSysex": 2
     },
     "SYMP_DEPTH": {
       "id": "SYMP_DEPTH",
@@ -7883,7 +10142,9 @@ ZenProperties["PCMT_CMN"] = {
         0,
         0
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 50,
+      "lengthSysex": 2
     },
     "PORTA_CRV": {
       "id": "PORTA_CRV",
@@ -7895,6 +10156,8 @@ ZenProperties["PCMT_CMN"] = {
         2
       ],
       "initValue": 0,
+      "sysexOffset": 52,
+      "lengthSysex": 1,
       "displayRange": [
         1,
         3
@@ -7910,6 +10173,8 @@ ZenProperties["PCMT_CMN"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 53,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -7925,7 +10190,8 @@ ZenProperties["PCMT_CMN"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     }
   },
   "category": "Autogenerated: jupiter"
@@ -7935,6 +10201,7 @@ ZenProperties["PCMT_PMT_PMT"] = {
   "name": "PCMT_PMT_PMT",
   "description": "PMT",
   "byteLength": 12,
+  "sysexLength": 9,
   "parameters": {
     "PTL_SW": {
       "id": "PTL_SW",
@@ -7946,6 +10213,7 @@ ZenProperties["PCMT_PMT_PMT"] = {
         1
       ],
       "initValue": 0,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -7961,7 +10229,8 @@ ZenProperties["PCMT_PMT_PMT"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     },
     "KRANGE_LO": {
       "id": "KRANGE_LO",
@@ -7972,7 +10241,9 @@ ZenProperties["PCMT_PMT_PMT"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 1,
+      "lengthSysex": 1
     },
     "KRANGE_UP": {
       "id": "KRANGE_UP",
@@ -7983,7 +10254,9 @@ ZenProperties["PCMT_PMT_PMT"] = {
         0,
         127
       ],
-      "initValue": 127
+      "initValue": 127,
+      "sysexOffset": 2,
+      "lengthSysex": 1
     },
     "KFADE_LO": {
       "id": "KFADE_LO",
@@ -7994,7 +10267,9 @@ ZenProperties["PCMT_PMT_PMT"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 3,
+      "lengthSysex": 1
     },
     "KFADE_UP": {
       "id": "KFADE_UP",
@@ -8005,7 +10280,9 @@ ZenProperties["PCMT_PMT_PMT"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 4,
+      "lengthSysex": 1
     },
     "VRANGE_LO": {
       "id": "VRANGE_LO",
@@ -8016,7 +10293,9 @@ ZenProperties["PCMT_PMT_PMT"] = {
         1,
         127
       ],
-      "initValue": 1
+      "initValue": 1,
+      "sysexOffset": 5,
+      "lengthSysex": 1
     },
     "VRANGE_UP": {
       "id": "VRANGE_UP",
@@ -8027,7 +10306,9 @@ ZenProperties["PCMT_PMT_PMT"] = {
         1,
         127
       ],
-      "initValue": 127
+      "initValue": 127,
+      "sysexOffset": 6,
+      "lengthSysex": 1
     },
     "VFADE_LO": {
       "id": "VFADE_LO",
@@ -8038,7 +10319,9 @@ ZenProperties["PCMT_PMT_PMT"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 7,
+      "lengthSysex": 1
     },
     "VFADE_UP": {
       "id": "VFADE_UP",
@@ -8049,7 +10332,9 @@ ZenProperties["PCMT_PMT_PMT"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 8,
+      "lengthSysex": 1
     }
   },
   "category": "Autogenerated: jupiter"
@@ -8059,6 +10344,7 @@ ZenProperties["PCMT_PMT"] = {
   "name": "PCMT_PMT",
   "description": "PCMTone PartialMixTable",
   "byteLength": 52,
+  "sysexLength": 38,
   "parameters": {
     "VEL_CTRL": {
       "id": "VEL_CTRL",
@@ -8070,6 +10356,7 @@ ZenProperties["PCMT_PMT"] = {
         3
       ],
       "initValue": 1,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON",
@@ -8087,6 +10374,8 @@ ZenProperties["PCMT_PMT"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 1,
+      "lengthSysex": 1,
       "values": {
         "0": "EXP",
         "1": "LINEAR"
@@ -8102,7 +10391,8 @@ ZenProperties["PCMT_PMT"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     },
     "PMT": {
       "id": "PMT",
@@ -8112,6 +10402,8 @@ ZenProperties["PCMT_PMT"] = {
       "blockName": "PCMT_PMT_PMT",
       "count": 4,
       "blockByteLength": 12,
+      "sysexOffset": "00 00 02",
+      "lengthSysex": 36,
       "block": ZenProperties["PCMT_PMT_PMT"]
     }
   },
@@ -8122,6 +10414,7 @@ ZenProperties["PCMT_PTL_MCTL"] = {
   "name": "PCMT_PTL_MCTL",
   "description": "Matrix Control",
   "byteLength": 12,
+  "sysexLength": 9,
   "parameters": {
     "SRC": {
       "id": "SRC",
@@ -8133,6 +10426,7 @@ ZenProperties["PCMT_PTL_MCTL"] = {
         108
       ],
       "initValue": 0,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "CC01",
@@ -8255,6 +10549,8 @@ ZenProperties["PCMT_PTL_MCTL"] = {
         48
       ],
       "initValue": 0,
+      "sysexOffset": 1,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "PCH",
@@ -8316,7 +10612,10 @@ ZenProperties["PCMT_PTL_MCTL"] = {
         -63,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 2,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "DST2": {
       "id": "DST2",
@@ -8328,6 +10627,8 @@ ZenProperties["PCMT_PTL_MCTL"] = {
         48
       ],
       "initValue": 0,
+      "sysexOffset": 3,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "PCH",
@@ -8389,7 +10690,10 @@ ZenProperties["PCMT_PTL_MCTL"] = {
         -63,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 4,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "DST3": {
       "id": "DST3",
@@ -8401,6 +10705,8 @@ ZenProperties["PCMT_PTL_MCTL"] = {
         48
       ],
       "initValue": 0,
+      "sysexOffset": 5,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "PCH",
@@ -8462,7 +10768,10 @@ ZenProperties["PCMT_PTL_MCTL"] = {
         -63,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 6,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "DST4": {
       "id": "DST4",
@@ -8474,6 +10783,8 @@ ZenProperties["PCMT_PTL_MCTL"] = {
         48
       ],
       "initValue": 0,
+      "sysexOffset": 7,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "PCH",
@@ -8535,7 +10846,10 @@ ZenProperties["PCMT_PTL_MCTL"] = {
         -63,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 8,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "PADDING1": {
       "id": "PADDING1",
@@ -8547,7 +10861,8 @@ ZenProperties["PCMT_PTL_MCTL"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     }
   },
   "category": "Autogenerated: jupiter"
@@ -8557,6 +10872,7 @@ ZenProperties["PCMT_PTL"] = {
   "name": "PCMT_PTL",
   "description": "PCMTone Partial",
   "byteLength": 124,
+  "sysexLength": 128,
   "parameters": {
     "LEVEL": {
       "id": "LEVEL",
@@ -8567,7 +10883,8 @@ ZenProperties["PCMT_PTL"] = {
         0,
         127
       ],
-      "initValue": 127
+      "initValue": 127,
+      "lengthSysex": 1
     },
     "PADDING1": {
       "id": "PADDING1",
@@ -8579,7 +10896,8 @@ ZenProperties["PCMT_PTL"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     },
     "PIT_CRS": {
       "id": "PIT_CRS",
@@ -8590,7 +10908,10 @@ ZenProperties["PCMT_PTL"] = {
         -48,
         48
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 1,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "PIT_FINE": {
       "id": "PIT_FINE",
@@ -8602,6 +10923,9 @@ ZenProperties["PCMT_PTL"] = {
         50
       ],
       "initValue": 0,
+      "sysexOffset": 2,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64,
       "displayMeasurement": "cent"
     },
     "PIT_RND": {
@@ -8614,6 +10938,8 @@ ZenProperties["PCMT_PTL"] = {
         1200
       ],
       "initValue": 0,
+      "sysexOffset": 3,
+      "lengthSysex": 4,
       "displayMeasurement": "cent"
     },
     "PAN": {
@@ -8625,7 +10951,10 @@ ZenProperties["PCMT_PTL"] = {
         -64,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 7,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "PAN_KF": {
       "id": "PAN_KF",
@@ -8636,7 +10965,10 @@ ZenProperties["PCMT_PTL"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 8,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "PAN_RND": {
       "id": "PAN_RND",
@@ -8647,7 +10979,9 @@ ZenProperties["PCMT_PTL"] = {
         0,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 10,
+      "lengthSysex": 1
     },
     "PAN_ALT": {
       "id": "PAN_ALT",
@@ -8658,7 +10992,10 @@ ZenProperties["PCMT_PTL"] = {
         -64,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 11,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "ENV_MODE": {
       "id": "ENV_MODE",
@@ -8670,6 +11007,8 @@ ZenProperties["PCMT_PTL"] = {
         1
       ],
       "initValue": 1,
+      "sysexOffset": 12,
+      "lengthSysex": 1,
       "values": {
         "0": "NO-SUS",
         "1": "SUSTAIN"
@@ -8685,6 +11024,8 @@ ZenProperties["PCMT_PTL"] = {
         3
       ],
       "initValue": 0,
+      "sysexOffset": 13,
+      "lengthSysex": 1,
       "values": {
         "0": "NORMAL",
         "1": "HOLD",
@@ -8702,6 +11043,8 @@ ZenProperties["PCMT_PTL"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 14,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -8717,6 +11060,8 @@ ZenProperties["PCMT_PTL"] = {
         21
       ],
       "initValue": 12,
+      "sysexOffset": 15,
+      "lengthSysex": 1,
       "values": {
         "0": "1/64T",
         "1": "1/64",
@@ -8751,7 +11096,9 @@ ZenProperties["PCMT_PTL"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 16,
+      "lengthSysex": 4
     },
     "CHO_SEND": {
       "id": "CHO_SEND",
@@ -8762,7 +11109,9 @@ ZenProperties["PCMT_PTL"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 20,
+      "lengthSysex": 1
     },
     "REV_SEND": {
       "id": "REV_SEND",
@@ -8773,7 +11122,9 @@ ZenProperties["PCMT_PTL"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 21,
+      "lengthSysex": 1
     },
     "RX_BEND": {
       "id": "RX_BEND",
@@ -8785,6 +11136,8 @@ ZenProperties["PCMT_PTL"] = {
         1
       ],
       "initValue": 1,
+      "sysexOffset": 22,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -8800,6 +11153,8 @@ ZenProperties["PCMT_PTL"] = {
         1
       ],
       "initValue": 1,
+      "sysexOffset": 23,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -8815,6 +11170,8 @@ ZenProperties["PCMT_PTL"] = {
         1
       ],
       "initValue": 1,
+      "sysexOffset": 24,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -8830,6 +11187,8 @@ ZenProperties["PCMT_PTL"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 25,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -8845,6 +11204,8 @@ ZenProperties["PCMT_PTL"] = {
         1
       ],
       "initValue": 1,
+      "sysexOffset": 26,
+      "lengthSysex": 1,
       "values": {
         "0": "DRY",
         "1": "MFX"
@@ -8860,6 +11221,8 @@ ZenProperties["PCMT_PTL"] = {
         3
       ],
       "initValue": 0,
+      "sysexOffset": 27,
+      "lengthSysex": 1,
       "values": {
         "0": "INT",
         "1": "EXP",
@@ -8876,7 +11239,9 @@ ZenProperties["PCMT_PTL"] = {
         0,
         16383
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 28,
+      "lengthSysex": 4
     },
     "WAV_NUM_L": {
       "id": "WAV_NUM_L",
@@ -8887,7 +11252,9 @@ ZenProperties["PCMT_PTL"] = {
         0,
         16383
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 32,
+      "lengthSysex": 4
     },
     "WAV_NUM_R": {
       "id": "WAV_NUM_R",
@@ -8898,7 +11265,9 @@ ZenProperties["PCMT_PTL"] = {
         0,
         16383
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 36,
+      "lengthSysex": 4
     },
     "WAV_GAIN": {
       "id": "WAV_GAIN",
@@ -8910,6 +11279,8 @@ ZenProperties["PCMT_PTL"] = {
         5
       ],
       "initValue": 3,
+      "sysexOffset": 40,
+      "lengthSysex": 1,
       "displayMeasurement": "dB",
       "values": {
         "0": "-18",
@@ -8930,6 +11301,8 @@ ZenProperties["PCMT_PTL"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 41,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -8944,7 +11317,9 @@ ZenProperties["PCMT_PTL"] = {
         1,
         4
       ],
-      "initValue": 1
+      "initValue": 1,
+      "sysexOffset": 42,
+      "lengthSysex": 1
     },
     "FXM_DEPTH": {
       "id": "FXM_DEPTH",
@@ -8955,7 +11330,9 @@ ZenProperties["PCMT_PTL"] = {
         0,
         16
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 43,
+      "lengthSysex": 1
     },
     "PIT_KF": {
       "id": "PIT_KF",
@@ -8966,7 +11343,10 @@ ZenProperties["PCMT_PTL"] = {
         -200,
         200
       ],
-      "initValue": 100
+      "initValue": 100,
+      "sysexOffset": 44,
+      "lengthSysex": 4,
+      "sysexValueOffset": 1024
     },
     "SOFT_EQ_SENS": {
       "id": "SOFT_EQ_SENS",
@@ -8977,7 +11357,9 @@ ZenProperties["PCMT_PTL"] = {
         0,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 48,
+      "lengthSysex": 1
     },
     "FILTER_TYPE": {
       "id": "FILTER_TYPE",
@@ -8989,6 +11371,8 @@ ZenProperties["PCMT_PTL"] = {
         6
       ],
       "initValue": 1,
+      "sysexOffset": 49,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "LPF",
@@ -9009,7 +11393,8 @@ ZenProperties["PCMT_PTL"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     },
     "CUTOFF": {
       "id": "CUTOFF",
@@ -9020,7 +11405,9 @@ ZenProperties["PCMT_PTL"] = {
         0,
         1023
       ],
-      "initValue": 1023
+      "initValue": 1023,
+      "sysexOffset": 50,
+      "lengthSysex": 4
     },
     "CUTOFF_KF": {
       "id": "CUTOFF_KF",
@@ -9031,7 +11418,10 @@ ZenProperties["PCMT_PTL"] = {
         -200,
         200
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 54,
+      "lengthSysex": 4,
+      "sysexValueOffset": 1024
     },
     "CUTOFF_VCRV": {
       "id": "CUTOFF_VCRV",
@@ -9043,6 +11433,8 @@ ZenProperties["PCMT_PTL"] = {
         7
       ],
       "initValue": 1,
+      "sysexOffset": 58,
+      "lengthSysex": 1,
       "values": {
         "0": "FIXED",
         "1": "1",
@@ -9063,7 +11455,10 @@ ZenProperties["PCMT_PTL"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 59,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "RESO": {
       "id": "RESO",
@@ -9074,7 +11469,9 @@ ZenProperties["PCMT_PTL"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 61,
+      "lengthSysex": 4
     },
     "RESO_VSENS": {
       "id": "RESO_VSENS",
@@ -9085,7 +11482,10 @@ ZenProperties["PCMT_PTL"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 65,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "BIAS_LEVEL": {
       "id": "BIAS_LEVEL",
@@ -9096,7 +11496,10 @@ ZenProperties["PCMT_PTL"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 67,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "BIAS_POS": {
       "id": "BIAS_POS",
@@ -9107,7 +11510,9 @@ ZenProperties["PCMT_PTL"] = {
         0,
         127
       ],
-      "initValue": 60
+      "initValue": 60,
+      "sysexOffset": 69,
+      "lengthSysex": 1
     },
     "BIAS_DIR": {
       "id": "BIAS_DIR",
@@ -9119,6 +11524,8 @@ ZenProperties["PCMT_PTL"] = {
         3
       ],
       "initValue": 3,
+      "sysexOffset": 70,
+      "lengthSysex": 1,
       "values": {
         "0": "LOWER",
         "1": "UPPER",
@@ -9136,6 +11543,8 @@ ZenProperties["PCMT_PTL"] = {
         7
       ],
       "initValue": 1,
+      "sysexOffset": 71,
+      "lengthSysex": 1,
       "values": {
         "0": "FIXED",
         "1": "1",
@@ -9156,7 +11565,10 @@ ZenProperties["PCMT_PTL"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 72,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "PENV_TKF": {
       "id": "PENV_TKF",
@@ -9167,7 +11579,10 @@ ZenProperties["PCMT_PTL"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 74,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "FENV_TKF": {
       "id": "FENV_TKF",
@@ -9178,7 +11593,10 @@ ZenProperties["PCMT_PTL"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 76,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "AENV_TKF": {
       "id": "AENV_TKF",
@@ -9189,7 +11607,10 @@ ZenProperties["PCMT_PTL"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 78,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "VIB_PIT_SENS": {
       "id": "VIB_PIT_SENS",
@@ -9200,7 +11621,10 @@ ZenProperties["PCMT_PTL"] = {
         -100,
         100
       ],
-      "initValue": 10
+      "initValue": 10,
+      "sysexOffset": 80,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "VIB_CUT_SENS": {
       "id": "VIB_CUT_SENS",
@@ -9211,7 +11635,10 @@ ZenProperties["PCMT_PTL"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 82,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "VIB_AMP_SENS": {
       "id": "VIB_AMP_SENS",
@@ -9222,7 +11649,10 @@ ZenProperties["PCMT_PTL"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 84,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "MCTL": {
       "id": "MCTL",
@@ -9232,6 +11662,8 @@ ZenProperties["PCMT_PTL"] = {
       "blockName": "PCMT_PTL_MCTL",
       "count": 4,
       "blockByteLength": 12,
+      "sysexOffset": "00 00 56",
+      "lengthSysex": 36,
       "block": ZenProperties["PCMT_PTL_MCTL"]
     },
     "DAMP_FREE": {
@@ -9244,6 +11676,8 @@ ZenProperties["PCMT_PTL"] = {
         127
       ],
       "initValue": 0,
+      "sysexOffset": 122,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "1",
@@ -9385,7 +11819,9 @@ ZenProperties["PCMT_PTL"] = {
         0,
         100
       ],
-      "initValue": 100
+      "initValue": 100,
+      "sysexOffset": 123,
+      "lengthSysex": 1
     },
     "STEREO_DETN": {
       "id": "STEREO_DETN",
@@ -9397,6 +11833,9 @@ ZenProperties["PCMT_PTL"] = {
         50
       ],
       "initValue": 0,
+      "sysexOffset": 124,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64,
       "displayMeasurement": "cent"
     },
     "DF_DCY_OFST": {
@@ -9408,7 +11847,10 @@ ZenProperties["PCMT_PTL"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 125,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "TEMPO_SYNC": {
       "id": "TEMPO_SYNC",
@@ -9420,6 +11862,8 @@ ZenProperties["PCMT_PTL"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 127,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -9435,7 +11879,8 @@ ZenProperties["PCMT_PTL"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     }
   },
   "category": "Autogenerated: jupiter"
@@ -9445,6 +11890,7 @@ ZenProperties["PTL_AENV"] = {
   "name": "PTL_AENV",
   "description": "Partial TVA Envelope",
   "byteLength": 16,
+  "sysexLength": 32,
   "parameters": {
     "T1_VSENS": {
       "id": "T1_VSENS",
@@ -9455,7 +11901,9 @@ ZenProperties["PTL_AENV"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "T4_VSENS": {
       "id": "T4_VSENS",
@@ -9466,7 +11914,10 @@ ZenProperties["PTL_AENV"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 2,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "T1": {
       "id": "T1",
@@ -9477,7 +11928,9 @@ ZenProperties["PTL_AENV"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 4,
+      "lengthSysex": 4
     },
     "T2": {
       "id": "T2",
@@ -9488,7 +11941,9 @@ ZenProperties["PTL_AENV"] = {
         0,
         1023
       ],
-      "initValue": 30
+      "initValue": 30,
+      "sysexOffset": 8,
+      "lengthSysex": 4
     },
     "T3": {
       "id": "T3",
@@ -9499,7 +11954,9 @@ ZenProperties["PTL_AENV"] = {
         0,
         1023
       ],
-      "initValue": 400
+      "initValue": 400,
+      "sysexOffset": 12,
+      "lengthSysex": 4
     },
     "T4": {
       "id": "T4",
@@ -9510,7 +11967,9 @@ ZenProperties["PTL_AENV"] = {
         0,
         1023
       ],
-      "initValue": 400
+      "initValue": 400,
+      "sysexOffset": 16,
+      "lengthSysex": 4
     },
     "L1": {
       "id": "L1",
@@ -9521,7 +11980,9 @@ ZenProperties["PTL_AENV"] = {
         0,
         1023
       ],
-      "initValue": 1023
+      "initValue": 1023,
+      "sysexOffset": 20,
+      "lengthSysex": 4
     },
     "L2": {
       "id": "L2",
@@ -9532,7 +11993,9 @@ ZenProperties["PTL_AENV"] = {
         0,
         1023
       ],
-      "initValue": 1023
+      "initValue": 1023,
+      "sysexOffset": 24,
+      "lengthSysex": 4
     },
     "L3": {
       "id": "L3",
@@ -9543,7 +12006,9 @@ ZenProperties["PTL_AENV"] = {
         0,
         1023
       ],
-      "initValue": 1023
+      "initValue": 1023,
+      "sysexOffset": 28,
+      "lengthSysex": 4
     }
   },
   "category": "Autogenerated: jupiter"
@@ -9553,6 +12018,7 @@ ZenProperties["PTL_EQ"] = {
   "name": "PTL_EQ",
   "description": "Partial EQ",
   "byteLength": 16,
+  "sysexLength": 27,
   "parameters": {
     "LO_GAIN": {
       "id": "LO_GAIN",
@@ -9564,6 +12030,8 @@ ZenProperties["PTL_EQ"] = {
         240
       ],
       "initValue": 0,
+      "lengthSysex": 4,
+      "sysexValueOffset": 1024,
       "displayMeasurement": "EQGAIN",
       "displayRange": [
         -24,
@@ -9580,6 +12048,9 @@ ZenProperties["PTL_EQ"] = {
         240
       ],
       "initValue": 0,
+      "sysexOffset": 4,
+      "lengthSysex": 4,
+      "sysexValueOffset": 1024,
       "displayMeasurement": "EQGAIN",
       "displayRange": [
         -24,
@@ -9596,6 +12067,9 @@ ZenProperties["PTL_EQ"] = {
         240
       ],
       "initValue": 0,
+      "sysexOffset": 8,
+      "lengthSysex": 4,
+      "sysexValueOffset": 1024,
       "displayMeasurement": "EQGAIN",
       "displayRange": [
         -24,
@@ -9612,6 +12086,8 @@ ZenProperties["PTL_EQ"] = {
         16000
       ],
       "initValue": 200,
+      "sysexOffset": 12,
+      "lengthSysex": 4,
       "displayMeasurement": "EQFREQ"
     },
     "MID_FREQ": {
@@ -9624,6 +12100,8 @@ ZenProperties["PTL_EQ"] = {
         16000
       ],
       "initValue": 1000,
+      "sysexOffset": 16,
+      "lengthSysex": 4,
       "displayMeasurement": "EQFREQ"
     },
     "HI_FREQ": {
@@ -9636,6 +12114,8 @@ ZenProperties["PTL_EQ"] = {
         16000
       ],
       "initValue": 2000,
+      "sysexOffset": 20,
+      "lengthSysex": 4,
       "displayMeasurement": "EQFREQ"
     },
     "MID_Q": {
@@ -9648,6 +12128,8 @@ ZenProperties["PTL_EQ"] = {
         160
       ],
       "initValue": 10,
+      "sysexOffset": 24,
+      "lengthSysex": 2,
       "displayMeasurement": "EQQ",
       "displayRange": [
         0.5,
@@ -9664,6 +12146,8 @@ ZenProperties["PTL_EQ"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 26,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -9679,7 +12163,8 @@ ZenProperties["PTL_EQ"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     }
   },
   "category": "Autogenerated: jupiter"
@@ -9689,6 +12174,7 @@ ZenProperties["PTL_FENV"] = {
   "name": "PTL_FENV",
   "description": "Partial TVF Envelope",
   "byteLength": 24,
+  "sysexLength": 44,
   "parameters": {
     "DEPTH": {
       "id": "DEPTH",
@@ -9699,7 +12185,9 @@ ZenProperties["PTL_FENV"] = {
         -63,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "VCRV": {
       "id": "VCRV",
@@ -9711,6 +12199,8 @@ ZenProperties["PTL_FENV"] = {
         7
       ],
       "initValue": 1,
+      "sysexOffset": 1,
+      "lengthSysex": 1,
       "values": {
         "0": "FIXED",
         "1": "1",
@@ -9731,7 +12221,10 @@ ZenProperties["PTL_FENV"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 2,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "T1_VSENS": {
       "id": "T1_VSENS",
@@ -9742,7 +12235,10 @@ ZenProperties["PTL_FENV"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 4,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "T4_VSENS": {
       "id": "T4_VSENS",
@@ -9753,7 +12249,10 @@ ZenProperties["PTL_FENV"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 6,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "PADDING1": {
       "id": "PADDING1",
@@ -9765,7 +12264,8 @@ ZenProperties["PTL_FENV"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     },
     "T1": {
       "id": "T1",
@@ -9776,7 +12276,9 @@ ZenProperties["PTL_FENV"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 8,
+      "lengthSysex": 4
     },
     "T2": {
       "id": "T2",
@@ -9787,7 +12289,9 @@ ZenProperties["PTL_FENV"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 12,
+      "lengthSysex": 4
     },
     "T3": {
       "id": "T3",
@@ -9798,7 +12302,9 @@ ZenProperties["PTL_FENV"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 16,
+      "lengthSysex": 4
     },
     "T4": {
       "id": "T4",
@@ -9809,7 +12315,9 @@ ZenProperties["PTL_FENV"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 20,
+      "lengthSysex": 4
     },
     "L0": {
       "id": "L0",
@@ -9820,7 +12328,9 @@ ZenProperties["PTL_FENV"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 24,
+      "lengthSysex": 4
     },
     "L1": {
       "id": "L1",
@@ -9831,7 +12341,9 @@ ZenProperties["PTL_FENV"] = {
         0,
         1023
       ],
-      "initValue": 1023
+      "initValue": 1023,
+      "sysexOffset": 28,
+      "lengthSysex": 4
     },
     "L2": {
       "id": "L2",
@@ -9842,7 +12354,9 @@ ZenProperties["PTL_FENV"] = {
         0,
         1023
       ],
-      "initValue": 1023
+      "initValue": 1023,
+      "sysexOffset": 32,
+      "lengthSysex": 4
     },
     "L3": {
       "id": "L3",
@@ -9853,7 +12367,9 @@ ZenProperties["PTL_FENV"] = {
         0,
         1023
       ],
-      "initValue": 1023
+      "initValue": 1023,
+      "sysexOffset": 36,
+      "lengthSysex": 4
     },
     "L4": {
       "id": "L4",
@@ -9864,7 +12380,9 @@ ZenProperties["PTL_FENV"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 40,
+      "lengthSysex": 4
     }
   },
   "category": "Autogenerated: jupiter"
@@ -9874,6 +12392,7 @@ ZenProperties["PTL_LFO_LFO"] = {
   "name": "PTL_LFO_LFO",
   "description": "LFO",
   "byteLength": 52,
+  "sysexLength": 79,
   "parameters": {
     "FORM": {
       "id": "FORM",
@@ -9885,6 +12404,7 @@ ZenProperties["PTL_LFO_LFO"] = {
         10
       ],
       "initValue": 1,
+      "lengthSysex": 1,
       "values": {
         "0": "SIN",
         "1": "TRI",
@@ -9909,6 +12429,8 @@ ZenProperties["PTL_LFO_LFO"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 1,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -9924,6 +12446,8 @@ ZenProperties["PTL_LFO_LFO"] = {
         22
       ],
       "initValue": 12,
+      "sysexOffset": 2,
+      "lengthSysex": 1,
       "values": {
         "0": "1/64T",
         "1": "1/64",
@@ -9960,6 +12484,8 @@ ZenProperties["PTL_LFO_LFO"] = {
         15
       ],
       "initValue": 15,
+      "sysexOffset": 3,
+      "lengthSysex": 1,
       "displayRange": [
         1,
         16
@@ -9974,7 +12500,9 @@ ZenProperties["PTL_LFO_LFO"] = {
         0,
         1023
       ],
-      "initValue": 650
+      "initValue": 650,
+      "sysexOffset": 4,
+      "lengthSysex": 4
     },
     "OFST": {
       "id": "OFST",
@@ -9985,7 +12513,10 @@ ZenProperties["PTL_LFO_LFO"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 8,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "RATE_DETN": {
       "id": "RATE_DETN",
@@ -9996,7 +12527,9 @@ ZenProperties["PTL_LFO_LFO"] = {
         0,
         127
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 10,
+      "lengthSysex": 1
     },
     "DELAY": {
       "id": "DELAY",
@@ -10007,7 +12540,9 @@ ZenProperties["PTL_LFO_LFO"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 11,
+      "lengthSysex": 4
     },
     "DELAY_KF": {
       "id": "DELAY_KF",
@@ -10018,7 +12553,10 @@ ZenProperties["PTL_LFO_LFO"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 15,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "FADE_MODE": {
       "id": "FADE_MODE",
@@ -10030,6 +12568,8 @@ ZenProperties["PTL_LFO_LFO"] = {
         3
       ],
       "initValue": 0,
+      "sysexOffset": 17,
+      "lengthSysex": 1,
       "values": {
         "0": "ON-IN",
         "1": "ON-OUT",
@@ -10046,7 +12586,9 @@ ZenProperties["PTL_LFO_LFO"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 18,
+      "lengthSysex": 4
     },
     "KEY_TRIG": {
       "id": "KEY_TRIG",
@@ -10058,6 +12600,8 @@ ZenProperties["PTL_LFO_LFO"] = {
         1
       ],
       "initValue": 0,
+      "sysexOffset": 22,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -10072,7 +12616,10 @@ ZenProperties["PTL_LFO_LFO"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 23,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "TVF_DEPTH": {
       "id": "TVF_DEPTH",
@@ -10083,7 +12630,10 @@ ZenProperties["PTL_LFO_LFO"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 25,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "TVA_DEPTH": {
       "id": "TVA_DEPTH",
@@ -10094,7 +12644,10 @@ ZenProperties["PTL_LFO_LFO"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 27,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "PAN_DEPTH": {
       "id": "PAN_DEPTH",
@@ -10105,7 +12658,10 @@ ZenProperties["PTL_LFO_LFO"] = {
         -63,
         63
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 29,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64
     },
     "PHASE_POS": {
       "id": "PHASE_POS",
@@ -10116,7 +12672,9 @@ ZenProperties["PTL_LFO_LFO"] = {
         0,
         3
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 30,
+      "lengthSysex": 1
     },
     "STEP_1": {
       "id": "STEP_1",
@@ -10127,7 +12685,10 @@ ZenProperties["PTL_LFO_LFO"] = {
         -72,
         72
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 31,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "STEP_CURVE_1": {
       "id": "STEP_CURVE_1",
@@ -10138,7 +12699,9 @@ ZenProperties["PTL_LFO_LFO"] = {
         0,
         36
       ],
-      "initValue": 1
+      "initValue": 1,
+      "sysexOffset": 63,
+      "lengthSysex": 1
     }
   },
   "category": "Autogenerated: jupiter"
@@ -10148,6 +12711,7 @@ ZenProperties["PTL_LFO"] = {
   "name": "PTL_LFO",
   "description": "Partial LFO",
   "byteLength": 104,
+  "sysexLength": 158,
   "parameters": {
     "LFO": {
       "id": "LFO",
@@ -10157,6 +12721,8 @@ ZenProperties["PTL_LFO"] = {
       "blockName": "PTL_LFO_LFO",
       "count": 2,
       "blockByteLength": 52,
+      "sysexOffset": "00 00 00",
+      "lengthSysex": 158,
       "block": ZenProperties["PTL_LFO_LFO"]
     }
   },
@@ -10167,6 +12733,7 @@ ZenProperties["PTL_PENV"] = {
   "name": "PTL_PENV",
   "description": "Partial Pitch Envelope",
   "byteLength": 24,
+  "sysexLength": 45,
   "parameters": {
     "DEPTH": {
       "id": "DEPTH",
@@ -10177,7 +12744,9 @@ ZenProperties["PTL_PENV"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "VSENS": {
       "id": "VSENS",
@@ -10188,7 +12757,10 @@ ZenProperties["PTL_PENV"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 2,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "T1_VSENS": {
       "id": "T1_VSENS",
@@ -10199,7 +12771,10 @@ ZenProperties["PTL_PENV"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 4,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "T4_VSENS": {
       "id": "T4_VSENS",
@@ -10210,7 +12785,10 @@ ZenProperties["PTL_PENV"] = {
         -100,
         100
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 6,
+      "lengthSysex": 2,
+      "sysexValueOffset": 128
     },
     "T1": {
       "id": "T1",
@@ -10221,7 +12799,9 @@ ZenProperties["PTL_PENV"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 8,
+      "lengthSysex": 4
     },
     "T2": {
       "id": "T2",
@@ -10232,7 +12812,9 @@ ZenProperties["PTL_PENV"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 12,
+      "lengthSysex": 4
     },
     "T3": {
       "id": "T3",
@@ -10243,7 +12825,9 @@ ZenProperties["PTL_PENV"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 16,
+      "lengthSysex": 4
     },
     "T4": {
       "id": "T4",
@@ -10254,7 +12838,9 @@ ZenProperties["PTL_PENV"] = {
         0,
         1023
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 20,
+      "lengthSysex": 4
     },
     "L0": {
       "id": "L0",
@@ -10265,7 +12851,10 @@ ZenProperties["PTL_PENV"] = {
         -511,
         511
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 24,
+      "lengthSysex": 4,
+      "sysexValueOffset": 1024
     },
     "L1": {
       "id": "L1",
@@ -10276,7 +12865,10 @@ ZenProperties["PTL_PENV"] = {
         -511,
         511
       ],
-      "initValue": 240
+      "initValue": 240,
+      "sysexOffset": 28,
+      "lengthSysex": 4,
+      "sysexValueOffset": 1024
     },
     "L2": {
       "id": "L2",
@@ -10287,7 +12879,10 @@ ZenProperties["PTL_PENV"] = {
         -511,
         511
       ],
-      "initValue": 240
+      "initValue": 240,
+      "sysexOffset": 32,
+      "lengthSysex": 4,
+      "sysexValueOffset": 1024
     },
     "L3": {
       "id": "L3",
@@ -10298,7 +12893,10 @@ ZenProperties["PTL_PENV"] = {
         -511,
         511
       ],
-      "initValue": 240
+      "initValue": 240,
+      "sysexOffset": 36,
+      "lengthSysex": 4,
+      "sysexValueOffset": 1024
     },
     "L4": {
       "id": "L4",
@@ -10309,7 +12907,10 @@ ZenProperties["PTL_PENV"] = {
         -511,
         511
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 40,
+      "lengthSysex": 4,
+      "sysexValueOffset": 1024
     },
     "VCRV": {
       "id": "VCRV",
@@ -10321,6 +12922,8 @@ ZenProperties["PTL_PENV"] = {
         7
       ],
       "initValue": 1,
+      "sysexOffset": 44,
+      "lengthSysex": 1,
       "values": {
         "0": "FIXED",
         "1": "1",
@@ -10342,7 +12945,8 @@ ZenProperties["PTL_PENV"] = {
         0
       ],
       "initValue": null,
-      "isPadding": true
+      "isPadding": true,
+      "lengthSysex": 0
     }
   },
   "category": "Autogenerated: jupiter"
@@ -10352,6 +12956,7 @@ ZenProperties["RCMP"] = {
   "name": "RCMP",
   "description": "System RhythmComp",
   "byteLength": 8,
+  "sysexLength": 8,
   "parameters": {
     "SW": {
       "id": "SW",
@@ -10363,6 +12968,7 @@ ZenProperties["RCMP"] = {
         1
       ],
       "initValue": 0,
+      "lengthSysex": 1,
       "values": {
         "0": "OFF",
         "1": "ON"
@@ -10378,6 +12984,8 @@ ZenProperties["RCMP"] = {
         100
       ],
       "initValue": 0,
+      "sysexOffset": 1,
+      "lengthSysex": 1,
       "displayMeasurement": "ms",
       "values": {
         "0": "0.1",
@@ -10493,6 +13101,8 @@ ZenProperties["RCMP"] = {
         99
       ],
       "initValue": 0,
+      "sysexOffset": 2,
+      "lengthSysex": 1,
       "displayMeasurement": "ms",
       "displayRange": [
         10,
@@ -10509,6 +13119,9 @@ ZenProperties["RCMP"] = {
         0
       ],
       "initValue": 0,
+      "sysexOffset": 3,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64,
       "displayMeasurement": "dB"
     },
     "RATIO": {
@@ -10521,6 +13134,8 @@ ZenProperties["RCMP"] = {
         7
       ],
       "initValue": 0,
+      "sysexOffset": 4,
+      "lengthSysex": 1,
       "values": {
         "0": "1:1",
         "1": "2:1",
@@ -10542,6 +13157,8 @@ ZenProperties["RCMP"] = {
         30
       ],
       "initValue": 0,
+      "sysexOffset": 5,
+      "lengthSysex": 1,
       "displayMeasurement": "dB"
     },
     "POSTGAIN": {
@@ -10554,6 +13171,9 @@ ZenProperties["RCMP"] = {
         48
       ],
       "initValue": 0,
+      "sysexOffset": 6,
+      "lengthSysex": 1,
+      "sysexValueOffset": 64,
       "displayMeasurement": "dB",
       "displayRange": [
         -24,
@@ -10570,6 +13190,8 @@ ZenProperties["RCMP"] = {
         10
       ],
       "initValue": 1,
+      "sysexOffset": 7,
+      "lengthSysex": 1,
       "values": {
         "0": "DRY",
         "1": "MFX",
@@ -10592,6 +13214,7 @@ ZenProperties["TONECOM"] = {
   "name": "TONECOM",
   "description": "ToneCom",
   "byteLength": 20,
+  "sysexLength": 23,
   "parameters": {
     "NAME_1": {
       "id": "NAME_1",
@@ -10603,6 +13226,7 @@ ZenProperties["TONECOM"] = {
         127
       ],
       "initValue": 32,
+      "lengthSysex": 1,
       "displayMeasurement": "ASCII"
     },
     "CATEGORY": {
@@ -10615,6 +13239,8 @@ ZenProperties["TONECOM"] = {
         50
       ],
       "initValue": 0,
+      "sysexOffset": 16,
+      "lengthSysex": 1,
       "values": {
         "0": "None",
         "1": "Ac.Piano",
@@ -10678,7 +13304,9 @@ ZenProperties["TONECOM"] = {
         0,
         0
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 17,
+      "lengthSysex": 2
     },
     "RSRV16": {
       "id": "RSRV16",
@@ -10689,7 +13317,9 @@ ZenProperties["TONECOM"] = {
         0,
         0
       ],
-      "initValue": 0
+      "initValue": 0,
+      "sysexOffset": 19,
+      "lengthSysex": 4
     }
   },
   "category": "Autogenerated: jupiter"
@@ -10704,6 +13334,8 @@ ZenProperties["PCMEX"] = {
       "byteOffset": 0,
       "blockByteLength": 64,
       "byteLength": 64,
+      "sysexOffset": "00 00 00",
+      "sysexItemSize": 128,
       "block": ZenProperties["PCMT_CMN"]
     },
     "MFX": {
@@ -10712,6 +13344,8 @@ ZenProperties["PCMEX"] = {
       "byteOffset": 64,
       "blockByteLength": 84,
       "byteLength": 84,
+      "sysexOffset": "00 01 00",
+      "sysexItemSize": 256,
       "block": ZenProperties["MFX"]
     },
     "PCMT_PMT": {
@@ -10720,6 +13354,8 @@ ZenProperties["PCMEX"] = {
       "byteOffset": 148,
       "blockByteLength": 52,
       "byteLength": 52,
+      "sysexOffset": "00 10 00",
+      "sysexItemSize": 128,
       "block": ZenProperties["PCMT_PMT"]
     },
     "PCMT_PTL": {
@@ -10728,6 +13364,8 @@ ZenProperties["PCMEX"] = {
       "byteOffset": 200,
       "blockByteLength": 124,
       "byteLength": 496,
+      "sysexOffset": "00 20 00",
+      "sysexItemSize": 128,
       "block": ZenProperties["PCMT_PTL"]
     },
     "PTL_PENV": {
@@ -10736,6 +13374,8 @@ ZenProperties["PCMEX"] = {
       "byteOffset": 696,
       "blockByteLength": 24,
       "byteLength": 96,
+      "sysexOffset": "00 24 00",
+      "sysexItemSize": 128,
       "block": ZenProperties["PTL_PENV"]
     },
     "PTL_FENV": {
@@ -10744,6 +13384,8 @@ ZenProperties["PCMEX"] = {
       "byteOffset": 792,
       "blockByteLength": 24,
       "byteLength": 96,
+      "sysexOffset": "00 28 00",
+      "sysexItemSize": 128,
       "block": ZenProperties["PTL_FENV"]
     },
     "PTL_AENV": {
@@ -10752,6 +13394,8 @@ ZenProperties["PCMEX"] = {
       "byteOffset": 888,
       "blockByteLength": 16,
       "byteLength": 64,
+      "sysexOffset": "00 2c 00",
+      "sysexItemSize": 128,
       "block": ZenProperties["PTL_AENV"]
     },
     "PTL_LFO": {
@@ -10760,6 +13404,8 @@ ZenProperties["PCMEX"] = {
       "byteOffset": 952,
       "blockByteLength": 104,
       "byteLength": 416,
+      "sysexOffset": "00 30 00",
+      "sysexItemSize": 256,
       "block": ZenProperties["PTL_LFO"]
     },
     "PTL_EQ": {
@@ -10768,6 +13414,8 @@ ZenProperties["PCMEX"] = {
       "byteOffset": 1368,
       "blockByteLength": 16,
       "byteLength": 64,
+      "sysexOffset": "00 38 00",
+      "sysexItemSize": 128,
       "block": ZenProperties["PTL_EQ"]
     },
     "PCMS_CMN": {
@@ -10776,6 +13424,8 @@ ZenProperties["PCMEX"] = {
       "byteOffset": 1432,
       "blockByteLength": 20,
       "byteLength": 20,
+      "sysexOffset": "00 3c 00",
+      "sysexItemSize": 128,
       "block": ZenProperties["PCMS_CMN"]
     },
     "PCMS_PMT": {
@@ -10784,6 +13434,8 @@ ZenProperties["PCMEX"] = {
       "byteOffset": 1452,
       "blockByteLength": 36,
       "byteLength": 36,
+      "sysexOffset": "00 3d 00",
+      "sysexItemSize": 128,
       "block": ZenProperties["PCMS_PMT"]
     },
     "PCMS_PTL": {
@@ -10792,6 +13444,8 @@ ZenProperties["PCMEX"] = {
       "byteOffset": 1488,
       "blockByteLength": 36,
       "byteLength": 144,
+      "sysexOffset": "00 3e 00",
+      "sysexItemSize": 128,
       "block": ZenProperties["PCMS_PTL"]
     }
   },
@@ -10808,6 +13462,8 @@ ZenProperties["PCMR"] = {
       "byteOffset": 0,
       "blockByteLength": 28,
       "byteLength": 28,
+      "sysexOffset": "00 00 00",
+      "sysexItemSize": 128,
       "block": ZenProperties["PCMR_CMN"]
     },
     "MFX": {
@@ -10816,6 +13472,8 @@ ZenProperties["PCMR"] = {
       "byteOffset": 28,
       "blockByteLength": 84,
       "byteLength": 84,
+      "sysexOffset": "00 01 00",
+      "sysexItemSize": 256,
       "block": ZenProperties["MFX"]
     },
     "RCMP": {
@@ -10824,6 +13482,8 @@ ZenProperties["PCMR"] = {
       "byteOffset": 112,
       "blockByteLength": 8,
       "byteLength": 48,
+      "sysexOffset": "00 10 00",
+      "sysexItemSize": 128,
       "block": ZenProperties["RCMP"]
     },
     "PCMR_PTL": {
@@ -10832,6 +13492,8 @@ ZenProperties["PCMR"] = {
       "byteOffset": 160,
       "blockByteLength": 20,
       "byteLength": 1760,
+      "sysexOffset": "00 16 00",
+      "sysexItemSize": 128,
       "block": ZenProperties["PCMR_PTL"]
     },
     "PTL_EQ": {
@@ -10840,6 +13502,8 @@ ZenProperties["PCMR"] = {
       "byteOffset": 1920,
       "blockByteLength": 16,
       "byteLength": 1408,
+      "sysexOffset": "00 6e 00",
+      "sysexItemSize": 128,
       "block": ZenProperties["PTL_EQ"]
     }
   },
@@ -10856,6 +13520,8 @@ ZenProperties["MdlSynPrm0"] = {
       "byteOffset": 0,
       "blockByteLength": 112,
       "byteLength": 112,
+      "sysexOffset": "00 00 00",
+      "sysexItemSize": 256,
       "block": ZenProperties["MDLSYN0"]
     },
     "MFX": {
@@ -10864,6 +13530,8 @@ ZenProperties["MdlSynPrm0"] = {
       "byteOffset": 112,
       "blockByteLength": 84,
       "byteLength": 84,
+      "sysexOffset": "00 02 00",
+      "sysexItemSize": 256,
       "block": ZenProperties["MFX"]
     },
     "TONECOM": {
@@ -10872,6 +13540,8 @@ ZenProperties["MdlSynPrm0"] = {
       "byteOffset": 196,
       "blockByteLength": 20,
       "byteLength": 20,
+      "sysexOffset": "00 04 00",
+      "sysexItemSize": 128,
       "block": ZenProperties["TONECOM"]
     }
   },
@@ -10888,6 +13558,8 @@ ZenProperties["MdlJD800"] = {
       "byteOffset": 0,
       "blockByteLength": 44,
       "byteLength": 44,
+      "sysexOffset": "00 00 00",
+      "sysexItemSize": 128,
       "block": ZenProperties["MDLJD800COM"]
     },
     "MDLJD800PTL": {
@@ -10896,6 +13568,8 @@ ZenProperties["MdlJD800"] = {
       "byteOffset": 44,
       "blockByteLength": 80,
       "byteLength": 320,
+      "sysexOffset": "00 01 00",
+      "sysexItemSize": 128,
       "block": ZenProperties["MDLJD800PTL"]
     },
     "MFX": {
@@ -10904,6 +13578,8 @@ ZenProperties["MdlJD800"] = {
       "byteOffset": 364,
       "blockByteLength": 84,
       "byteLength": 84,
+      "sysexOffset": "00 05 00",
+      "sysexItemSize": 256,
       "block": ZenProperties["MFX"]
     },
     "MDLJD800FxB": {
@@ -10912,6 +13588,8 @@ ZenProperties["MdlJD800"] = {
       "byteOffset": 448,
       "blockByteLength": 32,
       "byteLength": 32,
+      "sysexOffset": "00 07 00",
+      "sysexItemSize": 128,
       "block": ZenProperties["MDLJD800FxB"]
     },
     "TONECOM": {
@@ -10920,6 +13598,8 @@ ZenProperties["MdlJD800"] = {
       "byteOffset": 480,
       "blockByteLength": 20,
       "byteLength": 20,
+      "sysexOffset": "00 08 00",
+      "sysexItemSize": 128,
       "block": ZenProperties["TONECOM"]
     }
   },
@@ -10936,6 +13616,8 @@ ZenProperties["VoDsgn"] = {
       "byteOffset": 0,
       "blockByteLength": 32,
       "byteLength": 32,
+      "sysexOffset": "00 00 00",
+      "sysexItemSize": 128,
       "block": ZenProperties["MDLVDN"]
     },
     "TONECOM": {
@@ -10944,6 +13626,8 @@ ZenProperties["VoDsgn"] = {
       "byteOffset": 32,
       "blockByteLength": 20,
       "byteLength": 20,
+      "sysexOffset": "00 01 00",
+      "sysexItemSize": 128,
       "block": ZenProperties["TONECOM"]
     },
     "MFX": {
@@ -10952,6 +13636,8 @@ ZenProperties["VoDsgn"] = {
       "byteOffset": 52,
       "blockByteLength": 84,
       "byteLength": 84,
+      "sysexOffset": "00 02 00",
+      "sysexItemSize": 256,
       "block": ZenProperties["MFX"]
     }
   },

@@ -1,9 +1,11 @@
-/jupiter_xml/*
-/juno_xml/*
-/node_modules/*
-/out_php/*
-/.idea
+jupiter_xml/*
+juno_xml/*
+node_modules/*
+out_php/*
+.idea
 old_php_version/*
 tmp/*
 mv_1_xml/*
 mv_1_180_xml/*
+ZENOLOGY/*
+out_test/*

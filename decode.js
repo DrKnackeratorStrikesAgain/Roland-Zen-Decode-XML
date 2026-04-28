@@ -3,6 +3,7 @@ import { fileURLToPath } from "url";
 import { dirname, resolve } from "path";
 import { XMLParser } from "fast-xml-parser";
 import { generateHTML } from "./generateHTMLFromZenProperties.js";
+import { generatePython } from "./generatePython.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -172,9 +173,10 @@ function parseBaseBlock(children, blockName, description, blocks, settings) {
             };
 
             if (includeSysex) {
-                entry.sysexOffset = sysexOffset;
+                if (sysexOffset !== 0) entry.sysexOffset = sysexOffset;
                 entry.lengthSysex = sysexSize;
-                entry.sysexValueOffset = parseInt(attrs["@_sysex_ofst"]) || 0;
+                const sysexValueOffset = parseInt(attrs["@_sysex_ofst"]) || 0;
+                if (sysexValueOffset !== 0) entry.sysexValueOffset = sysexValueOffset;
             }
 
             processValueString(entry, attrs["@_desc_val"] || "");
@@ -211,9 +213,7 @@ function parseBaseBlock(children, blockName, description, blocks, settings) {
             };
 
             if (includeSysex) {
-                entry.sysexOffset = 0;
                 entry.lengthSysex = 0;
-                entry.sysexValueOffset = null;
             }
 
             parameters[entry.id] = entry;
@@ -485,6 +485,274 @@ function generateJSONOutput(blocks, groups, pretty) {
     return JSON.stringify(output, null, pretty ? 2 : 0);
 }
 
+function sanitizeIdentifier(name) {
+    const sanitized = String(name || "")
+        .replace(/[^a-zA-Z0-9_]/g, "_")
+        .replace(/_+/g, "_")
+        .replace(/^(\d)/, "_$1");
+    return sanitized || "unnamed";
+}
+
+function normalizeDescriptionStem(description, index) {
+    if (!description || !index) return description || "";
+    return String(description).replace(new RegExp(`(?:\\s|_)?${index}$`), "").trim();
+}
+
+function getScalarType(param) {
+    const isSigned = Array.isArray(param.dataRange) && param.dataRange[0] < 0;
+    const prefix = isSigned ? "s" : "u";
+    switch (param.byteLength) {
+        case 1:
+            return `${prefix}8`;
+        case 2:
+            return `${prefix}16`;
+        case 4:
+            return `${prefix}32`;
+        default:
+            return null;
+    }
+}
+
+function buildBlockFields(block) {
+    const fields = [];
+    const params = Object.values(block.parameters || {}).sort((a, b) => a.byteOffset - b.byteOffset);
+    let i = 0;
+    let reservedIndex = 1;
+
+    function pushReserved(byteOffset, byteLength, reason = "reserved") {
+        fields.push({
+            kind: "reserved",
+            name: `reserved_${reservedIndex++}`,
+            type: "u8",
+            byteOffset,
+            byteLength,
+            count: byteLength,
+            description: reason
+        });
+    }
+
+    while (i < params.length) {
+        const param = params[i];
+        let nextExpectedOffset = fields.length > 0
+            ? fields[fields.length - 1].byteOffset + fields[fields.length - 1].byteLength
+            : 0;
+        if (param.byteOffset > nextExpectedOffset) {
+            pushReserved(nextExpectedOffset, param.byteOffset - nextExpectedOffset, "implicit padding");
+        }
+
+        if (param.blockName) {
+            fields.push({
+                kind: "struct",
+                name: sanitizeIdentifier(param.id),
+                type: sanitizeIdentifier(param.blockName),
+                byteOffset: param.byteOffset,
+                byteLength: param.byteLength,
+                count: param.count || 1,
+                description: param.description || param.blockName
+            });
+            i++;
+            continue;
+        }
+
+        const match = String(param.id).match(/^(.*)_(\d+)$/);
+        const scalarType = getScalarType(param);
+        if (match && scalarType) {
+            const baseName = sanitizeIdentifier(match[1]);
+            const startIndex = parseInt(match[2], 10);
+            const stemDescription = normalizeDescriptionStem(param.description, startIndex);
+            const grouped = [param];
+            let j = i + 1;
+            let expectedIndex = startIndex + 1;
+            let expectedOffset = param.byteOffset + param.byteLength;
+
+            while (j < params.length) {
+                const candidate = params[j];
+                const candidateMatch = String(candidate.id).match(/^(.*)_(\d+)$/);
+                if (!candidateMatch) break;
+                if (sanitizeIdentifier(candidateMatch[1]) !== baseName) break;
+                if (parseInt(candidateMatch[2], 10) !== expectedIndex) break;
+                if (candidate.byteOffset !== expectedOffset) break;
+                if (candidate.byteLength !== param.byteLength) break;
+                if (getScalarType(candidate) !== scalarType) break;
+                if (normalizeDescriptionStem(candidate.description, expectedIndex) !== stemDescription) break;
+                grouped.push(candidate);
+                j++;
+                expectedIndex++;
+                expectedOffset += candidate.byteLength;
+            }
+
+            if (grouped.length > 1) {
+                fields.push({
+                    kind: "scalar",
+                    name: baseName,
+                    type: scalarType,
+                    byteOffset: param.byteOffset,
+                    byteLength: grouped.length * param.byteLength,
+                    count: grouped.length,
+                    description: stemDescription || param.description
+                });
+                i = j;
+                continue;
+            }
+        }
+
+        const fallbackType = scalarType || "u8";
+        fields.push({
+            kind: "scalar",
+            name: sanitizeIdentifier(param.id),
+            type: fallbackType,
+            byteOffset: param.byteOffset,
+            byteLength: param.byteLength,
+            count: fallbackType === "u8" && !scalarType ? param.byteLength : 1,
+            description: param.description || param.id
+        });
+        i++;
+    }
+
+    const consumed = fields.length > 0
+        ? fields[fields.length - 1].byteOffset + fields[fields.length - 1].byteLength
+        : 0;
+    if (block.byteLength > consumed) {
+        pushReserved(consumed, block.byteLength - consumed, "trailing padding");
+    }
+
+    return fields;
+}
+
+function buildGroupFields(group) {
+    const fields = [];
+    const refs = Object.values(group.parameters || {}).sort((a, b) => a.byteOffset - b.byteOffset);
+    let cursor = 0;
+    let reservedIndex = 1;
+
+    for (const ref of refs) {
+        if (ref.byteOffset > cursor) {
+            fields.push({
+                kind: "reserved",
+                name: `reserved_${reservedIndex++}`,
+                type: "u8",
+                byteOffset: cursor,
+                byteLength: ref.byteOffset - cursor,
+                count: ref.byteOffset - cursor,
+                description: "implicit padding"
+            });
+        }
+
+        fields.push({
+            kind: "struct",
+            name: sanitizeIdentifier(ref.blockName),
+            type: sanitizeIdentifier(ref.blockName),
+            byteOffset: ref.byteOffset,
+            byteLength: ref.byteLength,
+            count: ref.count || 1,
+            description: ref.blockName
+        });
+
+        cursor = ref.byteOffset + ref.byteLength;
+    }
+
+    if (group.byteLength > cursor) {
+        fields.push({
+            kind: "reserved",
+            name: `reserved_${reservedIndex++}`,
+            type: "u8",
+            byteOffset: cursor,
+            byteLength: group.byteLength - cursor,
+            count: group.byteLength - cursor,
+            description: "trailing padding"
+        });
+    }
+
+    return fields;
+}
+
+function getFieldDeclarationParts(field) {
+    const arrayLength = field.kind === "scalar" || field.kind === "struct" || field.kind === "reserved"
+        ? field.count
+        : 1;
+    const needsArray = arrayLength > 1 || (field.kind === "scalar" && field.type === "u8" && field.byteLength > 1 && field.count === field.byteLength);
+    const declarator = needsArray
+        ? `${field.name}[${arrayLength}];`
+        : `${field.name};`;
+    return {
+        type: field.type,
+        declarator
+    };
+}
+
+function formatFieldDeclaration(field, typeWidth, declaratorWidth) {
+    const { type, declarator } = getFieldDeclarationParts(field);
+    const decl = `    ${type.padEnd(typeWidth)} ${declarator.padEnd(declaratorWidth)}`;
+    const detail = `len:${String(field.byteLength).padStart(5, " ")} @ 0x${field.byteOffset.toString(16).padStart(4, "0")}`;
+    const desc = field.description ? `, ${field.description}` : "";
+    return `${decl} // ${detail}${desc}`;
+}
+
+function generateHeaderOutput(configName, blocks, groups) {
+    const lines = [];
+    const guard = sanitizeIdentifier(`${configName}_generated_h`).toUpperCase();
+    const sortedBlocks = Object.entries(blocks).sort(([nameA], [nameB]) => {
+        if (nameA.startsWith(nameB + "_")) return -1;
+        if (nameB.startsWith(nameA + "_")) return 1;
+        return nameA.localeCompare(nameB);
+    });
+    const sortedGroups = Object.entries(groups).sort(([nameA], [nameB]) => nameA.localeCompare(nameB));
+
+    lines.push(`/* Autogenerated from config: ${configName} */`);
+    lines.push(`#ifndef ${guard}`);
+    lines.push(`#define ${guard}`);
+    lines.push("");
+    lines.push("#include <stdint.h>");
+    lines.push("");
+    lines.push("typedef int8_t s8;");
+    lines.push("typedef uint8_t u8;");
+    lines.push("typedef int16_t s16;");
+    lines.push("typedef uint16_t u16;");
+    lines.push("typedef int32_t s32;");
+    lines.push("typedef uint32_t u32;");
+    lines.push("");
+    lines.push("#pragma pack(push, 1)");
+    lines.push("");
+
+    for (const [blockName, block] of sortedBlocks) {
+        const typeName = sanitizeIdentifier(blockName);
+        const fields = buildBlockFields(block);
+        const declarationParts = fields.map(getFieldDeclarationParts);
+        const typeWidth = Math.max(...declarationParts.map(part => part.type.length));
+        const declaratorWidth = Math.max(...declarationParts.map(part => part.declarator.length));
+        lines.push(`/* ${typeName}: ${block.description || "Block"} */`);
+        lines.push(`/* Total length: ${block.byteLength} bytes (0x${block.byteLength.toString(16).padStart(4, "0")}) */`);
+        lines.push(`typedef struct ${typeName} {`);
+        for (const field of fields) {
+            lines.push(formatFieldDeclaration(field, typeWidth, declaratorWidth));
+        }
+        lines.push(`} ${typeName};`);
+        lines.push("");
+    }
+
+    for (const [groupName, group] of sortedGroups) {
+        const typeName = sanitizeIdentifier(groupName);
+        const fields = buildGroupFields(group);
+        const declarationParts = fields.map(getFieldDeclarationParts);
+        const typeWidth = Math.max(...declarationParts.map(part => part.type.length));
+        const declaratorWidth = Math.max(...declarationParts.map(part => part.declarator.length));
+        lines.push(`/* ${typeName}: Group */`);
+        lines.push(`/* Total length: ${group.byteLength} bytes (0x${group.byteLength.toString(16).padStart(4, "0")}) */`);
+        lines.push(`typedef struct ${typeName} {`);
+        for (const field of fields) {
+            lines.push(formatFieldDeclaration(field, typeWidth, declaratorWidth));
+        }
+        lines.push(`} ${typeName};`);
+        lines.push("");
+    }
+
+    lines.push("#pragma pack(pop)");
+    lines.push("");
+    lines.push(`#endif /* ${guard} */`);
+    lines.push("");
+    return lines.join("\n");
+}
+
 // -------------------------------------------------------------------------------
 // Main execution
 (async () => {
@@ -641,6 +909,11 @@ writeFileSync(`${outputDir}/${configName}.json`, jsonOutput);
 
 const jsOutput = generateJSOutput(blocks, groups);
 writeFileSync(`${outputDir}/${configName}.js`, jsOutput);
+
+const headerOutput = generateHeaderOutput(configName, blocks, groups);
+writeFileSync(`${outputDir}/${configName}.h`, headerOutput);
+
+generatePython(configName, blocks, groups, `${outputDir}/${configName}.py`);
 
 // Load the generated JS object and generate HTML
 const jsFilePath = resolve(__dirname, `${outputDir}/${configName}.js`);
