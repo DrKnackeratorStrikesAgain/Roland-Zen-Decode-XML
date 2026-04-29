@@ -1,4 +1,4 @@
-# RolandZenDecodeXML Build 9
+# RolandZenDecodeXML Build 10
 A tool to decode Roland editor XML files (initially Jupiter X/Xm and ZenCore) and generate JSON, Javascript module & Python file with byte offsets (for files) and SYSEX locations/length, with HTML output tables for easy reading. A C header file is created as well.
 
 Also generate reference HTML for `<concrete>` xml which is the SYSEX location for major structures, like an interactive version of the start of the MIDI implementation text. Pre-generated is one for the Verselab MV-1, as that structure is not actually documented. Concrete definitions will likely make their way into the data structure at some point.
@@ -7,7 +7,7 @@ If you are interested in pulling apart these files or project/sound files to cre
 
 
 # ! You do not need to install/run this unless you want to fiddle with some configuration !
-### ! All useful files have been pre-created in the `out` directory. !
+### ! All useful files have been pre-created in the `out` directories. !
 
 **📖 [TLDR Structure document](STRUCTURE.md)** - Compact reference for understanding the output object structure.
 
@@ -17,7 +17,25 @@ Also available is a tool for peeking into the structure of SVZ and MC-707/101 PR
 
 Conversion from the original PHP and all following work done with AI. Coding is for droids as Obi-Wan once said.
 
-## Limitations
+## Verselab MV-1, MC-707 and MC-101
+If you follow all these instructions about getting the xml config from ZenBeats, you'll have 3 verions of the MV data (broadly compatible with 707 and 101), in `out_mv_1`,`out_mv_1_180_A` and `out_mv_1_180_B`. At the moment I'm not 100% sure of the content, so all 3 are included. Here's what I think:
+
+ * `mv_1` was an older version of MV-1 firmware. Files are dated 2020.
+ * `mv_1_180` is probably for firmware version 1.8 (101 & 707 as well).
+ * But the xml in there is broken, there are two copies, you use `fixBrokenHtml.js` to split them out into `A` and `B`. They are slightly different.
+ * I *believe* `mv_180_A` is the correct version. It has extra settings in like `Mixdown Fade Time` which were added in version 1.8 
+
+*In the future I will merge in the missing MV information into the jupiter config or create a separate one. It will probably replace most of the hand rolled extra information for MV/MV files in the library*
+
+### MC-101 and MC-707 Limitations compared to MV-1
+The concrete files with SYSEX locations in the MV_1 output is broadly compatible with the 101/707 except it seems
+
+ * Drum Inst (separate from the kit) does not seem to work (nor can it be found)
+ * UserRhymInstSet, UserSMP, UserMSMP is not in the storage area (ClipLoop aka the looper does)
+ * Project2 does not work
+ * ZBCtrl i would assume wouldn't work at all.
+
+## Decoder Limitations
 
 Does not work with Altenate type blocks (SURFACE is a good example)
 
@@ -336,6 +354,11 @@ Groups are containers for blocks and have a similar structure to blocks:
 Groups contain a `parameters` object where each entry references a block. Block references within groups use the same structure as subblock parameters: `byteOffset` stores the address of item #0, and addresses for array items are calculated at runtime.
 
 ## Changelog
+
+**Build 10 Tweaks**
+
+**Build 9 - Concrete SYSEX decoder to HTML**
+- **XML Fixer**: Fixes mv_1_180
 
 **Build 8 - Tweaks**
 

@@ -1,0 +1,98 @@
+{
+    "settings": {
+        "includePadding": true,
+        "textTableToConsole": false,
+        "prettyJSON": true,
+        "includeSysex": true,
+        "truncateName": true
+    },
+    "importXML": [
+        {
+            "file": "mv_1_xml/db_muse_pcmex_mc101.xml",
+            "blocks": [
+                "PTL_EQ",
+                "PTL_LFO",
+                "PTL_PENV",
+                "PTL_FENV",
+                "PTL_AENV",
+                "PCMT_CMN",
+                "PCMT_PMT",
+                "PCMT_PTL",
+                "PCMS_CMN",
+                "PCMS_PMT",
+                "PCMS_PTL",
+                "PCMR_CMN",
+                "PCMR_PTL",
+                "INST_CMN",
+                "MSMP_CMN",
+                "MSMP_SPLT",
+                "UserSampleModify"
+            ]
+        },
+        {
+            "file": "mv_1_xml/db_muse_mfx_mc101.xml",
+            "blocks": ["MFX"]
+        },
+        {
+            "file": "mv_1_xml/db_muse_cho_mc101.xml",
+            "blocks": ["SH"]
+        },
+        {
+            "file": "mv_1_xml/db_muse_rev_mc101.xml",
+            "blocks": ["SV"]
+        },
+        {
+            "file": "mv_1_xml/db_bmc0.xml",
+            "blocks": [
+                "STP",
+                "SC",
+                "SPATH",
+                "PJC",
+                "PJC2",
+                "PJT",
+                "GLT",
+                "GLT2",
+                "CLC",
+                "CLP",
+                "PHR",
+                "PHR_NT",
+                "PHR_CC",
+                "PHR_BND",
+                "LOOP_CMN",
+                "PEQ",
+                "ARP",
+                "SCMP",
+                "SEQ",
+                "RCMP",
+                "UserSampleCmn",
+                "SCT",
+                "SNG_CMN",
+                "SNG",
+                "VCLP",
+                "VCLU",
+                "KBDARP",
+                "TAKE",
+                "VOCAL_SEQ",
+                "VOCAL_SEQ_DATA",
+                "SLIM",
+                "TCMP",
+                "ZB_CC",
+                "ZB_TN",
+                "ZB_IN"
+            ],
+            "groups": [
+                "Sys",
+                "Proj",
+                "Clip",
+                "LOOP",
+                "PCMR",
+                "PCMRInst",
+                "PCMEX",
+                "UserSample",
+                "MultiSample",
+                "MVProj",
+                "Ctrl"
+            ]
+        }
+    ]
+}

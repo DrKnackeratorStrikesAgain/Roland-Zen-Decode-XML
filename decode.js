@@ -108,11 +108,12 @@ function processValueString(entry, valuesString) {
 
 // Parse a baseblock and return a block definition
 // If block contains subblocks, they are extracted and added to the blocks object
-function parseBaseBlock(children, blockName, description, blocks, settings) {
+function parseBaseBlock(children, blockName, description, blocks, settings, inheritedSysexSuppressed = false) {
     const { includePadding, includeSysex, truncateName } = settings;
     
     let byteOffset = 0;
     let sysexOffset = 0;
+    let sysexSuppressed = inheritedSysexSuppressed;
     let paddingNum = 1;
     const parameters = {};
     
@@ -139,6 +140,10 @@ function parseBaseBlock(children, blockName, description, blocks, settings) {
                 sysexSize = 4;
                 byteSize = 2;
             }
+        }
+
+        if (includeSysex && sysexSuppressed) {
+            sysexSize = 0;
         }
 
         let itemCount = 1;
@@ -232,7 +237,7 @@ function parseBaseBlock(children, blockName, description, blocks, settings) {
         const startSysexOffset = sysexOffset;
         
         // Parse the subblock as its own block definition (without array expansion)
-        const subBlock = parseBaseBlock(subChildren, subblockName, attrs["@_desc"] || subblockId, blocks, settings);
+        const subBlock = parseBaseBlock(subChildren, subblockName, attrs["@_desc"] || subblockId, blocks, settings, sysexSuppressed);
         
         // Add the subblock to our blocks dictionary
         blocks[subblockName] = subBlock;
@@ -292,6 +297,10 @@ function parseBaseBlock(children, blockName, description, blocks, settings) {
                 break;
             case "alternate":
             case "#comment":
+            case "sysex_end":
+                if (elementName === "sysex_end") {
+                    sysexSuppressed = true;
+                }
                 break;
             default:
                 throw new Error(`Unknown element ${elementName}`);
