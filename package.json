@@ -5,7 +5,9 @@
   "main": "decode.js",
   "type": "module",
   "scripts": {
-    "decode": "node decode.js"
+    "decode": "node decode.js",
+    "fix-broken-xml": "node fixBrokenXml.js",
+    "concrete-decode": "node concrete_decode.js"
   },
   "keywords": [
     "roland",

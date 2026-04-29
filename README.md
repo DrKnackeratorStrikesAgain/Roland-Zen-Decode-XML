@@ -1,18 +1,21 @@
-# RolandZenDecodeXML Build 8
-A tool to decode Roland editor XML files (initially Jupiter X/Xm and ZenCore) and generate JSON and a Javascript module with byte offsets (for files)
-and SYSEX locations/length, with HTML output tables for easy reading. 
+# RolandZenDecodeXML Build 9
+A tool to decode Roland editor XML files (initially Jupiter X/Xm and ZenCore) and generate JSON, Javascript module & Python file with byte offsets (for files) and SYSEX locations/length, with HTML output tables for easy reading. A C header file is created as well.
+
+Also generate reference HTML for `<concrete>` xml which is the SYSEX location for major structures, like an interactive version of the start of the MIDI implementation text. Pre-generated is one for the Verselab MV-1, as that structure is not actually documented. Concrete definitions will likely make their way into the data structure at some point.
+
+If you are interested in pulling apart these files or project/sound files to create useful tools you could come and join us at [Discord](https://discord.gg/gP3tmPpf55)
+
+
+# ! You do not need to install/run this unless you want to fiddle with some configuration !
+### ! All useful files have been pre-created in the `out` directory. !
 
 **📖 [TLDR Structure document](STRUCTURE.md)** - Compact reference for understanding the output object structure.
 
 The data generated here is going to work with the Roland Jupiter X/Xm, Fantom 6/7/8 and 06/07/08, Juno-X, Zenology files etc. 
 
-Copies of the current output are available in the `out` directory (minus padding entries). You will only need to download and run this if you want to change the configuration to import more items or use a different source. You will also need to install a Roland editor and copy the files from it.
-
-If you are interested in pulling apart these files or project/sound files to create useful tools you could come and join us at [Discord](https://discord.gg/gP3tmPpf55)
-
 Also available is a tool for peeking into the structure of SVZ and MC-707/101 PRJ files at [**ZenInspector**](https://splunge.foo/zeninspector/) which I update when I figure out new information.
 
-Conversion from the original PHP and all following work done with AI.
+Conversion from the original PHP and all following work done with AI. Coding is for droids as Obi-Wan once said.
 
 ## Limitations
 
@@ -24,7 +27,7 @@ The XML files from Roland editors contain comments in Japanese that provide impo
 
 The translations can help understand the purpose and structure of various blocks, parameters, and groups defined in the XML files.
 
-## Setup
+## Setup (if you want to actually roll your own version)
 
 ### Prerequisites
 - Node.js (version 18 or higher recommended)
@@ -35,12 +38,18 @@ The translations can help understand the purpose and structure of various blocks
 npm install
 ```
 
-For the default `jupiter` config, you will need to copy the .xml files from the
-Roland Jupiter X/Xm editor (available on Roland's website or Roland Cloud) into a subdirectory called `jupiter_xml`.
+#### Copy Xml documents in
+
+Install Roland ZenBeats, Jupiter-X Editor and Juno-X Editor from Roland cloud.
 
 - Copy all the files from `C:\Users\Public\Documents\Roland Editor Library\JUPITERprmdb` into `jupiter_xml`
-- Sorry no idea where Mac ones are, almost certainly in your user Library, or in the app itself
-- Other sets are available in the Juno-X editor and Zenbeats
+- Copy all the files from `C:\Users\Public\Documents\Roland Juno Editor Library\JUNO_Xprmdb` into `juno_xml`
+- Navigate to `C:\Users\Public\Documents\Zenbeats Library\Integrated Devices`, there are two folders `MV-1` and `MV-1-180`. (Though it might be just me, maybe I had an older version installed).
+- Copy the contents of `prmdb` from both of those into the corresponding xml folders.
+- run `fixBrokenXml.js` on `mv_1_180_xml` to... fix the broken XML.
+
+*Sorry no idea where Mac files are. Time for a serarch.*
+
 
 ## Usage
 
@@ -65,6 +74,47 @@ node decode.js jupiter custom_output
 ```
 
 This will write output files to the `custom_output` directory (created automatically if it doesn't exist).
+
+## Utility scripts
+
+### `fixBrokenXml.js`
+
+Repairs a broken `db_bmc0.xml` where a **second full document** was pasted inside the first `<db>`: a second XML declaration (`<?xml version="1.0"?>` — not `<?xml-stylesheet`) and another `<db id="BMC0">…</db>`, often followed by an extra closing `</db>`.
+
+The script does not modify the input folder. It creates two sibling directories next to the input, using the input folder name with `_xml` stripped and `_A_xml` / `_B_xml` appended:
+
+| Output | Contents |
+|--------|----------|
+| `<stem>_A_xml/db_bmc0.xml` | **Merged repair:** text before the second declaration, plus the tail from `<baseblock name="ZB_CC">` through `</db>` taken from the inner duplicate (so one valid outer `<db>`). |
+| `<stem>_B_xml/db_bmc0.xml` | **Inner extract:** the embedded document only, from its `<?xml` through its closing `</db>` (standalone file for comparison or archival). |
+
+Example (run from the repo root; input is `mv_1_180_xml`):
+
+```bash
+node fixBrokenXml.js mv_1_180_xml
+# creates mv_1_180_A_xml/db_bmc0.xml and mv_1_180_B_xml/db_bmc0.xml
+```
+
+If the file has only one XML declaration, the script exits with an error and does nothing.
+
+### `concrete_decode.js`
+
+Builds an HTML report of **`<concrete>`** address layout (groups, blocks, clumps, arrays) from a single `db_bmc0.xml`-style file.
+
+```bash
+node concrete_decode.js <folder_ending_in_xml> [out_dir_or_report.html]
+```
+
+- Reads `<folder>/db_bmc0.xml`.
+- Strips a trailing `_xml` from the folder’s basename for the output filename stem.
+- Default second argument is `out`; the report is `<stem>_concrete.html` (or the path you pass if it ends with `.html`).
+
+Example:
+
+```bash
+node concrete_decode.js jupiter_xml
+# writes out/jupiter_concrete.html
+```
 
 ## Output
 In the output directory three files will be created:
