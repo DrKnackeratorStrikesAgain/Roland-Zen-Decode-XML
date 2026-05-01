@@ -5,6 +5,7 @@ old_php_version/*
 tmp/*
 ZENOLOGY/*
 out_test/*
+gh-pages/
 
 # fixBrokenXml output: commit directory only (see .gitkeep)
 **/*_xml/*
