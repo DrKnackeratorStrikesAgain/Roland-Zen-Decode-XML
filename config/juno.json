@@ -1,0 +1,135 @@
+{
+    "settings": {
+        "includePadding": true,
+        "textTableToConsole": false,
+        "prettyJSON": true,
+        "includeSysex": true,
+        "truncateName": true
+    },
+    "importXML": [
+        {
+            "file": "juno_xml/db_muse_pcmex.xml",
+            "blocks": [
+                "PTL_EQ",
+                "PTL_LFO",
+                "PTL_PENV",
+                "PTL_FENV",
+                "PTL_AENV",
+                "PCMT_CMN",
+                "PCMT_PMT",
+                "PCMT_PTL",
+                "PCMS_CMN",
+                "PCMS_PMT",
+                "PCMS_PTL",
+                "PCMR_CMN",
+                "PCMR_PTL",
+                "RCMP"
+            ]
+        },
+        {
+            "file": "juno_xml/db_muse_mfx.xml",
+            "blocks": ["MFX"]
+        },
+        {
+            "file": "juno_xml/db_muse_ifx.xml",
+            "blocks": ["IFX"]
+        },
+        {
+            "file": "juno_xml/db_muse_cho.xml",
+            "blocks": ["SH"]
+        },
+        {
+            "file": "juno_xml/db_muse_rev.xml",
+            "blocks": ["SV"]
+        },
+        {
+            "file": "juno_xml/db_muse_vtw.xml",
+            "blocks": ["TWCmn", "TWMod", "TWEfct"]
+        },
+        {
+            "file": "juno_xml/db_bmc0_model.xml",
+            "blocks": ["MDLSYN0", "MDLCORE"]
+        },
+        {
+            "file": "juno_xml/db_bmc0_jd800.xml",
+            "blocks": ["MDLJD800COM", "MDLJD800PTL", "MDLJD800FxB"]
+        },
+        {
+            "file": "juno_xml/db_bmc0_vd.xml",
+            "blocks": ["MDLVDN"]
+        },
+        {
+            "file": "juno_xml/db_bmc0_junoX.xml",
+            "blocks": ["MDLJUNOX"]
+        },
+        {
+            "file": "juno_xml/db_bmc0_surface.xml",
+            "blocks": ["SURFACE"]
+        },
+        {
+            "file": "juno_xml/db_bmc0_surface_asgn.xml",
+            "blocks": ["PNLFUNC"]
+        },
+        {
+            "file": "juno_xml/db_bmc0.xml",
+            "blocks": [
+                "ARPC",
+                "ARPP",
+                "ARPUSER",
+                "BCS",
+                "EDLEXZ",
+                "EDLEXZR",
+                "EDLF",
+                "EDLFR",
+                "EDLT",
+                "EDLTR",
+                "EDLW",
+                "EDLWR",
+                "EDPC",
+                "EDPTI",
+                "EDPTIR",
+                "EDS",
+                "EDSEXZ",
+                "EDSEXZR",
+                "EDVD",
+                "EDWM",
+                "FC",
+                "FP",
+                "FZ",
+                "MBAS",
+                "OD",
+                "PEQ",
+                "RDAPFX",
+                "SC",
+                "SCMP",
+                "SEQ",
+                "SL",
+                "STP",
+                "TONECOM",
+                "TONENAME",
+                "TONETYPE",
+                "USRDATABLK",
+                "VIF"
+            ],
+            "groups": [
+                "Edit",
+                "MdlJD800",
+                "MdlJunoX",
+                "MdlSynPrm0",
+                "ModelCore",
+                "PCMEX",
+                "PCMR",
+                "PartInfo",
+                "Perf",
+                "PnlAsgn",
+                "RDTONE",
+                "Sys",
+                "ToneType",
+                "USRTONE",
+                "VTWM",
+                "VTWMEfct",
+                "VoDsgn"
+            ]
+        }
+    ]
+}

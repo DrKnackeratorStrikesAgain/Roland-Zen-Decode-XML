@@ -387,7 +387,7 @@ function generateHTMLFromZenProperties(ZenProperties, title, settings = {}) {
                 const totalBytesFormattedHTML = `0x${totalBytes.toString(16).padStart(4, "0")} ${decimalPadded.replace(/ /g, "&nbsp;")}`;
                 const paramCount = group.parameters ? Object.keys(group.parameters).length : 0;
                 tocRows.push([
-                    { html: `<a href="#group-${escapeHtml(groupName)}">${escapeHtml(groupName)}</a>` },
+                    { html: `<a href="#${escapeHtml(groupName)}">${escapeHtml(groupName)}</a>` },
                     escapeHtml(group.description || ""),
                     paramCount,
                     { html: `<span class="mono">${totalBytesFormattedHTML}</span>` }
@@ -418,7 +418,7 @@ function generateHTMLFromZenProperties(ZenProperties, title, settings = {}) {
                 const totalBytesFormattedHTML = `0x${totalBytes.toString(16).padStart(4, "0")} ${decimalPadded.replace(/ /g, "&nbsp;")}`;
                 const paramCount = block.parameters ? Object.keys(block.parameters).length : 0;
                 tocRows.push([
-                    { html: `<a href="#block-${escapeHtml(blockName)}">${escapeHtml(blockName)}</a>` },
+                    { html: `<a href="#${escapeHtml(blockName)}">${escapeHtml(blockName)}</a>` },
                     escapeHtml(block.description || ""),
                     paramCount,
                     { html: `<span class="mono">${totalBytesFormattedHTML}</span>` }
@@ -468,7 +468,7 @@ function generateHTMLFromZenProperties(ZenProperties, title, settings = {}) {
                             ? `<span class="array-toggle" id="atb-${arrayId}" onclick="toggleArrayGroup('${arrayId}')">+</span> `
                             : "";
                         const countHtml = isArray ? ` <span style="color:#888">[${blockRef.count}]</span>` : "";
-                        row.push({ html: `${toggleHtml}<a href="#block-${escapeHtml(blockRef.blockName)}">${escapeHtml(blockRef.blockName)}</a>${countHtml}` });
+                        row.push({ html: `${toggleHtml}<a href="#${escapeHtml(blockRef.blockName)}">${escapeHtml(blockRef.blockName)}</a>${countHtml}` });
                         row.push(escapeHtml(blockDesc));
                     } else {
                         row.push("");
@@ -507,7 +507,7 @@ function generateHTMLFromZenProperties(ZenProperties, title, settings = {}) {
         
         htmlTableContent += generateTable({
             title: `Group: ${groupName}`,
-            anchor: `group-${groupName}`,
+            anchor: groupName,
             titleLink: `#${escapeHtml(categoryAnchor)}`,
             tableClass: "table table-bordered table-striped noWrap autoWidth",
             headers,
@@ -563,7 +563,7 @@ function generateHTMLFromZenProperties(ZenProperties, title, settings = {}) {
                                     : "";
                                 const countHtml = isSubArray ? ` <span style="color:#888">[${param.count}]</span>` : "";
                                 row.push({ html: `${toggleHtml}${escapeHtml(param.id)}${countHtml}` });
-                                row.push({ html: `<a href="#block-${escapeHtml(param.blockName)}">${escapeHtml(subBlockName)}</a>` });
+                                row.push({ html: `<a href="#${escapeHtml(param.blockName)}">${escapeHtml(subBlockName)}</a>` });
 
                                 if (defaultSettings.includeSysex) {
                                     // Calculate sysexOffset for this array item
@@ -650,7 +650,7 @@ function generateHTMLFromZenProperties(ZenProperties, title, settings = {}) {
                 
                 htmlTableContent += generateTable({
                     title: `Block: ${block.name}${block.description ? ` - ${block.description}` : ""}`,
-                    anchor: `block-${block.name}`,
+                    anchor: block.name,
                     titleLink: `#${escapeHtml(categoryAnchor)}`,
                     tableClass: "table table-bordered table-striped noWrap autoWidth",
                     headers,
@@ -671,7 +671,7 @@ function generateHTMLFromZenProperties(ZenProperties, title, settings = {}) {
                         const nestedBlockObj = categoryBlocks[nestedBlock.blockName] || zenBlocks[nestedBlock.blockName];
                         const nestedDesc = nestedBlockObj?.description || "";
                         nestedRows.push([
-                            { html: `<a href="#block-${escapeHtml(nestedBlock.blockName)}">${escapeHtml(nestedBlock.blockName)}</a>` },
+                            { html: `<a href="#${escapeHtml(nestedBlock.blockName)}">${escapeHtml(nestedBlock.blockName)}</a>` },
                             escapeHtml(nestedDesc),
                             nestedBlock.count.toString()
                         ]);
@@ -687,7 +687,7 @@ function generateHTMLFromZenProperties(ZenProperties, title, settings = {}) {
                 
                 htmlTableContent += generateTable({
                     title: `Block: ${block.name}${block.description ? ` - ${block.description}` : ""}`,
-                    anchor: `block-${block.name}`,
+                    anchor: block.name,
                     titleLink: `#${escapeHtml(categoryAnchor)}`,
                     tableClass: "table table-bordered table-striped noWrap autoWidth",
                     headers: ["Nested Block", "Description", "Count"],
@@ -710,7 +710,7 @@ function generateHTMLFromZenProperties(ZenProperties, title, settings = {}) {
                         const nestedBlockObj = categoryBlocks[nestedBlock.blockName] || zenBlocks[nestedBlock.blockName];
                         const nestedDesc = nestedBlockObj?.description || "";
                         nestedRows.push([
-                            { html: `<a href="#block-${escapeHtml(nestedBlock.blockName)}">${escapeHtml(nestedBlock.blockName)}</a>` },
+                            { html: `<a href="#${escapeHtml(nestedBlock.blockName)}">${escapeHtml(nestedBlock.blockName)}</a>` },
                             escapeHtml(nestedDesc),
                             nestedBlock.count.toString()
                         ]);
@@ -726,7 +726,7 @@ function generateHTMLFromZenProperties(ZenProperties, title, settings = {}) {
                 
                 htmlTableContent += generateTable({
                     title: `Block: ${block.name}${block.description ? ` - ${block.description}` : ""} - Nested Blocks`,
-                    anchor: `block-${block.name}-nested`,
+                    anchor: `${block.name}-nested`,
                     titleLink: `#${escapeHtml(categoryAnchor)}`,
                     tableClass: "table table-bordered table-striped noWrap autoWidth",
                     headers: ["Nested Block", "Description", "Count"],

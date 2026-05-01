@@ -297,6 +297,7 @@ function parseBaseBlock(children, blockName, description, blocks, settings, inhe
                 break;
             case "alternate":
             case "#comment":
+            case "separator":
             case "sysex_end":
                 if (elementName === "sysex_end") {
                     sysexSuppressed = true;
@@ -394,6 +395,8 @@ function parseGroup(children, groupName, blocks, settings) {
                 throw new Error("Cannot find attribute adrs in <offset>");
             }
             sysexOffset = convertSysexValue(adrs);
+        } else if (elementName === "#comment" || elementName === "separator") {
+            // ignore
         } else {
             throw new Error(`Unknown Tag Type '${elementName}' in group`);
         }
@@ -766,12 +769,7 @@ function generateHeaderOutput(configName, blocks, groups) {
 // Main execution
 (async () => {
 const configName = process.argv[2] || "no config specified";
-const outputDir = process.argv[3] || "out";
-
-// Create output directory if it doesn't exist
-if (!existsSync(outputDir)) {
-    mkdirSync(outputDir, { recursive: true });
-}
+const outputDir = process.argv[3] || `out_${configName}`;
 
 pr(`*********** Zen XML Converter Thingy ** config:${configName} ***********\r\n`);
 
@@ -911,6 +909,10 @@ for (const [groupName, group] of Object.entries(groups)) {
 
 // Validate no name conflicts before generating output
 validateNoNameConflicts(blocks, groups);
+
+if (!existsSync(outputDir)) {
+    mkdirSync(outputDir, { recursive: true });
+}
 
 // Generate outputs
 const jsonOutput = generateJSONOutput(blocks, groups, settings.prettyJSON);

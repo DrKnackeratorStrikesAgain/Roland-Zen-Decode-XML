@@ -1,9 +1,12 @@
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
+import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from "fs";
 import { basename, dirname, join } from "path";
 import { XMLParser } from "fast-xml-parser";
 
-const DEFAULT_OUTPUT_DIR = "out";
 const BMC_XML = "db_bmc0.xml";
+
+function defaultOutputDir(outputBase) {
+    return `out_${outputBase}`;
+}
 
 function folderToOutputBase(folderBasename) {
     return folderBasename.endsWith("_xml")
@@ -15,6 +18,18 @@ function parseFolderArg(folderArg) {
     const folderPath = folderArg.replace(/[/\\]+$/, "");
     const outputBase = folderToOutputBase(basename(folderPath));
     return { folderPath, outputBase };
+}
+
+function validateInputFolder(folderPath, inputFile) {
+    if (!existsSync(folderPath)) {
+        throw new Error(`Input folder does not exist: ${folderPath}`);
+    }
+    if (!statSync(folderPath).isDirectory()) {
+        throw new Error(`Input path is not a directory: ${folderPath}`);
+    }
+    if (!existsSync(inputFile)) {
+        throw new Error(`Missing ${join(folderPath, BMC_XML)} (expected ${BMC_XML} in folder)`);
+    }
 }
 
 function getElementInfo(el) {
@@ -176,7 +191,7 @@ function formatDescription(description, row) {
 function rowModel(row) {
     const isClump = row.kind === "clump";
     const outerStride = row.outerStride || 1;
-    return {
+    const model = {
         id: row.id,
         kind: row.kind,
         type: row.type,
@@ -190,6 +205,11 @@ function rowModel(row) {
         count: row.count,
         desc: row.desc
     };
+    if (row.linkTypeName) {
+        model.linkTypeName = row.linkTypeName;
+        model.typeLinkPrefix = row.typeLinkPrefix;
+    }
+    return model;
 }
 
 function shouldShowOuterSize(rowOrModel, innerIndex = rowOrModel.innerIndexValue) {
@@ -273,10 +293,13 @@ function buildClumpRows(entry, concreteId, currentAddress, numDefs, clumps) {
     let childOffset = 0;
 
     for (const child of clumpChildren) {
+        const linkName = child.type;
         rows.push({
             id: `${id}.${child.id}`,
             kind: "clump",
-            type: `${clumpName} -> ${child.type}`,
+            type: `${clumpName} -> ${linkName}`,
+            typeLinkPrefix: `${clumpName} -> `,
+            linkTypeName: linkName,
             index: outerCount > 1 ? 1 : "",
             indexValue: 1,
             indexTotal: outerCount,
@@ -366,7 +389,22 @@ function buildConcreteReport(section, numDefs, clumps) {
     };
 }
 
-function generateTable(report) {
+function formatTypeCell(row, propertiesFile) {
+    const addrStr = formatSysexAddress(row.address);
+    if (row.kind === "block" || row.kind === "group") {
+        const params = new URLSearchParams({ start: addrStr });
+        const href = escapeHtml(`${propertiesFile}?${params.toString()}#${encodeURIComponent(row.type)}`);
+        return `<a href="${href}">${escapeHtml(row.type)}</a>`;
+    }
+    if (row.kind === "clump" && row.linkTypeName) {
+        const params = new URLSearchParams({ start: addrStr });
+        const href = escapeHtml(`${propertiesFile}?${params.toString()}#${encodeURIComponent(row.linkTypeName)}`);
+        return `${escapeHtml(row.typeLinkPrefix)}<a href="${href}">${escapeHtml(row.linkTypeName)}</a>`;
+    }
+    return escapeHtml(row.type);
+}
+
+function generateTable(report, propertiesFile) {
     const body = report.rows.map(row => {
         const modelData = rowModel(row);
         const model = escapeHtml(JSON.stringify(modelData));
@@ -388,7 +426,7 @@ function generateTable(report) {
             <td class="controls inner-details">${innerControls.join("<br>")}</td>
             <td>${escapeHtml(row.id)}</td>
             <td>${escapeHtml(row.kind)}</td>
-            <td>${escapeHtml(row.type)}</td>
+            <td>${formatTypeCell(row, propertiesFile)}</td>
             <td class="right">${escapeHtml(row.index)}</td>
             <td class="right">${escapeHtml(row.innerIndex)}</td>
             <td class="mono">${escapeHtml(formatSysexAddress(row.address))}</td>
@@ -422,8 +460,10 @@ function generateTable(report) {
         </table>`;
 }
 
-function generateHtml(xmlFile, reports) {
-    const content = reports.map(generateTable).join("\n");
+function generateHtml(xmlFile, reports, outputBase) {
+    const propertiesFile = `${outputBase}.html`;
+    const content = reports.map(report => generateTable(report, propertiesFile)).join("\n");
+    const propertiesFileJson = JSON.stringify(propertiesFile);
     return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -444,6 +484,8 @@ function generateHtml(xmlFile, reports) {
         .inner-details { background: #fffaf2; }
     </style>
     <script>
+        const PROPERTIES_HTML = ${propertiesFileJson};
+
         function escapeHtml(value) {
             return String(value ?? "")
                 .replace(/&/g, "&amp;")
@@ -487,6 +529,24 @@ function generateHtml(xmlFile, reports) {
             return '<button type="button" class="toggle inner-toggle" data-model="' + escapeHtml(JSON.stringify(model)) + '" data-target="' + target + '"' + parentAttr + ' onclick="toggleInner(this)">+</button> inner array';
         }
 
+        function typeCellHtml(model, outerIndex, innerIndex) {
+            const addr = rowAddress(model, outerIndex, innerIndex);
+            const start = formatSysexAddress(addr);
+            if (model.kind === "block" || model.kind === "group") {
+                const text = escapeHtml(model.type);
+                const params = new URLSearchParams({ start });
+                const url = PROPERTIES_HTML + "?" + params.toString() + "#" + encodeURIComponent(model.type);
+                return '<a href="' + escapeHtml(url) + '">' + text + '</a>';
+            }
+            if (model.kind === "clump" && model.linkTypeName) {
+                const params = new URLSearchParams({ start });
+                const url = PROPERTIES_HTML + "?" + params.toString() + "#" + encodeURIComponent(model.linkTypeName);
+                const href = escapeHtml(url);
+                return escapeHtml(model.typeLinkPrefix || "") + '<a href="' + href + '">' + escapeHtml(model.linkTypeName) + '</a>';
+            }
+            return escapeHtml(model.type);
+        }
+
         function buildRow(model, outerIndex, innerIndex, className = "", parentOuterTarget = "") {
             const arrayText = model.indexTotal > 1 ? outerIndex : "";
             const innerText = model.innerIndexTotal > 1 ? innerIndex : "";
@@ -496,7 +556,7 @@ function generateHtml(xmlFile, reports) {
                 '<td class="controls inner-details">' + (innerIndex === 1 ? buildInnerButton(model, outerIndex, parentOuterTarget) : "") + '</td>' +
                 '<td>' + escapeHtml(model.id) + '</td>' +
                 '<td>' + escapeHtml(model.kind) + '</td>' +
-                '<td>' + escapeHtml(model.type) + '</td>' +
+                '<td>' + typeCellHtml(model, outerIndex, innerIndex) + '</td>' +
                 '<td class="right">' + escapeHtml(arrayText) + '</td>' +
                 '<td class="right">' + escapeHtml(innerText) + '</td>' +
                 '<td class="mono">' + escapeHtml(formatSysexAddress(rowAddress(model, outerIndex, innerIndex))) + '</td>' +
@@ -569,23 +629,27 @@ function getOutputPath(outputBase, outputArg) {
 
 const folderArg = process.argv[2];
 if (!folderArg) {
-    console.error(`Usage: node concrete_decode.js <folder_name_xml> [${DEFAULT_OUTPUT_DIR} | path/to/out.html]`);
-    console.error(`  Reads <folder>/${BMC_XML} and writes out/<basename_without_xml>_concrete.html`);
+    console.error(`Usage: node concrete_decode.js <folder_name_xml> [out_<basename> | path/to/out.html]`);
+    console.error(`  Default output dir is out_<basename> where <basename> is the folder name with a trailing _xml removed.`);
+    console.error(`  Writes <output_dir>/<basename>_concrete.html`);
     process.exit(1);
 }
 
 const { folderPath, outputBase } = parseFolderArg(folderArg);
 const inputFile = join(folderPath, BMC_XML);
-const outputArg = process.argv[3] || DEFAULT_OUTPUT_DIR;
+const outputArg = process.argv[3] || defaultOutputDir(outputBase);
 const outputFile = getOutputPath(outputBase, outputArg);
 const outputDir = dirname(outputFile);
+
+validateInputFolder(folderPath, inputFile);
+
+const { numDefs, concreteSections, clumps } = parseDocument(inputFile);
+const reports = concreteSections.map(section => buildConcreteReport(section, numDefs, clumps));
 
 if (!existsSync(outputDir)) {
     mkdirSync(outputDir, { recursive: true });
 }
 
-const { numDefs, concreteSections, clumps } = parseDocument(inputFile);
-const reports = concreteSections.map(section => buildConcreteReport(section, numDefs, clumps));
-writeFileSync(outputFile, generateHtml(inputFile, reports));
+writeFileSync(outputFile, generateHtml(inputFile, reports, outputBase));
 
 console.log(`Wrote ${outputFile}`);
