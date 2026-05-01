@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Concrete decode: mv_1_180_A_xml/db_bmc0.xml</title>
+    <style>
+        body { color: #222; font-family: Arial, sans-serif; font-size: 13px; padding: 1rem; }
+        h1, h2 { font-weight: 600; }
+        table { border-collapse: collapse; margin: 0 0 2rem 0; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 4px 6px; text-align: left; vertical-align: top; }
+        th { background: #f0f0f0; position: sticky; top: 0; }
+        tr:nth-child(even) { background: #fafafa; }
+        .mono { font-family: "Roboto Mono", Consolas, monospace; white-space: nowrap; }
+        .right { text-align: right; }
+        .controls { white-space: nowrap; }
+        .toggle { cursor: pointer; font-family: monospace; margin-right: 0.25rem; min-width: 1.5rem; }
+        .outer-details { background: #f7fbff; }
+        .inner-details { background: #fffaf2; }
+    </style>
+    <script>
+        const PROPERTIES_HTML = "mv_1_180_A.html";
+
+        function escapeHtml(value) {
+            return String(value ?? "")
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;");
+        }
+
+        function formatSysexAddress(value) {
+            const bytes = [];
+            let remaining = value;
+            for (let i = 0; i < 4; i++) {
+                bytes.unshift(remaining % 128);
+                remaining = Math.floor(remaining / 128);
+            }
+            return bytes.map(byte => byte.toString(16).toUpperCase().padStart(2, "0")).join(".");
+        }
+
+        function formatDescription(description, model, outerIndex, innerIndex) {
+            const index = model.kind === "clump" ? innerIndex : outerIndex;
+            return String(description ?? "").replace(/\((0?\d+)\$\)/g, (_match, widthText) => {
+                const width = parseInt(widthText, 10);
+                return "(" + String(index).padStart(width, "0") + ")";
+            });
+        }
+
+        function rowAddress(model, outerIndex, innerIndex) {
+            const outerOffset = model.kind === "clump"
+                ? (outerIndex - 1) * model.outerStride * model.itemSize
+                : (outerIndex - 1) * model.itemSize;
+            const innerOffset = model.kind === "clump"
+                ? (innerIndex - 1) * model.itemSize
+                : 0;
+            return model.address + outerOffset + innerOffset;
+        }
+
+        function buildInnerButton(model, outerIndex, parentOuterTarget) {
+            if (model.innerIndexTotal <= 1) return "";
+            const target = parentOuterTarget + "_inner_" + outerIndex;
+            const parentAttr = parentOuterTarget ? ' data-parent-outer="' + parentOuterTarget + '"' : "";
+            return '<button type="button" class="toggle inner-toggle" data-model="' + escapeHtml(JSON.stringify(model)) + '" data-target="' + target + '"' + parentAttr + ' onclick="toggleInner(this)">+</button> inner array';
+        }
+
+        function typeCellHtml(model, outerIndex, innerIndex) {
+            const addr = rowAddress(model, outerIndex, innerIndex);
+            const start = formatSysexAddress(addr);
+            if (model.kind === "block" || model.kind === "group") {
+                const text = escapeHtml(model.type);
+                const params = new URLSearchParams({ start });
+                const url = PROPERTIES_HTML + "?" + params.toString() + "#" + encodeURIComponent(model.type);
+                return '<a href="' + escapeHtml(url) + '">' + text + '</a>';
+            }
+            if (model.kind === "clump" && model.linkTypeName) {
+                const params = new URLSearchParams({ start });
+                const url = PROPERTIES_HTML + "?" + params.toString() + "#" + encodeURIComponent(model.linkTypeName);
+                const href = escapeHtml(url);
+                return escapeHtml(model.typeLinkPrefix || "") + '<a href="' + href + '">' + escapeHtml(model.linkTypeName) + '</a>';
+            }
+            return escapeHtml(model.type);
+        }
+
+        function buildRow(model, outerIndex, innerIndex, className = "", parentOuterTarget = "") {
+            const arrayText = model.indexTotal > 1 ? outerIndex : "";
+            const innerText = model.innerIndexTotal > 1 ? innerIndex : "";
+            const parentAttr = parentOuterTarget ? ' data-parent-outer="' + parentOuterTarget + '"' : "";
+            return '<tr' + (className ? ' class="' + className + '"' : '') + parentAttr + '>' +
+                '<td class="controls outer-details"></td>' +
+                '<td class="controls inner-details">' + (innerIndex === 1 ? buildInnerButton(model, outerIndex, parentOuterTarget) : "") + '</td>' +
+                '<td>' + escapeHtml(model.id) + '</td>' +
+                '<td>' + escapeHtml(model.kind) + '</td>' +
+                '<td>' + typeCellHtml(model, outerIndex, innerIndex) + '</td>' +
+                '<td class="right">' + escapeHtml(arrayText) + '</td>' +
+                '<td class="right">' + escapeHtml(innerText) + '</td>' +
+                '<td class="mono">' + escapeHtml(formatSysexAddress(rowAddress(model, outerIndex, innerIndex))) + '</td>' +
+                '<td class="mono">' + (model.outerSize && (model.kind !== "clump" || innerIndex === 1) ? escapeHtml(formatSysexAddress(model.outerSize)) : "") + '</td>' +
+                '<td class="mono">' + (model.innerSize ? escapeHtml(formatSysexAddress(model.innerSize)) : "") + '</td>' +
+                '<td>' + escapeHtml(model.count) + '</td>' +
+                '<td>' + escapeHtml(formatDescription(model.desc, model, outerIndex, innerIndex)) + '</td>' +
+                '</tr>';
+        }
+
+        function removeRows(selector) {
+            document.querySelectorAll(selector).forEach(row => row.remove());
+        }
+
+        function toggleOuter(button) {
+            const target = button.dataset.target;
+            const existing = document.querySelectorAll("." + target);
+            if (existing.length > 0) {
+                removeRows("." + target);
+                removeRows('[data-parent-outer="' + target + '"]');
+                button.textContent = "+";
+                return;
+            }
+
+            const model = JSON.parse(button.dataset.model);
+            let html = "";
+            for (let outerIndex = 2; outerIndex <= model.indexTotal; outerIndex++) {
+                html += buildRow(model, outerIndex, 1, target, target);
+            }
+            button.closest("tr").insertAdjacentHTML("afterend", html);
+            button.textContent = "-";
+        }
+
+        function toggleInner(button) {
+            const target = button.dataset.target;
+            const existing = document.querySelectorAll("." + target);
+            if (existing.length > 0) {
+                removeRows("." + target);
+                button.textContent = "+";
+                return;
+            }
+
+            const model = JSON.parse(button.dataset.model);
+            const outerIndex = parseInt(button.closest("tr").children[5].textContent || "1", 10);
+            const parentOuterTarget = button.dataset.parentOuter || "";
+            let html = "";
+            for (let innerIndex = 2; innerIndex <= model.innerIndexTotal; innerIndex++) {
+                html += buildRow(model, outerIndex, innerIndex, target, parentOuterTarget);
+            }
+            button.closest("tr").insertAdjacentHTML("afterend", html);
+            button.textContent = "-";
+        }
+    </script>
+</head>
+<body>
+    <h1>Concrete decode</h1>
+    <p>Source: <span class="mono">mv_1_180_A_xml/db_bmc0.xml</span></p>
+    
+        <h2>System <span class="mono">00.00.00.00</span></h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Details</th>
+                    <th>Inner Details</th>
+                    <th>Id</th>
+                    <th>Kind</th>
+                    <th>Type</th>
+                    <th>Array</th>
+                    <th>Inner</th>
+                    <th>Start</th>
+                    <th>Outer Size</th>
+                    <th>Inner Size</th>
+                    <th>Count</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+        <tr>
+            <td class="controls outer-details"></td>
+            <td class="controls inner-details"></td>
+            <td>Sys</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=00.00.00.00#Sys">Sys</a></td>
+            <td class="right"></td>
+            <td class="right"></td>
+            <td class="mono">00.00.00.00</td>
+            <td class="mono">00.01.00.00</td>
+            <td class="mono"></td>
+            <td>1</td>
+            <td>System</td>
+        </tr></tbody>
+        </table>
+
+        <h2>Setup <span class="mono">01.00.00.00</span></h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Details</th>
+                    <th>Inner Details</th>
+                    <th>Id</th>
+                    <th>Kind</th>
+                    <th>Type</th>
+                    <th>Array</th>
+                    <th>Inner</th>
+                    <th>Start</th>
+                    <th>Outer Size</th>
+                    <th>Inner Size</th>
+                    <th>Count</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+        <tr>
+            <td class="controls outer-details"></td>
+            <td class="controls inner-details"></td>
+            <td>stp</td>
+            <td>block</td>
+            <td><a href="mv_1_180_A.html?start=01.00.00.00#STP">STP</a></td>
+            <td class="right"></td>
+            <td class="right"></td>
+            <td class="mono">01.00.00.00</td>
+            <td class="mono">00.00.02.00</td>
+            <td class="mono"></td>
+            <td>1</td>
+            <td>Setup</td>
+        </tr></tbody>
+        </table>
+
+        <h2>Project <span class="mono">10.00.00.00</span></h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Details</th>
+                    <th>Inner Details</th>
+                    <th>Id</th>
+                    <th>Kind</th>
+                    <th>Type</th>
+                    <th>Array</th>
+                    <th>Inner</th>
+                    <th>Start</th>
+                    <th>Outer Size</th>
+                    <th>Inner Size</th>
+                    <th>Count</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+        <tr>
+            <td class="controls outer-details"></td>
+            <td class="controls inner-details"></td>
+            <td>Prm</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=10.00.00.00#Proj">Proj</a></td>
+            <td class="right"></td>
+            <td class="right"></td>
+            <td class="mono">10.00.00.00</td>
+            <td class="mono">00.01.00.00</td>
+            <td class="mono"></td>
+            <td>1</td>
+            <td>Project Parameter</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"></td>
+            <td class="controls inner-details"></td>
+            <td>offset</td>
+            <td>offset</td>
+            <td>base + offset</td>
+            <td class="right"></td>
+            <td class="right"></td>
+            <td class="mono">20.00.00.00</td>
+            <td class="mono"></td>
+            <td class="mono"></td>
+            <td></td>
+            <td>10.00.00.00</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T1ClipPrm&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;Clip&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:67108864,&quot;itemSize&quot;:131072,&quot;outerSize&quot;:131072,&quot;innerSize&quot;:0,&quot;count&quot;:17,&quot;desc&quot;:&quot;Tr1 Clip Parameter (02$)&quot;}" data-target="Project_Project_T1ClipPrm_67108864_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>T1ClipPrm</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=20.00.00.00#Clip">Clip</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">20.00.00.00</td>
+            <td class="mono">00.08.00.00</td>
+            <td class="mono"></td>
+            <td>17</td>
+            <td>Tr1 Clip Parameter (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T2ClipPrm&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;Clip&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:69337088,&quot;itemSize&quot;:131072,&quot;outerSize&quot;:131072,&quot;innerSize&quot;:0,&quot;count&quot;:17,&quot;desc&quot;:&quot;Tr2 Clip Parameter (02$)&quot;}" data-target="Project_Project_T2ClipPrm_69337088_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>T2ClipPrm</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=21.08.00.00#Clip">Clip</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">21.08.00.00</td>
+            <td class="mono">00.08.00.00</td>
+            <td class="mono"></td>
+            <td>17</td>
+            <td>Tr2 Clip Parameter (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T3ClipPrm&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;Clip&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:71565312,&quot;itemSize&quot;:131072,&quot;outerSize&quot;:131072,&quot;innerSize&quot;:0,&quot;count&quot;:17,&quot;desc&quot;:&quot;Tr3 Clip Parameter (02$)&quot;}" data-target="Project_Project_T3ClipPrm_71565312_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>T3ClipPrm</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=22.10.00.00#Clip">Clip</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">22.10.00.00</td>
+            <td class="mono">00.08.00.00</td>
+            <td class="mono"></td>
+            <td>17</td>
+            <td>Tr3 Clip Parameter (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T4ClipPrm&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;Clip&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:73793536,&quot;itemSize&quot;:131072,&quot;outerSize&quot;:131072,&quot;innerSize&quot;:0,&quot;count&quot;:17,&quot;desc&quot;:&quot;Tr4 Clip Parameter (02$)&quot;}" data-target="Project_Project_T4ClipPrm_73793536_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>T4ClipPrm</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=23.18.00.00#Clip">Clip</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">23.18.00.00</td>
+            <td class="mono">00.08.00.00</td>
+            <td class="mono"></td>
+            <td>17</td>
+            <td>Tr4 Clip Parameter (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T5ClipPrm&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;Clip&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:76021760,&quot;itemSize&quot;:131072,&quot;outerSize&quot;:131072,&quot;innerSize&quot;:0,&quot;count&quot;:17,&quot;desc&quot;:&quot;Tr5 Clip Parameter (02$)&quot;}" data-target="Project_Project_T5ClipPrm_76021760_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>T5ClipPrm</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=24.20.00.00#Clip">Clip</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">24.20.00.00</td>
+            <td class="mono">00.08.00.00</td>
+            <td class="mono"></td>
+            <td>17</td>
+            <td>Tr5 Clip Parameter (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T6ClipPrm&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;Clip&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:78249984,&quot;itemSize&quot;:131072,&quot;outerSize&quot;:131072,&quot;innerSize&quot;:0,&quot;count&quot;:17,&quot;desc&quot;:&quot;Tr6 Clip Parameter (02$)&quot;}" data-target="Project_Project_T6ClipPrm_78249984_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>T6ClipPrm</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=25.28.00.00#Clip">Clip</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">25.28.00.00</td>
+            <td class="mono">00.08.00.00</td>
+            <td class="mono"></td>
+            <td>17</td>
+            <td>Tr6 Clip Parameter (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T7ClipPrm&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;Clip&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:80478208,&quot;itemSize&quot;:131072,&quot;outerSize&quot;:131072,&quot;innerSize&quot;:0,&quot;count&quot;:17,&quot;desc&quot;:&quot;Tr7 Clip Parameter (02$)&quot;}" data-target="Project_Project_T7ClipPrm_80478208_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>T7ClipPrm</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=26.30.00.00#Clip">Clip</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">26.30.00.00</td>
+            <td class="mono">00.08.00.00</td>
+            <td class="mono"></td>
+            <td>17</td>
+            <td>Tr7 Clip Parameter (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T8ClipPrm&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;Clip&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:82706432,&quot;itemSize&quot;:131072,&quot;outerSize&quot;:131072,&quot;innerSize&quot;:0,&quot;count&quot;:17,&quot;desc&quot;:&quot;Tr8 Clip Parameter (02$)&quot;}" data-target="Project_Project_T8ClipPrm_82706432_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>T8ClipPrm</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=27.38.00.00#Clip">Clip</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">27.38.00.00</td>
+            <td class="mono">00.08.00.00</td>
+            <td class="mono"></td>
+            <td>17</td>
+            <td>Tr8 Clip Parameter (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"></td>
+            <td class="controls inner-details"></td>
+            <td>offset</td>
+            <td>offset</td>
+            <td>base + offset</td>
+            <td class="right"></td>
+            <td class="right"></td>
+            <td class="mono">30.00.00.00</td>
+            <td class="mono"></td>
+            <td class="mono"></td>
+            <td></td>
+            <td>20.00.00.00</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T1ClipTone&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;PCMEX&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:100663296,&quot;itemSize&quot;:32768,&quot;outerSize&quot;:32768,&quot;innerSize&quot;:0,&quot;count&quot;:17,&quot;desc&quot;:&quot;Tr1 Clip Tone (02$)&quot;}" data-target="Project_Project_T1ClipTone_100663296_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>T1ClipTone</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=30.00.00.00#PCMEX">PCMEX</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">30.00.00.00</td>
+            <td class="mono">00.02.00.00</td>
+            <td class="mono"></td>
+            <td>17</td>
+            <td>Tr1 Clip Tone (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T2ClipTone&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;PCMEX&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:101220352,&quot;itemSize&quot;:32768,&quot;outerSize&quot;:32768,&quot;innerSize&quot;:0,&quot;count&quot;:17,&quot;desc&quot;:&quot;Tr2 Clip Tone (02$)&quot;}" data-target="Project_Project_T2ClipTone_101220352_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>T2ClipTone</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=30.22.00.00#PCMEX">PCMEX</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">30.22.00.00</td>
+            <td class="mono">00.02.00.00</td>
+            <td class="mono"></td>
+            <td>17</td>
+            <td>Tr2 Clip Tone (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T3ClipTone&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;PCMEX&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:101777408,&quot;itemSize&quot;:32768,&quot;outerSize&quot;:32768,&quot;innerSize&quot;:0,&quot;count&quot;:17,&quot;desc&quot;:&quot;Tr3 Clip Tone (02$)&quot;}" data-target="Project_Project_T3ClipTone_101777408_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>T3ClipTone</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=30.44.00.00#PCMEX">PCMEX</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">30.44.00.00</td>
+            <td class="mono">00.02.00.00</td>
+            <td class="mono"></td>
+            <td>17</td>
+            <td>Tr3 Clip Tone (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T4ClipTone&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;PCMEX&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:102334464,&quot;itemSize&quot;:32768,&quot;outerSize&quot;:32768,&quot;innerSize&quot;:0,&quot;count&quot;:17,&quot;desc&quot;:&quot;Tr4 Clip Tone (02$)&quot;}" data-target="Project_Project_T4ClipTone_102334464_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>T4ClipTone</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=30.66.00.00#PCMEX">PCMEX</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">30.66.00.00</td>
+            <td class="mono">00.02.00.00</td>
+            <td class="mono"></td>
+            <td>17</td>
+            <td>Tr4 Clip Tone (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T5ClipTone&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;PCMEX&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:102891520,&quot;itemSize&quot;:32768,&quot;outerSize&quot;:32768,&quot;innerSize&quot;:0,&quot;count&quot;:17,&quot;desc&quot;:&quot;Tr5 Clip Tone (02$)&quot;}" data-target="Project_Project_T5ClipTone_102891520_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>T5ClipTone</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=31.08.00.00#PCMEX">PCMEX</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">31.08.00.00</td>
+            <td class="mono">00.02.00.00</td>
+            <td class="mono"></td>
+            <td>17</td>
+            <td>Tr5 Clip Tone (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T6ClipTone&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;PCMEX&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:103448576,&quot;itemSize&quot;:32768,&quot;outerSize&quot;:32768,&quot;innerSize&quot;:0,&quot;count&quot;:17,&quot;desc&quot;:&quot;Tr6 Clip Tone (02$)&quot;}" data-target="Project_Project_T6ClipTone_103448576_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>T6ClipTone</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=31.2A.00.00#PCMEX">PCMEX</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">31.2A.00.00</td>
+            <td class="mono">00.02.00.00</td>
+            <td class="mono"></td>
+            <td>17</td>
+            <td>Tr6 Clip Tone (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T7ClipTone&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;PCMEX&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:104005632,&quot;itemSize&quot;:32768,&quot;outerSize&quot;:32768,&quot;innerSize&quot;:0,&quot;count&quot;:17,&quot;desc&quot;:&quot;Tr7 Clip Tone (02$)&quot;}" data-target="Project_Project_T7ClipTone_104005632_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>T7ClipTone</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=31.4C.00.00#PCMEX">PCMEX</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">31.4C.00.00</td>
+            <td class="mono">00.02.00.00</td>
+            <td class="mono"></td>
+            <td>17</td>
+            <td>Tr7 Clip Tone (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T8ClipTone&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;PCMEX&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:104562688,&quot;itemSize&quot;:32768,&quot;outerSize&quot;:32768,&quot;innerSize&quot;:0,&quot;count&quot;:17,&quot;desc&quot;:&quot;Tr8 Clip Tone (02$)&quot;}" data-target="Project_Project_T8ClipTone_104562688_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>T8ClipTone</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=31.6E.00.00#PCMEX">PCMEX</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">31.6E.00.00</td>
+            <td class="mono">00.02.00.00</td>
+            <td class="mono"></td>
+            <td>17</td>
+            <td>Tr8 Clip Tone (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T1ClipRhym&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;PCMR&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:105119744,&quot;itemSize&quot;:49152,&quot;outerSize&quot;:49152,&quot;innerSize&quot;:0,&quot;count&quot;:17,&quot;desc&quot;:&quot;Tr1 Clip Rhythm (02$)&quot;}" data-target="Project_Project_T1ClipRhym_105119744_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>T1ClipRhym</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=32.10.00.00#PCMR">PCMR</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">32.10.00.00</td>
+            <td class="mono">00.03.00.00</td>
+            <td class="mono"></td>
+            <td>17</td>
+            <td>Tr1 Clip Rhythm (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T2ClipRhym&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;PCMR&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:105955328,&quot;itemSize&quot;:49152,&quot;outerSize&quot;:49152,&quot;innerSize&quot;:0,&quot;count&quot;:17,&quot;desc&quot;:&quot;Tr2 Clip Rhythm (02$)&quot;}" data-target="Project_Project_T2ClipRhym_105955328_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>T2ClipRhym</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=32.43.00.00#PCMR">PCMR</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">32.43.00.00</td>
+            <td class="mono">00.03.00.00</td>
+            <td class="mono"></td>
+            <td>17</td>
+            <td>Tr2 Clip Rhythm (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T3ClipRhym&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;PCMR&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:106790912,&quot;itemSize&quot;:49152,&quot;outerSize&quot;:49152,&quot;innerSize&quot;:0,&quot;count&quot;:17,&quot;desc&quot;:&quot;Tr3 Clip Rhythm (02$)&quot;}" data-target="Project_Project_T3ClipRhym_106790912_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>T3ClipRhym</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=32.76.00.00#PCMR">PCMR</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">32.76.00.00</td>
+            <td class="mono">00.03.00.00</td>
+            <td class="mono"></td>
+            <td>17</td>
+            <td>Tr3 Clip Rhythm (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T4ClipRhym&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;PCMR&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:107626496,&quot;itemSize&quot;:49152,&quot;outerSize&quot;:49152,&quot;innerSize&quot;:0,&quot;count&quot;:17,&quot;desc&quot;:&quot;Tr4 Clip Rhythm (02$)&quot;}" data-target="Project_Project_T4ClipRhym_107626496_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>T4ClipRhym</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=33.29.00.00#PCMR">PCMR</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">33.29.00.00</td>
+            <td class="mono">00.03.00.00</td>
+            <td class="mono"></td>
+            <td>17</td>
+            <td>Tr4 Clip Rhythm (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T5ClipRhym&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;PCMR&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:108462080,&quot;itemSize&quot;:49152,&quot;outerSize&quot;:49152,&quot;innerSize&quot;:0,&quot;count&quot;:17,&quot;desc&quot;:&quot;Tr5 Clip Rhythm (02$)&quot;}" data-target="Project_Project_T5ClipRhym_108462080_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>T5ClipRhym</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=33.5C.00.00#PCMR">PCMR</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">33.5C.00.00</td>
+            <td class="mono">00.03.00.00</td>
+            <td class="mono"></td>
+            <td>17</td>
+            <td>Tr5 Clip Rhythm (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T6ClipRhym&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;PCMR&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:109297664,&quot;itemSize&quot;:49152,&quot;outerSize&quot;:49152,&quot;innerSize&quot;:0,&quot;count&quot;:17,&quot;desc&quot;:&quot;Tr6 Clip Rhythm (02$)&quot;}" data-target="Project_Project_T6ClipRhym_109297664_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>T6ClipRhym</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=34.0F.00.00#PCMR">PCMR</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">34.0F.00.00</td>
+            <td class="mono">00.03.00.00</td>
+            <td class="mono"></td>
+            <td>17</td>
+            <td>Tr6 Clip Rhythm (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T7ClipRhym&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;PCMR&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:110133248,&quot;itemSize&quot;:49152,&quot;outerSize&quot;:49152,&quot;innerSize&quot;:0,&quot;count&quot;:17,&quot;desc&quot;:&quot;Tr7 Clip Rhythm (02$)&quot;}" data-target="Project_Project_T7ClipRhym_110133248_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>T7ClipRhym</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=34.42.00.00#PCMR">PCMR</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">34.42.00.00</td>
+            <td class="mono">00.03.00.00</td>
+            <td class="mono"></td>
+            <td>17</td>
+            <td>Tr7 Clip Rhythm (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T8ClipRhym&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;PCMR&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:110968832,&quot;itemSize&quot;:49152,&quot;outerSize&quot;:49152,&quot;innerSize&quot;:0,&quot;count&quot;:17,&quot;desc&quot;:&quot;Tr8 Clip Rhythm (02$)&quot;}" data-target="Project_Project_T8ClipRhym_110968832_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>T8ClipRhym</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=34.75.00.00#PCMR">PCMR</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">34.75.00.00</td>
+            <td class="mono">00.03.00.00</td>
+            <td class="mono"></td>
+            <td>17</td>
+            <td>Tr8 Clip Rhythm (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"></td>
+            <td class="controls inner-details"></td>
+            <td>offset</td>
+            <td>offset</td>
+            <td>base + offset</td>
+            <td class="right"></td>
+            <td class="right"></td>
+            <td class="mono">38.00.00.00</td>
+            <td class="mono"></td>
+            <td class="mono"></td>
+            <td></td>
+            <td>28.00.00.00</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T1ClipRhymInstSet.Inst&quot;,&quot;kind&quot;:&quot;clump&quot;,&quot;type&quot;:&quot;PCMRInstSet -&gt; PCMRInst&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:88,&quot;outerStride&quot;:88,&quot;address&quot;:117440512,&quot;itemSize&quot;:128,&quot;outerSize&quot;:11264,&quot;innerSize&quot;:128,&quot;count&quot;:&quot;17 x 88&quot;,&quot;desc&quot;:&quot;Tr1 Clip Rhythm Inst Set (02$)&quot;,&quot;linkTypeName&quot;:&quot;PCMRInst&quot;,&quot;typeLinkPrefix&quot;:&quot;PCMRInstSet -&gt; &quot;}" data-target="Project_Project_T1ClipRhymInstSet_Inst_117440512_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"><button type="button" class="toggle inner-toggle" data-model="{&quot;id&quot;:&quot;T1ClipRhymInstSet.Inst&quot;,&quot;kind&quot;:&quot;clump&quot;,&quot;type&quot;:&quot;PCMRInstSet -&gt; PCMRInst&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:88,&quot;outerStride&quot;:88,&quot;address&quot;:117440512,&quot;itemSize&quot;:128,&quot;outerSize&quot;:11264,&quot;innerSize&quot;:128,&quot;count&quot;:&quot;17 x 88&quot;,&quot;desc&quot;:&quot;Tr1 Clip Rhythm Inst Set (02$)&quot;,&quot;linkTypeName&quot;:&quot;PCMRInst&quot;,&quot;typeLinkPrefix&quot;:&quot;PCMRInstSet -&gt; &quot;}" data-target="Project_Project_T1ClipRhymInstSet_Inst_117440512_outer-1_inner" onclick="toggleInner(this)">+</button> inner array</td>
+            <td>T1ClipRhymInstSet.Inst</td>
+            <td>clump</td>
+            <td>PCMRInstSet -&gt; <a href="mv_1_180_A.html?start=38.00.00.00#PCMRInst">PCMRInst</a></td>
+            <td class="right">1</td>
+            <td class="right">1</td>
+            <td class="mono">38.00.00.00</td>
+            <td class="mono">00.00.58.00</td>
+            <td class="mono">00.00.01.00</td>
+            <td>17 x 88</td>
+            <td>Tr1 Clip Rhythm Inst Set (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T2ClipRhymInstSet.Inst&quot;,&quot;kind&quot;:&quot;clump&quot;,&quot;type&quot;:&quot;PCMRInstSet -&gt; PCMRInst&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:88,&quot;outerStride&quot;:88,&quot;address&quot;:117632000,&quot;itemSize&quot;:128,&quot;outerSize&quot;:11264,&quot;innerSize&quot;:128,&quot;count&quot;:&quot;17 x 88&quot;,&quot;desc&quot;:&quot;Tr2 Clip Rhythm Inst Set (02$)&quot;,&quot;linkTypeName&quot;:&quot;PCMRInst&quot;,&quot;typeLinkPrefix&quot;:&quot;PCMRInstSet -&gt; &quot;}" data-target="Project_Project_T2ClipRhymInstSet_Inst_117632000_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"><button type="button" class="toggle inner-toggle" data-model="{&quot;id&quot;:&quot;T2ClipRhymInstSet.Inst&quot;,&quot;kind&quot;:&quot;clump&quot;,&quot;type&quot;:&quot;PCMRInstSet -&gt; PCMRInst&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:88,&quot;outerStride&quot;:88,&quot;address&quot;:117632000,&quot;itemSize&quot;:128,&quot;outerSize&quot;:11264,&quot;innerSize&quot;:128,&quot;count&quot;:&quot;17 x 88&quot;,&quot;desc&quot;:&quot;Tr2 Clip Rhythm Inst Set (02$)&quot;,&quot;linkTypeName&quot;:&quot;PCMRInst&quot;,&quot;typeLinkPrefix&quot;:&quot;PCMRInstSet -&gt; &quot;}" data-target="Project_Project_T2ClipRhymInstSet_Inst_117632000_outer-1_inner" onclick="toggleInner(this)">+</button> inner array</td>
+            <td>T2ClipRhymInstSet.Inst</td>
+            <td>clump</td>
+            <td>PCMRInstSet -&gt; <a href="mv_1_180_A.html?start=38.0B.58.00#PCMRInst">PCMRInst</a></td>
+            <td class="right">1</td>
+            <td class="right">1</td>
+            <td class="mono">38.0B.58.00</td>
+            <td class="mono">00.00.58.00</td>
+            <td class="mono">00.00.01.00</td>
+            <td>17 x 88</td>
+            <td>Tr2 Clip Rhythm Inst Set (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T3ClipRhymInstSet.Inst&quot;,&quot;kind&quot;:&quot;clump&quot;,&quot;type&quot;:&quot;PCMRInstSet -&gt; PCMRInst&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:88,&quot;outerStride&quot;:88,&quot;address&quot;:117823488,&quot;itemSize&quot;:128,&quot;outerSize&quot;:11264,&quot;innerSize&quot;:128,&quot;count&quot;:&quot;17 x 88&quot;,&quot;desc&quot;:&quot;Tr3 Clip Rhythm Inst Set (02$)&quot;,&quot;linkTypeName&quot;:&quot;PCMRInst&quot;,&quot;typeLinkPrefix&quot;:&quot;PCMRInstSet -&gt; &quot;}" data-target="Project_Project_T3ClipRhymInstSet_Inst_117823488_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"><button type="button" class="toggle inner-toggle" data-model="{&quot;id&quot;:&quot;T3ClipRhymInstSet.Inst&quot;,&quot;kind&quot;:&quot;clump&quot;,&quot;type&quot;:&quot;PCMRInstSet -&gt; PCMRInst&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:88,&quot;outerStride&quot;:88,&quot;address&quot;:117823488,&quot;itemSize&quot;:128,&quot;outerSize&quot;:11264,&quot;innerSize&quot;:128,&quot;count&quot;:&quot;17 x 88&quot;,&quot;desc&quot;:&quot;Tr3 Clip Rhythm Inst Set (02$)&quot;,&quot;linkTypeName&quot;:&quot;PCMRInst&quot;,&quot;typeLinkPrefix&quot;:&quot;PCMRInstSet -&gt; &quot;}" data-target="Project_Project_T3ClipRhymInstSet_Inst_117823488_outer-1_inner" onclick="toggleInner(this)">+</button> inner array</td>
+            <td>T3ClipRhymInstSet.Inst</td>
+            <td>clump</td>
+            <td>PCMRInstSet -&gt; <a href="mv_1_180_A.html?start=38.17.30.00#PCMRInst">PCMRInst</a></td>
+            <td class="right">1</td>
+            <td class="right">1</td>
+            <td class="mono">38.17.30.00</td>
+            <td class="mono">00.00.58.00</td>
+            <td class="mono">00.00.01.00</td>
+            <td>17 x 88</td>
+            <td>Tr3 Clip Rhythm Inst Set (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T4ClipRhymInstSet.Inst&quot;,&quot;kind&quot;:&quot;clump&quot;,&quot;type&quot;:&quot;PCMRInstSet -&gt; PCMRInst&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:88,&quot;outerStride&quot;:88,&quot;address&quot;:118014976,&quot;itemSize&quot;:128,&quot;outerSize&quot;:11264,&quot;innerSize&quot;:128,&quot;count&quot;:&quot;17 x 88&quot;,&quot;desc&quot;:&quot;Tr4 Clip Rhythm Inst Set (02$)&quot;,&quot;linkTypeName&quot;:&quot;PCMRInst&quot;,&quot;typeLinkPrefix&quot;:&quot;PCMRInstSet -&gt; &quot;}" data-target="Project_Project_T4ClipRhymInstSet_Inst_118014976_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"><button type="button" class="toggle inner-toggle" data-model="{&quot;id&quot;:&quot;T4ClipRhymInstSet.Inst&quot;,&quot;kind&quot;:&quot;clump&quot;,&quot;type&quot;:&quot;PCMRInstSet -&gt; PCMRInst&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:88,&quot;outerStride&quot;:88,&quot;address&quot;:118014976,&quot;itemSize&quot;:128,&quot;outerSize&quot;:11264,&quot;innerSize&quot;:128,&quot;count&quot;:&quot;17 x 88&quot;,&quot;desc&quot;:&quot;Tr4 Clip Rhythm Inst Set (02$)&quot;,&quot;linkTypeName&quot;:&quot;PCMRInst&quot;,&quot;typeLinkPrefix&quot;:&quot;PCMRInstSet -&gt; &quot;}" data-target="Project_Project_T4ClipRhymInstSet_Inst_118014976_outer-1_inner" onclick="toggleInner(this)">+</button> inner array</td>
+            <td>T4ClipRhymInstSet.Inst</td>
+            <td>clump</td>
+            <td>PCMRInstSet -&gt; <a href="mv_1_180_A.html?start=38.23.08.00#PCMRInst">PCMRInst</a></td>
+            <td class="right">1</td>
+            <td class="right">1</td>
+            <td class="mono">38.23.08.00</td>
+            <td class="mono">00.00.58.00</td>
+            <td class="mono">00.00.01.00</td>
+            <td>17 x 88</td>
+            <td>Tr4 Clip Rhythm Inst Set (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T5ClipRhymInstSet.Inst&quot;,&quot;kind&quot;:&quot;clump&quot;,&quot;type&quot;:&quot;PCMRInstSet -&gt; PCMRInst&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:88,&quot;outerStride&quot;:88,&quot;address&quot;:118206464,&quot;itemSize&quot;:128,&quot;outerSize&quot;:11264,&quot;innerSize&quot;:128,&quot;count&quot;:&quot;17 x 88&quot;,&quot;desc&quot;:&quot;Tr5 Clip Rhythm Inst Set (02$)&quot;,&quot;linkTypeName&quot;:&quot;PCMRInst&quot;,&quot;typeLinkPrefix&quot;:&quot;PCMRInstSet -&gt; &quot;}" data-target="Project_Project_T5ClipRhymInstSet_Inst_118206464_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"><button type="button" class="toggle inner-toggle" data-model="{&quot;id&quot;:&quot;T5ClipRhymInstSet.Inst&quot;,&quot;kind&quot;:&quot;clump&quot;,&quot;type&quot;:&quot;PCMRInstSet -&gt; PCMRInst&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:88,&quot;outerStride&quot;:88,&quot;address&quot;:118206464,&quot;itemSize&quot;:128,&quot;outerSize&quot;:11264,&quot;innerSize&quot;:128,&quot;count&quot;:&quot;17 x 88&quot;,&quot;desc&quot;:&quot;Tr5 Clip Rhythm Inst Set (02$)&quot;,&quot;linkTypeName&quot;:&quot;PCMRInst&quot;,&quot;typeLinkPrefix&quot;:&quot;PCMRInstSet -&gt; &quot;}" data-target="Project_Project_T5ClipRhymInstSet_Inst_118206464_outer-1_inner" onclick="toggleInner(this)">+</button> inner array</td>
+            <td>T5ClipRhymInstSet.Inst</td>
+            <td>clump</td>
+            <td>PCMRInstSet -&gt; <a href="mv_1_180_A.html?start=38.2E.60.00#PCMRInst">PCMRInst</a></td>
+            <td class="right">1</td>
+            <td class="right">1</td>
+            <td class="mono">38.2E.60.00</td>
+            <td class="mono">00.00.58.00</td>
+            <td class="mono">00.00.01.00</td>
+            <td>17 x 88</td>
+            <td>Tr5 Clip Rhythm Inst Set (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T6ClipRhymInstSet.Inst&quot;,&quot;kind&quot;:&quot;clump&quot;,&quot;type&quot;:&quot;PCMRInstSet -&gt; PCMRInst&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:88,&quot;outerStride&quot;:88,&quot;address&quot;:118397952,&quot;itemSize&quot;:128,&quot;outerSize&quot;:11264,&quot;innerSize&quot;:128,&quot;count&quot;:&quot;17 x 88&quot;,&quot;desc&quot;:&quot;Tr6 Clip Rhythm Inst Set (02$)&quot;,&quot;linkTypeName&quot;:&quot;PCMRInst&quot;,&quot;typeLinkPrefix&quot;:&quot;PCMRInstSet -&gt; &quot;}" data-target="Project_Project_T6ClipRhymInstSet_Inst_118397952_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"><button type="button" class="toggle inner-toggle" data-model="{&quot;id&quot;:&quot;T6ClipRhymInstSet.Inst&quot;,&quot;kind&quot;:&quot;clump&quot;,&quot;type&quot;:&quot;PCMRInstSet -&gt; PCMRInst&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:88,&quot;outerStride&quot;:88,&quot;address&quot;:118397952,&quot;itemSize&quot;:128,&quot;outerSize&quot;:11264,&quot;innerSize&quot;:128,&quot;count&quot;:&quot;17 x 88&quot;,&quot;desc&quot;:&quot;Tr6 Clip Rhythm Inst Set (02$)&quot;,&quot;linkTypeName&quot;:&quot;PCMRInst&quot;,&quot;typeLinkPrefix&quot;:&quot;PCMRInstSet -&gt; &quot;}" data-target="Project_Project_T6ClipRhymInstSet_Inst_118397952_outer-1_inner" onclick="toggleInner(this)">+</button> inner array</td>
+            <td>T6ClipRhymInstSet.Inst</td>
+            <td>clump</td>
+            <td>PCMRInstSet -&gt; <a href="mv_1_180_A.html?start=38.3A.38.00#PCMRInst">PCMRInst</a></td>
+            <td class="right">1</td>
+            <td class="right">1</td>
+            <td class="mono">38.3A.38.00</td>
+            <td class="mono">00.00.58.00</td>
+            <td class="mono">00.00.01.00</td>
+            <td>17 x 88</td>
+            <td>Tr6 Clip Rhythm Inst Set (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T7ClipRhymInstSet.Inst&quot;,&quot;kind&quot;:&quot;clump&quot;,&quot;type&quot;:&quot;PCMRInstSet -&gt; PCMRInst&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:88,&quot;outerStride&quot;:88,&quot;address&quot;:118589440,&quot;itemSize&quot;:128,&quot;outerSize&quot;:11264,&quot;innerSize&quot;:128,&quot;count&quot;:&quot;17 x 88&quot;,&quot;desc&quot;:&quot;Tr7 Clip Rhythm Inst Set (02$)&quot;,&quot;linkTypeName&quot;:&quot;PCMRInst&quot;,&quot;typeLinkPrefix&quot;:&quot;PCMRInstSet -&gt; &quot;}" data-target="Project_Project_T7ClipRhymInstSet_Inst_118589440_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"><button type="button" class="toggle inner-toggle" data-model="{&quot;id&quot;:&quot;T7ClipRhymInstSet.Inst&quot;,&quot;kind&quot;:&quot;clump&quot;,&quot;type&quot;:&quot;PCMRInstSet -&gt; PCMRInst&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:88,&quot;outerStride&quot;:88,&quot;address&quot;:118589440,&quot;itemSize&quot;:128,&quot;outerSize&quot;:11264,&quot;innerSize&quot;:128,&quot;count&quot;:&quot;17 x 88&quot;,&quot;desc&quot;:&quot;Tr7 Clip Rhythm Inst Set (02$)&quot;,&quot;linkTypeName&quot;:&quot;PCMRInst&quot;,&quot;typeLinkPrefix&quot;:&quot;PCMRInstSet -&gt; &quot;}" data-target="Project_Project_T7ClipRhymInstSet_Inst_118589440_outer-1_inner" onclick="toggleInner(this)">+</button> inner array</td>
+            <td>T7ClipRhymInstSet.Inst</td>
+            <td>clump</td>
+            <td>PCMRInstSet -&gt; <a href="mv_1_180_A.html?start=38.46.10.00#PCMRInst">PCMRInst</a></td>
+            <td class="right">1</td>
+            <td class="right">1</td>
+            <td class="mono">38.46.10.00</td>
+            <td class="mono">00.00.58.00</td>
+            <td class="mono">00.00.01.00</td>
+            <td>17 x 88</td>
+            <td>Tr7 Clip Rhythm Inst Set (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T8ClipRhymInstSet.Inst&quot;,&quot;kind&quot;:&quot;clump&quot;,&quot;type&quot;:&quot;PCMRInstSet -&gt; PCMRInst&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:88,&quot;outerStride&quot;:88,&quot;address&quot;:118780928,&quot;itemSize&quot;:128,&quot;outerSize&quot;:11264,&quot;innerSize&quot;:128,&quot;count&quot;:&quot;17 x 88&quot;,&quot;desc&quot;:&quot;Tr8 Clip Rhythm Inst Set (02$)&quot;,&quot;linkTypeName&quot;:&quot;PCMRInst&quot;,&quot;typeLinkPrefix&quot;:&quot;PCMRInstSet -&gt; &quot;}" data-target="Project_Project_T8ClipRhymInstSet_Inst_118780928_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"><button type="button" class="toggle inner-toggle" data-model="{&quot;id&quot;:&quot;T8ClipRhymInstSet.Inst&quot;,&quot;kind&quot;:&quot;clump&quot;,&quot;type&quot;:&quot;PCMRInstSet -&gt; PCMRInst&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:88,&quot;outerStride&quot;:88,&quot;address&quot;:118780928,&quot;itemSize&quot;:128,&quot;outerSize&quot;:11264,&quot;innerSize&quot;:128,&quot;count&quot;:&quot;17 x 88&quot;,&quot;desc&quot;:&quot;Tr8 Clip Rhythm Inst Set (02$)&quot;,&quot;linkTypeName&quot;:&quot;PCMRInst&quot;,&quot;typeLinkPrefix&quot;:&quot;PCMRInstSet -&gt; &quot;}" data-target="Project_Project_T8ClipRhymInstSet_Inst_118780928_outer-1_inner" onclick="toggleInner(this)">+</button> inner array</td>
+            <td>T8ClipRhymInstSet.Inst</td>
+            <td>clump</td>
+            <td>PCMRInstSet -&gt; <a href="mv_1_180_A.html?start=38.51.68.00#PCMRInst">PCMRInst</a></td>
+            <td class="right">1</td>
+            <td class="right">1</td>
+            <td class="mono">38.51.68.00</td>
+            <td class="mono">00.00.58.00</td>
+            <td class="mono">00.00.01.00</td>
+            <td>17 x 88</td>
+            <td>Tr8 Clip Rhythm Inst Set (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"></td>
+            <td class="controls inner-details"></td>
+            <td>offset</td>
+            <td>offset</td>
+            <td>base + offset</td>
+            <td class="right"></td>
+            <td class="right"></td>
+            <td class="mono">40.00.00.00</td>
+            <td class="mono"></td>
+            <td class="mono"></td>
+            <td></td>
+            <td>30.00.00.00</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T1ClipLoop&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;LOOP&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:134217728,&quot;itemSize&quot;:16384,&quot;outerSize&quot;:16384,&quot;innerSize&quot;:0,&quot;count&quot;:17,&quot;desc&quot;:&quot;Tr1 Clip Looper (02$)&quot;}" data-target="Project_Project_T1ClipLoop_134217728_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>T1ClipLoop</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=40.00.00.00#LOOP">LOOP</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">40.00.00.00</td>
+            <td class="mono">00.01.00.00</td>
+            <td class="mono"></td>
+            <td>17</td>
+            <td>Tr1 Clip Looper (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T2ClipLoop&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;LOOP&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:134496256,&quot;itemSize&quot;:16384,&quot;outerSize&quot;:16384,&quot;innerSize&quot;:0,&quot;count&quot;:17,&quot;desc&quot;:&quot;Tr2 Clip Looper (02$)&quot;}" data-target="Project_Project_T2ClipLoop_134496256_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>T2ClipLoop</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=40.11.00.00#LOOP">LOOP</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">40.11.00.00</td>
+            <td class="mono">00.01.00.00</td>
+            <td class="mono"></td>
+            <td>17</td>
+            <td>Tr2 Clip Looper (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T3ClipLoop&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;LOOP&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:134774784,&quot;itemSize&quot;:16384,&quot;outerSize&quot;:16384,&quot;innerSize&quot;:0,&quot;count&quot;:17,&quot;desc&quot;:&quot;Tr3 Clip Looper (02$)&quot;}" data-target="Project_Project_T3ClipLoop_134774784_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>T3ClipLoop</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=40.22.00.00#LOOP">LOOP</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">40.22.00.00</td>
+            <td class="mono">00.01.00.00</td>
+            <td class="mono"></td>
+            <td>17</td>
+            <td>Tr3 Clip Looper (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T4ClipLoop&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;LOOP&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:135053312,&quot;itemSize&quot;:16384,&quot;outerSize&quot;:16384,&quot;innerSize&quot;:0,&quot;count&quot;:17,&quot;desc&quot;:&quot;Tr4 Clip Looper (02$)&quot;}" data-target="Project_Project_T4ClipLoop_135053312_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>T4ClipLoop</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=40.33.00.00#LOOP">LOOP</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">40.33.00.00</td>
+            <td class="mono">00.01.00.00</td>
+            <td class="mono"></td>
+            <td>17</td>
+            <td>Tr4 Clip Looper (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T5ClipLoop&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;LOOP&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:135331840,&quot;itemSize&quot;:16384,&quot;outerSize&quot;:16384,&quot;innerSize&quot;:0,&quot;count&quot;:17,&quot;desc&quot;:&quot;Tr5 Clip Looper (02$)&quot;}" data-target="Project_Project_T5ClipLoop_135331840_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>T5ClipLoop</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=40.44.00.00#LOOP">LOOP</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">40.44.00.00</td>
+            <td class="mono">00.01.00.00</td>
+            <td class="mono"></td>
+            <td>17</td>
+            <td>Tr5 Clip Looper (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T6ClipLoop&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;LOOP&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:135610368,&quot;itemSize&quot;:16384,&quot;outerSize&quot;:16384,&quot;innerSize&quot;:0,&quot;count&quot;:17,&quot;desc&quot;:&quot;Tr6 Clip Looper (02$)&quot;}" data-target="Project_Project_T6ClipLoop_135610368_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>T6ClipLoop</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=40.55.00.00#LOOP">LOOP</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">40.55.00.00</td>
+            <td class="mono">00.01.00.00</td>
+            <td class="mono"></td>
+            <td>17</td>
+            <td>Tr6 Clip Looper (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T7ClipLoop&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;LOOP&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:135888896,&quot;itemSize&quot;:16384,&quot;outerSize&quot;:16384,&quot;innerSize&quot;:0,&quot;count&quot;:17,&quot;desc&quot;:&quot;Tr7 Clip Looper (02$)&quot;}" data-target="Project_Project_T7ClipLoop_135888896_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>T7ClipLoop</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=40.66.00.00#LOOP">LOOP</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">40.66.00.00</td>
+            <td class="mono">00.01.00.00</td>
+            <td class="mono"></td>
+            <td>17</td>
+            <td>Tr7 Clip Looper (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;T8ClipLoop&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;LOOP&quot;,&quot;indexTotal&quot;:17,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:136167424,&quot;itemSize&quot;:16384,&quot;outerSize&quot;:16384,&quot;innerSize&quot;:0,&quot;count&quot;:17,&quot;desc&quot;:&quot;Tr8 Clip Looper (02$)&quot;}" data-target="Project_Project_T8ClipLoop_136167424_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>T8ClipLoop</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=40.77.00.00#LOOP">LOOP</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">40.77.00.00</td>
+            <td class="mono">00.01.00.00</td>
+            <td class="mono"></td>
+            <td>17</td>
+            <td>Tr8 Clip Looper (01)</td>
+        </tr></tbody>
+        </table>
+
+        <h2>Storage <span class="mono">50.00.00.00</span></h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Details</th>
+                    <th>Inner Details</th>
+                    <th>Id</th>
+                    <th>Kind</th>
+                    <th>Type</th>
+                    <th>Array</th>
+                    <th>Inner</th>
+                    <th>Start</th>
+                    <th>Outer Size</th>
+                    <th>Inner Size</th>
+                    <th>Count</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;UserTone&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;PCMEX&quot;,&quot;indexTotal&quot;:64,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:167772160,&quot;itemSize&quot;:32768,&quot;outerSize&quot;:32768,&quot;innerSize&quot;:0,&quot;count&quot;:64,&quot;desc&quot;:&quot;User Tone (03$)&quot;}" data-target="Storage_Storage_UserTone_167772160_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>UserTone</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=50.00.00.00#PCMEX">PCMEX</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">50.00.00.00</td>
+            <td class="mono">00.02.00.00</td>
+            <td class="mono"></td>
+            <td>64</td>
+            <td>User Tone (001)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"></td>
+            <td class="controls inner-details"></td>
+            <td>offset</td>
+            <td>offset</td>
+            <td>base + offset</td>
+            <td class="right"></td>
+            <td class="right"></td>
+            <td class="mono">52.00.00.00</td>
+            <td class="mono"></td>
+            <td class="mono"></td>
+            <td></td>
+            <td>02.00.00.00</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;UserRhym&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;PCMR&quot;,&quot;indexTotal&quot;:64,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:171966464,&quot;itemSize&quot;:49152,&quot;outerSize&quot;:49152,&quot;innerSize&quot;:0,&quot;count&quot;:64,&quot;desc&quot;:&quot;User Rhythm (02$)&quot;}" data-target="Storage_Storage_UserRhym_171966464_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>UserRhym</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=52.00.00.00#PCMR">PCMR</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">52.00.00.00</td>
+            <td class="mono">00.03.00.00</td>
+            <td class="mono"></td>
+            <td>64</td>
+            <td>User Rhythm (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"></td>
+            <td class="controls inner-details"></td>
+            <td>offset</td>
+            <td>offset</td>
+            <td>base + offset</td>
+            <td class="right"></td>
+            <td class="right"></td>
+            <td class="mono">54.00.00.00</td>
+            <td class="mono"></td>
+            <td class="mono"></td>
+            <td></td>
+            <td>04.00.00.00</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;UserRhymInstSet.Inst&quot;,&quot;kind&quot;:&quot;clump&quot;,&quot;type&quot;:&quot;PCMRInstSet -&gt; PCMRInst&quot;,&quot;indexTotal&quot;:64,&quot;innerIndexTotal&quot;:88,&quot;outerStride&quot;:88,&quot;address&quot;:176160768,&quot;itemSize&quot;:128,&quot;outerSize&quot;:11264,&quot;innerSize&quot;:128,&quot;count&quot;:&quot;64 x 88&quot;,&quot;desc&quot;:&quot;User Rhythm Inst Set (02$)&quot;,&quot;linkTypeName&quot;:&quot;PCMRInst&quot;,&quot;typeLinkPrefix&quot;:&quot;PCMRInstSet -&gt; &quot;}" data-target="Storage_Storage_UserRhymInstSet_Inst_176160768_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"><button type="button" class="toggle inner-toggle" data-model="{&quot;id&quot;:&quot;UserRhymInstSet.Inst&quot;,&quot;kind&quot;:&quot;clump&quot;,&quot;type&quot;:&quot;PCMRInstSet -&gt; PCMRInst&quot;,&quot;indexTotal&quot;:64,&quot;innerIndexTotal&quot;:88,&quot;outerStride&quot;:88,&quot;address&quot;:176160768,&quot;itemSize&quot;:128,&quot;outerSize&quot;:11264,&quot;innerSize&quot;:128,&quot;count&quot;:&quot;64 x 88&quot;,&quot;desc&quot;:&quot;User Rhythm Inst Set (02$)&quot;,&quot;linkTypeName&quot;:&quot;PCMRInst&quot;,&quot;typeLinkPrefix&quot;:&quot;PCMRInstSet -&gt; &quot;}" data-target="Storage_Storage_UserRhymInstSet_Inst_176160768_outer-1_inner" onclick="toggleInner(this)">+</button> inner array</td>
+            <td>UserRhymInstSet.Inst</td>
+            <td>clump</td>
+            <td>PCMRInstSet -&gt; <a href="mv_1_180_A.html?start=54.00.00.00#PCMRInst">PCMRInst</a></td>
+            <td class="right">1</td>
+            <td class="right">1</td>
+            <td class="mono">54.00.00.00</td>
+            <td class="mono">00.00.58.00</td>
+            <td class="mono">00.00.01.00</td>
+            <td>64 x 88</td>
+            <td>User Rhythm Inst Set (01)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"></td>
+            <td class="controls inner-details"></td>
+            <td>offset</td>
+            <td>offset</td>
+            <td>base + offset</td>
+            <td class="right"></td>
+            <td class="right"></td>
+            <td class="mono">55.00.00.00</td>
+            <td class="mono"></td>
+            <td class="mono"></td>
+            <td></td>
+            <td>05.00.00.00</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;UserSMP&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;UserSample&quot;,&quot;indexTotal&quot;:500,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:178257920,&quot;itemSize&quot;:32768,&quot;outerSize&quot;:32768,&quot;innerSize&quot;:0,&quot;count&quot;:500,&quot;desc&quot;:&quot;User Sample (03$)&quot;}" data-target="Storage_Storage_UserSMP_178257920_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>UserSMP</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=55.00.00.00#UserSample">UserSample</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">55.00.00.00</td>
+            <td class="mono">00.02.00.00</td>
+            <td class="mono"></td>
+            <td>500</td>
+            <td>User Sample (001)</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"></td>
+            <td class="controls inner-details"></td>
+            <td>offset</td>
+            <td>offset</td>
+            <td>base + offset</td>
+            <td class="right"></td>
+            <td class="right"></td>
+            <td class="mono">60.00.00.00</td>
+            <td class="mono"></td>
+            <td class="mono"></td>
+            <td></td>
+            <td>10.00.00.00</td>
+        </tr>
+        <tr>
+            <td class="controls outer-details"><button type="button" class="toggle outer-toggle" data-model="{&quot;id&quot;:&quot;UserMSMP&quot;,&quot;kind&quot;:&quot;group&quot;,&quot;type&quot;:&quot;MultiSample&quot;,&quot;indexTotal&quot;:128,&quot;innerIndexTotal&quot;:1,&quot;outerStride&quot;:1,&quot;address&quot;:201326592,&quot;itemSize&quot;:32768,&quot;outerSize&quot;:32768,&quot;innerSize&quot;:0,&quot;count&quot;:128,&quot;desc&quot;:&quot;User Multi Sample (03$)&quot;}" data-target="Storage_Storage_UserMSMP_201326592_outer" onclick="toggleOuter(this)">+</button> outer array</td>
+            <td class="controls inner-details"></td>
+            <td>UserMSMP</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=60.00.00.00#MultiSample">MultiSample</a></td>
+            <td class="right">1</td>
+            <td class="right"></td>
+            <td class="mono">60.00.00.00</td>
+            <td class="mono">00.02.00.00</td>
+            <td class="mono"></td>
+            <td>128</td>
+            <td>User Multi Sample (001)</td>
+        </tr></tbody>
+        </table>
+
+        <h2>Project2 <span class="mono">70.00.00.00</span></h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Details</th>
+                    <th>Inner Details</th>
+                    <th>Id</th>
+                    <th>Kind</th>
+                    <th>Type</th>
+                    <th>Array</th>
+                    <th>Inner</th>
+                    <th>Start</th>
+                    <th>Outer Size</th>
+                    <th>Inner Size</th>
+                    <th>Count</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+        <tr>
+            <td class="controls outer-details"></td>
+            <td class="controls inner-details"></td>
+            <td>MVPrm</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=70.00.00.00#MVProj">MVProj</a></td>
+            <td class="right"></td>
+            <td class="right"></td>
+            <td class="mono">70.00.00.00</td>
+            <td class="mono">00.03.00.00</td>
+            <td class="mono"></td>
+            <td>1</td>
+            <td>MV Project Parameter</td>
+        </tr></tbody>
+        </table>
+
+        <h2>ZBCtrl <span class="mono">7A.00.00.00</span></h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Details</th>
+                    <th>Inner Details</th>
+                    <th>Id</th>
+                    <th>Kind</th>
+                    <th>Type</th>
+                    <th>Array</th>
+                    <th>Inner</th>
+                    <th>Start</th>
+                    <th>Outer Size</th>
+                    <th>Inner Size</th>
+                    <th>Count</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+        <tr>
+            <td class="controls outer-details"></td>
+            <td class="controls inner-details"></td>
+            <td>Ctrl</td>
+            <td>group</td>
+            <td><a href="mv_1_180_A.html?start=7A.00.00.00#Ctrl">Ctrl</a></td>
+            <td class="right"></td>
+            <td class="right"></td>
+            <td class="mono">7A.00.00.00</td>
+            <td class="mono">00.01.00.00</td>
+            <td class="mono"></td>
+            <td>1</td>
+            <td>ZenBeats Control Message</td>
+        </tr></tbody>
+        </table>
+</body>
+</html>
