@@ -3,6 +3,8 @@ A tool to decode Roland editor XML files (initially Jupiter X/Xm and ZenCore) an
 
 Also generate reference HTML for `<concrete>` xml which is the SYSEX location for major structures, like an interactive version of the start of the MIDI implementation text. Pre-generated is one for the Verselab MV-1, as that structure is not actually documented. Concrete definitions will likely make their way into the data structure at some point.
 
+Generated HTML files are available for online viewing at the [Github Pages](https://drknackeratorstrikesagain.github.io/Roland-Zen-Decode-XML/).
+
 If you are interested in pulling apart these files or project/sound files to create useful tools you could come and join us at [Discord](https://discord.gg/gP3tmPpf55)
 
 
