@@ -68,12 +68,14 @@
             const start = formatSysexAddress(addr);
             if (model.kind === "block" || model.kind === "group") {
                 const text = escapeHtml(model.type);
-                const params = new URLSearchParams({ name: model.type, start });
-                return '<a href="' + escapeHtml(PROPERTIES_HTML + "?" + params.toString()) + '">' + text + '</a>';
+                const params = new URLSearchParams({ start });
+                const url = PROPERTIES_HTML + "?" + params.toString() + "#" + encodeURIComponent(model.type);
+                return '<a href="' + escapeHtml(url) + '">' + text + '</a>';
             }
             if (model.kind === "clump" && model.linkTypeName) {
-                const params = new URLSearchParams({ name: model.linkTypeName, start });
-                const href = escapeHtml(PROPERTIES_HTML + "?" + params.toString());
+                const params = new URLSearchParams({ start });
+                const url = PROPERTIES_HTML + "?" + params.toString() + "#" + encodeURIComponent(model.linkTypeName);
+                const href = escapeHtml(url);
                 return escapeHtml(model.typeLinkPrefix || "") + '<a href="' + href + '">' + escapeHtml(model.linkTypeName) + '</a>';
             }
             return escapeHtml(model.type);
@@ -171,7 +173,7 @@
             <td class="controls inner-details"></td>
             <td>TempPerf</td>
             <td>group</td>
-            <td><a href="juno.html?name=Perf&amp;start=01.00.00.00">Perf</a></td>
+            <td><a href="juno.html?start=01.00.00.00#Perf">Perf</a></td>
             <td class="right"></td>
             <td class="right"></td>
             <td class="mono">01.00.00.00</td>
@@ -199,7 +201,7 @@
             <td class="controls inner-details"></td>
             <td>TempTone</td>
             <td>group</td>
-            <td><a href="juno.html?name=PCMEX&amp;start=02.00.00.00">PCMEX</a></td>
+            <td><a href="juno.html?start=02.00.00.00#PCMEX">PCMEX</a></td>
             <td class="right">1</td>
             <td class="right"></td>
             <td class="mono">02.00.00.00</td>
@@ -227,7 +229,7 @@
             <td class="controls inner-details"></td>
             <td>PrmIF0</td>
             <td>group</td>
-            <td><a href="juno.html?name=MdlSynPrm0&amp;start=02.10.00.00">MdlSynPrm0</a></td>
+            <td><a href="juno.html?start=02.10.00.00#MdlSynPrm0">MdlSynPrm0</a></td>
             <td class="right">1</td>
             <td class="right"></td>
             <td class="mono">02.10.00.00</td>
@@ -255,7 +257,7 @@
             <td class="controls inner-details"></td>
             <td>RDTone</td>
             <td>group</td>
-            <td><a href="juno.html?name=RDTONE&amp;start=02.20.00.00">RDTONE</a></td>
+            <td><a href="juno.html?start=02.20.00.00#RDTONE">RDTONE</a></td>
             <td class="right"></td>
             <td class="right"></td>
             <td class="mono">02.20.00.00</td>
@@ -269,7 +271,7 @@
             <td class="controls inner-details"></td>
             <td>PartInfo</td>
             <td>group</td>
-            <td><a href="juno.html?name=PartInfo&amp;start=02.21.00.00">PartInfo</a></td>
+            <td><a href="juno.html?start=02.21.00.00#PartInfo">PartInfo</a></td>
             <td class="right">1</td>
             <td class="right"></td>
             <td class="mono">02.21.00.00</td>
@@ -283,7 +285,7 @@
             <td class="controls inner-details"></td>
             <td>ToneType</td>
             <td>group</td>
-            <td><a href="juno.html?name=ToneType&amp;start=02.21.00.05">ToneType</a></td>
+            <td><a href="juno.html?start=02.21.00.05#ToneType">ToneType</a></td>
             <td class="right">1</td>
             <td class="right"></td>
             <td class="mono">02.21.00.05</td>
@@ -297,7 +299,7 @@
             <td class="controls inner-details"></td>
             <td>TempRhythmSet</td>
             <td>group</td>
-            <td><a href="juno.html?name=PCMR&amp;start=02.21.00.09">PCMR</a></td>
+            <td><a href="juno.html?start=02.21.00.09#PCMR">PCMR</a></td>
             <td class="right"></td>
             <td class="right"></td>
             <td class="mono">02.21.00.09</td>
@@ -311,7 +313,7 @@
             <td class="controls inner-details"></td>
             <td>Panel</td>
             <td>group</td>
-            <td><a href="juno.html?name=PnlAsgn&amp;start=02.21.00.0A">PnlAsgn</a></td>
+            <td><a href="juno.html?start=02.21.00.0A#PnlAsgn">PnlAsgn</a></td>
             <td class="right">1</td>
             <td class="right"></td>
             <td class="mono">02.21.00.0A</td>
@@ -325,7 +327,7 @@
             <td class="controls inner-details"></td>
             <td>ModelCore</td>
             <td>group</td>
-            <td><a href="juno.html?name=ModelCore&amp;start=02.21.00.0E">ModelCore</a></td>
+            <td><a href="juno.html?start=02.21.00.0E#ModelCore">ModelCore</a></td>
             <td class="right">1</td>
             <td class="right"></td>
             <td class="mono">02.21.00.0E</td>
@@ -360,7 +362,7 @@
             <td class="controls inner-details"></td>
             <td>JD800</td>
             <td>group</td>
-            <td><a href="juno.html?name=MdlJD800&amp;start=02.30.00.00">MdlJD800</a></td>
+            <td><a href="juno.html?start=02.30.00.00#MdlJD800">MdlJD800</a></td>
             <td class="right">1</td>
             <td class="right"></td>
             <td class="mono">02.30.00.00</td>
@@ -388,7 +390,7 @@
             <td class="controls inner-details"></td>
             <td>JUNOX</td>
             <td>group</td>
-            <td><a href="juno.html?name=MdlJunoX&amp;start=02.40.00.00">MdlJunoX</a></td>
+            <td><a href="juno.html?start=02.40.00.00#MdlJunoX">MdlJunoX</a></td>
             <td class="right">1</td>
             <td class="right"></td>
             <td class="mono">02.40.00.00</td>
@@ -416,7 +418,7 @@
             <td class="controls inner-details"></td>
             <td>VoDesigner</td>
             <td>group</td>
-            <td><a href="juno.html?name=VoDsgn&amp;start=02.50.00.00">VoDsgn</a></td>
+            <td><a href="juno.html?start=02.50.00.00#VoDsgn">VoDsgn</a></td>
             <td class="right"></td>
             <td class="right"></td>
             <td class="mono">02.50.00.00</td>
@@ -451,7 +453,7 @@
             <td class="controls inner-details"></td>
             <td>UserPerf</td>
             <td>group</td>
-            <td><a href="juno.html?name=Perf&amp;start=40.00.00.00">Perf</a></td>
+            <td><a href="juno.html?start=40.00.00.00#Perf">Perf</a></td>
             <td class="right">1</td>
             <td class="right"></td>
             <td class="mono">40.00.00.00</td>
@@ -479,7 +481,7 @@
             <td class="controls inner-details"></td>
             <td>UserTone</td>
             <td>group</td>
-            <td><a href="juno.html?name=USRTONE&amp;start=50.00.00.00">USRTONE</a></td>
+            <td><a href="juno.html?start=50.00.00.00#USRTONE">USRTONE</a></td>
             <td class="right">1</td>
             <td class="right"></td>
             <td class="mono">50.00.00.00</td>
@@ -514,7 +516,7 @@
             <td class="controls inner-details"></td>
             <td>Edit</td>
             <td>group</td>
-            <td><a href="juno.html?name=Edit&amp;start=7F.00.00.00">Edit</a></td>
+            <td><a href="juno.html?start=7F.00.00.00#Edit">Edit</a></td>
             <td class="right"></td>
             <td class="right"></td>
             <td class="mono">7F.00.00.00</td>
@@ -549,7 +551,7 @@
             <td class="controls inner-details"></td>
             <td>stp</td>
             <td>block</td>
-            <td><a href="juno.html?name=STP&amp;start=00.10.00.00">STP</a></td>
+            <td><a href="juno.html?start=00.10.00.00#STP">STP</a></td>
             <td class="right"></td>
             <td class="right"></td>
             <td class="mono">00.10.00.00</td>
@@ -563,7 +565,7 @@
             <td class="controls inner-details"></td>
             <td>sfx</td>
             <td>block</td>
-            <td><a href="juno.html?name=IFX&amp;start=00.10.02.00">IFX</a></td>
+            <td><a href="juno.html?start=00.10.02.00#IFX">IFX</a></td>
             <td class="right"></td>
             <td class="right"></td>
             <td class="mono">00.10.02.00</td>
@@ -577,7 +579,7 @@
             <td class="controls inner-details"></td>
             <td>mfxB</td>
             <td>block</td>
-            <td><a href="juno.html?name=IFX&amp;start=00.10.02.01">IFX</a></td>
+            <td><a href="juno.html?start=00.10.02.01#IFX">IFX</a></td>
             <td class="right"></td>
             <td class="right"></td>
             <td class="mono">00.10.02.01</td>
@@ -612,7 +614,7 @@
             <td class="controls inner-details"></td>
             <td>Sys</td>
             <td>group</td>
-            <td><a href="juno.html?name=Sys&amp;start=00.00.00.00">Sys</a></td>
+            <td><a href="juno.html?start=00.00.00.00#Sys">Sys</a></td>
             <td class="right"></td>
             <td class="right"></td>
             <td class="mono">00.00.00.00</td>
