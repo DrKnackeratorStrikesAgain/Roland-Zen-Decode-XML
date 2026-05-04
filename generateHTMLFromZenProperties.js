@@ -260,6 +260,11 @@ function parseSysexAddress(str) {
     return v;
 }
 
+// Helper function to determine if an entry is a concrete (has type === "concrete")
+function isConcrete(entry) {
+    return entry && typeof entry === "object" && entry.type === "concrete";
+}
+
 // Helper function to determine if an entry is a group (has byteLength and parameters with blockName references)
 function isGroup(entry) {
     if (!entry || typeof entry !== "object" || !("byteLength" in entry) || !("name" in entry) || !("parameters" in entry)) {
@@ -293,14 +298,19 @@ function generateHTMLFromZenProperties(ZenProperties, title, settings = {}) {
         ...settings
     };
 
-    // Separate blocks and groups from ZenProperties and group by category
+    // Separate concretes, blocks and groups from ZenProperties and group by category
+    const zenConcretes = {};
     const zenBlocks = {};
     const zenGroups = {};
     const categories = new Set();
     const defaultCategory = "Unnamed Category";
-    
+
     for (const [key, value] of Object.entries(ZenProperties)) {
-        if (isGroup(value)) {
+        if (isConcrete(value)) {
+            // Concretes get their own dedicated section at the top of the page,
+            // so they are intentionally NOT added to the per-category lists.
+            zenConcretes[key] = value;
+        } else if (isGroup(value)) {
             zenGroups[key] = value;
             // Set default category if not present
             if (!value.category) {
@@ -739,7 +749,149 @@ function generateHTMLFromZenProperties(ZenProperties, title, settings = {}) {
         }
     }
 
-    return `<h1>${title}</h1>${htmlTOC}${htmlTableContent}`;
+    // Render the dedicated concretes section. Concretes have no binary representation,
+    // only sysex addresses, so the table layout is sysex-only.
+    let htmlConcretes = "";
+    const concreteNames = Object.keys(zenConcretes).sort((a, b) =>
+        (zenConcretes[a].sysexBaseAddress ?? 0) - (zenConcretes[b].sysexBaseAddress ?? 0)
+    );
+    if (concreteNames.length > 0) {
+        htmlConcretes += `<a id="concretes"></a><h2>Concretes</h2>`;
+
+        // Concrete TOC
+        const concreteTocRows = concreteNames.map(name => {
+            const concrete = zenConcretes[name];
+            const baseAddrStr = getSysexValueArray(concrete.sysexBaseAddress || 0, 4).join(" ");
+            return [
+                { html: `<a href="#${escapeHtml(name)}">${escapeHtml(name)}</a>` },
+                { html: `<span class="mono">${escapeHtml(baseAddrStr)}</span>` },
+                Object.keys(concrete.parameters || {}).length
+            ];
+        });
+        htmlConcretes += generateTable({
+            tableClass: "table table-bordered table-striped noWrap autoWidth",
+            headers: ["Name", "Base Sysex Address", "Entries"],
+            colClass: { 2: "right" },
+            rows: concreteTocRows
+        });
+
+        // One table per concrete
+        for (const name of concreteNames) {
+            const concrete = zenConcretes[name];
+            const baseAddr = concrete.sysexBaseAddress || 0;
+            const baseAddrStr = getSysexValueArray(baseAddr, 4).join(" ");
+
+            const headers = ["ID", "Kind", "Type", "Outer", "Inner", "Sysex Address", "Item Size", "Description"];
+            const colClass = { 3: "right", 4: "right", 6: "right" };
+            const rows = [];
+
+            for (const param of Object.values(concrete.parameters || {})) {
+                const offset = param.sysexOffset || 0;
+                const baseEntryAddr = baseAddr + offset;
+                const itemSize = param.sysexItemSize || 0;
+                const outerCount = param.count || 1;
+                // Clumps have an inner dimension we expand into rows; other kinds collapse it to 1.
+                const isClumpExpanded = param.kind === "clump" && param.innerCount && param.innerCount > 0;
+                const innerCount = isClumpExpanded ? param.innerCount : 1;
+                const innerStride = param.innerStride || 1;
+
+                const typeLink = param.blockName
+                    ? `<a href="#${escapeHtml(param.blockName)}">${escapeHtml(param.blockName)}</a>`
+                    : "";
+                const itemSizeStr = itemSize ? getSysexValueArray(itemSize, 4).join(" ") : "";
+                const countBadge = isClumpExpanded && outerCount > 1
+                    ? `[${outerCount} × ${innerCount}]`
+                    : outerCount > 1
+                        ? `[${outerCount}]`
+                        : innerCount > 1
+                            ? `[${innerCount}]`
+                            : "";
+
+                // Hide-class strategy avoids per-row class conflicts: at most one of
+                //   ag-{outerArrayId}     (hides middle outer rows; inner=1 rows only)
+                //   ag-{innerArrayId(o)}  (hides inner=2..N rows for outer index o)
+                // is present on any row, so toggling one never fights with the other.
+                const safeBaseId = `concrete_${name}_${param.id}`.replace(/[^a-zA-Z0-9]/g, '_');
+                const outerArrayId = outerCount >= 5 ? `${safeBaseId}_outer` : null;
+
+                let firstRow = true;
+                for (let o = 0; o < outerCount; o++) {
+                    const innerArrayId = isClumpExpanded && innerCount >= 2
+                        ? `${safeBaseId}_outer_${o + 1}_inner`
+                        : null;
+                    const outerInMiddle = outerArrayId && o >= 2 && o < outerCount - 1;
+
+                    for (let i = 0; i < innerCount; i++) {
+                        const stride = isClumpExpanded
+                            ? (o * innerStride + i) * itemSize
+                            : o * itemSize;
+                        const addrForThis = baseEntryAddr + stride;
+                        const addrStr = getSysexValueArray(addrForThis, 4).join(" ");
+                        const outerIndexDisplay = outerCount > 1 ? `[${String(o + 1).padStart(2, " ")}]` : "";
+                        const innerIndexDisplay = isClumpExpanded ? `[${String(i + 1).padStart(2, " ")}]` : "";
+
+                        const row = [];
+                        if (firstRow) {
+                            const outerToggleHtml = outerArrayId
+                                ? `<span class="array-toggle" id="atb-${outerArrayId}" onclick="toggleArrayGroup('${outerArrayId}')">+</span> `
+                                : "";
+                            const countHtml = countBadge ? ` <span style="color:#888">${countBadge}</span>` : "";
+                            row.push({ html: `${outerToggleHtml}${escapeHtml(param.id)}${countHtml}` });
+                            row.push(escapeHtml(param.kind || ""));
+                            row.push({ html: typeLink });
+                            firstRow = false;
+                        } else {
+                            row.push("");
+                            row.push("");
+                            row.push("");
+                        }
+
+                        row.push(i === 0 ? outerIndexDisplay : "");
+                        if (i === 0 && innerArrayId) {
+                            const innerToggleHtml = `<span class="array-toggle" id="atb-${innerArrayId}" onclick="toggleArrayGroup('${innerArrayId}')">+</span> `;
+                            row.push({ html: `${innerToggleHtml}${innerIndexDisplay}` });
+                        } else {
+                            row.push(innerIndexDisplay);
+                        }
+                        row.push({ html: `<span class="mono">${addrStr}</span>` });
+
+                        if (i === 0 && o === 0) {
+                            row.push({ html: `<span class="mono">${itemSizeStr}</span>` });
+                            row.push(escapeHtml(param.description || ""));
+                        } else {
+                            row.push("");
+                            row.push("");
+                        }
+
+                        let trClass = "";
+                        if (i === 0 && outerInMiddle) {
+                            trClass = `ag-${outerArrayId} array-hidden`;
+                        } else if (i > 0 && innerArrayId) {
+                            trClass = `ag-${innerArrayId} array-hidden`;
+                        }
+
+                        if (trClass) {
+                            rows.push({ cells: row, trClass });
+                        } else {
+                            rows.push(row);
+                        }
+                    }
+                }
+            }
+
+            htmlConcretes += generateTable({
+                title: `Concrete: ${name} (base ${baseAddrStr})`,
+                anchor: name,
+                titleLink: "#concretes",
+                tableClass: "table table-bordered table-striped noWrap autoWidth",
+                headers,
+                colClass,
+                rows
+            });
+        }
+    }
+
+    return `<h1>${title}</h1>${htmlConcretes}${htmlTOC}${htmlTableContent}`;
 }
 
 /**

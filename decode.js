@@ -127,7 +127,10 @@ function parseBaseBlock(children, blockName, description, blocks, settings, inhe
 
         const type = attrs["@_type"] || "";
         if (type !== "") {
-            if (type.includes("16")) {
+            if (type.includes("32")) {
+                sysexSize = 8;
+                byteSize = 4;
+            } else if (type.includes("16")) {
                 sysexSize = 4;
                 byteSize = 2;
             } else {
@@ -136,9 +139,12 @@ function parseBaseBlock(children, blockName, description, blocks, settings, inhe
         } else {
             if (range > 127 && range <= 255) {
                 sysexSize = 2;
-            } else if (range >= 256) {
+            } else if (range > 255 && range <= 65535) {
                 sysexSize = 4;
                 byteSize = 2;
+            } else if (range > 65535) {
+                sysexSize = 8;
+                byteSize = 4;
             }
         }
 
@@ -148,7 +154,9 @@ function parseBaseBlock(children, blockName, description, blocks, settings, inhe
 
         let itemCount = 1;
         let isArray = false;
-        const arrayVal = parseInt(attrs["@_array"]) || 0;
+        const arrayVal = attrs["@_array"]
+            ? NumDefs.numberOrNumDef(attrs["@_array"])
+            : 0;
         if (arrayVal > 1) {
             itemCount = arrayVal;
             isArray = true;
@@ -409,9 +417,141 @@ function parseGroup(children, groupName, blocks, settings) {
     };
 }
 
+// Parse a clump definition - same shape as a group but children inherit size from the
+// concrete entry that references them, so we just record id/kind/linkName/count.
+function parseClumpDefinition(children) {
+    const items = [];
+    for (const el of children) {
+        const { elementName, attrs } = getElementInfo(el);
+        if (elementName === "group" || elementName === "block") {
+            const linkName = elementName === "group"
+                ? attrs["@_group"]
+                : attrs["@_baseblock"];
+            const count = attrs["@_array"]
+                ? NumDefs.numberOrNumDef(attrs["@_array"])
+                : 1;
+            items.push({
+                id: attrs["@_id"] || elementName,
+                kind: elementName,
+                linkName,
+                count
+            });
+        }
+    }
+    return items;
+}
+
+// Parse a concrete section. Concretes have no binary representation, only sysex
+// addresses, so byteOffset/byteLength are intentionally undefined on the result and
+// each parameter entry.
+function parseConcrete(children, concreteId, adrs, clumps) {
+    const baseAddress = convertSysexValue(adrs || "00.00.00.00");
+    let currentAddress = baseAddress;
+    const parameters = {};
+
+    for (const el of children) {
+        const { elementName, attrs } = getElementInfo(el);
+
+        if (elementName === "#comment" || elementName === "separator") continue;
+
+        if (elementName === "offset") {
+            const adrsAttr = attrs["@_adrs"] || "";
+            if (adrsAttr === "") {
+                throw new Error(`Cannot find attribute adrs in <offset> inside concrete ${concreteId}`);
+            }
+            currentAddress = baseAddress + convertSysexValue(adrsAttr);
+            continue;
+        }
+
+        if (elementName === "group" || elementName === "block") {
+            const id = attrs["@_id"] || "(unnamed)";
+            const linkName = elementName === "group"
+                ? attrs["@_group"]
+                : attrs["@_baseblock"];
+            const itemSize = convertSysexValue(attrs["@_size"] || "00.00.01");
+            const count = attrs["@_array"]
+                ? NumDefs.numberOrNumDef(attrs["@_array"])
+                : 1;
+
+            parameters[id] = {
+                id,
+                kind: elementName,
+                blockName: linkName,
+                count,
+                sysexOffset: currentAddress - baseAddress,
+                sysexItemSize: itemSize,
+                description: attrs["@_desc"] || ""
+            };
+
+            currentAddress += itemSize * count;
+            continue;
+        }
+
+        if (elementName === "clump") {
+            const id = attrs["@_id"] || "(unnamed)";
+            const clumpName = attrs["@_clump"];
+            const clumpItems = clumps[clumpName];
+            const itemSize = convertSysexValue(attrs["@_size"] || "00.00.01");
+            const outerCount = attrs["@_array"]
+                ? NumDefs.numberOrNumDef(attrs["@_array"])
+                : 1;
+            const desc = attrs["@_desc"] || "";
+
+            if (!clumpItems || clumpItems.length === 0) {
+                parameters[id] = {
+                    id,
+                    kind: "clump",
+                    clumpName,
+                    blockName: clumpName,
+                    count: outerCount,
+                    sysexOffset: currentAddress - baseAddress,
+                    sysexItemSize: itemSize,
+                    description: `${desc} (clump '${clumpName}' missing)`
+                };
+                currentAddress += itemSize * outerCount;
+                continue;
+            }
+
+            const innerTotal = clumpItems.reduce((s, c) => s + c.count, 0);
+            let childOffset = 0;
+
+            for (const child of clumpItems) {
+                const entryId = clumpItems.length === 1 ? id : `${id}.${child.id}`;
+                parameters[entryId] = {
+                    id: entryId,
+                    kind: "clump",
+                    clumpName,
+                    childKind: child.kind,
+                    blockName: child.linkName,
+                    outerCount,
+                    innerCount: child.count,
+                    innerStride: Math.max(innerTotal, 1),
+                    count: outerCount,
+                    sysexOffset: (currentAddress - baseAddress) + (childOffset * itemSize),
+                    sysexItemSize: itemSize,
+                    description: desc
+                };
+                childOffset += child.count;
+            }
+
+            currentAddress += itemSize * outerCount * Math.max(innerTotal, 1);
+            continue;
+        }
+
+        throw new Error(`Unknown tag '${elementName}' in concrete ${concreteId}`);
+    }
+
+    return {
+        name: concreteId,
+        type: "concrete",
+        sysexBaseAddress: baseAddress,
+        parameters
+    };
+}
+
 // Generate JS output with actual references
 // Blocks and groups are merged at the top level
-function generateJSOutput(blocks, groups) {
+function generateJSOutput(blocks, groups, concretes) {
     let output = "const ZenProperties = {};\n\n";
     
     // Output all blocks first
@@ -481,19 +621,40 @@ function generateJSOutput(blocks, groups) {
         // Replace the string placeholders with actual references
         // The pattern is "__BLOCKREF_NAME_BLOCKREF__" with quotes around it
         groupJson = groupJson.replace(/"__BLOCKREF_([^"]+)_BLOCKREF__"/g, 'ZenProperties["$1"]');
-        
+
         output += `ZenProperties["${name}"] = ${groupJson};\n\n`;
     }
-    
+
+    // Output concretes (no binary representation - byteOffset/byteLength intentionally absent)
+    for (const [name, concrete] of Object.entries(concretes || {})) {
+        const concreteWithRefs = {
+            ...concrete,
+            parameters: {}
+        };
+        for (const [key, value] of Object.entries(concrete.parameters || {})) {
+            if (value && value.blockName) {
+                concreteWithRefs.parameters[key] = {
+                    ...value,
+                    block: `__BLOCKREF_${value.blockName}_BLOCKREF__`
+                };
+            } else {
+                concreteWithRefs.parameters[key] = value;
+            }
+        }
+
+        let concreteJson = JSON.stringify(concreteWithRefs, null, 2);
+        concreteJson = concreteJson.replace(/"__BLOCKREF_([^"]+)_BLOCKREF__"/g, 'ZenProperties["$1"]');
+        output += `ZenProperties["${name}"] = ${concreteJson};\n\n`;
+    }
+
     output += "export default ZenProperties;\n";
     return output;
 }
 
 // Generate JSON output (uses names for references)
-// Blocks and groups are merged at the top level
-function generateJSONOutput(blocks, groups, pretty) {
-    // Merge blocks and groups into a single top-level object
-    const output = { ...blocks, ...groups };
+// Blocks, groups and concretes are merged at the top level
+function generateJSONOutput(blocks, groups, concretes, pretty) {
+    const output = { ...blocks, ...groups, ...concretes };
     return JSON.stringify(output, null, pretty ? 2 : 0);
 }
 
@@ -616,7 +777,8 @@ function buildBlockFields(block) {
             byteOffset: param.byteOffset,
             byteLength: param.byteLength,
             count: fallbackType === "u8" && !scalarType ? param.byteLength : 1,
-            description: param.description || param.id
+            description: param.description || param.id,
+            isPadding: param.isPadding === true
         });
         i++;
     }
@@ -698,6 +860,83 @@ function formatFieldDeclaration(field, typeWidth, declaratorWidth) {
     const detail = `len:${String(field.byteLength).padStart(5, " ")} @ 0x${field.byteOffset.toString(16).padStart(4, "0")}`;
     const desc = field.description ? `, ${field.description}` : "";
     return `${decl} // ${detail}${desc}`;
+}
+
+function getImhexFieldDeclarationParts(field) {
+    if (field.kind === "reserved" || field.isPadding) {
+        return {
+            type: "",
+            declarator: `padding[${field.byteLength}];`
+        };
+    }
+    const arrayLength = field.kind === "scalar" || field.kind === "struct"
+        ? field.count
+        : 1;
+    const needsArray = arrayLength > 1
+        || (field.kind === "scalar" && field.type === "u8" && field.byteLength > 1 && field.count === field.byteLength);
+    const declarator = needsArray
+        ? `${field.name}[${arrayLength}];`
+        : `${field.name};`;
+    return {
+        type: field.type,
+        declarator
+    };
+}
+
+function formatImhexFieldDeclaration(field, typeWidth, declaratorWidth) {
+    const { type, declarator } = getImhexFieldDeclarationParts(field);
+    const decl = `    ${type.padEnd(typeWidth)} ${declarator.padEnd(declaratorWidth)}`;
+    const detail = `len:${String(field.byteLength).padStart(5, " ")} @ 0x${field.byteOffset.toString(16).padStart(4, "0")}`;
+    const desc = field.description ? `, ${field.description}` : "";
+    return `${decl} // ${detail}${desc}`;
+}
+
+function generateImhexOutput(configName, blocks, groups) {
+    const lines = [];
+    const sortedBlocks = Object.entries(blocks).sort(([nameA], [nameB]) => {
+        if (nameA.startsWith(nameB + "_")) return -1;
+        if (nameB.startsWith(nameA + "_")) return 1;
+        return nameA.localeCompare(nameB);
+    });
+    const sortedGroups = Object.entries(groups).sort(([nameA], [nameB]) => nameA.localeCompare(nameB));
+
+    lines.push(`// Autogenerated from config: ${configName}`);
+    lines.push(`#pragma endian little`);
+    lines.push("");
+
+    for (const [blockName, block] of sortedBlocks) {
+        const typeName = sanitizeIdentifier(blockName);
+        const fields = buildBlockFields(block);
+        const declarationParts = fields.map(getImhexFieldDeclarationParts);
+        const typeWidth = Math.max(...declarationParts.map(part => part.type.length));
+        const declaratorWidth = Math.max(...declarationParts.map(part => part.declarator.length));
+        lines.push(`// ${typeName}: ${block.description || "Block"}`);
+        lines.push(`// Total length: ${block.byteLength} bytes (0x${block.byteLength.toString(16).padStart(4, "0")})`);
+        lines.push(`struct ${typeName} {`);
+        for (const field of fields) {
+            lines.push(formatImhexFieldDeclaration(field, typeWidth, declaratorWidth));
+        }
+        lines.push(`};`);
+        lines.push("");
+    }
+
+    for (const [groupName, group] of sortedGroups) {
+        const typeName = sanitizeIdentifier(groupName);
+        const fields = buildGroupFields(group);
+        const declarationParts = fields.map(getImhexFieldDeclarationParts);
+        const typeWidth = Math.max(...declarationParts.map(part => part.type.length));
+        const declaratorWidth = Math.max(...declarationParts.map(part => part.declarator.length));
+        lines.push(`// ${typeName}: Group`);
+        lines.push(`// Total length: ${group.byteLength} bytes (0x${group.byteLength.toString(16).padStart(4, "0")})`);
+        lines.push(`struct ${typeName} {`);
+        for (const field of fields) {
+            lines.push(formatImhexFieldDeclaration(field, typeWidth, declaratorWidth));
+        }
+        lines.push(`};`);
+        lines.push("");
+    }
+
+    return lines.join("\n");
 }
 
 function generateHeaderOutput(configName, blocks, groups) {
@@ -788,21 +1027,26 @@ const settings = {
 
 const blocks = {};
 const groups = {};
+const clumps = {};
+const concretes = {};
 
-// Validate that blocks and groups don't have name conflicts
-function validateNoNameConflicts(blocks, groups) {
-    const blockNames = new Set(Object.keys(blocks));
-    const groupNames = new Set(Object.keys(groups));
+// Validate that blocks, groups and concretes don't share names at the top level
+function validateNoNameConflicts(blocks, groups, concretes) {
+    const seen = {};
     const conflicts = [];
-    
-    for (const blockName of blockNames) {
-        if (groupNames.has(blockName)) {
-            conflicts.push(blockName);
+    function check(name, kind) {
+        if (seen[name]) {
+            conflicts.push(`${name} (${kind} vs ${seen[name]})`);
+        } else {
+            seen[name] = kind;
         }
     }
-    
+    for (const name of Object.keys(blocks)) check(name, "block");
+    for (const name of Object.keys(groups)) check(name, "group");
+    for (const name of Object.keys(concretes)) check(name, "concrete");
+
     if (conflicts.length > 0) {
-        throw new Error(`Name conflict detected: The following names are used as both blocks and groups: ${conflicts.join(", ")}`);
+        throw new Error(`Name conflict detected: ${conflicts.join(", ")}`);
     }
 }
 
@@ -892,9 +1136,28 @@ for (const xmlFileImport of config.importXML) {
             groups[groupName] = group;
         }
     }
+
+    // clumps - collect every clump definition in this file
+    for (const el of rootChildren) {
+        const { elementName, attrs, children } = getElementInfo(el);
+        if (elementName === "clump" && attrs["@_name"]) {
+            clumps[attrs["@_name"]] = parseClumpDefinition(children);
+        }
+    }
+
+    // concretes - parse every concrete section in this file
+    for (const el of rootChildren) {
+        const { elementName, attrs, children } = getElementInfo(el);
+        if (elementName === "concrete") {
+            const concreteId = attrs["@_id"];
+            if (!concreteId) continue;
+            pr(`  Concrete: ${concreteId}`);
+            concretes[concreteId] = parseConcrete(children, concreteId, attrs["@_adrs"], clumps);
+        }
+    }
 }
 
-// Set category for all blocks (including subblocks) and groups
+// Set category for all blocks (including subblocks), groups and concretes
 const categoryName = `Autogenerated: ${configName}`;
 for (const [blockName, block] of Object.entries(blocks)) {
     if (!block.category) {
@@ -906,25 +1169,44 @@ for (const [groupName, group] of Object.entries(groups)) {
         group.category = categoryName;
     }
 }
+for (const [concreteName, concrete] of Object.entries(concretes)) {
+    if (!concrete.category) {
+        concrete.category = categoryName;
+    }
+}
+
+// Sort concretes by base sysex address so they are emitted in address order.
+const sortedConcretes = {};
+for (const [name, concrete] of Object.entries(concretes).sort(([, a], [, b]) =>
+    (a.sysexBaseAddress ?? 0) - (b.sysexBaseAddress ?? 0)
+)) {
+    sortedConcretes[name] = concrete;
+}
+for (const name of Object.keys(concretes)) delete concretes[name];
+Object.assign(concretes, sortedConcretes);
 
 // Validate no name conflicts before generating output
-validateNoNameConflicts(blocks, groups);
+validateNoNameConflicts(blocks, groups, concretes);
 
 if (!existsSync(outputDir)) {
     mkdirSync(outputDir, { recursive: true });
 }
 
 // Generate outputs
-const jsonOutput = generateJSONOutput(blocks, groups, settings.prettyJSON);
+const jsonOutput = generateJSONOutput(blocks, groups, concretes, settings.prettyJSON);
 writeFileSync(`${outputDir}/${configName}.json`, jsonOutput);
 
-const jsOutput = generateJSOutput(blocks, groups);
+const jsOutput = generateJSOutput(blocks, groups, concretes);
 writeFileSync(`${outputDir}/${configName}.js`, jsOutput);
 
+// Concretes have no binary representation, so they are skipped from the C header.
 const headerOutput = generateHeaderOutput(configName, blocks, groups);
 writeFileSync(`${outputDir}/${configName}.h`, headerOutput);
 
-generatePython(configName, blocks, groups, `${outputDir}/${configName}.py`);
+const imhexOutput = generateImhexOutput(configName, blocks, groups);
+writeFileSync(`${outputDir}/${configName}.hexpat`, imhexOutput);
+
+generatePython(configName, blocks, groups, concretes, `${outputDir}/${configName}.py`);
 
 // Load the generated JS object and generate HTML
 const jsFilePath = resolve(__dirname, `${outputDir}/${configName}.js`);

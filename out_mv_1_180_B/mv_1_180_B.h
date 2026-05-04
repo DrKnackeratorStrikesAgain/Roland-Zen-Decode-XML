@@ -288,7 +288,7 @@ typedef struct KBDARP {
 } KBDARP;
 
 /* LOOP_CMN: PCMRhythm Common */
-/* Total length: 124 bytes (0x007c) */
+/* Total length: 128 bytes (0x0080) */
 typedef struct LOOP_CMN {
     u8  NAME_1;         // len:    1 @ 0x0000, Name 1
     u8  reserved_1[15]; // len:   15 @ 0x0001, implicit padding
@@ -304,20 +304,20 @@ typedef struct LOOP_CMN {
     u8  LPR_MEAS;       // len:    1 @ 0x001b, Measure
     u16 BPM;            // len:    2 @ 0x001c, BPM
     u16 PADDING2;       // len:    2 @ 0x001e, __padding
-    u16 START_OFST;     // len:    2 @ 0x0020, Start Ofst
-    s16 END_OFST;       // len:    2 @ 0x0022, End Ofst
-    u8  START_STEP;     // len:    1 @ 0x0024, Start Step
-    s8  LAST_STEP;      // len:    1 @ 0x0025, Last Step
-    u8  STEP_LENGTH;    // len:    1 @ 0x0026, Step Length
-    u8  PADDING3;       // len:    1 @ 0x0027, __padding
-    u16 PITCH_BEND;     // len:    2 @ 0x0028, Pitch Shift
-    u8  SCALE;          // len:    1 @ 0x002a, Base Scale
-    u8  SCALE_LENGTH;   // len:    1 @ 0x002b, Base Length
-    u8  LEVEL;          // len:    1 @ 0x002c, Level
-    u8  TM_WINDOW;      // len:    1 @ 0x002d, Stretch Window
-    u8  ATK_TIME;       // len:    1 @ 0x002e, Attack Time
-    u8  PADDING4;       // len:    1 @ 0x002f, __padding
-    u8  PADDING5[76];   // len:   76 @ 0x0030, __padding
+    u32 START_OFST;     // len:    4 @ 0x0020, Start Ofst
+    s32 END_OFST;       // len:    4 @ 0x0024, End Ofst
+    u8  START_STEP;     // len:    1 @ 0x0028, Start Step
+    s8  LAST_STEP;      // len:    1 @ 0x0029, Last Step
+    u8  STEP_LENGTH;    // len:    1 @ 0x002a, Step Length
+    u8  PADDING3;       // len:    1 @ 0x002b, __padding
+    u16 PITCH_BEND;     // len:    2 @ 0x002c, Pitch Shift
+    u8  SCALE;          // len:    1 @ 0x002e, Base Scale
+    u8  SCALE_LENGTH;   // len:    1 @ 0x002f, Base Length
+    u8  LEVEL;          // len:    1 @ 0x0030, Level
+    u8  TM_WINDOW;      // len:    1 @ 0x0031, Stretch Window
+    u8  ATK_TIME;       // len:    1 @ 0x0032, Attack Time
+    u8  PADDING4;       // len:    1 @ 0x0033, __padding
+    u8  PADDING5[76];   // len:   76 @ 0x0034, __padding
 } LOOP_CMN;
 
 /* MFX: Block */
@@ -698,71 +698,72 @@ typedef struct PJC_SCENE {
 } PJC_SCENE;
 
 /* PJC: Block */
-/* Total length: 369 bytes (0x0171) */
+/* Total length: 376 bytes (0x0178) */
 typedef struct PJC {
     u8        NAME_1;                 // len:    1 @ 0x0000, Project Name 1
     u8        reserved_1[15];         // len:   15 @ 0x0001, implicit padding
     u16       TEMPO;                  // len:    2 @ 0x0010, Project Tempo
     u8        LEVEL;                  // len:    1 @ 0x0012, Project Level
     u8        PADDING1;               // len:    1 @ 0x0013, __padding
-    u8        V_RSRV;                 // len:    1 @ 0x0014, Voice Reserve Layer(01$)
-    u8        WAV_CUE_LEV;            // len:    1 @ 0x0015, WAV Cue Level
-    u8        WAV_LEV;                // len:    1 @ 0x0016, WAV Level
-    u8        EXT_SENS;               // len:    1 @ 0x0017, External Sens
-    u8        EXT_CUE_LEV;            // len:    1 @ 0x0018, External Cue Level
-    u8        EXT_LEV;                // len:    1 @ 0x0019, External Level
-    u8        PC_CUE_LEV;             // len:    1 @ 0x001a, PC Cue Level
-    u8        PC_LEV;                 // len:    1 @ 0x001b, PC Level
-    u8        SEND_RETURN_POS;        // len:    1 @ 0x001c, Send Return Pos
-    u8        SEND_LEV;               // len:    1 @ 0x001d, Send Level
-    u8        RETURN_LEV;             // len:    1 @ 0x001e, Return Level
-    u8        ASGN_CUE_LEV;           // len:    1 @ 0x001f, Assign Cue Level
-    u8        ASGN_LEV;               // len:    1 @ 0x0020, Assign Level
-    u8        EXT_STEREO;             // len:    1 @ 0x0021, EXT Stereo
-    u8        SEND_STEREO;            // len:    1 @ 0x0022, Send Stereo
-    u8        RETURN_STEREO;          // len:    1 @ 0x0023, Return Stereo
-    u8        REC_POS;                // len:    1 @ 0x0024, Rec Source
-    u8        SEQ_SCALE;              // len:    1 @ 0x0025, Base Scale
-    u8        SEQ_LENGTH;             // len:    1 @ 0x0026, Base Step
-    s8        SEQ_SHUFFLE;            // len:    1 @ 0x0027, Shuffle
-    u8        SEQ_SHUFFLE_SRC;        // len:    1 @ 0x0028, Shuffle Source
-    u8        SEQ_QUANTIZE_SW;        // len:    1 @ 0x0029, Quanzie Sw
-    u8        SEQ_QUANTIZE_TIGHTNESS; // len:    1 @ 0x002a, Quanzie Tightness
-    u8        SEQ_MOTION_SW;          // len:    1 @ 0x002b, Motion Switch
-    s8        PAD_TRANSPOSE;          // len:    1 @ 0x002c, Pad Trancepose
-    u32       PADDING2;               // len:    4 @ 0x002d, __padding
-    s16       TUNE;                   // len:    2 @ 0x0031, Master Tune
-    s8        KEY_SHIFT;              // len:    1 @ 0x0033, Master Key Shift
-    u8        SCALE_TUNE_SW;          // len:    1 @ 0x0034, Scale Tune Sw
-    u8        _reserved_;             // len:    1 @ 0x0035, reserved
-    u8        REC_MEAS;               // len:    1 @ 0x0036, Rec Measure
-    s8        REC_FADE;               // len:    1 @ 0x0037, Rec Fade
-    u8        FIRST_SCENE;            // len:    1 @ 0x0038, First Scene
-    u8        PADDING3[128];          // len:  128 @ 0x0039, __padding
-    PJC_SCENE SCENE[8];               // len:   64 @ 0x00b9, SCENE
-    s16       MASTER_REV_KNOB1_ASGN;  // len:    2 @ 0x00f9, Rev Knob1 Assign
-    s16       MASTER_REV_KNOB2_ASGN;  // len:    2 @ 0x00fb, Rev Knob2 Assign
-    s16       MASTER_DEL_KNOB1_ASGN;  // len:    2 @ 0x00fd, Dly Knob1 Assign
-    s16       MASTER_DEL_KNOB2_ASGN;  // len:    2 @ 0x00ff, Dly Knob2 Assign
-    s16       MASTER_MFXL_KNOB1_ASGN; // len:    2 @ 0x0101, MFX Knob1 Assign
-    s16       MASTER_MFX_KNOB2_ASGN;  // len:    2 @ 0x0103, MFX Knob2 Assign
-    u8        RHY_COMP_VALID;         // len:    1 @ 0x0105, Drum Comp Active
-    u8        RHY_COMP_SW;            // len:    1 @ 0x0106, Drum Comp Sw
-    u8        RHY_COMP_PART;          // len:    1 @ 0x0107, Drum Comp Track
-    u8        EXT_PAN;                // len:    1 @ 0x0108, External Pan
-    u8        PC_PAN;                 // len:    1 @ 0x0109, PC Pan
-    u8        PAD_COLOR;              // len:    1 @ 0x010a, PAD Note Color
-    u8        OCT_COLOR;              // len:    1 @ 0x010b, PAD OCT Color
-    u8        CLIP_COLOR_PLAY;        // len:    1 @ 0x010c, Play Clip Color
-    u8        CLIP_COLOR_STAY;        // len:    1 @ 0x010d, Stay Clip Color
-    u8        MUTE_PAD_COLOR;         // len:    1 @ 0x010e, Mute Pad Color
-    u8        STOP_PAD_COLOR;         // len:    1 @ 0x010f, Stop Pad Color
-    u8        CHORD_COLOR_1;          // len:    1 @ 0x0110, PAD Chord Color 1
-    u8        reserved_2[15];         // len:   15 @ 0x0111, implicit padding
-    u8        PAD_NOTE_SCALE;         // len:    1 @ 0x0120, PAD NOTE SCALE
-    u8        STYLE_D_COLOR;          // len:    1 @ 0x0121, Drum Style Color
-    u8        STYLE_M_COLOR;          // len:    1 @ 0x0122, Melodic Style Color
-    u8        PADDING4[78];           // len:   78 @ 0x0123, __padding
+    u8        V_RSRV_1;               // len:    1 @ 0x0014, Voice Reserve Layer(011)
+    u8        reserved_2[7];          // len:    7 @ 0x0015, implicit padding
+    u8        WAV_CUE_LEV;            // len:    1 @ 0x001c, WAV Cue Level
+    u8        WAV_LEV;                // len:    1 @ 0x001d, WAV Level
+    u8        EXT_SENS;               // len:    1 @ 0x001e, External Sens
+    u8        EXT_CUE_LEV;            // len:    1 @ 0x001f, External Cue Level
+    u8        EXT_LEV;                // len:    1 @ 0x0020, External Level
+    u8        PC_CUE_LEV;             // len:    1 @ 0x0021, PC Cue Level
+    u8        PC_LEV;                 // len:    1 @ 0x0022, PC Level
+    u8        SEND_RETURN_POS;        // len:    1 @ 0x0023, Send Return Pos
+    u8        SEND_LEV;               // len:    1 @ 0x0024, Send Level
+    u8        RETURN_LEV;             // len:    1 @ 0x0025, Return Level
+    u8        ASGN_CUE_LEV;           // len:    1 @ 0x0026, Assign Cue Level
+    u8        ASGN_LEV;               // len:    1 @ 0x0027, Assign Level
+    u8        EXT_STEREO;             // len:    1 @ 0x0028, EXT Stereo
+    u8        SEND_STEREO;            // len:    1 @ 0x0029, Send Stereo
+    u8        RETURN_STEREO;          // len:    1 @ 0x002a, Return Stereo
+    u8        REC_POS;                // len:    1 @ 0x002b, Rec Source
+    u8        SEQ_SCALE;              // len:    1 @ 0x002c, Base Scale
+    u8        SEQ_LENGTH;             // len:    1 @ 0x002d, Base Step
+    s8        SEQ_SHUFFLE;            // len:    1 @ 0x002e, Shuffle
+    u8        SEQ_SHUFFLE_SRC;        // len:    1 @ 0x002f, Shuffle Source
+    u8        SEQ_QUANTIZE_SW;        // len:    1 @ 0x0030, Quanzie Sw
+    u8        SEQ_QUANTIZE_TIGHTNESS; // len:    1 @ 0x0031, Quanzie Tightness
+    u8        SEQ_MOTION_SW;          // len:    1 @ 0x0032, Motion Switch
+    s8        PAD_TRANSPOSE;          // len:    1 @ 0x0033, Pad Trancepose
+    u32       PADDING2;               // len:    4 @ 0x0034, __padding
+    s16       TUNE;                   // len:    2 @ 0x0038, Master Tune
+    s8        KEY_SHIFT;              // len:    1 @ 0x003a, Master Key Shift
+    u8        SCALE_TUNE_SW;          // len:    1 @ 0x003b, Scale Tune Sw
+    u8        _reserved_;             // len:    1 @ 0x003c, reserved
+    u8        REC_MEAS;               // len:    1 @ 0x003d, Rec Measure
+    s8        REC_FADE;               // len:    1 @ 0x003e, Rec Fade
+    u8        FIRST_SCENE;            // len:    1 @ 0x003f, First Scene
+    u8        PADDING3[128];          // len:  128 @ 0x0040, __padding
+    PJC_SCENE SCENE[8];               // len:   64 @ 0x00c0, SCENE
+    s16       MASTER_REV_KNOB1_ASGN;  // len:    2 @ 0x0100, Rev Knob1 Assign
+    s16       MASTER_REV_KNOB2_ASGN;  // len:    2 @ 0x0102, Rev Knob2 Assign
+    s16       MASTER_DEL_KNOB1_ASGN;  // len:    2 @ 0x0104, Dly Knob1 Assign
+    s16       MASTER_DEL_KNOB2_ASGN;  // len:    2 @ 0x0106, Dly Knob2 Assign
+    s16       MASTER_MFXL_KNOB1_ASGN; // len:    2 @ 0x0108, MFX Knob1 Assign
+    s16       MASTER_MFX_KNOB2_ASGN;  // len:    2 @ 0x010a, MFX Knob2 Assign
+    u8        RHY_COMP_VALID;         // len:    1 @ 0x010c, Drum Comp Active
+    u8        RHY_COMP_SW;            // len:    1 @ 0x010d, Drum Comp Sw
+    u8        RHY_COMP_PART;          // len:    1 @ 0x010e, Drum Comp Track
+    u8        EXT_PAN;                // len:    1 @ 0x010f, External Pan
+    u8        PC_PAN;                 // len:    1 @ 0x0110, PC Pan
+    u8        PAD_COLOR;              // len:    1 @ 0x0111, PAD Note Color
+    u8        OCT_COLOR;              // len:    1 @ 0x0112, PAD OCT Color
+    u8        CLIP_COLOR_PLAY;        // len:    1 @ 0x0113, Play Clip Color
+    u8        CLIP_COLOR_STAY;        // len:    1 @ 0x0114, Stay Clip Color
+    u8        MUTE_PAD_COLOR;         // len:    1 @ 0x0115, Mute Pad Color
+    u8        STOP_PAD_COLOR;         // len:    1 @ 0x0116, Stop Pad Color
+    u8        CHORD_COLOR_1;          // len:    1 @ 0x0117, PAD Chord Color 1
+    u8        reserved_3[15];         // len:   15 @ 0x0118, implicit padding
+    u8        PAD_NOTE_SCALE;         // len:    1 @ 0x0127, PAD NOTE SCALE
+    u8        STYLE_D_COLOR;          // len:    1 @ 0x0128, Drum Style Color
+    u8        STYLE_M_COLOR;          // len:    1 @ 0x0129, Melodic Style Color
+    u8        PADDING4[78];           // len:   78 @ 0x012a, __padding
 } PJC;
 
 /* PJC2_CHORDSET: CHORDSET */
@@ -773,13 +774,13 @@ typedef struct PJC2_CHORDSET {
 } PJC2_CHORDSET;
 
 /* PJC2: Block */
-/* Total length: 134 bytes (0x0086) */
+/* Total length: 136 bytes (0x0088) */
 typedef struct PJC2 {
     PJC2_CHORDSET CHORDSET[16]; // len:  128 @ 0x0000, CHORDSET
     u8            SAVED_PRDUCT; // len:    1 @ 0x0080, Saved Product
     u8            PADDING1;     // len:    1 @ 0x0081, __padding
     u16           SEVED_BUILD;  // len:    2 @ 0x0082, Saved Build Number
-    u16           RPJ_PRM_REV;  // len:    2 @ 0x0084, Project Paramter Rev
+    u32           RPJ_PRM_REV;  // len:    4 @ 0x0084, Project Paramter Rev
 } PJC2;
 
 /* PJT: Block */
@@ -1167,7 +1168,7 @@ typedef struct STP_TRK {
 } STP_TRK;
 
 /* STP: Block */
-/* Total length: 506 bytes (0x01fa) */
+/* Total length: 510 bytes (0x01fe) */
 typedef struct STP {
     u8               CUR_TRACK;           // len:    1 @ 0x0000, Current Track
     u8               LEVEL;               // len:    1 @ 0x0001, Master Level
@@ -1223,43 +1224,43 @@ typedef struct STP {
     u8               REC_REVERSE;         // len:    1 @ 0x007a, Rec Reverse
     s8               REC_CLIP;            // len:    1 @ 0x007b, Rec Clip
     u32              PADDING4;            // len:    4 @ 0x007c, __padding
-    u16              REC_START_OFST;      // len:    2 @ 0x0080, Rec Start Ofst
-    s16              REC_END_OFST;        // len:    2 @ 0x0082, Rec End Ofst
-    u8               REC_START_STEP;      // len:    1 @ 0x0084, Rec Start Step
-    s8               REC_LAST_STEP;       // len:    1 @ 0x0085, Rec Last Step
-    u8               REC_STEP_LENGTH;     // len:    1 @ 0x0086, Rec Step Length
-    u8               SEQ_STEPINPUT;       // len:    1 @ 0x0087, Step Input
-    u16              SAMPLE_EDIT_ZOOM;    // len:    2 @ 0x0088, Sample Edit Zoom
-    STP_SEQ_MUTE_TRK SEQ_MUTE_TRK[8];     // len:   96 @ 0x008a, SEQ_MUTE_TRK
-    u8               INT_EXT_CLK;         // len:    1 @ 0x00ea, Clock Src
-    s8               PAD_OCT_SHIFT;       // len:    1 @ 0x00eb, Pad Oct Shift
-    u8               VALUE_KNOB_MODE;     // len:    1 @ 0x00ec, VALUE AS TEMPO or INPUT
-    u8               METRO_SW;            // len:    1 @ 0x00ed, Metronome Switch
-    u8               METRO_FOR_REC;       // len:    1 @ 0x00ee, Metronome For Rec
-    s8               REC_NORMALIZE_LEVEL; // len:    1 @ 0x00ef, Sample Normalize Level
-    u8               REC_SLICE_LEVEL;     // len:    1 @ 0x00f0, Sample Slice Level
-    u8               REC_SLICE_POINT;     // len:    1 @ 0x00f1, Sample Slice Point
-    u8               REC_SLICE_PREVIEW;   // len:    1 @ 0x00f2, Sample Slice Preview
-    u8               DUMMY_PUSH;          // len:    1 @ 0x00f3, Dummy Label For Edit
-    u8               COUNT_IN_SW;         // len:    1 @ 0x00f4, Count-in
-    u8               PADDING5;            // len:    1 @ 0x00f5, __padding
-    u8               BRDG_SW;             // len:    1 @ 0x00f6, Bridger Sw
-    u8               BRDG_XFADE;          // len:    1 @ 0x00f7, Bridger Fader
-    u8               MIC_SW;              // len:    1 @ 0x00f8, Mic Sw
-    u8               REC_PRE_EM_SW;       // len:    1 @ 0x00f9, Rec Pre-Emphasis Sw
-    u8               VOCAL_LEVEL_CH_1;    // len:    1 @ 0x00fa, Vocal Channel Level 1
-    u8               reserved_7[15];      // len:   15 @ 0x00fb, implicit padding
-    u8               MIXDOWN_SW;          // len:    1 @ 0x010a, Mixdown Sw
-    u8               MIXDOWN_FADE;        // len:    1 @ 0x010b, Mixdown Fade
-    u8               KBDARP_SW;           // len:    1 @ 0x010c, Kbd Arp Sw
-    u8               MICRO_PHRS_SW;       // len:    1 @ 0x010d, Micro Phrase Sw
-    u8               SONG_REC_STATE;      // len:    1 @ 0x010e, Song Rec State
-    u8               PAD_MODE_SEQ;        // len:    1 @ 0x010f, Pad Mode SEQ
-    u8               PAD_MODE_SCT;        // len:    1 @ 0x0110, Pad Mode SCT
-    u8               PAD_MODE_SNG;        // len:    1 @ 0x0111, Pad Mode SNG
-    u8               VCLP_PATCH_NUM;      // len:    1 @ 0x0112, VP Patch Number
-    u8               PADDING6[3];         // len:    3 @ 0x0113, __padding
-    u8               PADDING7[228];       // len:  228 @ 0x0116, __padding
+    u32              REC_START_OFST;      // len:    4 @ 0x0080, Rec Start Ofst
+    s32              REC_END_OFST;        // len:    4 @ 0x0084, Rec End Ofst
+    u8               REC_START_STEP;      // len:    1 @ 0x0088, Rec Start Step
+    s8               REC_LAST_STEP;       // len:    1 @ 0x0089, Rec Last Step
+    u8               REC_STEP_LENGTH;     // len:    1 @ 0x008a, Rec Step Length
+    u8               SEQ_STEPINPUT;       // len:    1 @ 0x008b, Step Input
+    u16              SAMPLE_EDIT_ZOOM;    // len:    2 @ 0x008c, Sample Edit Zoom
+    STP_SEQ_MUTE_TRK SEQ_MUTE_TRK[8];     // len:   96 @ 0x008e, SEQ_MUTE_TRK
+    u8               INT_EXT_CLK;         // len:    1 @ 0x00ee, Clock Src
+    s8               PAD_OCT_SHIFT;       // len:    1 @ 0x00ef, Pad Oct Shift
+    u8               VALUE_KNOB_MODE;     // len:    1 @ 0x00f0, VALUE AS TEMPO or INPUT
+    u8               METRO_SW;            // len:    1 @ 0x00f1, Metronome Switch
+    u8               METRO_FOR_REC;       // len:    1 @ 0x00f2, Metronome For Rec
+    s8               REC_NORMALIZE_LEVEL; // len:    1 @ 0x00f3, Sample Normalize Level
+    u8               REC_SLICE_LEVEL;     // len:    1 @ 0x00f4, Sample Slice Level
+    u8               REC_SLICE_POINT;     // len:    1 @ 0x00f5, Sample Slice Point
+    u8               REC_SLICE_PREVIEW;   // len:    1 @ 0x00f6, Sample Slice Preview
+    u8               DUMMY_PUSH;          // len:    1 @ 0x00f7, Dummy Label For Edit
+    u8               COUNT_IN_SW;         // len:    1 @ 0x00f8, Count-in
+    u8               PADDING5;            // len:    1 @ 0x00f9, __padding
+    u8               BRDG_SW;             // len:    1 @ 0x00fa, Bridger Sw
+    u8               BRDG_XFADE;          // len:    1 @ 0x00fb, Bridger Fader
+    u8               MIC_SW;              // len:    1 @ 0x00fc, Mic Sw
+    u8               REC_PRE_EM_SW;       // len:    1 @ 0x00fd, Rec Pre-Emphasis Sw
+    u8               VOCAL_LEVEL_CH_1;    // len:    1 @ 0x00fe, Vocal Channel Level 1
+    u8               reserved_7[15];      // len:   15 @ 0x00ff, implicit padding
+    u8               MIXDOWN_SW;          // len:    1 @ 0x010e, Mixdown Sw
+    u8               MIXDOWN_FADE;        // len:    1 @ 0x010f, Mixdown Fade
+    u8               KBDARP_SW;           // len:    1 @ 0x0110, Kbd Arp Sw
+    u8               MICRO_PHRS_SW;       // len:    1 @ 0x0111, Micro Phrase Sw
+    u8               SONG_REC_STATE;      // len:    1 @ 0x0112, Song Rec State
+    u8               PAD_MODE_SEQ;        // len:    1 @ 0x0113, Pad Mode SEQ
+    u8               PAD_MODE_SCT;        // len:    1 @ 0x0114, Pad Mode SCT
+    u8               PAD_MODE_SNG;        // len:    1 @ 0x0115, Pad Mode SNG
+    u8               VCLP_PATCH_NUM;      // len:    1 @ 0x0116, VP Patch Number
+    u8               PADDING6[3];         // len:    3 @ 0x0117, __padding
+    u8               PADDING7[228];       // len:  228 @ 0x011a, __padding
 } STP;
 
 /* SV: System Reverb */
@@ -1274,18 +1275,18 @@ typedef struct SV {
 } SV;
 
 /* TAKE: Block */
-/* Total length: 28 bytes (0x001c) */
+/* Total length: 32 bytes (0x0020) */
 typedef struct TAKE {
     u8  NAME_1;          // len:    1 @ 0x0000,  1
     u8  reserved_1[15];  // len:   15 @ 0x0001, implicit padding
     s16 SAMPLE_ID;       // len:    2 @ 0x0010, User Sample ID
     u16 PADDING1;        // len:    2 @ 0x0012, __padding
-    u16 START_ADRS;      // len:    2 @ 0x0014, Start Address
-    u16 END_ADRS;        // len:    2 @ 0x0016, End Address
-    u8  LEVEL;           // len:    1 @ 0x0018, Level
-    u8  OUTPUT_ASGN;     // len:    1 @ 0x0019, Output Assign
-    s8  CONTROL_DATA_ID; // len:    1 @ 0x001a, Control Data ID
-    u8  MUTE;            // len:    1 @ 0x001b, Mute
+    u32 START_ADRS;      // len:    4 @ 0x0014, Start Address
+    u32 END_ADRS;        // len:    4 @ 0x0018, End Address
+    u8  LEVEL;           // len:    1 @ 0x001c, Level
+    u8  OUTPUT_ASGN;     // len:    1 @ 0x001d, Output Assign
+    s8  CONTROL_DATA_ID; // len:    1 @ 0x001e, Control Data ID
+    u8  MUTE;            // len:    1 @ 0x001f, Mute
 } TAKE;
 
 /* TCMP: Block */
@@ -1313,7 +1314,7 @@ typedef struct UserSampleCmn {
 } UserSampleCmn;
 
 /* UserSampleModify: Block */
-/* Total length: 14 bytes (0x000e) */
+/* Total length: 20 bytes (0x0014) */
 typedef struct UserSampleModify {
     u8  LOOP_MODE;        // len:    1 @ 0x0000, Loop Mode
     u8  LEVEL;            // len:    1 @ 0x0001, Level
@@ -1321,9 +1322,9 @@ typedef struct UserSampleModify {
     u8  GAIN;             // len:    1 @ 0x0004, Gain
     u8  ORG_KEY;          // len:    1 @ 0x0005, Original Key
     u16 PADDING1;         // len:    2 @ 0x0006, __padding
-    u16 START_POINT;      // len:    2 @ 0x0008, Start Point
-    u16 LOOP_START_POINT; // len:    2 @ 0x000a, Loop Start Point
-    u16 END_POINT;        // len:    2 @ 0x000c, End Point
+    u32 START_POINT;      // len:    4 @ 0x0008, Start Point
+    u32 LOOP_START_POINT; // len:    4 @ 0x000c, Loop Start Point
+    u32 END_POINT;        // len:    4 @ 0x0010, End Point
 } UserSampleModify;
 
 /* VCLP: Block */
@@ -1439,15 +1440,15 @@ typedef struct VCLU {
 } VCLU;
 
 /* VOCAL_SEQ_DATA: Block */
-/* Total length: 12 bytes (0x000c) */
+/* Total length: 16 bytes (0x0010) */
 typedef struct VOCAL_SEQ_DATA {
-    u16 START_TICK; // len:    2 @ 0x0000, Start Tick
-    u16 LENG_TICK;  // len:    2 @ 0x0002, Length Tick
-    s8  TAKE_ID;    // len:    1 @ 0x0004, Take ID
-    u8  MUTE_FLG;   // len:    1 @ 0x0005, Mute Flag
-    s16 NEXT_SEQ;   // len:    2 @ 0x0006, Next Seq
-    s16 PREV_SEQ;   // len:    2 @ 0x0008, Prev Seq
-    u16 PADDING1;   // len:    2 @ 0x000a, __padding
+    u32 START_TICK; // len:    4 @ 0x0000, Start Tick
+    u32 LENG_TICK;  // len:    4 @ 0x0004, Length Tick
+    s8  TAKE_ID;    // len:    1 @ 0x0008, Take ID
+    u8  MUTE_FLG;   // len:    1 @ 0x0009, Mute Flag
+    s16 NEXT_SEQ;   // len:    2 @ 0x000a, Next Seq
+    s16 PREV_SEQ;   // len:    2 @ 0x000c, Prev Seq
+    u16 PADDING1;   // len:    2 @ 0x000e, __padding
 } VOCAL_SEQ_DATA;
 
 /* VOCAL_SEQ: Block */
@@ -1551,10 +1552,10 @@ typedef struct Ctrl {
 } Ctrl;
 
 /* LOOP: Group */
-/* Total length: 208 bytes (0x00d0) */
+/* Total length: 212 bytes (0x00d4) */
 typedef struct LOOP {
-    LOOP_CMN LOOP_CMN; // len:  124 @ 0x0000, LOOP_CMN
-    MFX      MFX;      // len:   84 @ 0x007c, MFX
+    LOOP_CMN LOOP_CMN; // len:  128 @ 0x0000, LOOP_CMN
+    MFX      MFX;      // len:   84 @ 0x0080, MFX
 } LOOP;
 
 /* MultiSample: Group */
@@ -1565,7 +1566,7 @@ typedef struct MultiSample {
 } MultiSample;
 
 /* MVProj: Group */
-/* Total length: 4968 bytes (0x1368) */
+/* Total length: 5544 bytes (0x15a8) */
 typedef struct MVProj {
     SCT            SCT[16];             // len: 1024 @ 0x0000, SCT
     SNG_CMN        SNG_CMN;             // len:   64 @ 0x0400, SNG_CMN
@@ -1573,11 +1574,11 @@ typedef struct MVProj {
     VCLP           VCLP;                // len:  128 @ 0x0a70, VCLP
     VCLU           VCLU[4];             // len:   64 @ 0x0af0, VCLU
     KBDARP         KBDARP;              // len:   12 @ 0x0b30, KBDARP
-    TAKE           TAKE[16];            // len:  448 @ 0x0b3c, TAKE
-    VOCAL_SEQ      VOCAL_SEQ;           // len:   12 @ 0x0cfc, VOCAL_SEQ
-    VOCAL_SEQ_DATA VOCAL_SEQ_DATA[128]; // len: 1536 @ 0x0d08, VOCAL_SEQ_DATA
-    SLIM           SLIM;                // len:   12 @ 0x1308, SLIM
-    TCMP           TCMP[7];             // len:   84 @ 0x1314, TCMP
+    TAKE           TAKE[16];            // len:  512 @ 0x0b3c, TAKE
+    VOCAL_SEQ      VOCAL_SEQ;           // len:   12 @ 0x0d3c, VOCAL_SEQ
+    VOCAL_SEQ_DATA VOCAL_SEQ_DATA[128]; // len: 2048 @ 0x0d48, VOCAL_SEQ_DATA
+    SLIM           SLIM;                // len:   12 @ 0x1548, SLIM
+    TCMP           TCMP[7];             // len:   84 @ 0x1554, TCMP
 } MVProj;
 
 /* PCMEX: Group */
@@ -1617,19 +1618,19 @@ typedef struct PCMRInst {
 } PCMRInst;
 
 /* Proj: Group */
-/* Total length: 4311 bytes (0x10d7) */
+/* Total length: 4320 bytes (0x10e0) */
 typedef struct Proj {
-    PJC  PJC;      // len:  369 @ 0x0000, PJC
-    PJC2 PJC2;     // len:  134 @ 0x0171, PJC2
-    PJT  PJT[8];   // len: 2048 @ 0x01f7, PJT
-    PEQ  PEQ[8];   // len:   96 @ 0x09f7, PEQ
-    MFX  MFX[3];   // len:  252 @ 0x0a57, MFX
-    SH   SH;       // len:   48 @ 0x0b53, SH
-    SV   SV;       // len:   44 @ 0x0b83, SV
-    GLT  GLT;      // len:   64 @ 0x0baf, GLT
-    GLT2 GLT2[16]; // len: 1216 @ 0x0bef, GLT2
-    SEQ  SEQ;      // len:   16 @ 0x10af, SEQ
-    SCMP SCMP;     // len:   24 @ 0x10bf, SCMP
+    PJC  PJC;      // len:  376 @ 0x0000, PJC
+    PJC2 PJC2;     // len:  136 @ 0x0178, PJC2
+    PJT  PJT[8];   // len: 2048 @ 0x0200, PJT
+    PEQ  PEQ[8];   // len:   96 @ 0x0a00, PEQ
+    MFX  MFX[3];   // len:  252 @ 0x0a60, MFX
+    SH   SH;       // len:   48 @ 0x0b5c, SH
+    SV   SV;       // len:   44 @ 0x0b8c, SV
+    GLT  GLT;      // len:   64 @ 0x0bb8, GLT
+    GLT2 GLT2[16]; // len: 1216 @ 0x0bf8, GLT2
+    SEQ  SEQ;      // len:   16 @ 0x10b8, SEQ
+    SCMP SCMP;     // len:   24 @ 0x10c8, SCMP
 } Proj;
 
 /* Sys: Group */
@@ -1640,10 +1641,10 @@ typedef struct Sys {
 } Sys;
 
 /* UserSample: Group */
-/* Total length: 78 bytes (0x004e) */
+/* Total length: 84 bytes (0x0054) */
 typedef struct UserSample {
     UserSampleCmn    UserSampleCmn;    // len:   64 @ 0x0000, UserSampleCmn
-    UserSampleModify UserSampleModify; // len:   14 @ 0x0040, UserSampleModify
+    UserSampleModify UserSampleModify; // len:   20 @ 0x0040, UserSampleModify
 } UserSample;
 
 #pragma pack(pop)

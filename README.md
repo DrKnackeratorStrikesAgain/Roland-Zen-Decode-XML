@@ -1,4 +1,4 @@
-# RolandZenDecodeXML Build 10
+# RolandZenDecodeXML Build 11
 A tool to decode Roland editor XML files (initially Jupiter X/Xm and ZenCore) and generate JSON, Javascript module & Python file with byte offsets (for files) and SYSEX locations/length, with HTML output tables for easy reading. A C header file is created as well.
 
 Also generate reference HTML for `<concrete>` xml which is the SYSEX location for major structures, like an interactive version of the start of the MIDI implementation text. Pre-generated is one for the Verselab MV-1, as that structure is not actually documented. Concrete definitions will likely make their way into the data structure at some point.
@@ -356,6 +356,13 @@ Groups are containers for blocks and have a similar structure to blocks:
 Groups contain a `parameters` object where each entry references a block. Block references within groups use the same structure as subblock parameters: `byteOffset` stores the address of item #0, and addresses for array items are calculated at runtime.
 
 ## Changelog
+
+**Build 11 Concrete Added to Main Output**
+
+- **Concrete**: No separate html, in the main html now. and added to the data output.
+- **Bug Fixes**: Couple of extra parameters needed processing to get the byte count right.
+- **Differences**: `/differences` contains markdown files comparing two configurations. HTML versions of the main three added to `gh-pages`
+- **Jupiter Config Update**: Now pulling in all groups and blocks.
 
 **Build 10 Tweaks**
 

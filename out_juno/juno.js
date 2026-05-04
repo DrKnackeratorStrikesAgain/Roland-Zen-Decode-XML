@@ -1871,14 +1871,14 @@ ZenProperties["ARPUSER"] = {
 ZenProperties["BCS"] = {
   "name": "BCS",
   "description": "Button Color Setup",
-  "byteLength": 4,
-  "sysexLength": 1,
+  "byteLength": 48,
+  "sysexLength": 45,
   "parameters": {
-    "BUTTON_COLOR": {
-      "id": "BUTTON_COLOR",
+    "BUTTON_COLOR_1": {
+      "id": "BUTTON_COLOR_1",
       "byteOffset": 0,
       "byteLength": 1,
-      "description": "Button Color(01$)",
+      "description": "Button Color(011)",
       "dataRange": [
         0,
         16
@@ -1907,7 +1907,7 @@ ZenProperties["BCS"] = {
     },
     "PADDING1": {
       "id": "PADDING1",
-      "byteOffset": 1,
+      "byteOffset": 45,
       "byteLength": 3,
       "description": "__padding",
       "dataRange": [
@@ -2802,8 +2802,8 @@ ZenProperties["EDWM"] = {
 ZenProperties["FC"] = {
   "name": "FC",
   "description": "Scene Common",
-  "byteLength": 39,
-  "sysexLength": 37,
+  "byteLength": 48,
+  "sysexLength": 46,
   "parameters": {
     "NAME_1": {
       "id": "NAME_1",
@@ -2860,11 +2860,11 @@ ZenProperties["FC"] = {
         300
       ]
     },
-    "KEY_FUNC": {
-      "id": "KEY_FUNC",
+    "KEY_FUNC_1": {
+      "id": "KEY_FUNC_1",
       "byteOffset": 20,
       "byteLength": 1,
-      "description": "Assignable Button(01$) Function",
+      "description": "Assignable Button(011) Function",
       "dataRange": [
         0,
         117
@@ -2993,17 +2993,17 @@ ZenProperties["FC"] = {
         "117": "VOC/MIC"
       }
     },
-    "KEY_MODE": {
-      "id": "KEY_MODE",
-      "byteOffset": 21,
+    "KEY_MODE_1": {
+      "id": "KEY_MODE_1",
+      "byteOffset": 23,
       "byteLength": 1,
-      "description": "Assignable Button(01$) Mode",
+      "description": "Assignable Button(011) Mode",
       "dataRange": [
         0,
         1
       ],
       "initValue": 0,
-      "sysexOffset": 23,
+      "sysexOffset": 25,
       "lengthSysex": 1,
       "values": {
         "0": "LATCH",
@@ -3012,7 +3012,7 @@ ZenProperties["FC"] = {
     },
     "HOLD_PDL_FUNC": {
       "id": "HOLD_PDL_FUNC",
-      "byteOffset": 22,
+      "byteOffset": 26,
       "byteLength": 1,
       "description": "Hold Pedal Function",
       "dataRange": [
@@ -3020,7 +3020,7 @@ ZenProperties["FC"] = {
         117
       ],
       "initValue": 0,
-      "sysexOffset": 24,
+      "sysexOffset": 28,
       "lengthSysex": 1,
       "values": {
         "0": "OFF",
@@ -3145,7 +3145,7 @@ ZenProperties["FC"] = {
     },
     "HOLD_PDL_POLE": {
       "id": "HOLD_PDL_POLE",
-      "byteOffset": 23,
+      "byteOffset": 27,
       "byteLength": 1,
       "description": "Hold Pedal Polarity",
       "dataRange": [
@@ -3153,7 +3153,7 @@ ZenProperties["FC"] = {
         1
       ],
       "initValue": 0,
-      "sysexOffset": 25,
+      "sysexOffset": 29,
       "lengthSysex": 1,
       "values": {
         "0": "STANDARD",
@@ -3162,7 +3162,7 @@ ZenProperties["FC"] = {
     },
     "CTRL_PDL_FUNC": {
       "id": "CTRL_PDL_FUNC",
-      "byteOffset": 24,
+      "byteOffset": 28,
       "byteLength": 1,
       "description": "Ctrl Pedal Function",
       "dataRange": [
@@ -3170,7 +3170,7 @@ ZenProperties["FC"] = {
         111
       ],
       "initValue": 0,
-      "sysexOffset": 26,
+      "sysexOffset": 30,
       "lengthSysex": 1,
       "values": {
         "0": "OFF",
@@ -3287,17 +3287,17 @@ ZenProperties["FC"] = {
         "111": "AGE"
       }
     },
-    "SLIDER_FUNC": {
-      "id": "SLIDER_FUNC",
-      "byteOffset": 25,
+    "SLIDER_FUNC_1": {
+      "id": "SLIDER_FUNC_1",
+      "byteOffset": 29,
       "byteLength": 1,
-      "description": "Assignable Slider(01$) Function",
+      "description": "Assignable Slider(011) Function",
       "dataRange": [
         0,
         111
       ],
       "initValue": 0,
-      "sysexOffset": 27,
+      "sysexOffset": 31,
       "lengthSysex": 1,
       "values": {
         "0": "OFF",
@@ -3416,7 +3416,7 @@ ZenProperties["FC"] = {
     },
     "WHLBND_FUNC": {
       "id": "WHLBND_FUNC",
-      "byteOffset": 26,
+      "byteOffset": 31,
       "byteLength": 1,
       "description": "Control Wheel1 Function",
       "dataRange": [
@@ -3424,7 +3424,7 @@ ZenProperties["FC"] = {
         97
       ],
       "initValue": 97,
-      "sysexOffset": 28,
+      "sysexOffset": 33,
       "lengthSysex": 1,
       "values": {
         "0": "OFF",
@@ -3529,7 +3529,7 @@ ZenProperties["FC"] = {
     },
     "WHLMOD_FUNC": {
       "id": "WHLMOD_FUNC",
-      "byteOffset": 27,
+      "byteOffset": 32,
       "byteLength": 1,
       "description": "Control Wheel2 Function",
       "dataRange": [
@@ -3537,7 +3537,7 @@ ZenProperties["FC"] = {
         111
       ],
       "initValue": 1,
-      "sysexOffset": 29,
+      "sysexOffset": 34,
       "lengthSysex": 1,
       "values": {
         "0": "OFF",
@@ -3656,7 +3656,7 @@ ZenProperties["FC"] = {
     },
     "CTRL_SRC_1": {
       "id": "CTRL_SRC_1",
-      "byteOffset": 28,
+      "byteOffset": 33,
       "byteLength": 1,
       "description": "Control Source(011)",
       "dataRange": [
@@ -3664,7 +3664,7 @@ ZenProperties["FC"] = {
         96
       ],
       "initValue": 0,
-      "sysexOffset": 30,
+      "sysexOffset": 35,
       "lengthSysex": 1,
       "values": {
         "0": "OFF",
@@ -3766,22 +3766,22 @@ ZenProperties["FC"] = {
         "96": "AFT"
       }
     },
-    "V_RSRV": {
-      "id": "V_RSRV",
-      "byteOffset": 32,
+    "V_RSRV_1": {
+      "id": "V_RSRV_1",
+      "byteOffset": 37,
       "byteLength": 1,
-      "description": "Voice Reserve Layer(01$)",
+      "description": "Voice Reserve Layer(011)",
       "dataRange": [
         0,
         10
       ],
       "initValue": 0,
-      "sysexOffset": 34,
+      "sysexOffset": 39,
       "lengthSysex": 1
     },
     "CUR_PART": {
       "id": "CUR_PART",
-      "byteOffset": 33,
+      "byteOffset": 42,
       "byteLength": 1,
       "description": "Current Part",
       "dataRange": [
@@ -3789,7 +3789,7 @@ ZenProperties["FC"] = {
         4
       ],
       "initValue": 0,
-      "sysexOffset": 35,
+      "sysexOffset": 44,
       "lengthSysex": 1,
       "displayRange": [
         1,
@@ -3798,7 +3798,7 @@ ZenProperties["FC"] = {
     },
     "XFADEPOS": {
       "id": "XFADEPOS",
-      "byteOffset": 34,
+      "byteOffset": 43,
       "byteLength": 1,
       "description": "Part Crossfade Position",
       "dataRange": [
@@ -3806,12 +3806,12 @@ ZenProperties["FC"] = {
         127
       ],
       "initValue": 0,
-      "sysexOffset": 36,
+      "sysexOffset": 45,
       "lengthSysex": 1
     },
     "PADDING1": {
       "id": "PADDING1",
-      "byteOffset": 35,
+      "byteOffset": 44,
       "byteLength": 4,
       "description": "__padding",
       "dataRange": [
@@ -5210,8 +5210,8 @@ ZenProperties["FP"] = {
 ZenProperties["FZ"] = {
   "name": "FZ",
   "description": "Scene Zone",
-  "byteLength": 25,
-  "sysexLength": 25,
+  "byteLength": 28,
+  "sysexLength": 28,
   "parameters": {
     "KBD_SW": {
       "id": "KBD_SW",
@@ -5339,11 +5339,11 @@ ZenProperties["FZ"] = {
       "sysexOffset": 8,
       "lengthSysex": 1
     },
-    "RX_ASGN_KEY": {
-      "id": "RX_ASGN_KEY",
+    "RX_ASGN_KEY_1": {
+      "id": "RX_ASGN_KEY_1",
       "byteOffset": 9,
       "byteLength": 1,
-      "description": "Rx Assignable Button(01$)",
+      "description": "Rx Assignable Button(011)",
       "dataRange": [
         0,
         1
@@ -5358,43 +5358,9 @@ ZenProperties["FZ"] = {
     },
     "RX_PDL_HOLD": {
       "id": "RX_PDL_HOLD",
-      "byteOffset": 10,
-      "byteLength": 1,
-      "description": "RX Hold Pedal",
-      "dataRange": [
-        0,
-        1
-      ],
-      "initValue": 1,
-      "sysexOffset": 10,
-      "lengthSysex": 1,
-      "values": {
-        "0": "OFF",
-        "1": "ON"
-      }
-    },
-    "RX_PDL_CTRL": {
-      "id": "RX_PDL_CTRL",
-      "byteOffset": 11,
-      "byteLength": 1,
-      "description": "Rx Control Pedal",
-      "dataRange": [
-        0,
-        1
-      ],
-      "initValue": 1,
-      "sysexOffset": 11,
-      "lengthSysex": 1,
-      "values": {
-        "0": "OFF",
-        "1": "ON"
-      }
-    },
-    "RX_SLIDER": {
-      "id": "RX_SLIDER",
       "byteOffset": 12,
       "byteLength": 1,
-      "description": "Rx Assignable Slider(01$)",
+      "description": "RX Hold Pedal",
       "dataRange": [
         0,
         1
@@ -5407,11 +5373,11 @@ ZenProperties["FZ"] = {
         "1": "ON"
       }
     },
-    "RX_WHLBND": {
-      "id": "RX_WHLBND",
+    "RX_PDL_CTRL": {
+      "id": "RX_PDL_CTRL",
       "byteOffset": 13,
       "byteLength": 1,
-      "description": "Rx Control Wheel1",
+      "description": "Rx Control Pedal",
       "dataRange": [
         0,
         1
@@ -5424,11 +5390,11 @@ ZenProperties["FZ"] = {
         "1": "ON"
       }
     },
-    "RX_WHLMOD": {
-      "id": "RX_WHLMOD",
+    "RX_SLIDER_1": {
+      "id": "RX_SLIDER_1",
       "byteOffset": 14,
       "byteLength": 1,
-      "description": "Rx Control Wheel2",
+      "description": "Rx Assignable Slider(011)",
       "dataRange": [
         0,
         1
@@ -5441,9 +5407,43 @@ ZenProperties["FZ"] = {
         "1": "ON"
       }
     },
+    "RX_WHLBND": {
+      "id": "RX_WHLBND",
+      "byteOffset": 16,
+      "byteLength": 1,
+      "description": "Rx Control Wheel1",
+      "dataRange": [
+        0,
+        1
+      ],
+      "initValue": 1,
+      "sysexOffset": 16,
+      "lengthSysex": 1,
+      "values": {
+        "0": "OFF",
+        "1": "ON"
+      }
+    },
+    "RX_WHLMOD": {
+      "id": "RX_WHLMOD",
+      "byteOffset": 17,
+      "byteLength": 1,
+      "description": "Rx Control Wheel2",
+      "dataRange": [
+        0,
+        1
+      ],
+      "initValue": 1,
+      "sysexOffset": 17,
+      "lengthSysex": 1,
+      "values": {
+        "0": "OFF",
+        "1": "ON"
+      }
+    },
     "PTX": {
       "id": "PTX",
-      "byteOffset": 15,
+      "byteOffset": 18,
       "byteLength": 1,
       "description": "Tx Mode",
       "dataRange": [
@@ -5451,7 +5451,7 @@ ZenProperties["FZ"] = {
         2
       ],
       "initValue": 0,
-      "sysexOffset": 15,
+      "sysexOffset": 18,
       "lengthSysex": 1,
       "values": {
         "0": "ON",
@@ -5461,7 +5461,7 @@ ZenProperties["FZ"] = {
     },
     "MKB_CH": {
       "id": "MKB_CH",
-      "byteOffset": 16,
+      "byteOffset": 19,
       "byteLength": 1,
       "description": "Master Keyboard Tx CH",
       "dataRange": [
@@ -5469,7 +5469,7 @@ ZenProperties["FZ"] = {
         15
       ],
       "initValue": 0,
-      "sysexOffset": 16,
+      "sysexOffset": 19,
       "lengthSysex": 1,
       "displayRange": [
         1,
@@ -5478,7 +5478,7 @@ ZenProperties["FZ"] = {
     },
     "MKB_MSB": {
       "id": "MKB_MSB",
-      "byteOffset": 17,
+      "byteOffset": 20,
       "byteLength": 1,
       "description": "Master Keyboard Bank MSB",
       "dataRange": [
@@ -5486,7 +5486,7 @@ ZenProperties["FZ"] = {
         128
       ],
       "initValue": 0,
-      "sysexOffset": 17,
+      "sysexOffset": 20,
       "lengthSysex": 2,
       "values": {
         "0": "OFF",
@@ -5622,7 +5622,7 @@ ZenProperties["FZ"] = {
     },
     "MKB_LSB": {
       "id": "MKB_LSB",
-      "byteOffset": 18,
+      "byteOffset": 21,
       "byteLength": 1,
       "description": "Master Keyboard Bank LSB",
       "dataRange": [
@@ -5630,7 +5630,7 @@ ZenProperties["FZ"] = {
         128
       ],
       "initValue": 0,
-      "sysexOffset": 19,
+      "sysexOffset": 22,
       "lengthSysex": 2,
       "values": {
         "0": "OFF",
@@ -5766,7 +5766,7 @@ ZenProperties["FZ"] = {
     },
     "MKB_PC": {
       "id": "MKB_PC",
-      "byteOffset": 19,
+      "byteOffset": 22,
       "byteLength": 1,
       "description": "Master Keyboard Program Change",
       "dataRange": [
@@ -5774,7 +5774,7 @@ ZenProperties["FZ"] = {
         128
       ],
       "initValue": 0,
-      "sysexOffset": 21,
+      "sysexOffset": 24,
       "lengthSysex": 2,
       "values": {
         "0": "OFF",
@@ -5910,7 +5910,7 @@ ZenProperties["FZ"] = {
     },
     "MKB_VOL": {
       "id": "MKB_VOL",
-      "byteOffset": 20,
+      "byteOffset": 23,
       "byteLength": 1,
       "description": "Master Keyboard Volume",
       "dataRange": [
@@ -5918,7 +5918,7 @@ ZenProperties["FZ"] = {
         128
       ],
       "initValue": 101,
-      "sysexOffset": 23,
+      "sysexOffset": 26,
       "lengthSysex": 2,
       "values": {
         "0": "OFF",
@@ -6054,7 +6054,7 @@ ZenProperties["FZ"] = {
     },
     "PADDING1": {
       "id": "PADDING1",
-      "byteOffset": 21,
+      "byteOffset": 24,
       "byteLength": 4,
       "description": "__padding",
       "dataRange": [
@@ -6693,8 +6693,8 @@ ZenProperties["IFX"] = {
 ZenProperties["MBAS"] = {
   "name": "MBAS",
   "description": "System Model Bank Assign",
-  "byteLength": 8,
-  "sysexLength": 7,
+  "byteLength": 36,
+  "sysexLength": 49,
   "parameters": {
     "ATTR": {
       "id": "ATTR",
@@ -6727,11 +6727,11 @@ ZenProperties["MBAS"] = {
       "isPadding": true,
       "lengthSysex": 0
     },
-    "MODEL": {
-      "id": "MODEL",
+    "MODEL_1": {
+      "id": "MODEL_1",
       "byteOffset": 4,
       "byteLength": 1,
-      "description": "Model",
+      "description": "Model 1",
       "dataRange": [
         0,
         18
@@ -6761,17 +6761,17 @@ ZenProperties["MBAS"] = {
         "18": "VOCAL DESIGNER"
       }
     },
-    "CATEGORY": {
-      "id": "CATEGORY",
-      "byteOffset": 5,
+    "CATEGORY_1": {
+      "id": "CATEGORY_1",
+      "byteOffset": 12,
       "byteLength": 1,
-      "description": "Category",
+      "description": "Category 1",
       "dataRange": [
         0,
         51
       ],
       "initValue": 0,
-      "sysexOffset": 2,
+      "sysexOffset": 9,
       "lengthSysex": 1,
       "values": {
         "0": "OFF",
@@ -6828,17 +6828,17 @@ ZenProperties["MBAS"] = {
         "51": "Vocoder"
       }
     },
-    "EXZ": {
-      "id": "EXZ",
-      "byteOffset": 6,
+    "EXZ_1": {
+      "id": "EXZ_1",
+      "byteOffset": 20,
       "byteLength": 2,
-      "description": "EXZ",
+      "description": "EXZ 1",
       "dataRange": [
         0,
         65535
       ],
       "initValue": 0,
-      "sysexOffset": 3,
+      "sysexOffset": 17,
       "lengthSysex": 4
     }
   },
@@ -18178,14 +18178,14 @@ ZenProperties["PEQ"] = {
 ZenProperties["PNLFUNC"] = {
   "name": "PNLFUNC",
   "description": "Panel Surface Interface",
-  "byteLength": 6,
-  "sysexLength": 12,
+  "byteLength": 116,
+  "sysexLength": 232,
   "parameters": {
-    "KNOB": {
-      "id": "KNOB",
+    "KNOB_1": {
+      "id": "KNOB_1",
       "byteOffset": 0,
       "byteLength": 2,
-      "description": "Panel Function Number",
+      "description": "Panel Function Number 1",
       "dataRange": [
         0,
         65535
@@ -18193,30 +18193,30 @@ ZenProperties["PNLFUNC"] = {
       "initValue": 0,
       "lengthSysex": 4
     },
-    "SW": {
-      "id": "SW",
-      "byteOffset": 2,
+    "SW_1": {
+      "id": "SW_1",
+      "byteOffset": 60,
       "byteLength": 2,
-      "description": "Panel Function Number",
+      "description": "Panel Function Number 1",
       "dataRange": [
         0,
         65535
       ],
       "initValue": 0,
-      "sysexOffset": 4,
+      "sysexOffset": 120,
       "lengthSysex": 4
     },
-    "ENC": {
-      "id": "ENC",
-      "byteOffset": 4,
+    "ENC_1": {
+      "id": "ENC_1",
+      "byteOffset": 108,
       "byteLength": 2,
-      "description": "Panel Function Number",
+      "description": "Panel Function Number 1",
       "dataRange": [
         0,
         65535
       ],
       "initValue": 0,
-      "sysexOffset": 8,
+      "sysexOffset": 216,
       "lengthSysex": 4
     }
   },
@@ -22397,8 +22397,8 @@ ZenProperties["SH"] = {
 ZenProperties["SL"] = {
   "name": "SL",
   "description": "System Controller",
-  "byteLength": 30,
-  "sysexLength": 26,
+  "byteLength": 36,
+  "sysexLength": 32,
   "parameters": {
     "TX_PC": {
       "id": "TX_PC",
@@ -22608,11 +22608,11 @@ ZenProperties["SL"] = {
       "lengthSysex": 1,
       "sysexValueOffset": 64
     },
-    "KEY_FUNC": {
-      "id": "KEY_FUNC",
+    "KEY_FUNC_1": {
+      "id": "KEY_FUNC_1",
       "byteOffset": 5,
       "byteLength": 1,
-      "description": "Assignable Button(01$) Function",
+      "description": "Assignable Button(011) Function",
       "dataRange": [
         0,
         117
@@ -22741,45 +22741,11 @@ ZenProperties["SL"] = {
         "117": "VOC/MIC"
       }
     },
-    "KEY_MODE": {
-      "id": "KEY_MODE",
-      "byteOffset": 6,
-      "byteLength": 1,
-      "description": "Assignable Button(01$) Mode",
-      "dataRange": [
-        0,
-        1
-      ],
-      "initValue": 0,
-      "sysexOffset": 6,
-      "lengthSysex": 1,
-      "values": {
-        "0": "LATCH",
-        "1": "MOMENTARY"
-      }
-    },
-    "KEY_SRC": {
-      "id": "KEY_SRC",
-      "byteOffset": 7,
-      "byteLength": 1,
-      "description": "Assignable Button Source",
-      "dataRange": [
-        0,
-        1
-      ],
-      "initValue": 0,
-      "sysexOffset": 7,
-      "lengthSysex": 1,
-      "values": {
-        "0": "SCENE",
-        "1": "SYS"
-      }
-    },
-    "HOLD_PDL_SRC": {
-      "id": "HOLD_PDL_SRC",
+    "KEY_MODE_1": {
+      "id": "KEY_MODE_1",
       "byteOffset": 8,
       "byteLength": 1,
-      "description": "Hold Pedal Source",
+      "description": "Assignable Button(011) Mode",
       "dataRange": [
         0,
         1
@@ -22788,13 +22754,47 @@ ZenProperties["SL"] = {
       "sysexOffset": 8,
       "lengthSysex": 1,
       "values": {
+        "0": "LATCH",
+        "1": "MOMENTARY"
+      }
+    },
+    "KEY_SRC": {
+      "id": "KEY_SRC",
+      "byteOffset": 11,
+      "byteLength": 1,
+      "description": "Assignable Button Source",
+      "dataRange": [
+        0,
+        1
+      ],
+      "initValue": 0,
+      "sysexOffset": 11,
+      "lengthSysex": 1,
+      "values": {
+        "0": "SCENE",
+        "1": "SYS"
+      }
+    },
+    "HOLD_PDL_SRC": {
+      "id": "HOLD_PDL_SRC",
+      "byteOffset": 12,
+      "byteLength": 1,
+      "description": "Hold Pedal Source",
+      "dataRange": [
+        0,
+        1
+      ],
+      "initValue": 0,
+      "sysexOffset": 12,
+      "lengthSysex": 1,
+      "values": {
         "0": "SCENE",
         "1": "SYS"
       }
     },
     "HOLD_PDL_FUNC": {
       "id": "HOLD_PDL_FUNC",
-      "byteOffset": 9,
+      "byteOffset": 13,
       "byteLength": 1,
       "description": "Hold Pedal Function",
       "dataRange": [
@@ -22802,7 +22802,7 @@ ZenProperties["SL"] = {
         117
       ],
       "initValue": 0,
-      "sysexOffset": 9,
+      "sysexOffset": 13,
       "lengthSysex": 1,
       "values": {
         "0": "OFF",
@@ -22927,7 +22927,7 @@ ZenProperties["SL"] = {
     },
     "HOLD_PDL_POLE": {
       "id": "HOLD_PDL_POLE",
-      "byteOffset": 10,
+      "byteOffset": 14,
       "byteLength": 1,
       "description": "Hold Pedal Polarity",
       "dataRange": [
@@ -22935,7 +22935,7 @@ ZenProperties["SL"] = {
         1
       ],
       "initValue": 0,
-      "sysexOffset": 10,
+      "sysexOffset": 14,
       "lengthSysex": 1,
       "values": {
         "0": "STANDARD",
@@ -22944,7 +22944,7 @@ ZenProperties["SL"] = {
     },
     "CTRL_PDL_SRC": {
       "id": "CTRL_PDL_SRC",
-      "byteOffset": 11,
+      "byteOffset": 15,
       "byteLength": 1,
       "description": "Ctrl Pedal Source",
       "dataRange": [
@@ -22952,7 +22952,7 @@ ZenProperties["SL"] = {
         1
       ],
       "initValue": 0,
-      "sysexOffset": 11,
+      "sysexOffset": 15,
       "lengthSysex": 1,
       "values": {
         "0": "SCENE",
@@ -22961,7 +22961,7 @@ ZenProperties["SL"] = {
     },
     "CTRL_PDL_FUNC": {
       "id": "CTRL_PDL_FUNC",
-      "byteOffset": 12,
+      "byteOffset": 16,
       "byteLength": 1,
       "description": "Ctrl Pedal Function",
       "dataRange": [
@@ -22969,7 +22969,7 @@ ZenProperties["SL"] = {
         111
       ],
       "initValue": 0,
-      "sysexOffset": 12,
+      "sysexOffset": 16,
       "lengthSysex": 1,
       "values": {
         "0": "OFF",
@@ -23086,34 +23086,34 @@ ZenProperties["SL"] = {
         "111": "AGE"
       }
     },
-    "SLIDER_SRC": {
-      "id": "SLIDER_SRC",
-      "byteOffset": 13,
+    "SLIDER_SRC_1": {
+      "id": "SLIDER_SRC_1",
+      "byteOffset": 17,
       "byteLength": 1,
-      "description": "Assignable Slider(01$) Source",
+      "description": "Assignable Slider(011) Source",
       "dataRange": [
         0,
         1
       ],
       "initValue": 0,
-      "sysexOffset": 13,
+      "sysexOffset": 17,
       "lengthSysex": 1,
       "values": {
         "0": "SCENE",
         "1": "SYS"
       }
     },
-    "SLIDER_FUNC": {
-      "id": "SLIDER_FUNC",
-      "byteOffset": 14,
+    "SLIDER_FUNC_1": {
+      "id": "SLIDER_FUNC_1",
+      "byteOffset": 19,
       "byteLength": 1,
-      "description": "Assignable Slider(01$) Function",
+      "description": "Assignable Slider(011) Function",
       "dataRange": [
         0,
         111
       ],
       "initValue": 0,
-      "sysexOffset": 14,
+      "sysexOffset": 19,
       "lengthSysex": 1,
       "values": {
         "0": "OFF",
@@ -23232,7 +23232,7 @@ ZenProperties["SL"] = {
     },
     "WHLBND_SRC": {
       "id": "WHLBND_SRC",
-      "byteOffset": 15,
+      "byteOffset": 21,
       "byteLength": 1,
       "description": "Control Wheel1 Source",
       "dataRange": [
@@ -23240,7 +23240,7 @@ ZenProperties["SL"] = {
         1
       ],
       "initValue": 0,
-      "sysexOffset": 15,
+      "sysexOffset": 21,
       "lengthSysex": 1,
       "values": {
         "0": "SCENE",
@@ -23249,7 +23249,7 @@ ZenProperties["SL"] = {
     },
     "WHLBND_FUNC": {
       "id": "WHLBND_FUNC",
-      "byteOffset": 16,
+      "byteOffset": 22,
       "byteLength": 1,
       "description": "Control Wheel1 Function",
       "dataRange": [
@@ -23257,7 +23257,7 @@ ZenProperties["SL"] = {
         97
       ],
       "initValue": 97,
-      "sysexOffset": 16,
+      "sysexOffset": 22,
       "lengthSysex": 1,
       "values": {
         "0": "OFF",
@@ -23362,7 +23362,7 @@ ZenProperties["SL"] = {
     },
     "WHLMOD_SRC": {
       "id": "WHLMOD_SRC",
-      "byteOffset": 17,
+      "byteOffset": 23,
       "byteLength": 1,
       "description": "Control Wheel2 Source",
       "dataRange": [
@@ -23370,7 +23370,7 @@ ZenProperties["SL"] = {
         1
       ],
       "initValue": 0,
-      "sysexOffset": 17,
+      "sysexOffset": 23,
       "lengthSysex": 1,
       "values": {
         "0": "SCENE",
@@ -23379,7 +23379,7 @@ ZenProperties["SL"] = {
     },
     "WHLMOD_FUNC": {
       "id": "WHLMOD_FUNC",
-      "byteOffset": 18,
+      "byteOffset": 24,
       "byteLength": 1,
       "description": "Control Wheel2 Function",
       "dataRange": [
@@ -23387,7 +23387,7 @@ ZenProperties["SL"] = {
         111
       ],
       "initValue": 1,
-      "sysexOffset": 18,
+      "sysexOffset": 24,
       "lengthSysex": 1,
       "values": {
         "0": "OFF",
@@ -23506,7 +23506,7 @@ ZenProperties["SL"] = {
     },
     "PARTSW_ASGN_1": {
       "id": "PARTSW_ASGN_1",
-      "byteOffset": 19,
+      "byteOffset": 25,
       "byteLength": 1,
       "description": "Part Button Assign [1]-[5]",
       "dataRange": [
@@ -23514,7 +23514,7 @@ ZenProperties["SL"] = {
         6
       ],
       "initValue": 1,
-      "sysexOffset": 19,
+      "sysexOffset": 25,
       "lengthSysex": 1,
       "values": {
         "0": "NO ASSIGN",
@@ -23528,7 +23528,7 @@ ZenProperties["SL"] = {
     },
     "PARTSW_ASGN_1S": {
       "id": "PARTSW_ASGN_1S",
-      "byteOffset": 20,
+      "byteOffset": 26,
       "byteLength": 1,
       "description": "Part Button Assign SHIFT+[1]-[5]",
       "dataRange": [
@@ -23536,7 +23536,7 @@ ZenProperties["SL"] = {
         6
       ],
       "initValue": 2,
-      "sysexOffset": 20,
+      "sysexOffset": 26,
       "lengthSysex": 1,
       "values": {
         "0": "NO ASSIGN",
@@ -23550,7 +23550,7 @@ ZenProperties["SL"] = {
     },
     "PARTSW_ASGN_2S": {
       "id": "PARTSW_ASGN_2S",
-      "byteOffset": 22,
+      "byteOffset": 28,
       "byteLength": 1,
       "description": "Part Button Assign SHIFT+[6]-[10]",
       "dataRange": [
@@ -23558,7 +23558,7 @@ ZenProperties["SL"] = {
         6
       ],
       "initValue": 4,
-      "sysexOffset": 22,
+      "sysexOffset": 28,
       "lengthSysex": 1,
       "values": {
         "0": "NO ASSIGN",
@@ -23572,7 +23572,7 @@ ZenProperties["SL"] = {
     },
     "PARTSW_ASGN_3S": {
       "id": "PARTSW_ASGN_3S",
-      "byteOffset": 24,
+      "byteOffset": 30,
       "byteLength": 1,
       "description": "Part Button Assign SHIFT+[11]-[15]",
       "dataRange": [
@@ -23580,7 +23580,7 @@ ZenProperties["SL"] = {
         6
       ],
       "initValue": 5,
-      "sysexOffset": 24,
+      "sysexOffset": 30,
       "lengthSysex": 1,
       "values": {
         "0": "NO ASSIGN",
@@ -23594,7 +23594,7 @@ ZenProperties["SL"] = {
     },
     "AFT_SENS": {
       "id": "AFT_SENS",
-      "byteOffset": 25,
+      "byteOffset": 31,
       "byteLength": 1,
       "description": "Aftertouch Sens",
       "dataRange": [
@@ -23602,12 +23602,12 @@ ZenProperties["SL"] = {
         100
       ],
       "initValue": 100,
-      "sysexOffset": 25,
+      "sysexOffset": 31,
       "lengthSysex": 1
     },
     "PADDING1": {
       "id": "PADDING1",
-      "byteOffset": 26,
+      "byteOffset": 32,
       "byteLength": 4,
       "description": "__padding",
       "dataRange": [
@@ -23625,7 +23625,7 @@ ZenProperties["SL"] = {
 ZenProperties["STP"] = {
   "name": "STP",
   "description": "Setup",
-  "byteLength": 92,
+  "byteLength": 96,
   "sysexLength": 3,
   "parameters": {
     "PERF_BS_MSB": {
@@ -24228,11 +24228,11 @@ ZenProperties["STP"] = {
         20
       ]
     },
-    "AGING_END_PIT_OFST": {
-      "id": "AGING_END_PIT_OFST",
+    "AGING_END_PIT_OFST_1": {
+      "id": "AGING_END_PIT_OFST_1",
       "byteOffset": 39,
       "byteLength": 1,
-      "description": "Aging End Pitch(01$)",
+      "description": "Aging End Pitch(011)",
       "dataRange": [
         0,
         200
@@ -24247,7 +24247,7 @@ ZenProperties["STP"] = {
     },
     "AGING_START_SW": {
       "id": "AGING_START_SW",
-      "byteOffset": 40,
+      "byteOffset": 44,
       "byteLength": 1,
       "description": "",
       "dataRange": [
@@ -24264,7 +24264,7 @@ ZenProperties["STP"] = {
     },
     "PADDING2": {
       "id": "PADDING2",
-      "byteOffset": 41,
+      "byteOffset": 45,
       "byteLength": 1,
       "description": "__padding",
       "dataRange": [
@@ -24277,7 +24277,7 @@ ZenProperties["STP"] = {
     },
     "TYPE": {
       "id": "TYPE",
-      "byteOffset": 42,
+      "byteOffset": 46,
       "byteLength": 2,
       "description": "TYPE knob",
       "dataRange": [
@@ -24290,7 +24290,7 @@ ZenProperties["STP"] = {
     },
     "RHYTHM": {
       "id": "RHYTHM",
-      "byteOffset": 44,
+      "byteOffset": 48,
       "byteLength": 2,
       "description": "RHYTHM knob",
       "dataRange": [
@@ -24303,7 +24303,7 @@ ZenProperties["STP"] = {
     },
     "PANEL_MODE": {
       "id": "PANEL_MODE",
-      "byteOffset": 46,
+      "byteOffset": 50,
       "byteLength": 1,
       "description": "Panel Mode",
       "dataRange": [
@@ -24320,7 +24320,7 @@ ZenProperties["STP"] = {
     },
     "KNOB_MFX": {
       "id": "KNOB_MFX",
-      "byteOffset": 47,
+      "byteOffset": 51,
       "byteLength": 1,
       "description": "Knob Position MFX",
       "dataRange": [
@@ -24333,7 +24333,7 @@ ZenProperties["STP"] = {
     },
     "KNOB_DLYTIME": {
       "id": "KNOB_DLYTIME",
-      "byteOffset": 48,
+      "byteOffset": 52,
       "byteLength": 1,
       "description": "Knob Position DELAY TIME",
       "dataRange": [
@@ -24346,7 +24346,7 @@ ZenProperties["STP"] = {
     },
     "KNOB_DLYFDBK": {
       "id": "KNOB_DLYFDBK",
-      "byteOffset": 49,
+      "byteOffset": 53,
       "byteLength": 1,
       "description": "Knob Position DELAY FEEDBACK",
       "dataRange": [
@@ -24359,7 +24359,7 @@ ZenProperties["STP"] = {
     },
     "KNOB_REVTIME": {
       "id": "KNOB_REVTIME",
-      "byteOffset": 50,
+      "byteOffset": 54,
       "byteLength": 1,
       "description": "Knob Position REVERB TIME",
       "dataRange": [
@@ -24372,7 +24372,7 @@ ZenProperties["STP"] = {
     },
     "START_MODE": {
       "id": "START_MODE",
-      "byteOffset": 51,
+      "byteOffset": 55,
       "byteLength": 1,
       "description": "Start On Beat Mode",
       "dataRange": [
@@ -24392,7 +24392,7 @@ ZenProperties["STP"] = {
     },
     "BEBEAT_SW": {
       "id": "BEBEAT_SW",
-      "byteOffset": 52,
+      "byteOffset": 56,
       "byteLength": 1,
       "description": "BeBeatDetect Switch",
       "dataRange": [
@@ -24414,7 +24414,7 @@ ZenProperties["STP"] = {
     },
     "BEBEAT_GAIN": {
       "id": "BEBEAT_GAIN",
-      "byteOffset": 53,
+      "byteOffset": 57,
       "byteLength": 1,
       "description": "BeBeatDetect Gain",
       "dataRange": [
@@ -24427,7 +24427,7 @@ ZenProperties["STP"] = {
     },
     "BEBEAT_PON": {
       "id": "BEBEAT_PON",
-      "byteOffset": 54,
+      "byteOffset": 58,
       "byteLength": 1,
       "description": "BeBeatDetect Pon Level",
       "dataRange": [
@@ -24440,7 +24440,7 @@ ZenProperties["STP"] = {
     },
     "PADDING3": {
       "id": "PADDING3",
-      "byteOffset": 55,
+      "byteOffset": 59,
       "byteLength": 1,
       "description": "__padding",
       "dataRange": [
@@ -24453,7 +24453,7 @@ ZenProperties["STP"] = {
     },
     "BEBEAT_MIN": {
       "id": "BEBEAT_MIN",
-      "byteOffset": 56,
+      "byteOffset": 60,
       "byteLength": 2,
       "description": "BeBeatDetect Min Tempo",
       "dataRange": [
@@ -24466,7 +24466,7 @@ ZenProperties["STP"] = {
     },
     "BEBEAT_MAX": {
       "id": "BEBEAT_MAX",
-      "byteOffset": 58,
+      "byteOffset": 62,
       "byteLength": 2,
       "description": "BeBeatDetect Max Tempo",
       "dataRange": [
@@ -24479,7 +24479,7 @@ ZenProperties["STP"] = {
     },
     "CONDITION": {
       "id": "CONDITION",
-      "byteOffset": 60,
+      "byteOffset": 64,
       "byteLength": 1,
       "description": "Aging Age",
       "dataRange": [
@@ -24492,7 +24492,7 @@ ZenProperties["STP"] = {
     },
     "PNL_EDIT_PART": {
       "id": "PNL_EDIT_PART",
-      "byteOffset": 61,
+      "byteOffset": 65,
       "byteLength": 1,
       "description": "Panel Edit Part",
       "dataRange": [
@@ -24505,7 +24505,7 @@ ZenProperties["STP"] = {
     },
     "VD_REF_TONE": {
       "id": "VD_REF_TONE",
-      "byteOffset": 62,
+      "byteOffset": 66,
       "byteLength": 1,
       "description": "Vocal Designer Copy Ref Tone Command",
       "dataRange": [
@@ -24526,7 +24526,7 @@ ZenProperties["STP"] = {
     },
     "VOC_OUT_SEL": {
       "id": "VOC_OUT_SEL",
-      "byteOffset": 63,
+      "byteOffset": 67,
       "byteLength": 1,
       "description": "Vocoder Output Select",
       "dataRange": [
@@ -24543,7 +24543,7 @@ ZenProperties["STP"] = {
     },
     "VOC_CRR_OUT": {
       "id": "VOC_CRR_OUT",
-      "byteOffset": 64,
+      "byteOffset": 68,
       "byteLength": 1,
       "description": "Vocoder Carrier Output",
       "dataRange": [
@@ -24560,7 +24560,7 @@ ZenProperties["STP"] = {
     },
     "PADDING4": {
       "id": "PADDING4",
-      "byteOffset": 65,
+      "byteOffset": 69,
       "byteLength": 3,
       "description": "__padding",
       "dataRange": [
@@ -24573,7 +24573,7 @@ ZenProperties["STP"] = {
     },
     "SINE_FREQ": {
       "id": "SINE_FREQ",
-      "byteOffset": 68,
+      "byteOffset": 72,
       "byteLength": 2,
       "description": "Sine Freq",
       "dataRange": [
@@ -24591,7 +24591,7 @@ ZenProperties["STP"] = {
     },
     "SQR_FREQ": {
       "id": "SQR_FREQ",
-      "byteOffset": 70,
+      "byteOffset": 74,
       "byteLength": 2,
       "description": "Square Freq",
       "dataRange": [
@@ -24609,7 +24609,7 @@ ZenProperties["STP"] = {
     },
     "IMP_RATE": {
       "id": "IMP_RATE",
-      "byteOffset": 72,
+      "byteOffset": 76,
       "byteLength": 2,
       "description": "Impulse Rate (Hz)",
       "dataRange": [
@@ -24627,7 +24627,7 @@ ZenProperties["STP"] = {
     },
     "SINE_LEVEL": {
       "id": "SINE_LEVEL",
-      "byteOffset": 74,
+      "byteOffset": 78,
       "byteLength": 2,
       "description": "Sine Level",
       "dataRange": [
@@ -24644,7 +24644,7 @@ ZenProperties["STP"] = {
     },
     "SQR_LEVEL": {
       "id": "SQR_LEVEL",
-      "byteOffset": 76,
+      "byteOffset": 80,
       "byteLength": 2,
       "description": "Square Level",
       "dataRange": [
@@ -24661,7 +24661,7 @@ ZenProperties["STP"] = {
     },
     "IMP_LEVEL": {
       "id": "IMP_LEVEL",
-      "byteOffset": 78,
+      "byteOffset": 82,
       "byteLength": 2,
       "description": "Impulse Level",
       "dataRange": [
@@ -24678,7 +24678,7 @@ ZenProperties["STP"] = {
     },
     "WHITE_LEVEL": {
       "id": "WHITE_LEVEL",
-      "byteOffset": 80,
+      "byteOffset": 84,
       "byteLength": 2,
       "description": "White Level",
       "dataRange": [
@@ -24695,7 +24695,7 @@ ZenProperties["STP"] = {
     },
     "DC_LEVEL": {
       "id": "DC_LEVEL",
-      "byteOffset": 82,
+      "byteOffset": 86,
       "byteLength": 2,
       "description": "DC Level",
       "dataRange": [
@@ -24712,7 +24712,7 @@ ZenProperties["STP"] = {
     },
     "OSC_LEV_DAC0L": {
       "id": "OSC_LEV_DAC0L",
-      "byteOffset": 84,
+      "byteOffset": 88,
       "byteLength": 2,
       "description": "Osc Level DAC 0L",
       "dataRange": [
@@ -24729,7 +24729,7 @@ ZenProperties["STP"] = {
     },
     "OSC_LEV_DAC0R": {
       "id": "OSC_LEV_DAC0R",
-      "byteOffset": 86,
+      "byteOffset": 90,
       "byteLength": 2,
       "description": "Osc Level DAC 0R",
       "dataRange": [
@@ -24746,7 +24746,7 @@ ZenProperties["STP"] = {
     },
     "OSC_LEV_DAC1L": {
       "id": "OSC_LEV_DAC1L",
-      "byteOffset": 88,
+      "byteOffset": 92,
       "byteLength": 2,
       "description": "Osc Level DAC 1L",
       "dataRange": [
@@ -24763,7 +24763,7 @@ ZenProperties["STP"] = {
     },
     "OSC_LEV_DAC1R": {
       "id": "OSC_LEV_DAC1R",
-      "byteOffset": 90,
+      "byteOffset": 94,
       "byteLength": 2,
       "description": "Osc Level DAC 1R",
       "dataRange": [
@@ -24785,8 +24785,8 @@ ZenProperties["STP"] = {
 ZenProperties["SURFACE"] = {
   "name": "SURFACE",
   "description": "model surfaceは仮想パラメータでSysExcからも見せない、",
-  "byteLength": 6,
-  "sysexLength": 5,
+  "byteLength": 184,
+  "sysexLength": 361,
   "parameters": {
     "surfaceType": {
       "id": "surfaceType",
@@ -24822,11 +24822,11 @@ ZenProperties["SURFACE"] = {
       "isPadding": true,
       "lengthSysex": 0
     },
-    "param": {
-      "id": "param",
+    "param_1": {
+      "id": "param_1",
       "byteOffset": 4,
       "byteLength": 2,
-      "description": "MODEL Parameter $",
+      "description": "MODEL Parameter 1",
       "dataRange": [
         -30000,
         30000
@@ -25707,14 +25707,14 @@ ZenProperties["TWMod"] = {
 ZenProperties["USRDATABLK"] = {
   "name": "USRDATABLK",
   "description": "User Tone Data Block",
-  "byteLength": 1,
-  "sysexLength": 2,
+  "byteLength": 128,
+  "sysexLength": 256,
   "parameters": {
-    "BLK": {
-      "id": "BLK",
+    "BLK_1": {
+      "id": "BLK_1",
       "byteOffset": 0,
       "byteLength": 1,
-      "description": "DataBlock0(01$)",
+      "description": "DataBlock0(011)",
       "dataRange": [
         0,
         255
@@ -26084,14 +26084,14 @@ ZenProperties["ModelCore"] = {
       "blockName": "SURFACE",
       "count": 1,
       "byteOffset": 112,
-      "blockByteLength": 6,
-      "byteLength": 6,
+      "blockByteLength": 184,
+      "byteLength": 184,
       "sysexOffset": "00 01 00",
       "sysexItemSize": 128,
       "block": ZenProperties["SURFACE"]
     }
   },
-  "byteLength": 118,
+  "byteLength": 296,
   "category": "Autogenerated: juno"
 };
 
@@ -26306,8 +26306,8 @@ ZenProperties["Perf"] = {
       "blockName": "FC",
       "count": 1,
       "byteOffset": 0,
-      "blockByteLength": 39,
-      "byteLength": 39,
+      "blockByteLength": 48,
+      "byteLength": 48,
       "sysexOffset": "00 00 00",
       "sysexItemSize": 128,
       "block": ZenProperties["FC"]
@@ -26315,7 +26315,7 @@ ZenProperties["Perf"] = {
     "FP": {
       "blockName": "FP",
       "count": 5,
-      "byteOffset": 39,
+      "byteOffset": 48,
       "blockByteLength": 84,
       "byteLength": 420,
       "sysexOffset": "00 10 00",
@@ -26325,7 +26325,7 @@ ZenProperties["Perf"] = {
     "PEQ": {
       "blockName": "PEQ",
       "count": 5,
-      "byteOffset": 459,
+      "byteOffset": 468,
       "blockByteLength": 12,
       "byteLength": 60,
       "sysexOffset": "00 20 00",
@@ -26335,7 +26335,7 @@ ZenProperties["Perf"] = {
     "MFX": {
       "blockName": "MFX",
       "count": 5,
-      "byteOffset": 519,
+      "byteOffset": 528,
       "blockByteLength": 84,
       "byteLength": 420,
       "sysexOffset": "00 30 00",
@@ -26345,9 +26345,9 @@ ZenProperties["Perf"] = {
     "FZ": {
       "blockName": "FZ",
       "count": 5,
-      "byteOffset": 939,
-      "blockByteLength": 25,
-      "byteLength": 125,
+      "byteOffset": 948,
+      "blockByteLength": 28,
+      "byteLength": 140,
       "sysexOffset": "00 40 00",
       "sysexItemSize": 128,
       "block": ZenProperties["FZ"]
@@ -26355,7 +26355,7 @@ ZenProperties["Perf"] = {
     "SH": {
       "blockName": "SH",
       "count": 1,
-      "byteOffset": 1112,
+      "byteOffset": 1136,
       "blockByteLength": 48,
       "byteLength": 48,
       "sysexOffset": "00 51 00",
@@ -26365,7 +26365,7 @@ ZenProperties["Perf"] = {
     "SV": {
       "blockName": "SV",
       "count": 1,
-      "byteOffset": 1160,
+      "byteOffset": 1184,
       "blockByteLength": 44,
       "byteLength": 44,
       "sysexOffset": "00 52 00",
@@ -26375,7 +26375,7 @@ ZenProperties["Perf"] = {
     "OD": {
       "blockName": "OD",
       "count": 1,
-      "byteOffset": 1204,
+      "byteOffset": 1228,
       "blockByteLength": 8,
       "byteLength": 8,
       "sysexOffset": "00 53 00",
@@ -26385,7 +26385,7 @@ ZenProperties["Perf"] = {
     "ARPC": {
       "blockName": "ARPC",
       "count": 1,
-      "byteOffset": 1212,
+      "byteOffset": 1236,
       "blockByteLength": 28,
       "byteLength": 28,
       "sysexOffset": "00 54 00",
@@ -26395,7 +26395,7 @@ ZenProperties["Perf"] = {
     "ARPP": {
       "blockName": "ARPP",
       "count": 5,
-      "byteOffset": 1240,
+      "byteOffset": 1264,
       "blockByteLength": 68,
       "byteLength": 340,
       "sysexOffset": "00 55 00",
@@ -26405,7 +26405,7 @@ ZenProperties["Perf"] = {
     "ARPUSER": {
       "blockName": "ARPUSER",
       "count": 5,
-      "byteOffset": 1580,
+      "byteOffset": 1604,
       "blockByteLength": 68,
       "byteLength": 340,
       "sysexOffset": "00 5a 00",
@@ -26413,7 +26413,7 @@ ZenProperties["Perf"] = {
       "block": ZenProperties["ARPUSER"]
     }
   },
-  "byteLength": 1920,
+  "byteLength": 1944,
   "category": "Autogenerated: juno"
 };
 
@@ -26424,14 +26424,14 @@ ZenProperties["PnlAsgn"] = {
       "blockName": "PNLFUNC",
       "count": 1,
       "byteOffset": 0,
-      "blockByteLength": 6,
-      "byteLength": 6,
+      "blockByteLength": 116,
+      "byteLength": 116,
       "sysexOffset": "00 00 00",
       "sysexItemSize": 128,
       "block": ZenProperties["PNLFUNC"]
     }
   },
-  "byteLength": 6,
+  "byteLength": 116,
   "category": "Autogenerated: juno"
 };
 
@@ -26480,8 +26480,8 @@ ZenProperties["Sys"] = {
       "blockName": "SL",
       "count": 1,
       "byteOffset": 100,
-      "blockByteLength": 30,
-      "byteLength": 30,
+      "blockByteLength": 36,
+      "byteLength": 36,
       "sysexOffset": "00 01 00",
       "sysexItemSize": 128,
       "block": ZenProperties["SL"]
@@ -26489,7 +26489,7 @@ ZenProperties["Sys"] = {
     "SH": {
       "blockName": "SH",
       "count": 1,
-      "byteOffset": 178,
+      "byteOffset": 184,
       "blockByteLength": 48,
       "byteLength": 48,
       "sysexOffset": "00 03 00",
@@ -26499,7 +26499,7 @@ ZenProperties["Sys"] = {
     "SV": {
       "blockName": "SV",
       "count": 1,
-      "byteOffset": 226,
+      "byteOffset": 232,
       "blockByteLength": 44,
       "byteLength": 44,
       "sysexOffset": "00 04 00",
@@ -26509,7 +26509,7 @@ ZenProperties["Sys"] = {
     "SEQ": {
       "blockName": "SEQ",
       "count": 1,
-      "byteOffset": 270,
+      "byteOffset": 276,
       "blockByteLength": 16,
       "byteLength": 16,
       "sysexOffset": "00 05 00",
@@ -26519,7 +26519,7 @@ ZenProperties["Sys"] = {
     "SCMP": {
       "blockName": "SCMP",
       "count": 1,
-      "byteOffset": 286,
+      "byteOffset": 292,
       "blockByteLength": 24,
       "byteLength": 24,
       "sysexOffset": "00 06 00",
@@ -26529,9 +26529,9 @@ ZenProperties["Sys"] = {
     "MBAS": {
       "blockName": "MBAS",
       "count": 16,
-      "byteOffset": 310,
-      "blockByteLength": 8,
-      "byteLength": 128,
+      "byteOffset": 316,
+      "blockByteLength": 36,
+      "byteLength": 576,
       "sysexOffset": "00 07 00",
       "sysexItemSize": 128,
       "block": ZenProperties["MBAS"]
@@ -26539,15 +26539,15 @@ ZenProperties["Sys"] = {
     "BCS": {
       "blockName": "BCS",
       "count": 10,
-      "byteOffset": 438,
-      "blockByteLength": 4,
-      "byteLength": 40,
+      "byteOffset": 892,
+      "blockByteLength": 48,
+      "byteLength": 480,
       "sysexOffset": "00 17 00",
       "sysexItemSize": 128,
       "block": ZenProperties["BCS"]
     }
   },
-  "byteLength": 478,
+  "byteLength": 1372,
   "category": "Autogenerated: juno"
 };
 
@@ -26576,14 +26576,14 @@ ZenProperties["USRTONE"] = {
       "blockName": "USRDATABLK",
       "count": 16,
       "byteOffset": 0,
-      "blockByteLength": 1,
-      "byteLength": 16,
+      "blockByteLength": 128,
+      "byteLength": 2048,
       "sysexOffset": "00 00 00",
       "sysexItemSize": 256,
       "block": ZenProperties["USRDATABLK"]
     }
   },
-  "byteLength": 16,
+  "byteLength": 2048,
   "category": "Autogenerated: juno"
 };
 
@@ -26668,6 +26668,250 @@ ZenProperties["VoDsgn"] = {
     }
   },
   "byteLength": 136,
+  "category": "Autogenerated: juno"
+};
+
+ZenProperties["System"] = {
+  "name": "System",
+  "type": "concrete",
+  "sysexBaseAddress": 0,
+  "parameters": {
+    "Sys": {
+      "id": "Sys",
+      "kind": "group",
+      "blockName": "Sys",
+      "count": 1,
+      "sysexOffset": 0,
+      "sysexItemSize": 16384,
+      "description": "System",
+      "block": ZenProperties["Sys"]
+    }
+  },
+  "category": "Autogenerated: juno"
+};
+
+ZenProperties["Setup"] = {
+  "name": "Setup",
+  "type": "concrete",
+  "sysexBaseAddress": 262144,
+  "parameters": {
+    "stp": {
+      "id": "stp",
+      "kind": "block",
+      "blockName": "STP",
+      "count": 1,
+      "sysexOffset": 0,
+      "sysexItemSize": 256,
+      "description": "Setup",
+      "block": ZenProperties["STP"]
+    },
+    "sfx": {
+      "id": "sfx",
+      "kind": "block",
+      "blockName": "IFX",
+      "count": 1,
+      "sysexOffset": 256,
+      "sysexItemSize": 1,
+      "description": "Overdrive",
+      "block": ZenProperties["IFX"]
+    },
+    "mfxB": {
+      "id": "mfxB",
+      "kind": "block",
+      "blockName": "IFX",
+      "count": 1,
+      "sysexOffset": 257,
+      "sysexItemSize": 1,
+      "description": "MfxB",
+      "block": ZenProperties["IFX"]
+    }
+  },
+  "category": "Autogenerated: juno"
+};
+
+ZenProperties["Temporary"] = {
+  "name": "Temporary",
+  "type": "concrete",
+  "sysexBaseAddress": 2097152,
+  "parameters": {
+    "TempPerf": {
+      "id": "TempPerf",
+      "kind": "group",
+      "blockName": "Perf",
+      "count": 1,
+      "sysexOffset": 0,
+      "sysexItemSize": 81920,
+      "description": "Temporary Scene",
+      "block": ZenProperties["Perf"]
+    },
+    "TempTone": {
+      "id": "TempTone",
+      "kind": "group",
+      "blockName": "PCMEX",
+      "count": 4,
+      "sysexOffset": 2097152,
+      "sysexItemSize": 16384,
+      "description": "Temporary Tone PCM (02$)",
+      "block": ZenProperties["PCMEX"]
+    },
+    "PrmIF0": {
+      "id": "PrmIF0",
+      "kind": "group",
+      "blockName": "MdlSynPrm0",
+      "count": 4,
+      "sysexOffset": 2359296,
+      "sysexItemSize": 16384,
+      "description": "Temporary Tone AN(02$)",
+      "block": ZenProperties["MdlSynPrm0"]
+    },
+    "RDTone": {
+      "id": "RDTone",
+      "kind": "group",
+      "blockName": "RDTONE",
+      "count": 1,
+      "sysexOffset": 2621440,
+      "sysexItemSize": 16384,
+      "description": "Temporary Tone RD(01)",
+      "block": ZenProperties["RDTONE"]
+    },
+    "PartInfo": {
+      "id": "PartInfo",
+      "kind": "group",
+      "blockName": "PartInfo",
+      "count": 5,
+      "sysexOffset": 2637824,
+      "sysexItemSize": 1,
+      "description": "Temporary Part Info (02$)",
+      "block": ZenProperties["PartInfo"]
+    },
+    "ToneType": {
+      "id": "ToneType",
+      "kind": "group",
+      "blockName": "ToneType",
+      "count": 4,
+      "sysexOffset": 2637829,
+      "sysexItemSize": 1,
+      "description": "Temporary Tone Type (02$)",
+      "block": ZenProperties["ToneType"]
+    },
+    "TempRhythmSet": {
+      "id": "TempRhythmSet",
+      "kind": "group",
+      "blockName": "PCMR",
+      "count": 1,
+      "sysexOffset": 2637833,
+      "sysexItemSize": 1,
+      "description": "Temporary Drum Kit(05)",
+      "block": ZenProperties["PCMR"]
+    },
+    "Panel": {
+      "id": "Panel",
+      "kind": "group",
+      "blockName": "PnlAsgn",
+      "count": 4,
+      "sysexOffset": 2637834,
+      "sysexItemSize": 1,
+      "description": "Temporary Surface Assign r(Part 02$) PRIVATE",
+      "block": ZenProperties["PnlAsgn"]
+    },
+    "ModelCore": {
+      "id": "ModelCore",
+      "kind": "group",
+      "blockName": "ModelCore",
+      "count": 4,
+      "sysexOffset": 2637838,
+      "sysexItemSize": 1,
+      "description": "Temporary Model Core Parameter(Part 02$) PRIVATE",
+      "block": ZenProperties["ModelCore"]
+    }
+  },
+  "category": "Autogenerated: juno"
+};
+
+ZenProperties["ModelIf"] = {
+  "name": "ModelIf",
+  "type": "concrete",
+  "sysexBaseAddress": 4980736,
+  "parameters": {
+    "JD800": {
+      "id": "JD800",
+      "kind": "group",
+      "blockName": "MdlJD800",
+      "count": 4,
+      "sysexOffset": 0,
+      "sysexItemSize": 16384,
+      "description": "Temporary Tone JD-800(02$)",
+      "block": ZenProperties["MdlJD800"]
+    },
+    "JUNOX": {
+      "id": "JUNOX",
+      "kind": "group",
+      "blockName": "MdlJunoX",
+      "count": 4,
+      "sysexOffset": 262144,
+      "sysexItemSize": 16384,
+      "description": "Temporary Tone JUNO-X(02$)",
+      "block": ZenProperties["MdlJunoX"]
+    },
+    "VoDesigner": {
+      "id": "VoDesigner",
+      "kind": "group",
+      "blockName": "VoDsgn",
+      "count": 1,
+      "sysexOffset": 524288,
+      "sysexItemSize": 16384,
+      "description": "Temporary Tone Vocal Designer(01)",
+      "block": ZenProperties["VoDsgn"]
+    }
+  },
+  "category": "Autogenerated: juno"
+};
+
+ZenProperties["Storage"] = {
+  "name": "Storage",
+  "type": "concrete",
+  "sysexBaseAddress": 134217728,
+  "parameters": {
+    "UserPerf": {
+      "id": "UserPerf",
+      "kind": "group",
+      "blockName": "Perf",
+      "count": 256,
+      "sysexOffset": 0,
+      "sysexItemSize": 81920,
+      "description": "User Scene (03$)",
+      "block": ZenProperties["Perf"]
+    },
+    "UserTone": {
+      "id": "UserTone",
+      "kind": "group",
+      "blockName": "USRTONE",
+      "count": 256,
+      "sysexOffset": 33554432,
+      "sysexItemSize": 32768,
+      "description": "User Tone (03$)",
+      "block": ZenProperties["USRTONE"]
+    }
+  },
+  "category": "Autogenerated: juno"
+};
+
+ZenProperties["Editor"] = {
+  "name": "Editor",
+  "type": "concrete",
+  "sysexBaseAddress": 266338304,
+  "parameters": {
+    "Edit": {
+      "id": "Edit",
+      "kind": "group",
+      "blockName": "Edit",
+      "count": 1,
+      "sysexOffset": 0,
+      "sysexItemSize": 16384,
+      "description": "Editor",
+      "block": ZenProperties["Edit"]
+    }
+  },
   "category": "Autogenerated: juno"
 };
 

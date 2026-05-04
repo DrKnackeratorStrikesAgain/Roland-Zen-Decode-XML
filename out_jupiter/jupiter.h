@@ -13,6 +13,477 @@ typedef uint32_t u32;
 
 #pragma pack(push, 1)
 
+/* ARPC: Arpeggio Common */
+/* Total length: 28 bytes (0x001c) */
+typedef struct ARPC {
+    u8  ARP_SW;       // len:    1 @ 0x0000, Master Switch
+    u8  ARP_HOLD;     // len:    1 @ 0x0001, Master Hold Switch
+    u8  KEYS_SW;      // len:    1 @ 0x0002, Keys Detect
+    u8  BEAT_SW;      // len:    1 @ 0x0003, Beat Detect
+    u8  BEAT_SENS;    // len:    1 @ 0x0004, Beat Detect Sens
+    u8  SHFL_RATE;    // len:    1 @ 0x0005, G-Shuffle Rate
+    s8  DURATION;     // len:    1 @ 0x0006, G-Duration
+    u8  RESERVE;      // len:    1 @ 0x0007, Reserved
+    u16 TYPE;         // len:    2 @ 0x0008, Original Type No.
+    u16 RHYTHM;       // len:    2 @ 0x000a, Original Rhythm No.
+    u8  IN_RANGE_LOW; // len:    1 @ 0x000c, Keyboard Input Range Lower
+    u8  IN_RANGE_UP;  // len:    1 @ 0x000d, Keyboard Input Range Upper
+    u8  PADDING1[14]; // len:   14 @ 0x000e, __padding
+} ARPC;
+
+/* ARPP: Arpeggio Part */
+/* Total length: 68 bytes (0x0044) */
+typedef struct ARPP {
+    u8  SW;                  // len:    1 @ 0x0000, Part Switch
+    u8  PADDING1;            // len:    1 @ 0x0001, __padding
+    u16 RSVD_ARP_PATSET;     // len:    2 @ 0x0002, Reserved
+    u8  DURATION;            // len:    1 @ 0x0004, Duration
+    u8  SHFL_RATE;           // len:    1 @ 0x0005, Shuffle Rate
+    s8  OCTAVE;              // len:    1 @ 0x0006, Octave Range
+    s8  TRANS;               // len:    1 @ 0x0007, Transpose
+    u8  HOLD;                // len:    1 @ 0x0008, Part Hold Switch
+    u8  MOTIF;               // len:    1 @ 0x0009, Motif
+    u8  SHFL_RESO;           // len:    1 @ 0x000a, Shuffle Resolution
+    u8  GRID_NOTE;           // len:    1 @ 0x000b, Grid Note
+    u8  END;                 // len:    1 @ 0x000c, End of Grid
+    u8  VELO;                // len:    1 @ 0x000d, Velocity
+    s8  GRID_OFFSET;         // len:    1 @ 0x000e, Grid Offset
+    u8  GRID_SYNC;           // len:    1 @ 0x000f, Grid Sync
+    s8  OFS_VELO;            // len:    1 @ 0x0010, Offset Velocity
+    u8  DUCKING_RATE;        // len:    1 @ 0x0011, Ducking Rate
+    u8  DUCKING_NOTE;        // len:    1 @ 0x0012, Ducking Note
+    u8  DUCKING_MASTER_PART; // len:    1 @ 0x0013, Ducking Part
+    u8  RANGE_LO;            // len:    1 @ 0x0014, Key Range Low
+    u8  RANGE_OCT;           // len:    1 @ 0x0015, Key Range Octave
+    u8  RECIEVE_SW;          // len:    1 @ 0x0016, Receive Switch
+    u8  NOTEOFFMODE;         // len:    1 @ 0x0017, Note Off Mode
+    u8  PTN_CHANGE;          // len:    1 @ 0x0018, Pattern Change Timing
+    u8  RSTOCTSHIFT;         // len:    1 @ 0x0019, Reset Octave Shift
+    u8  REMAINNOTE;          // len:    1 @ 0x001a, Arp Poly Remain Notes
+    u8  RSVD_STEP_SEQ;       // len:    1 @ 0x001b, Reserved
+    u16 INIT_PAT;            // len:    2 @ 0x001c, Initial Pattern Number
+    u8  ARP_MODE;            // len:    1 @ 0x001e, Arp Mode
+    u8  KSW_SYNC;            // len:    1 @ 0x001f, Key Switch Sync
+    u8  STEP_KSHFT;          // len:    1 @ 0x0020, Step Key Shift
+    u8  IARP_PART;           // len:    1 @ 0x0021, I-Arp Style Part
+    u16 IARP_STYLE;          // len:    2 @ 0x0022, I-Arp Style
+    u8  ARP_STYLE;           // len:    1 @ 0x0024, Arp Style
+    u8  ARP_VARI;            // len:    1 @ 0x0025, Arp Variation
+    u8  ARP_STEP;            // len:    1 @ 0x0026, Arp Step Switch
+    u8  PROB_STYLE;          // len:    1 @ 0x0027, Probability Style
+    u8  PROB_AMNT;           // len:    1 @ 0x0028, Probability Amount
+    u8  PROB_AMNT_DIR;       // len:    1 @ 0x0029, Probability Amount Direction
+    u8  PROB_AMNT_AUTO;      // len:    1 @ 0x002a, Probability Amount Auto
+    u8  PROB_VL_AMNT;        // len:    1 @ 0x002b, Probability Velocity Amount
+    u16 PROB_ENA;            // len:    2 @ 0x002c, Probability Enable
+    s8  PROB_OFFSET;         // len:    1 @ 0x002e, Probability Grid Offset
+    u8  PADDING2[21];        // len:   21 @ 0x002f, __padding
+} ARPP;
+
+/* ARPUSER_NOTE: NOTE */
+/* Total length: 68 bytes (0x0044) */
+typedef struct ARPUSER_NOTE {
+    u8 TYPE;           // len:    1 @ 0x0000, [02$] Type
+    u8 NUM;            // len:    1 @ 0x0001, [02$] Number
+    u8 VAL_1;          // len:    1 @ 0x0002, [021] Value Step.02$
+    u8 reserved_1[63]; // len:   63 @ 0x0003, implicit padding
+    u8 PAD0;           // len:    1 @ 0x0042, Reserved
+    u8 PAD1;           // len:    1 @ 0x0043, Reserved
+} ARPUSER_NOTE;
+
+/* ARPUSER: Arpeggio User Pattern Data */
+/* Total length: 68 bytes (0x0044) */
+typedef struct ARPUSER {
+    ARPUSER_NOTE NOTE; // len:   68 @ 0x0000, NOTE
+} ARPUSER;
+
+/* BCS: Button Color Setup */
+/* Total length: 48 bytes (0x0030) */
+typedef struct BCS {
+    u8 BUTTON_COLOR_1; // len:    1 @ 0x0000, (*)Button Color(011)
+    u8 reserved_1[44]; // len:   44 @ 0x0001, implicit padding
+    u8 PADDING1[3];    // len:    3 @ 0x002d, __padding
+} BCS;
+
+/* EDEDS: Edit State Command */
+/* Total length: 4 bytes (0x0004) */
+typedef struct EDEDS {
+    u8  EDITED;    // len:    1 @ 0x0000, Edited
+    u8  PREVIEWED; // len:    1 @ 0x0001, Previewed From WC-1
+    u16 PADDING1;  // len:    2 @ 0x0002, __padding
+} EDEDS;
+
+/* EDFTI: Temporary Scene Info Reply */
+/* Total length: 4 bytes (0x0004) */
+typedef struct EDFTI {
+    u16 INFO;     // len:    2 @ 0x0000, Temporary Scene Info Reply
+    u16 PADDING1; // len:    2 @ 0x0002, __padding
+} EDFTI;
+
+/* EDFTIR: Temporary Scene Info Request Command */
+/* Total length: 4 bytes (0x0004) */
+typedef struct EDFTIR {
+    u8 COMMAND;     // len:    1 @ 0x0000, Temporary Scene Info Request
+    u8 PADDING1[3]; // len:    3 @ 0x0001, __padding
+} EDFTIR;
+
+/* EDLEXZ: EXZ List */
+/* Total length: 4 bytes (0x0004) */
+typedef struct EDLEXZ {
+    u8 LIST;        // len:    1 @ 0x0000, EXZ List
+    u8 PADDING1[3]; // len:    3 @ 0x0001, __padding
+} EDLEXZ;
+
+/* EDLEXZR: EXZ List Request Command */
+/* Total length: 4 bytes (0x0004) */
+typedef struct EDLEXZR {
+    u8  FROM;     // len:    1 @ 0x0000, EXZ List Request From
+    u8  SIZE;     // len:    1 @ 0x0001, EXZ List Request Size
+    u16 PADDING1; // len:    2 @ 0x0002, __padding
+} EDLEXZR;
+
+/* EDLF: Scene List */
+/* Total length: 4 bytes (0x0004) */
+typedef struct EDLF {
+    u8 LIST;        // len:    1 @ 0x0000, Scene List
+    u8 PADDING1[3]; // len:    3 @ 0x0001, __padding
+} EDLF;
+
+/* EDLFR: Scene List Request Command */
+/* Total length: 8 bytes (0x0008) */
+typedef struct EDLFR {
+    u8  GROUP;    // len:    1 @ 0x0000, Reserved
+    u8  SLOT;     // len:    1 @ 0x0001, Reserved
+    u16 FROM;     // len:    2 @ 0x0002, Scene Request From
+    u16 SIZE;     // len:    2 @ 0x0004, Scene Request Size
+    u16 PADDING1; // len:    2 @ 0x0006, __padding
+} EDLFR;
+
+/* EDLT: Tone List */
+/* Total length: 4 bytes (0x0004) */
+typedef struct EDLT {
+    u8 LIST;        // len:    1 @ 0x0000, Tone List
+    u8 PADDING1[3]; // len:    3 @ 0x0001, __padding
+} EDLT;
+
+/* EDLTR: Tone List Request Command */
+/* Total length: 8 bytes (0x0008) */
+typedef struct EDLTR {
+    u8  GROUP;    // len:    1 @ 0x0000, Tone Request Group
+    u8  SLOT;     // len:    1 @ 0x0001, Tone Request Slot
+    u16 FROM;     // len:    2 @ 0x0002, Tone Request From
+    u16 SIZE;     // len:    2 @ 0x0004, Tone Request Size
+    u16 PADDING1; // len:    2 @ 0x0006, __padding
+} EDLTR;
+
+/* EDLW: Wave List */
+/* Total length: 4 bytes (0x0004) */
+typedef struct EDLW {
+    u8 LIST;        // len:    1 @ 0x0000, Wave List
+    u8 PADDING1[3]; // len:    3 @ 0x0001, __padding
+} EDLW;
+
+/* EDLWC: Wave Category List */
+/* Total length: 4 bytes (0x0004) */
+typedef struct EDLWC {
+    u8 LIST;        // len:    1 @ 0x0000, Wave Category List
+    u8 PADDING1[3]; // len:    3 @ 0x0001, __padding
+} EDLWC;
+
+/* EDLWCR: Wave Category List Request Command */
+/* Total length: 4 bytes (0x0004) */
+typedef struct EDLWCR {
+    u16 FROM; // len:    2 @ 0x0000, Wave Category Request From
+    u16 SIZE; // len:    2 @ 0x0002, Wave Category Size
+} EDLWCR;
+
+/* EDLWR: Wave List Request Command */
+/* Total length: 8 bytes (0x0008) */
+typedef struct EDLWR {
+    u8  GROUP;    // len:    1 @ 0x0000, Wave Request Group
+    u8  SLOT;     // len:    1 @ 0x0001, Wave Request Slot
+    u16 FROM;     // len:    2 @ 0x0002, Wave Request From
+    u16 SIZE;     // len:    2 @ 0x0004, Wave Request Size
+    u16 PADDING1; // len:    2 @ 0x0006, __padding
+} EDLWR;
+
+/* EDNEXZ: Notify EXZ Update Command */
+/* Total length: 4 bytes (0x0004) */
+typedef struct EDNEXZ {
+    u8 UPDATE;      // len:    1 @ 0x0000, Updated Or Not
+    u8 PADDING1[3]; // len:    3 @ 0x0001, __padding
+} EDNEXZ;
+
+/* EDNFL: Notify Scene Load Command */
+/* Total length: 4 bytes (0x0004) */
+typedef struct EDNFL {
+    u8 LOAD;        // len:    1 @ 0x0000, Loaded Or Not
+    u8 PADDING1[3]; // len:    3 @ 0x0001, __padding
+} EDNFL;
+
+/* EDNFW: Notify Scene Write Command */
+/* Total length: 8 bytes (0x0008) */
+typedef struct EDNFW {
+    u8  WRITE;       // len:    1 @ 0x0000, Written Or Not
+    u8  PADDING1[3]; // len:    3 @ 0x0001, __padding
+    u16 SCENE;       // len:    2 @ 0x0004, Scene Number
+    u16 PADDING2;    // len:    2 @ 0x0006, __padding
+} EDNFW;
+
+/* EDNTL: Notify Tone Load Command */
+/* Total length: 4 bytes (0x0004) */
+typedef struct EDNTL {
+    u8  LOAD;     // len:    1 @ 0x0000, Loaded Or Not
+    u8  PART;     // len:    1 @ 0x0001, Loaded Part
+    u16 PADDING1; // len:    2 @ 0x0002, __padding
+} EDNTL;
+
+/* EDNTW: Notify Tone Write Command */
+/* Total length: 8 bytes (0x0008) */
+typedef struct EDNTW {
+    u8  WRITE;       // len:    1 @ 0x0000, Written Or Not
+    u8  PADDING1[3]; // len:    3 @ 0x0001, __padding
+    u16 USER;        // len:    2 @ 0x0004, User Tone Number
+    u16 PADDING2;    // len:    2 @ 0x0006, __padding
+} EDNTW;
+
+/* EDNWI: Notify Write Info Command */
+/* Total length: 4 bytes (0x0004) */
+typedef struct EDNWI {
+    u8 START;       // len:    1 @ 0x0000, Start or Finish
+    u8 PADDING1[3]; // len:    3 @ 0x0001, __padding
+} EDNWI;
+
+/* EDPC: Mode */
+/* Total length: 4 bytes (0x0004) */
+typedef struct EDPC {
+    u8 EDTRMODE; // len:    1 @ 0x0000, Editor Mode
+    u8 EDITTX;   // len:    1 @ 0x0001, Edit Tx
+    u8 PAWS;     // len:    1 @ 0x0002, Pending Auto Write Switch
+    u8 PADDING1; // len:    1 @ 0x0003, __padding
+} EDPC;
+
+/* EDPTI: Part Info Reply */
+/* Total length: 4 bytes (0x0004) */
+typedef struct EDPTI {
+    u8 INFO;        // len:    1 @ 0x0000, Part Info Reply
+    u8 PADDING1[3]; // len:    3 @ 0x0001, __padding
+} EDPTI;
+
+/* EDPTIR: Part Info Request Command */
+/* Total length: 4 bytes (0x0004) */
+typedef struct EDPTIR {
+    u8 PART;        // len:    1 @ 0x0000, Part Info Request
+    u8 PADDING1[3]; // len:    3 @ 0x0001, __padding
+} EDPTIR;
+
+/* EDS: System Information */
+/* Total length: 4 bytes (0x0004) */
+typedef struct EDS {
+    u8  SYS_REQ;  // len:    1 @ 0x0000, System Request
+    u8  VER_INFO; // len:    1 @ 0x0001, Version Information
+    u16 PADDING1; // len:    2 @ 0x0002, __padding
+} EDS;
+
+/* EDSEXZ: EXZ Slot */
+/* Total length: 4 bytes (0x0004) */
+typedef struct EDSEXZ {
+    u8 LIST;        // len:    1 @ 0x0000, EXZ Slot
+    u8 PADDING1[3]; // len:    3 @ 0x0001, __padding
+} EDSEXZ;
+
+/* EDSEXZR: EXZ Slot Request Command */
+/* Total length: 4 bytes (0x0004) */
+typedef struct EDSEXZR {
+    u8  FROM;     // len:    1 @ 0x0000, EXZ Slot Request From
+    u8  SIZE;     // len:    1 @ 0x0001, EXZ Slot Request Size
+    u16 PADDING1; // len:    2 @ 0x0002, __padding
+} EDSEXZR;
+
+/* EDVD: VoDsgn Command */
+/* Total length: 4 bytes (0x0004) */
+typedef struct EDVD {
+    u8 CTMODE;      // len:    1 @ 0x0000, Carrier Thru Mode
+    u8 PADDING1[3]; // len:    3 @ 0x0001, __padding
+} EDVD;
+
+/* EDWM: Write Message */
+/* Total length: 13 bytes (0x000d) */
+typedef struct EDWM {
+    u8  WRI_SYS;  // len:    1 @ 0x0000, System Write
+    u16 WRI_PRF;  // len:    2 @ 0x0001, Scene Write
+    u16 WRI_PAT1; // len:    2 @ 0x0003, Tone Write (Part 1)
+    u16 WRI_PAT2; // len:    2 @ 0x0005, Tone Write (Part 2)
+    u16 WRI_PAT3; // len:    2 @ 0x0007, Tone Write (Part 3)
+    u16 WRI_PAT4; // len:    2 @ 0x0009, Tone Write (Part 4)
+    u8  PAWWC;    // len:    1 @ 0x000b, Writes pending items
+    u8  PADDING1; // len:    1 @ 0x000c, __padding
+} EDWM;
+
+/* FC: Scene Common */
+/* Total length: 48 bytes (0x0030) */
+typedef struct FC {
+    u8  NAME_1;         // len:    1 @ 0x0000,  1
+    u8  reserved_1[15]; // len:   15 @ 0x0001, implicit padding
+    u8  LEVEL;          // len:    1 @ 0x0010, Scene Level
+    u8  RESERVE;        // len:    1 @ 0x0011, Reserved
+    u16 TEMPO;          // len:    2 @ 0x0012, Scene Tempo
+    u8  KEY_FUNC_1;     // len:    1 @ 0x0014, Assignable Button(011) Function
+    u8  reserved_2[2];  // len:    2 @ 0x0015, implicit padding
+    u8  KEY_MODE_1;     // len:    1 @ 0x0017, Assignable Button(011) Mode
+    u8  reserved_3[2];  // len:    2 @ 0x0018, implicit padding
+    u8  HOLD_PDL_FUNC;  // len:    1 @ 0x001a, Hold Pedal Function
+    u8  HOLD_PDL_POLE;  // len:    1 @ 0x001b, Hold Pedal Polarity
+    u8  CTRL_PDL_FUNC;  // len:    1 @ 0x001c, Ctrl Pedal Function
+    u8  SLIDER_FUNC_1;  // len:    1 @ 0x001d, Assignable Slider(011) Function
+    u8  reserved_4;     // len:    1 @ 0x001e, implicit padding
+    u8  WHLBND_FUNC;    // len:    1 @ 0x001f, (*)Control Wheel1 Function
+    u8  WHLMOD_FUNC;    // len:    1 @ 0x0020, (*)Control Wheel2 Function
+    u8  CTRL_SRC_1;     // len:    1 @ 0x0021, Control Source(011)
+    u8  reserved_5[3];  // len:    3 @ 0x0022, implicit padding
+    u8  V_RSRV_1;       // len:    1 @ 0x0025, Voice Reserve Layer(011)
+    u8  reserved_6[4];  // len:    4 @ 0x0026, implicit padding
+    u8  CUR_PART;       // len:    1 @ 0x002a, Current Part
+    u8  XFADEPOS;       // len:    1 @ 0x002b, Part Crossfade Position
+    u32 PADDING1;       // len:    4 @ 0x002c, __padding
+} FC;
+
+/* FP: Scene Part */
+/* Total length: 84 bytes (0x0054) */
+typedef struct FP {
+    u8 SW;                 // len:    1 @ 0x0000, Part Switch
+    u8 MUTE_SW;            // len:    1 @ 0x0001, Mute Switch
+    u8 BANK_MSB;           // len:    1 @ 0x0002, Tone Bank Select MSB (CC#0)
+    u8 BANK_LSB;           // len:    1 @ 0x0003, Tone Bank Select LSB (CC#32)
+    u8 PC;                 // len:    1 @ 0x0004, Tone Program Change (PC)
+    u8 LEVEL;              // len:    1 @ 0x0005, Part Level (CC#7)
+    s8 PAN;                // len:    1 @ 0x0006, Part Pan (CC#10)
+    s8 PIT_CRS;            // len:    1 @ 0x0007, Part Coarse Tune (RPN#2)
+    s8 PIT_FINE;           // len:    1 @ 0x0008, Part Fine Tune (RPN#1)
+    u8 MONO_POLY;          // len:    1 @ 0x0009, Part Mono/Poly
+    u8 LEGATO;             // len:    1 @ 0x000a, Part Legato Switch
+    u8 BEND_RANGE;         // len:    1 @ 0x000b, Part Bend Range
+    u8 PORT_SW;            // len:    1 @ 0x000c, Part Portamento Switch (CC#65)
+    u8 PORT_TIME;          // len:    1 @ 0x000d, Part Portamento Time (CC#5)
+    s8 CUTOFF_OFST;        // len:    1 @ 0x000e, Part Cutoff Offset (CC#74)
+    s8 RESO_OFST;          // len:    1 @ 0x000f, Part Resonance Offset (CC#71)
+    s8 ATK_OFST;           // len:    1 @ 0x0010, Part Attack Time Offset (CC#73)
+    s8 DCY_OFST;           // len:    1 @ 0x0011, Part Decay Time Offset (CC#75)
+    s8 REL_OFST;           // len:    1 @ 0x0012, Part Release Time Offset (CC#72)
+    s8 VIB_RATE;           // len:    1 @ 0x0013, Part Vibrato Rate (CC#76)
+    s8 VIB_DEPTH;          // len:    1 @ 0x0014, Part Vibrato Depth (CC#77)
+    s8 VIB_DELAY;          // len:    1 @ 0x0015, Part Vibrato Delay (CC#78)
+    u8 UNISON_SW;          // len:    1 @ 0x0016, Unison Switch
+    u8 BEND_MODE;          // len:    1 @ 0x0017, Bend Mode
+    u8 TONE_MFX;           // len:    1 @ 0x0018, Follow Tone MFX
+    u8 OUTPUT;             // len:    1 @ 0x0019, Output Assign
+    u8 CHO_SEND;           // len:    1 @ 0x001a, Part Chorus Send Level (CC#93)
+    u8 REV_SEND;           // len:    1 @ 0x001b, Part Reverb Send Level (CC#91)
+    u8 DLY_SEND;           // len:    1 @ 0x001c, Part Delay Send Level
+    s8 OCT_SHIFT;          // len:    1 @ 0x001d, Part Octave Shift
+    s8 VEL_SENS_OFST;      // len:    1 @ 0x001e, Part Velocity Sens Offset
+    u8 ASGN_MODE;          // len:    1 @ 0x001f, Voice Assign Mode
+    u8 TUNE_TYPE;          // len:    1 @ 0x0020, Part Scale Tune Type
+    u8 TUNE_KEY;           // len:    1 @ 0x0021, Part Scale Tune Key
+    s8 TUNE_C;             // len:    1 @ 0x0022, Part Scale Tune for C
+    s8 TUNE_CS;            // len:    1 @ 0x0023, Part Scale Tune for C#
+    s8 TUNE_D;             // len:    1 @ 0x0024, Part Scale Tune for D
+    s8 TUNE_DS;            // len:    1 @ 0x0025, Part Scale Tune for D#
+    s8 TUNE_E;             // len:    1 @ 0x0026, Part Scale Tune for E
+    s8 TUNE_F;             // len:    1 @ 0x0027, Part Scale Tune for F
+    s8 TUNE_FS;            // len:    1 @ 0x0028, Part Scale Tune for F#
+    s8 TUNE_G;             // len:    1 @ 0x0029, Part Scale Tune for G
+    s8 TUNE_GS;            // len:    1 @ 0x002a, Part Scale Tune for G#
+    s8 TUNE_A;             // len:    1 @ 0x002b, Part Scale Tune for A
+    s8 TUNE_AS;            // len:    1 @ 0x002c, Part Scale Tune for A#
+    s8 TUNE_B;             // len:    1 @ 0x002d, Part Scale Tune for B
+    u8 RX_PC_SW;           // len:    1 @ 0x002e, Receive Program Change
+    u8 RX_BS_SW;           // len:    1 @ 0x002f, Receive Bank Select
+    u8 RX_PB_SW;           // len:    1 @ 0x0030, Receive Pitch Bend
+    u8 RX_PAF_SW;          // len:    1 @ 0x0031, Receive Poly Key Pressure
+    u8 RX_CAF_SW;          // len:    1 @ 0x0032, Receive Channel Pressure
+    u8 RX_MOD_SW;          // len:    1 @ 0x0033, Receive Modulation
+    u8 RX_CC07_SW;         // len:    1 @ 0x0034, Receive Volume
+    u8 RX_CC10_SW;         // len:    1 @ 0x0035, Receive Pan
+    u8 RX_CC11_SW;         // len:    1 @ 0x0036, Receive Expression
+    u8 RX_CC64_SW;         // len:    1 @ 0x0037, Receive Hold-1
+    u8 KBD_VELO_MODE;      // len:    1 @ 0x0038, Keyboard Velocity Mode
+    u8 KBD_FIXED_VELO;     // len:    1 @ 0x0039, Keyboard Fixed Velocity
+    u8 VCRV_TYPE;          // len:    1 @ 0x003a, Velocity Curve Type
+    s8 AMP_ATK_OFST;       // len:    1 @ 0x003b, Part Amp Attack Time Offset
+    s8 AMP_DCY_OFST;       // len:    1 @ 0x003c, Part Amp Decay Time Offset
+    s8 AMP_SUS_OFST;       // len:    1 @ 0x003d, Part Amp Sustain Level Offset
+    s8 AMP_REL_OFST;       // len:    1 @ 0x003e, Part Amp Release Time Offset
+    s8 FLT_KF_OFST;        // len:    1 @ 0x003f, Part Filter Keyfollow Offset
+    s8 FLT_ENV_DEPTH_OFST; // len:    1 @ 0x0040, Part Filter Envelope Depth Offset
+    s8 FLT_ATK_OFST;       // len:    1 @ 0x0041, Part Filter Attack Time Offset
+    s8 FLT_DCY_OFST;       // len:    1 @ 0x0042, Part Filter Decay Time Offset
+    s8 FLT_SUS_OFST;       // len:    1 @ 0x0043, Part Filter Sustain Level Offset
+    s8 FLT_REL_OFST;       // len:    1 @ 0x0044, Part Filter Release Time Offset
+    s8 PIT_ENV_DEPTH_OFST; // len:    1 @ 0x0045, Part Pitch Envelope Depth Offset
+    s8 PIT_ATK_OFST;       // len:    1 @ 0x0046, Part Pitch Attack Time Offset
+    s8 PIT_DCY_OFST;       // len:    1 @ 0x0047, Part Pitch Decay Time Offset
+    s8 PIT_SUS_OFST;       // len:    1 @ 0x0048, Part Pitch Sustain Level Offset
+    s8 PIT_REL_OFST;       // len:    1 @ 0x0049, Part Pitch Release Time Offset
+    s8 LFO_FLT_DEPTH;      // len:    1 @ 0x004a, Part Filter LFO Depth
+    s8 LFO_AMP_DEPTH;      // len:    1 @ 0x004b, Part Amp LFO Depth
+    s8 LFO_PIT_DEPTH;      // len:    1 @ 0x004c, Part Pitch LFO Depth
+    u8 RX_CH;              // len:    1 @ 0x004d, Receive Channel
+    u8 PNL_SW;             // len:    1 @ 0x004e, Panel Edit Switch
+    u8 PADDING1[5];        // len:    5 @ 0x004f, __padding
+} FP;
+
+/* FZ: Scene Zone */
+/* Total length: 28 bytes (0x001c) */
+typedef struct FZ {
+    u8  KBD_SW;        // len:    1 @ 0x0000, Keyboard Switch
+    u8  KRANGE_LO;     // len:    1 @ 0x0001, Keyboard Range Lower
+    u8  KRANGE_UP;     // len:    1 @ 0x0002, Keyboard Range Upper
+    u8  KFADE_LO;      // len:    1 @ 0x0003, Keyboard Fade Width Lower
+    u8  KFADE_UP;      // len:    1 @ 0x0004, Keyboard Fade Width Upper
+    u8  VRANGE_LO;     // len:    1 @ 0x0005, Velocity Range Lower
+    u8  VRANGE_UP;     // len:    1 @ 0x0006, Velocity Range Upper
+    u8  VFADE_LO;      // len:    1 @ 0x0007, Velocity Fade Width Lower
+    u8  VFADE_UP;      // len:    1 @ 0x0008, Velocity Fade Width Upper
+    u8  RX_ASGN_KEY_1; // len:    1 @ 0x0009, Rx Assignable Button(011)
+    u8  reserved_1[2]; // len:    2 @ 0x000a, implicit padding
+    u8  RX_PDL_HOLD;   // len:    1 @ 0x000c, RX Hold Pedal
+    u8  RX_PDL_CTRL;   // len:    1 @ 0x000d, Rx Control Pedal
+    u8  RX_SLIDER_1;   // len:    1 @ 0x000e, Rx Assignable Slider(011)
+    u8  reserved_2;    // len:    1 @ 0x000f, implicit padding
+    u8  RX_WHLBND;     // len:    1 @ 0x0010, (*)Rx Control Wheel1
+    u8  RX_WHLMOD;     // len:    1 @ 0x0011, (*)Rx Control Wheel2
+    u8  PTX;           // len:    1 @ 0x0012, Tx Mode
+    u8  MKB_CH;        // len:    1 @ 0x0013, Master Keyboard Tx CH
+    u8  MKB_MSB;       // len:    1 @ 0x0014, Master Keyboard Bank MSB
+    u8  MKB_LSB;       // len:    1 @ 0x0015, Master Keyboard Bank LSB
+    u8  MKB_PC;        // len:    1 @ 0x0016, Master Keyboard Program Change
+    u8  MKB_VOL;       // len:    1 @ 0x0017, Master Keyboard Volume
+    u32 PADDING1;      // len:    4 @ 0x0018, __padding
+} FZ;
+
+/* IFX: Block */
+/* Total length: 84 bytes (0x0054) */
+typedef struct IFX {
+    u8  ifxType;        // len:    1 @ 0x0000, IFX Type
+    u8  ifxSwitch;      // len:    1 @ 0x0001, IFX Switch
+    u8  choSend;        // len:    1 @ 0x0002, IFX Chorus Send Level
+    u8  revSend;        // len:    1 @ 0x0003, IFX Reverb Send Level
+    u8  ctrlSrc1;       // len:    1 @ 0x0004, IFX CtrlSrc 1
+    s8  ctrlSens1;      // len:    1 @ 0x0005, IFX CtrlSens 1
+    u8  ctrlSrc2;       // len:    1 @ 0x0006, IFX CtrlSrc 2
+    s8  ctrlSens2;      // len:    1 @ 0x0007, IFX CtrlSens 2
+    u8  ctrlSrc3;       // len:    1 @ 0x0008, IFX CtrlSrc 3
+    s8  ctrlSens3;      // len:    1 @ 0x0009, IFX CtrlSens 3
+    u8  ctrlSrc4;       // len:    1 @ 0x000a, IFX CtrlSrc 4
+    s8  ctrlSens4;      // len:    1 @ 0x000b, IFX CtrlSens 4
+    u8  ctrlAsgn_1;     // len:    1 @ 0x000c, IFX CtrlAsgn 1
+    u8  reserved_1[3];  // len:    3 @ 0x000d, implicit padding
+    s16 param_1;        // len:    2 @ 0x0010, IFX Parameter 1
+    u8  reserved_2[62]; // len:   62 @ 0x0012, implicit padding
+    u32 PADDING1;       // len:    4 @ 0x0050, __padding
+} IFX;
+
 /* INST_CMN_WMT: WMT */
 /* Total length: 28 bytes (0x001c) */
 typedef struct INST_CMN_WMT {
@@ -70,6 +541,19 @@ typedef struct INST_CMN {
     s8           LEVEL_VSENS;    // len:    1 @ 0x0096, TVA Level Velocity Sens
     u8           TEMPO_SYNC;     // len:    1 @ 0x0097, Wave Tempo Sync
 } INST_CMN;
+
+/* MBAS: System Model Bank Assign */
+/* Total length: 36 bytes (0x0024) */
+typedef struct MBAS {
+    u8  ATTR;           // len:    1 @ 0x0000, Attribute
+    u8  PADDING1[3];    // len:    3 @ 0x0001, __padding
+    u8  MODEL_1;        // len:    1 @ 0x0004, Model 1
+    u8  reserved_1[7];  // len:    7 @ 0x0005, implicit padding
+    u8  CATEGORY_1;     // len:    1 @ 0x000c, Category 1
+    u8  reserved_2[7];  // len:    7 @ 0x000d, implicit padding
+    u16 EXZ_1;          // len:    2 @ 0x0014, EXZ 1
+    u8  reserved_3[14]; // len:   14 @ 0x0016, trailing padding
+} MBAS;
 
 /* MDLCORE: Model Core Parameter */
 /* Total length: 112 bytes (0x0070) */
@@ -554,6 +1038,34 @@ typedef struct MFX {
     u32 PADDING1;       // len:    4 @ 0x0050, __padding
 } MFX;
 
+/* MSMP_CMN: Multisample Common */
+/* Total length: 16 bytes (0x0010) */
+typedef struct MSMP_CMN {
+    u8 NAME_1;         // len:    1 @ 0x0000, Multisample Name 1
+    u8 reserved_1[15]; // len:   15 @ 0x0001, trailing padding
+} MSMP_CMN;
+
+/* MSMP_SPLT: Multisample Split */
+/* Total length: 8 bytes (0x0008) */
+typedef struct MSMP_SPLT {
+    u16 WAV_NUM;     // len:    2 @ 0x0000, Wave Number
+    u8  LEVEL;       // len:    1 @ 0x0002, Level
+    s8  PIT_FINE;    // len:    1 @ 0x0003, Partial Fine Tune
+    u8  ORG_KEY;     // len:    1 @ 0x0004, Original Key
+    u8  PADDING1[3]; // len:    3 @ 0x0005, __padding
+} MSMP_SPLT;
+
+/* OD: Driver */
+/* Total length: 8 bytes (0x0008) */
+typedef struct OD {
+    u8 DRV;         // len:    1 @ 0x0000, Drive
+    u8 CHO_SEND;    // len:    1 @ 0x0001, Chorus Send Level
+    u8 REV_SEND;    // len:    1 @ 0x0002, Reverb Send Level
+    u8 DLY_SEND;    // len:    1 @ 0x0003, Delay Send Level
+    u8 SW;          // len:    1 @ 0x0004, Drive Switch
+    u8 PADDING1[3]; // len:    3 @ 0x0005, __padding
+} OD;
+
 /* PCMR_CMN: PCMRhythm Common */
 /* Total length: 28 bytes (0x001c) */
 typedef struct PCMR_CMN {
@@ -800,6 +1312,32 @@ typedef struct PCMT_PTL {
     u8            PADDING3[11];  // len:   11 @ 0x0071, __padding
 } PCMT_PTL;
 
+/* PEQ: Part EQ */
+/* Total length: 12 bytes (0x000c) */
+typedef struct PEQ {
+    s8 EQ_IN_GAIN;  // len:    1 @ 0x0000, EQ Input Gain
+    s8 EQ_LO_GAIN;  // len:    1 @ 0x0001, EQ Low Gain
+    s8 EQ_MID_GAIN; // len:    1 @ 0x0002, EQ Mid Gain
+    s8 EQ_HI_GAIN;  // len:    1 @ 0x0003, EQ High Gain
+    u8 EQ_LO_FREQ;  // len:    1 @ 0x0004, EQ Low Frequency
+    u8 EQ_MID_FREQ; // len:    1 @ 0x0005, EQ Mid Frequency
+    u8 EQ_HI_FREQ;  // len:    1 @ 0x0006, EQ High Frequency
+    u8 EQ_MID_Q;    // len:    1 @ 0x0007, EQ Mid Q
+    u8 EQ_SW;       // len:    1 @ 0x0008, Switch
+    u8 PADDING1[3]; // len:    3 @ 0x0009, __padding
+} PEQ;
+
+/* PNLFUNC: Panel Surface Interface */
+/* Total length: 116 bytes (0x0074) */
+typedef struct PNLFUNC {
+    u16 KNOB_1;         // len:    2 @ 0x0000, Panel Function Number 1
+    u8  reserved_1[58]; // len:   58 @ 0x0002, implicit padding
+    u16 SW_1;           // len:    2 @ 0x003c, Panel Function Number 1
+    u8  reserved_2[46]; // len:   46 @ 0x003e, implicit padding
+    u16 ENC_1;          // len:    2 @ 0x006c, Panel Function Number 1
+    u8  reserved_3[6];  // len:    6 @ 0x006e, trailing padding
+} PNLFUNC;
+
 /* PTL_AENV: Partial TVA Envelope */
 /* Total length: 16 bytes (0x0010) */
 typedef struct PTL_AENV {
@@ -913,6 +1451,316 @@ typedef struct RCMP {
     u8 OUT_ASGN;  // len:    1 @ 0x0007, Comp Output Assign
 } RCMP;
 
+/* RDAPFX: RD Piano Sympathetic Resonance */
+/* Total length: 4 bytes (0x0004) */
+typedef struct RDAPFX {
+    u8 SW;        // len:    1 @ 0x0000, SymReso Switch
+    u8 VSB_TYPE;  // len:    1 @ 0x0001, Reserved
+    u8 VSB_DEPTH; // len:    1 @ 0x0002, SymReso Depth
+    u8 CABI_RESO; // len:    1 @ 0x0003, Cabinet Resonance
+} RDAPFX;
+
+/* SC: System Common */
+/* Total length: 100 bytes (0x0064) */
+typedef struct SC {
+    s16 TUNE;               // len:    2 @ 0x0000, Master Tune
+    s8  KEY_SHIFT;          // len:    1 @ 0x0002, Master Key Shift
+    u8  SCALE_TUNE_SW;      // len:    1 @ 0x0003, ScaleTune Sw
+    u8  PERF_CTRL_CH;       // len:    1 @ 0x0004, Scene Control Channel
+    u8  RESERVED_BASIC_CH;  // len:    1 @ 0x0005, Reserved
+    u8  REMOTE_KEY;         // len:    1 @ 0x0006, Remote Keyboard
+    u8  CTRL_SRC_SEL;       // len:    1 @ 0x0007, Control Source Select
+    u8  SYS_CTRL_SRC_1;     // len:    1 @ 0x0008, System Control Source(011)
+    u8  reserved_1[3];      // len:    3 @ 0x0009, implicit padding
+    u16 TEMPO;              // len:    2 @ 0x000c, System Tempo
+    u8  OR_TEMPO;           // len:    1 @ 0x000e, Tempo Source
+    u8  RX_PC;              // len:    1 @ 0x000f, Receive Program Change
+    u8  RX_BS;              // len:    1 @ 0x0010, Receive Bank Select
+    u8  CHO_SRC;            // len:    1 @ 0x0011, Chorus Source
+    u8  REV_SRC;            // len:    1 @ 0x0012, Reverb Source
+    u8  DLY_SRC;            // len:    1 @ 0x0013, Delay Source
+    u8  MIC_NS_SW;          // len:    1 @ 0x0014, Noise Suppressor Switch
+    s8  MIC_NS_THRESHOLD;   // len:    1 @ 0x0015, Mic Noise Supressor Threshold
+    u8  MIC_NS_RELEASE;     // len:    1 @ 0x0016, Mic Noise Supressor Release
+    u8  MIC_COMP_SW;        // len:    1 @ 0x0017, Mic Comp Switch
+    u8  MIC_COMP_ATTCK;     // len:    1 @ 0x0018, Mic Comp Attack Time
+    u8  MIC_COMP_RELEASE;   // len:    1 @ 0x0019, Mic Comp Release Time
+    s8  MIC_COMP_THRESHOLD; // len:    1 @ 0x001a, Mic Comp Threshold
+    u8  MIC_COMP_RATIO;     // len:    1 @ 0x001b, Mic Comp Ratio
+    u8  MIC_COMP_KNEE;      // len:    1 @ 0x001c, Mic Comp Knee
+    s8  MIC_COMP_POSTGAIN;  // len:    1 @ 0x001d, Mic Comp Output Gain
+    u8  MIC_THRU_SW;        // len:    1 @ 0x001e, Mic Thru Switch
+    u8  MIC_REV_SEND;       // len:    1 @ 0x001f, Mic Reverb Send Level
+    u8  MIC_CHO_SEND;       // len:    1 @ 0x0020, Mic Chorus Send Level
+    u8  MIC_DLY_SEND;       // len:    1 @ 0x0021, Mic Delay Send Level
+    u8  USB_INP_LEVEL;      // len:    1 @ 0x0022, USB Audio Input Level
+    u8  USB_OUT_LEVEL;      // len:    1 @ 0x0023, USB Audio Output Level
+    u8  LOCAL_SW;           // len:    1 @ 0x0024, Local Switch
+    u8  AGING;              // len:    1 @ 0x0025, Aging Warm-Up
+    u8  ARP_SET_TEMPO;      // len:    1 @ 0x0026, Arpeggio Set Rhythm Tempo
+    u8  ARP_SET_KIT;        // len:    1 @ 0x0027, Arpeggio Set Rhythm Sound
+    u8  ARP_SET_TONE;       // len:    1 @ 0x0028, Arpeggio Set Type Sound
+    u8  AGING_THERMO;       // len:    1 @ 0x0029, Aging Initial Temperature
+    u8  COLOR_SET;          // len:    1 @ 0x002a, (*)Button Color Set
+    u8  PADDING1[19];       // len:   19 @ 0x002b, __padding
+    u8  LCD_CNT;            // len:    1 @ 0x003e, LCD Contrast
+    u8  DEV_ID;             // len:    1 @ 0x003f, Device ID
+    u8  SOFT_THRU;          // len:    1 @ 0x0040, Soft Through
+    u8  USB_MIDI_THRU;      // len:    1 @ 0x0041, USB-MIDI Thru
+    u8  RX_EXC;             // len:    1 @ 0x0042, Receive Exclusive
+    u8  TX_EDIT;            // len:    1 @ 0x0043, Transmit Edit Data
+    s8  LINE_GAIN;          // len:    1 @ 0x0044, Line Output Gain
+    s8  SPEAKER_GAIN;       // len:    1 @ 0x0045, Speaker Output Gain
+    u8  AUTO_OFF;           // len:    1 @ 0x0046, Auto Poweroff
+    u8  BT_SW;              // len:    1 @ 0x0047, Bluetooth Sw
+    u8  BT_ID;              // len:    1 @ 0x0048, Bluetooth ID
+    u8  APLAY_LVL;          // len:    1 @ 0x0049, Audio Player Level
+    u8  USB_DRIVER;         // len:    1 @ 0x004a, USB Driver Select
+    u8  SYNC_MODE;          // len:    1 @ 0x004b, Sync Mode
+    u8  SYNC_OUT;           // len:    1 @ 0x004c, Sync Out
+    s8  MIC_INP_GAIN;       // len:    1 @ 0x004d, Mic Input Gain
+    u8  MIC_POWER;          // len:    1 @ 0x004e, Mic Plug-In Power
+    u8  ANLG_INP_LEVEL;     // len:    1 @ 0x004f, AuxIn/BT Input Level
+    u8  SPEAKER_OUT_SW;     // len:    1 @ 0x0050, Speaker Output Switch
+    u8  LED_ON_BRIGHT;      // len:    1 @ 0x0051, LED On Brightness
+    u8  LED_OFF_BRIGHT;     // len:    1 @ 0x0052, LED Off Brightness
+    u8  CTRLER_MODE;        // len:    1 @ 0x0053, Knob Mode
+    u8  ARP_SYNC;           // len:    1 @ 0x0054, Arpeggio Sync Start
+    u8  CONDITION;          // len:    1 @ 0x0055, Aging Age
+    u8  SCENE_STARTUP_LSB;  // len:    1 @ 0x0056, Startup Scene LSB
+    u8  SCENE_LOCK;         // len:    1 @ 0x0057, Scene Lock
+    u8  UA_THRU_USB;        // len:    1 @ 0x0058, USB Audio USB IN Thru
+    u8  UA_THRU_AUX;        // len:    1 @ 0x0059, AUXIN USB Audio Thru
+    u8  TONE_CC_MAP;        // len:    1 @ 0x005a, Tone CC Map
+    u8  SCENE_STARTUP_MSB;  // len:    1 @ 0x005b, Startup Scene MSB
+    u8  PADDING2[8];        // len:    8 @ 0x005c, __padding
+} SC;
+
+/* SCMP: System Master Comp */
+/* Total length: 24 bytes (0x0018) */
+typedef struct SCMP {
+    u8 SW;            // len:    1 @ 0x0000, Switch
+    u8 LO_ATTACK;     // len:    1 @ 0x0001, Low Attack Time
+    u8 LO_RELEASE;    // len:    1 @ 0x0002, Low Release Time
+    s8 LO_THRES;      // len:    1 @ 0x0003, Low Threshold
+    u8 LO_RATIO;      // len:    1 @ 0x0004, Low Ratio
+    u8 LO_KNEE;       // len:    1 @ 0x0005, Low Knee
+    s8 LO_GAIN;       // len:    1 @ 0x0006, Low Output Gain
+    u8 MI_ATTACK;     // len:    1 @ 0x0007, Mid Attack Time
+    u8 MI_RELEASE;    // len:    1 @ 0x0008, Mid Release Time
+    s8 MI_THRES;      // len:    1 @ 0x0009, Mid Threshold
+    u8 MI_RATIO;      // len:    1 @ 0x000a, Mid Ratio
+    u8 MI_KNEE;       // len:    1 @ 0x000b, Mid Knee
+    s8 MI_GAIN;       // len:    1 @ 0x000c, Mid Output Gain
+    u8 HI_ATTACK;     // len:    1 @ 0x000d, High Attack Time
+    u8 HI_RELEASE;    // len:    1 @ 0x000e, High Release Time
+    s8 HI_THRES;      // len:    1 @ 0x000f, High Threshold
+    u8 HI_RATIO;      // len:    1 @ 0x0010, High Ratio
+    u8 HI_KNEE;       // len:    1 @ 0x0011, High Knee
+    s8 HI_GAIN;       // len:    1 @ 0x0012, High Output Gain
+    u8 LO_SPLIT_FREQ; // len:    1 @ 0x0013, Split Freq Low
+    u8 HI_SPLIT_FREQ; // len:    1 @ 0x0014, Split Freq Hi
+    u8 PADDING1[3];   // len:    3 @ 0x0015, __padding
+} SCMP;
+
+/* SEQ: System Master EQ */
+/* Total length: 16 bytes (0x0010) */
+typedef struct SEQ {
+    s8 IN_GAIN;   // len:    1 @ 0x0000, EQ Input Gain
+    s8 LO_GAIN;   // len:    1 @ 0x0001, EQ Low Gain
+    s8 MID1_GAIN; // len:    1 @ 0x0002, EQ Mid1 Gain
+    s8 MID2_GAIN; // len:    1 @ 0x0003, EQ Mid2 Gain
+    s8 MID3_GAIN; // len:    1 @ 0x0004, EQ Mid3 Gain
+    s8 HI_GAIN;   // len:    1 @ 0x0005, EQ High Gain
+    u8 LO_FREQ;   // len:    1 @ 0x0006, EQ Low Frequency
+    u8 MID1_FREQ; // len:    1 @ 0x0007, EQ Mid1 Frequency
+    u8 MID2_FREQ; // len:    1 @ 0x0008, EQ Mid2 Frequency
+    u8 MID3_FREQ; // len:    1 @ 0x0009, EQ Mid3 Frequency
+    u8 HI_FREQ;   // len:    1 @ 0x000a, EQ High Frequency
+    u8 MID1_Q;    // len:    1 @ 0x000b, EQ Mid1 Q
+    u8 MID2_Q;    // len:    1 @ 0x000c, EQ Mid2 Q
+    u8 MID3_Q;    // len:    1 @ 0x000d, EQ Mid3 Q
+    u8 SW;        // len:    1 @ 0x000e, EQ Switch
+    u8 PADDING1;  // len:    1 @ 0x000f, __padding
+} SEQ;
+
+/* SH: System Chorus */
+/* Total length: 48 bytes (0x0030) */
+typedef struct SH {
+    u8  sw;             // len:    1 @ 0x0000, Switch
+    u8  choType;        // len:    1 @ 0x0001, Chorus Type
+    u8  level;          // len:    1 @ 0x0002, Chorus Level
+    u8  PADDING1;       // len:    1 @ 0x0003, __padding
+    u8  REV_SEND;       // len:    1 @ 0x0004, Reverb Send Level
+    u8  PADDING2[3];    // len:    3 @ 0x0005, __padding
+    s16 param_1;        // len:    2 @ 0x0008, Chorus Parameter 1
+    u8  reserved_1[38]; // len:   38 @ 0x000a, trailing padding
+} SH;
+
+/* SKINASGNKNOB: Skin Knob function assign */
+/* Total length: 56 bytes (0x0038) */
+typedef struct SKINASGNKNOB {
+    u8  TYPE_1;         // len:    1 @ 0x0000, KNOB(021) Model
+    u8  reserved_1[17]; // len:   17 @ 0x0001, implicit padding
+    u16 PADDING1;       // len:    2 @ 0x0012, __padding
+    u16 func_1;         // len:    2 @ 0x0014, knob(021) function
+    u8  reserved_2[34]; // len:   34 @ 0x0016, trailing padding
+} SKINASGNKNOB;
+
+/* SKINASGNSW: Skin Switch function assign */
+/* Total length: 44 bytes (0x002c) */
+typedef struct SKINASGNSW {
+    u8  TYPE_1;         // len:    1 @ 0x0000, SW(021) Model
+    u8  reserved_1[12]; // len:   12 @ 0x0001, implicit padding
+    u8  PADDING1[3];    // len:    3 @ 0x000d, __padding
+    u16 func_1;         // len:    2 @ 0x0010, sw(021) function
+    u8  reserved_2[24]; // len:   24 @ 0x0012, implicit padding
+    u16 PADDING2;       // len:    2 @ 0x002a, __padding
+} SKINASGNSW;
+
+/* SL: System Controller */
+/* Total length: 36 bytes (0x0024) */
+typedef struct SL {
+    u8  TX_PC;          // len:    1 @ 0x0000, Transmit Program Change
+    u8  TX_BS;          // len:    1 @ 0x0001, Transmit Bank Select
+    u8  KBD_VELO;       // len:    1 @ 0x0002, Keyboard Velocity
+    u8  KBD_VCRV;       // len:    1 @ 0x0003, Keyboard Velocity Curve
+    s8  KBD_VCRV_OFST;  // len:    1 @ 0x0004, Keyboard Velocity Curve Offset
+    u8  KEY_FUNC_1;     // len:    1 @ 0x0005, Assignable Button(011) Function
+    u8  reserved_1[2];  // len:    2 @ 0x0006, implicit padding
+    u8  KEY_MODE_1;     // len:    1 @ 0x0008, Assignable Button(011) Mode
+    u8  reserved_2[2];  // len:    2 @ 0x0009, implicit padding
+    u8  KEY_SRC;        // len:    1 @ 0x000b, Assignable Button Source
+    u8  HOLD_PDL_SRC;   // len:    1 @ 0x000c, Hold Pedal Source
+    u8  HOLD_PDL_FUNC;  // len:    1 @ 0x000d, Hold Pedal Function
+    u8  HOLD_PDL_POLE;  // len:    1 @ 0x000e, Hold Pedal Polarity
+    u8  CTRL_PDL_SRC;   // len:    1 @ 0x000f, Ctrl Pedal Source
+    u8  CTRL_PDL_FUNC;  // len:    1 @ 0x0010, Ctrl Pedal Function
+    u8  SLIDER_SRC_1;   // len:    1 @ 0x0011, Assignable Slider(011) Source
+    u8  reserved_3;     // len:    1 @ 0x0012, implicit padding
+    u8  SLIDER_FUNC_1;  // len:    1 @ 0x0013, Assignable Slider(011) Function
+    u8  reserved_4;     // len:    1 @ 0x0014, implicit padding
+    u8  WHLBND_SRC;     // len:    1 @ 0x0015, (*)Control Wheel1 Source
+    u8  WHLBND_FUNC;    // len:    1 @ 0x0016, (*)Control Wheel1 Function
+    u8  WHLMOD_SRC;     // len:    1 @ 0x0017, (*)Control Wheel2 Source
+    u8  WHLMOD_FUNC;    // len:    1 @ 0x0018, (*)Control Wheel2 Function
+    u8  PARTSW_ASGN_1;  // len:    1 @ 0x0019, Part Button Assign [1]-[5]
+    u8  PARTSW_ASGN_1S; // len:    1 @ 0x001a, Part Button Assign SHIFT+[1]-[5]
+    u8  reserved_5;     // len:    1 @ 0x001b, implicit padding
+    u8  PARTSW_ASGN_2S; // len:    1 @ 0x001c, Part Button Assign SHIFT+[6]-[10]
+    u8  reserved_6;     // len:    1 @ 0x001d, implicit padding
+    u8  PARTSW_ASGN_3S; // len:    1 @ 0x001e, (*)Part Button Assign SHIFT+[11]-[15]
+    u8  AFT_SENS;       // len:    1 @ 0x001f, (*)Aftertouch Sens
+    u32 PADDING1;       // len:    4 @ 0x0020, __padding
+} SL;
+
+/* STP: Setup */
+/* Total length: 96 bytes (0x0060) */
+typedef struct STP {
+    u8  PERF_BS_MSB;          // len:    1 @ 0x0000, Scene BS MSB (CC# 0)
+    u8  PERF_BS_LSB;          // len:    1 @ 0x0001, Scene BS LSB (CC# 32)
+    u8  PERF_PC;              // len:    1 @ 0x0002, Scene PC (PC)
+    u8  PADDING1;             // len:    1 @ 0x0003, __padding
+    u8  CUR_PART;             // len:    1 @ 0x0004, Current Part
+    u8  CUR_PTL;              // len:    1 @ 0x0005, Current Tone Partial
+    u8  CUR_RHY_PTL;          // len:    1 @ 0x0006, Current Rhythm Partial
+    u8  LEVEL;                // len:    1 @ 0x0007, Master Level
+    u8  MIC_INP_SW;           // len:    1 @ 0x0008, MIC_INP_SW
+    s8  MIC_INP_GAIN;         // len:    1 @ 0x0009, MIC_INP_GAIN
+    s8  MIC_VOC_GAIN;         // len:    1 @ 0x000a, Mic to Vocoder Send Gain
+    u8  MIC_DRY_LEVEL;        // len:    1 @ 0x000b, Mic Dry Level (Vocoder)
+    u8  MIC_REV_SEND;         // len:    1 @ 0x000c, Mic to Reverb Send Level
+    u8  MIC_CHO_SEND;         // len:    1 @ 0x000d, Mic to Chorus Send Level
+    u8  MIC_DLY_SEND;         // len:    1 @ 0x000e, Mic to Delay Send Level
+    u8  SFX_DLY_SEND;         // len:    1 @ 0x000f, SystemFx(OD) Delay Send Level
+    s8  OCT_SHIFT;            // len:    1 @ 0x0010, Temp Octave Shift
+    s8  KEY_TRANS;            // len:    1 @ 0x0011, Temp keyboard Transpose
+    u16 TEMPO;                // len:    2 @ 0x0012, Tempo Master
+    u16 TEMPO_DULL;           // len:    2 @ 0x0014, Tempo Dul for EffectSync
+    u8  TEMPO_CLKSRC;         // len:    1 @ 0x0016, Tempo Clock Source
+    u8  EFCT_TEMPO_SRC;       // len:    1 @ 0x0017, Effect Tempo Source
+    u8  APP_MODE;             // len:    1 @ 0x0018, Application mode
+    u8  MFX_MODE;             // len:    1 @ 0x0019, MFX Mode
+    u8  ANLG_INP_SW;          // len:    1 @ 0x001a, ANLG_INP_SW
+    u8  ANLG_INP_LEVEL;       // len:    1 @ 0x001b, ANLG_INP_LEVEL
+    u8  ANLG_INP_STEREO;      // len:    1 @ 0x001c, ANLG_INP_STEREO
+    u8  MIC_JACK_STATE;       // len:    1 @ 0x001d, MicJackState
+    u8  VP770TYPE;            // len:    1 @ 0x001e, VP770Type
+    u8  AGING_TIMER_SW;       // len:    1 @ 0x001f, Aging Timer Switch
+    u8  AGING_INIT_PHASE;     // len:    1 @ 0x0020, Aging Init Phase
+    u8  AGING_THERMO;         // len:    1 @ 0x0021, Aging Thermometer
+    u8  AGING_INIT_PIT_OFST;  // len:    1 @ 0x0022, AGING_INIT_PIT_OFST
+    u8  AGING_AUTO_TUNE_SW;   // len:    1 @ 0x0023, AGING_AUTO_TUNE_SW
+    u16 AGING_TIMER;          // len:    2 @ 0x0024, Aging Timer
+    u8  AUTO_TUNE_INERTIA;    // len:    1 @ 0x0026, AUTO_TUNE_INERTIA
+    u8  AGING_END_PIT_OFST_1; // len:    1 @ 0x0027, Aging End Pitch(011)
+    u8  reserved_1[4];        // len:    4 @ 0x0028, implicit padding
+    u8  AGING_START_SW;       // len:    1 @ 0x002c, AGING_START_SW
+    u8  PADDING2;             // len:    1 @ 0x002d, __padding
+    u16 TYPE;                 // len:    2 @ 0x002e, TYPE knob
+    u16 RHYTHM;               // len:    2 @ 0x0030, RHYTHM knob
+    u8  PANEL_MODE;           // len:    1 @ 0x0032, Panel Mode
+    u8  KNOB_MFX;             // len:    1 @ 0x0033, Knob Position MFX
+    u8  KNOB_DLYTIME;         // len:    1 @ 0x0034, Knob Position DELAY TIME
+    u8  KNOB_DLYFDBK;         // len:    1 @ 0x0035, Reserved
+    u8  KNOB_REVTIME;         // len:    1 @ 0x0036, Reserved
+    u8  START_MODE;           // len:    1 @ 0x0037, Start On Beat Mode
+    u8  BEBEAT_SW;            // len:    1 @ 0x0038, BeBeatDetect Switch
+    u8  BEBEAT_GAIN;          // len:    1 @ 0x0039, BeBeatDetect Gain
+    u8  BEBEAT_PON;           // len:    1 @ 0x003a, BeBeatDetect Pon Level
+    u8  PADDING3;             // len:    1 @ 0x003b, __padding
+    u16 BEBEAT_MIN;           // len:    2 @ 0x003c, BeBeatDetect Min Tempo
+    u16 BEBEAT_MAX;           // len:    2 @ 0x003e, BeBeatDetect Max Tempo
+    u8  CONDITION;            // len:    1 @ 0x0040, Aging Age
+    u8  PNL_EDIT_PART;        // len:    1 @ 0x0041, Panel Edit Part
+    u8  VD_REF_TONE;          // len:    1 @ 0x0042, Vocal Designer Copy Ref Tone Command
+    u8  VOC_OUT_SEL;          // len:    1 @ 0x0043, Vocoder Output Select
+    u8  VOC_CRR_OUT;          // len:    1 @ 0x0044, Vocoder Carrier Output
+    u8  PADDING4[3];          // len:    3 @ 0x0045, __padding
+    u16 SINE_FREQ;            // len:    2 @ 0x0048, Sine Freq
+    u16 SQR_FREQ;             // len:    2 @ 0x004a, Square Freq
+    u16 IMP_RATE;             // len:    2 @ 0x004c, Impulse Rate (Hz)
+    u16 SINE_LEVEL;           // len:    2 @ 0x004e, Sine Level
+    u16 SQR_LEVEL;            // len:    2 @ 0x0050, Square Level
+    u16 IMP_LEVEL;            // len:    2 @ 0x0052, Impulse Level
+    u16 WHITE_LEVEL;          // len:    2 @ 0x0054, White Level
+    s16 DC_LEVEL;             // len:    2 @ 0x0056, DC Level
+    u16 OSC_LEV_DAC0L;        // len:    2 @ 0x0058, Osc Level DAC 0L
+    u16 OSC_LEV_DAC0R;        // len:    2 @ 0x005a, Osc Level DAC 0R
+    u16 OSC_LEV_DAC1L;        // len:    2 @ 0x005c, Osc Level DAC 1L
+    u16 OSC_LEV_DAC1R;        // len:    2 @ 0x005e, Osc Level DAC 1R
+} STP;
+
+/* SURFACE: model surfaceは仮想パラメータでSysExcからも見せない、 */
+/* Total length: 184 bytes (0x00b8) */
+typedef struct SURFACE {
+    u8  surfaceType;     // len:    1 @ 0x0000, MODEL Type
+    u8  PADDING1[3];     // len:    3 @ 0x0001, __padding
+    s16 param_1;         // len:    2 @ 0x0004, MODEL Parameter 1
+    u8  reserved_1[178]; // len:  178 @ 0x0006, trailing padding
+} SURFACE;
+
+/* SV: System Reverb */
+/* Total length: 44 bytes (0x002c) */
+typedef struct SV {
+    u8  sw;             // len:    1 @ 0x0000, Switch
+    u8  revType;        // len:    1 @ 0x0001, Reverb Type
+    u8  level;          // len:    1 @ 0x0002, Reverb Level
+    u8  PADDING1;       // len:    1 @ 0x0003, __padding
+    s16 param_1;        // len:    2 @ 0x0004, Reverb Parameter 1
+    u8  reserved_1[38]; // len:   38 @ 0x0006, trailing padding
+} SV;
+
+/* SVOC: System Vocoder */
+/* Total length: 44 bytes (0x002c) */
+typedef struct SVOC {
+    u8  sw;             // len:    1 @ 0x0000, Switch
+    u8  vocType;        // len:    1 @ 0x0001, Vocoder Type
+    u16 PADDING1;       // len:    2 @ 0x0002, __padding
+    s16 param_1;        // len:    2 @ 0x0004, Vocoder Parameter 1
+    u8  reserved_1[38]; // len:   38 @ 0x0006, trailing padding
+} SVOC;
+
 /* TONECOM: ToneCom */
 /* Total length: 20 bytes (0x0014) */
 typedef struct TONECOM {
@@ -922,6 +1770,132 @@ typedef struct TONECOM {
     u8  RSRV8;          // len:    1 @ 0x0011, Reserved
     u16 RSRV16;         // len:    2 @ 0x0012, Reserved
 } TONECOM;
+
+/* TONENAME: ToneName */
+/* Total length: 16 bytes (0x0010) */
+typedef struct TONENAME {
+    u8 NAME_1;         // len:    1 @ 0x0000, Name 1
+    u8 reserved_1[15]; // len:   15 @ 0x0001, trailing padding
+} TONENAME;
+
+/* TONETYPE: Tone Type */
+/* Total length: 4 bytes (0x0004) */
+typedef struct TONETYPE {
+    u16 TYPE;  // len:    2 @ 0x0000, ToneType
+    u16 MODEL; // len:    2 @ 0x0002, Model
+} TONETYPE;
+
+/* TWCmn: Block */
+/* Total length: 20 bytes (0x0014) */
+typedef struct TWCmn {
+    u8 TW_EBL;          // len:    1 @ 0x0000, Tonewheel Enable
+    u8 UPPER_PART;      // len:    1 @ 0x0001, Upper Part
+    u8 LOWER_PART;      // len:    1 @ 0x0002, Lower Part
+    u8 PEDAL_PART;      // len:    1 @ 0x0003, Pedal Part
+    u8 LEVEL;           // len:    1 @ 0x0004, ToneWheel Part Level
+    s8 PIT_FINE;        // len:    1 @ 0x0005, ToneWheel Part Fine Tune
+    u8 WHEEL_TYPE;      // len:    1 @ 0x0006, ToneWheel Type
+    u8 ON_CLICK;        // len:    1 @ 0x0007, Key On Click Level
+    u8 OFF_CLICK;       // len:    1 @ 0x0008, Key Off Click Level
+    u8 LEAKAGE_LEVEL;   // len:    1 @ 0x0009, Leakage Level
+    u8 PERC_SOFT_LEVEL; // len:    1 @ 0x000a, Percussion Soft Level
+    u8 PERC_NORM_LEVEL; // len:    1 @ 0x000b, Percussion Norm Level
+    u8 PERC_SLOW_TIME;  // len:    1 @ 0x000c, Percussion Slow Time
+    u8 PERC_FAST_TIME;  // len:    1 @ 0x000d, Percussion Fast Time
+    u8 PERC_RECHARGE;   // len:    1 @ 0x000e, Percussion Recharge Time
+    u8 PERC_HBAR_LEVEL; // len:    1 @ 0x000f, Percussion H.Bar Level
+    u8 CTRL_PART;       // len:    1 @ 0x0010, Control Part
+    u8 PADDING1[3];     // len:    3 @ 0x0011, __padding
+} TWCmn;
+
+/* TWEfct: Block */
+/* Total length: 12 bytes (0x000c) */
+typedef struct TWEfct {
+    u8  BMC_SND_SEL; // len:    1 @ 0x0000, BMC Send Select
+    u32 PADDING1;    // len:    4 @ 0x0001, __padding
+    u8  VIBCHO_SW;   // len:    1 @ 0x0005, Vibrato Chorus Switch
+    u8  VIBCHO_TYPE; // len:    1 @ 0x0006, Vibrato Chorus Type
+    u8  EXP_CRV;     // len:    1 @ 0x0007, Organ Expression Curve
+    u8  EXP_VAL;     // len:    1 @ 0x0008, Organ Expression Value
+    u8  PADDING2[3]; // len:    3 @ 0x0009, __padding
+} TWEfct;
+
+/* TWMod: Block */
+/* Total length: 28 bytes (0x001c) */
+typedef struct TWMod {
+    u8  reserved_1[8];  // len:    8 @ 0x0000, implicit padding
+    u8  UP_HBAR_1;      // len:    1 @ 0x0008, Upper Harmonic Bar 1'
+    u8  reserved_2[8];  // len:    8 @ 0x0009, implicit padding
+    u8  LW_HBAR_1;      // len:    1 @ 0x0011, Lower Harmonic Bar 1'
+    u8  reserved_3[2];  // len:    2 @ 0x0012, implicit padding
+    u8  PERC_SW;        // len:    1 @ 0x0014, Percussion Switch
+    u8  PERC_HARM;      // len:    1 @ 0x0015, Percussion Harmonic
+    u8  PERC_DECAY;     // len:    1 @ 0x0016, Percussion Decay
+    u8  PERC_SOFT;      // len:    1 @ 0x0017, Percussion Soft
+    u8  WHEEL_BRAKE;    // len:    1 @ 0x0018, Wheel Brake
+    u8  WHEEL_SPEED_UP; // len:    1 @ 0x0019, ToneWheel Speed Up
+    u16 PADDING1;       // len:    2 @ 0x001a, __padding
+} TWMod;
+
+/* UserSampleModify: Block */
+/* Total length: 20 bytes (0x0014) */
+typedef struct UserSampleModify {
+    u8  LOOP_MODE;        // len:    1 @ 0x0000, Loop Mode
+    u8  LEVEL;            // len:    1 @ 0x0001, Level
+    s16 PIT_FINE;         // len:    2 @ 0x0002, Fine Tune
+    u8  GAIN;             // len:    1 @ 0x0004, Gain
+    u8  ORG_KEY;          // len:    1 @ 0x0005, Original Key
+    u16 PADDING1;         // len:    2 @ 0x0006, __padding
+    u32 START_POINT;      // len:    4 @ 0x0008, Start Point
+    u32 LOOP_START_POINT; // len:    4 @ 0x000c, Loop Start Point
+    u32 END_POINT;        // len:    4 @ 0x0010, End Point
+} UserSampleModify;
+
+/* USRDATABLK: User Tone Data Block */
+/* Total length: 128 bytes (0x0080) */
+typedef struct USRDATABLK {
+    u8 BLK_1;           // len:    1 @ 0x0000, DataBlock0(011)
+    u8 reserved_1[127]; // len:  127 @ 0x0001, trailing padding
+} USRDATABLK;
+
+/* VIF: Favorite Scene */
+/* Total length: 4 bytes (0x0004) */
+typedef struct VIF {
+    u16 NUM;      // len:    2 @ 0x0000, Favorite Scene Number
+    u16 PADDING1; // len:    2 @ 0x0002, __padding
+} VIF;
+
+/* Edit: Group */
+/* Total length: 137 bytes (0x0089) */
+typedef struct Edit {
+    EDS     EDS;     // len:    4 @ 0x0000, EDS
+    EDLWR   EDLWR;   // len:    8 @ 0x0004, EDLWR
+    EDLW    EDLW;    // len:    4 @ 0x000c, EDLW
+    EDLWCR  EDLWCR;  // len:    4 @ 0x0010, EDLWCR
+    EDLWC   EDLWC;   // len:    4 @ 0x0014, EDLWC
+    EDLFR   EDLFR;   // len:    8 @ 0x0018, EDLFR
+    EDLF    EDLF;    // len:    4 @ 0x0020, EDLF
+    EDLTR   EDLTR;   // len:    8 @ 0x0024, EDLTR
+    EDLT    EDLT;    // len:    4 @ 0x002c, EDLT
+    EDVD    EDVD;    // len:    4 @ 0x0030, EDVD
+    EDNTL   EDNTL;   // len:    4 @ 0x0034, EDNTL
+    EDNTW   EDNTW;   // len:    8 @ 0x0038, EDNTW
+    EDNFL   EDNFL;   // len:    4 @ 0x0040, EDNFL
+    EDNFW   EDNFW;   // len:    8 @ 0x0044, EDNFW
+    EDNWI   EDNWI;   // len:    4 @ 0x004c, EDNWI
+    EDNEXZ  EDNEXZ;  // len:    4 @ 0x0050, EDNEXZ
+    EDPTIR  EDPTIR;  // len:    4 @ 0x0054, EDPTIR
+    EDPTI   EDPTI;   // len:    4 @ 0x0058, EDPTI
+    EDFTIR  EDFTIR;  // len:    4 @ 0x005c, EDFTIR
+    EDFTI   EDFTI;   // len:    4 @ 0x0060, EDFTI
+    EDEDS   EDEDS;   // len:    4 @ 0x0064, EDEDS
+    EDSEXZR EDSEXZR; // len:    4 @ 0x0068, EDSEXZR
+    EDSEXZ  EDSEXZ;  // len:    4 @ 0x006c, EDSEXZ
+    EDLEXZR EDLEXZR; // len:    4 @ 0x0070, EDLEXZR
+    EDLEXZ  EDLEXZ;  // len:    4 @ 0x0074, EDLEXZ
+    EDWM    EDWM;    // len:   13 @ 0x0078, EDWM
+    EDPC    EDPC;    // len:    4 @ 0x0085, EDPC
+} Edit;
 
 /* MdlJD800: Group */
 /* Total length: 500 bytes (0x01f4) */
@@ -933,6 +1907,14 @@ typedef struct MdlJD800 {
     TONECOM     TONECOM;        // len:   20 @ 0x01e0, TONECOM
 } MdlJD800;
 
+/* MdlJPX: Group */
+/* Total length: 212 bytes (0x00d4) */
+typedef struct MdlJPX {
+    MDLJPX  MDLJPX;  // len:  108 @ 0x0000, MDLJPX
+    MFX     MFX;     // len:   84 @ 0x006c, MFX
+    TONECOM TONECOM; // len:   20 @ 0x00c0, TONECOM
+} MdlJPX;
+
 /* MdlSynPrm0: Group */
 /* Total length: 216 bytes (0x00d8) */
 typedef struct MdlSynPrm0 {
@@ -940,6 +1922,19 @@ typedef struct MdlSynPrm0 {
     MFX     MFX;     // len:   84 @ 0x0070, MFX
     TONECOM TONECOM; // len:   20 @ 0x00c4, TONECOM
 } MdlSynPrm0;
+
+/* ModelCore: Group */
+/* Total length: 296 bytes (0x0128) */
+typedef struct ModelCore {
+    MDLCORE MDLCORE; // len:  112 @ 0x0000, MDLCORE
+    SURFACE SURFACE; // len:  184 @ 0x0070, SURFACE
+} ModelCore;
+
+/* PartInfo: Group */
+/* Total length: 16 bytes (0x0010) */
+typedef struct PartInfo {
+    TONENAME TONENAME; // len:   16 @ 0x0000, TONENAME
+} PartInfo;
 
 /* PCMEX: Group */
 /* Total length: 1632 bytes (0x0660) */
@@ -968,6 +1963,79 @@ typedef struct PCMR {
     PTL_EQ   PTL_EQ[88];   // len: 1408 @ 0x0780, PTL_EQ
 } PCMR;
 
+/* Perf: Group */
+/* Total length: 1944 bytes (0x0798) */
+typedef struct Perf {
+    FC      FC;             // len:   48 @ 0x0000, FC
+    FP      FP[5];          // len:  420 @ 0x0030, FP
+    PEQ     PEQ[5];         // len:   60 @ 0x01d4, PEQ
+    MFX     MFX[5];         // len:  420 @ 0x0210, MFX
+    FZ      FZ[5];          // len:  140 @ 0x03b4, FZ
+    u8      reserved_1[48]; // len:   48 @ 0x0440, implicit padding
+    SH      SH;             // len:   48 @ 0x0470, SH
+    SV      SV;             // len:   44 @ 0x04a0, SV
+    OD      OD;             // len:    8 @ 0x04cc, OD
+    ARPC    ARPC;           // len:   28 @ 0x04d4, ARPC
+    ARPP    ARPP[5];        // len:  340 @ 0x04f0, ARPP
+    ARPUSER ARPUSER[5];     // len:  340 @ 0x0644, ARPUSER
+} Perf;
+
+/* PerfMirror: Group */
+/* Total length: 1944 bytes (0x0798) */
+typedef struct PerfMirror {
+    FC      FC;             // len:   48 @ 0x0000, FC
+    FP      FP[5];          // len:  420 @ 0x0030, FP
+    PEQ     PEQ[5];         // len:   60 @ 0x01d4, PEQ
+    MFX     MFX[5];         // len:  420 @ 0x0210, MFX
+    FZ      FZ[5];          // len:  140 @ 0x03b4, FZ
+    u8      reserved_1[48]; // len:   48 @ 0x0440, implicit padding
+    SH      SH;             // len:   48 @ 0x0470, SH
+    SV      SV;             // len:   44 @ 0x04a0, SV
+    OD      OD;             // len:    8 @ 0x04cc, OD
+    ARPC    ARPC;           // len:   28 @ 0x04d4, ARPC
+    ARPP    ARPP[5];        // len:  340 @ 0x04f0, ARPP
+    ARPUSER ARPUSER[5];     // len:  340 @ 0x0644, ARPUSER
+} PerfMirror;
+
+/* PnlAsgn: Group */
+/* Total length: 116 bytes (0x0074) */
+typedef struct PnlAsgn {
+    PNLFUNC PNLFUNC; // len:  116 @ 0x0000, PNLFUNC
+} PnlAsgn;
+
+/* RDTONE: Group */
+/* Total length: 20 bytes (0x0014) */
+typedef struct RDTONE {
+    TONENAME TONENAME; // len:   16 @ 0x0000, TONENAME
+    RDAPFX   RDAPFX;   // len:    4 @ 0x0010, RDAPFX
+} RDTONE;
+
+/* Sys: Group */
+/* Total length: 1372 bytes (0x055c) */
+typedef struct Sys {
+    SC   SC;             // len:  100 @ 0x0000, SC
+    SL   SL;             // len:   36 @ 0x0064, SL
+    u8   reserved_1[48]; // len:   48 @ 0x0088, implicit padding
+    SH   SH;             // len:   48 @ 0x00b8, SH
+    SV   SV;             // len:   44 @ 0x00e8, SV
+    SEQ  SEQ;            // len:   16 @ 0x0114, SEQ
+    SCMP SCMP;           // len:   24 @ 0x0124, SCMP
+    MBAS MBAS[16];       // len:  576 @ 0x013c, MBAS
+    BCS  BCS[10];        // len:  480 @ 0x037c, BCS
+} Sys;
+
+/* ToneType: Group */
+/* Total length: 4 bytes (0x0004) */
+typedef struct ToneType {
+    TONETYPE TONETYPE; // len:    4 @ 0x0000, TONETYPE
+} ToneType;
+
+/* USRTONE: Group */
+/* Total length: 2048 bytes (0x0800) */
+typedef struct USRTONE {
+    USRDATABLK USRDATABLK[16]; // len: 2048 @ 0x0000, USRDATABLK
+} USRTONE;
+
 /* VoDsgn: Group */
 /* Total length: 136 bytes (0x0088) */
 typedef struct VoDsgn {
@@ -975,6 +2043,19 @@ typedef struct VoDsgn {
     TONECOM TONECOM; // len:   20 @ 0x0020, TONECOM
     MFX     MFX;     // len:   84 @ 0x0034, MFX
 } VoDsgn;
+
+/* VTWM: Group */
+/* Total length: 48 bytes (0x0030) */
+typedef struct VTWM {
+    TWCmn TWCmn; // len:   20 @ 0x0000, TWCmn
+    TWMod TWMod; // len:   28 @ 0x0014, TWMod
+} VTWM;
+
+/* VTWMEfct: Group */
+/* Total length: 12 bytes (0x000c) */
+typedef struct VTWMEfct {
+    TWEfct TWEfct; // len:   12 @ 0x0000, TWEfct
+} VTWMEfct;
 
 #pragma pack(pop)
 

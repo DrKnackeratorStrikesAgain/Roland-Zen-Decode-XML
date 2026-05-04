@@ -4029,8 +4029,8 @@ ZenProperties["KBDARP"] = {
 ZenProperties["LOOP_CMN"] = {
   "name": "LOOP_CMN",
   "description": "PCMRhythm Common",
-  "byteLength": 124,
-  "sysexLength": 50,
+  "byteLength": 128,
+  "sysexLength": 58,
   "parameters": {
     "NAME_1": {
       "id": "NAME_1",
@@ -4237,7 +4237,7 @@ ZenProperties["LOOP_CMN"] = {
     "START_OFST": {
       "id": "START_OFST",
       "byteOffset": 32,
-      "byteLength": 2,
+      "byteLength": 4,
       "description": "Start Ofst",
       "dataRange": [
         0,
@@ -4245,24 +4245,24 @@ ZenProperties["LOOP_CMN"] = {
       ],
       "initValue": 0,
       "sysexOffset": 30,
-      "lengthSysex": 4
+      "lengthSysex": 8
     },
     "END_OFST": {
       "id": "END_OFST",
-      "byteOffset": 34,
-      "byteLength": 2,
+      "byteOffset": 36,
+      "byteLength": 4,
       "description": "End Ofst",
       "dataRange": [
         -8388607,
         0
       ],
       "initValue": 0,
-      "sysexOffset": 34,
-      "lengthSysex": 4
+      "sysexOffset": 38,
+      "lengthSysex": 8
     },
     "START_STEP": {
       "id": "START_STEP",
-      "byteOffset": 36,
+      "byteOffset": 40,
       "byteLength": 1,
       "description": "Start Step",
       "dataRange": [
@@ -4270,7 +4270,7 @@ ZenProperties["LOOP_CMN"] = {
         127
       ],
       "initValue": 0,
-      "sysexOffset": 38,
+      "sysexOffset": 46,
       "lengthSysex": 1,
       "displayRange": [
         1,
@@ -4279,7 +4279,7 @@ ZenProperties["LOOP_CMN"] = {
     },
     "LAST_STEP": {
       "id": "LAST_STEP",
-      "byteOffset": 37,
+      "byteOffset": 41,
       "byteLength": 1,
       "description": "Last Step",
       "dataRange": [
@@ -4287,12 +4287,12 @@ ZenProperties["LOOP_CMN"] = {
         0
       ],
       "initValue": 0,
-      "sysexOffset": 39,
+      "sysexOffset": 47,
       "lengthSysex": 1
     },
     "STEP_LENGTH": {
       "id": "STEP_LENGTH",
-      "byteOffset": 38,
+      "byteOffset": 42,
       "byteLength": 1,
       "description": "Step Length",
       "dataRange": [
@@ -4300,12 +4300,12 @@ ZenProperties["LOOP_CMN"] = {
         128
       ],
       "initValue": 16,
-      "sysexOffset": 40,
+      "sysexOffset": 48,
       "lengthSysex": 1
     },
     "PADDING3": {
       "id": "PADDING3",
-      "byteOffset": 39,
+      "byteOffset": 43,
       "byteLength": 1,
       "description": "__padding",
       "dataRange": [
@@ -4318,7 +4318,7 @@ ZenProperties["LOOP_CMN"] = {
     },
     "PITCH_BEND": {
       "id": "PITCH_BEND",
-      "byteOffset": 40,
+      "byteOffset": 44,
       "byteLength": 2,
       "description": "Pitch Shift",
       "dataRange": [
@@ -4326,13 +4326,13 @@ ZenProperties["LOOP_CMN"] = {
         400
       ],
       "initValue": 100,
-      "sysexOffset": 41,
+      "sysexOffset": 49,
       "lengthSysex": 4,
       "displayMeasurement": "%"
     },
     "SCALE": {
       "id": "SCALE",
-      "byteOffset": 42,
+      "byteOffset": 46,
       "byteLength": 1,
       "description": "Base Scale",
       "dataRange": [
@@ -4340,7 +4340,7 @@ ZenProperties["LOOP_CMN"] = {
         2
       ],
       "initValue": 1,
-      "sysexOffset": 45,
+      "sysexOffset": 53,
       "lengthSysex": 1,
       "values": {
         "0": "1/8",
@@ -4350,7 +4350,7 @@ ZenProperties["LOOP_CMN"] = {
     },
     "SCALE_LENGTH": {
       "id": "SCALE_LENGTH",
-      "byteOffset": 43,
+      "byteOffset": 47,
       "byteLength": 1,
       "description": "Base Length",
       "dataRange": [
@@ -4358,12 +4358,12 @@ ZenProperties["LOOP_CMN"] = {
         16
       ],
       "initValue": 16,
-      "sysexOffset": 46,
+      "sysexOffset": 54,
       "lengthSysex": 1
     },
     "LEVEL": {
       "id": "LEVEL",
-      "byteOffset": 44,
+      "byteOffset": 48,
       "byteLength": 1,
       "description": "Level",
       "dataRange": [
@@ -4371,12 +4371,12 @@ ZenProperties["LOOP_CMN"] = {
         127
       ],
       "initValue": 127,
-      "sysexOffset": 47,
+      "sysexOffset": 55,
       "lengthSysex": 1
     },
     "TM_WINDOW": {
       "id": "TM_WINDOW",
-      "byteOffset": 45,
+      "byteOffset": 49,
       "byteLength": 1,
       "description": "Stretch Window",
       "dataRange": [
@@ -4384,7 +4384,7 @@ ZenProperties["LOOP_CMN"] = {
         4
       ],
       "initValue": 0,
-      "sysexOffset": 48,
+      "sysexOffset": 56,
       "lengthSysex": 1,
       "values": {
         "0": "1.0",
@@ -4396,7 +4396,7 @@ ZenProperties["LOOP_CMN"] = {
     },
     "ATK_TIME": {
       "id": "ATK_TIME",
-      "byteOffset": 46,
+      "byteOffset": 50,
       "byteLength": 1,
       "description": "Attack Time",
       "dataRange": [
@@ -4404,7 +4404,7 @@ ZenProperties["LOOP_CMN"] = {
         2
       ],
       "initValue": 0,
-      "sysexOffset": 49,
+      "sysexOffset": 57,
       "lengthSysex": 1,
       "displayMeasurement": "ms",
       "displayRange": [
@@ -4414,7 +4414,7 @@ ZenProperties["LOOP_CMN"] = {
     },
     "PADDING4": {
       "id": "PADDING4",
-      "byteOffset": 47,
+      "byteOffset": 51,
       "byteLength": 1,
       "description": "__padding",
       "dataRange": [
@@ -4427,7 +4427,7 @@ ZenProperties["LOOP_CMN"] = {
     },
     "PADDING5": {
       "id": "PADDING5",
-      "byteOffset": 48,
+      "byteOffset": 52,
       "byteLength": 76,
       "description": "__padding",
       "dataRange": [
@@ -10555,8 +10555,8 @@ ZenProperties["PJC_SCENE"] = {
 ZenProperties["PJC"] = {
   "name": "PJC",
   "description": "",
-  "byteLength": 369,
-  "sysexLength": 182,
+  "byteLength": 376,
+  "sysexLength": 189,
   "parameters": {
     "NAME_1": {
       "id": "NAME_1",
@@ -10613,11 +10613,11 @@ ZenProperties["PJC"] = {
       "isPadding": true,
       "lengthSysex": 0
     },
-    "V_RSRV": {
-      "id": "V_RSRV",
+    "V_RSRV_1": {
+      "id": "V_RSRV_1",
       "byteOffset": 20,
       "byteLength": 1,
-      "description": "Voice Reserve Layer(01$)",
+      "description": "Voice Reserve Layer(011)",
       "dataRange": [
         0,
         10
@@ -10628,7 +10628,7 @@ ZenProperties["PJC"] = {
     },
     "WAV_CUE_LEV": {
       "id": "WAV_CUE_LEV",
-      "byteOffset": 21,
+      "byteOffset": 28,
       "byteLength": 1,
       "description": "WAV Cue Level",
       "dataRange": [
@@ -10636,12 +10636,12 @@ ZenProperties["PJC"] = {
         255
       ],
       "initValue": 255,
-      "sysexOffset": 22,
+      "sysexOffset": 29,
       "lengthSysex": 2
     },
     "WAV_LEV": {
       "id": "WAV_LEV",
-      "byteOffset": 22,
+      "byteOffset": 29,
       "byteLength": 1,
       "description": "WAV Level",
       "dataRange": [
@@ -10649,12 +10649,12 @@ ZenProperties["PJC"] = {
         255
       ],
       "initValue": 255,
-      "sysexOffset": 24,
+      "sysexOffset": 31,
       "lengthSysex": 2
     },
     "EXT_SENS": {
       "id": "EXT_SENS",
-      "byteOffset": 23,
+      "byteOffset": 30,
       "byteLength": 1,
       "description": "External Sens",
       "dataRange": [
@@ -10662,12 +10662,12 @@ ZenProperties["PJC"] = {
         60
       ],
       "initValue": 0,
-      "sysexOffset": 26,
+      "sysexOffset": 33,
       "lengthSysex": 1
     },
     "EXT_CUE_LEV": {
       "id": "EXT_CUE_LEV",
-      "byteOffset": 24,
+      "byteOffset": 31,
       "byteLength": 1,
       "description": "External Cue Level",
       "dataRange": [
@@ -10675,12 +10675,12 @@ ZenProperties["PJC"] = {
         127
       ],
       "initValue": 0,
-      "sysexOffset": 27,
+      "sysexOffset": 34,
       "lengthSysex": 1
     },
     "EXT_LEV": {
       "id": "EXT_LEV",
-      "byteOffset": 25,
+      "byteOffset": 32,
       "byteLength": 1,
       "description": "External Level",
       "dataRange": [
@@ -10688,12 +10688,12 @@ ZenProperties["PJC"] = {
         127
       ],
       "initValue": 100,
-      "sysexOffset": 28,
+      "sysexOffset": 35,
       "lengthSysex": 1
     },
     "PC_CUE_LEV": {
       "id": "PC_CUE_LEV",
-      "byteOffset": 26,
+      "byteOffset": 33,
       "byteLength": 1,
       "description": "PC Cue Level",
       "dataRange": [
@@ -10701,12 +10701,12 @@ ZenProperties["PJC"] = {
         127
       ],
       "initValue": 0,
-      "sysexOffset": 29,
+      "sysexOffset": 36,
       "lengthSysex": 1
     },
     "PC_LEV": {
       "id": "PC_LEV",
-      "byteOffset": 27,
+      "byteOffset": 34,
       "byteLength": 1,
       "description": "PC Level",
       "dataRange": [
@@ -10714,12 +10714,12 @@ ZenProperties["PJC"] = {
         127
       ],
       "initValue": 100,
-      "sysexOffset": 30,
+      "sysexOffset": 37,
       "lengthSysex": 1
     },
     "SEND_RETURN_POS": {
       "id": "SEND_RETURN_POS",
-      "byteOffset": 28,
+      "byteOffset": 35,
       "byteLength": 1,
       "description": "Send Return Pos",
       "dataRange": [
@@ -10727,7 +10727,7 @@ ZenProperties["PJC"] = {
         13
       ],
       "initValue": 0,
-      "sysexOffset": 31,
+      "sysexOffset": 38,
       "lengthSysex": 1,
       "values": {
         "0": "OFF",
@@ -10748,7 +10748,7 @@ ZenProperties["PJC"] = {
     },
     "SEND_LEV": {
       "id": "SEND_LEV",
-      "byteOffset": 29,
+      "byteOffset": 36,
       "byteLength": 1,
       "description": "Send Level",
       "dataRange": [
@@ -10756,12 +10756,12 @@ ZenProperties["PJC"] = {
         255
       ],
       "initValue": 200,
-      "sysexOffset": 32,
+      "sysexOffset": 39,
       "lengthSysex": 2
     },
     "RETURN_LEV": {
       "id": "RETURN_LEV",
-      "byteOffset": 30,
+      "byteOffset": 37,
       "byteLength": 1,
       "description": "Return Level",
       "dataRange": [
@@ -10769,12 +10769,12 @@ ZenProperties["PJC"] = {
         255
       ],
       "initValue": 200,
-      "sysexOffset": 34,
+      "sysexOffset": 41,
       "lengthSysex": 2
     },
     "ASGN_CUE_LEV": {
       "id": "ASGN_CUE_LEV",
-      "byteOffset": 31,
+      "byteOffset": 38,
       "byteLength": 1,
       "description": "Assign Cue Level",
       "dataRange": [
@@ -10782,12 +10782,12 @@ ZenProperties["PJC"] = {
         255
       ],
       "initValue": 255,
-      "sysexOffset": 36,
+      "sysexOffset": 43,
       "lengthSysex": 2
     },
     "ASGN_LEV": {
       "id": "ASGN_LEV",
-      "byteOffset": 32,
+      "byteOffset": 39,
       "byteLength": 1,
       "description": "Assign Level",
       "dataRange": [
@@ -10795,12 +10795,12 @@ ZenProperties["PJC"] = {
         255
       ],
       "initValue": 255,
-      "sysexOffset": 38,
+      "sysexOffset": 45,
       "lengthSysex": 2
     },
     "EXT_STEREO": {
       "id": "EXT_STEREO",
-      "byteOffset": 33,
+      "byteOffset": 40,
       "byteLength": 1,
       "description": "EXT Stereo",
       "dataRange": [
@@ -10808,7 +10808,7 @@ ZenProperties["PJC"] = {
         1
       ],
       "initValue": 1,
-      "sysexOffset": 40,
+      "sysexOffset": 47,
       "lengthSysex": 1,
       "values": {
         "0": "MONO",
@@ -10817,7 +10817,7 @@ ZenProperties["PJC"] = {
     },
     "SEND_STEREO": {
       "id": "SEND_STEREO",
-      "byteOffset": 34,
+      "byteOffset": 41,
       "byteLength": 1,
       "description": "Send Stereo",
       "dataRange": [
@@ -10825,7 +10825,7 @@ ZenProperties["PJC"] = {
         1
       ],
       "initValue": 1,
-      "sysexOffset": 41,
+      "sysexOffset": 48,
       "lengthSysex": 1,
       "values": {
         "0": "MONO",
@@ -10834,7 +10834,7 @@ ZenProperties["PJC"] = {
     },
     "RETURN_STEREO": {
       "id": "RETURN_STEREO",
-      "byteOffset": 35,
+      "byteOffset": 42,
       "byteLength": 1,
       "description": "Return Stereo",
       "dataRange": [
@@ -10842,7 +10842,7 @@ ZenProperties["PJC"] = {
         1
       ],
       "initValue": 1,
-      "sysexOffset": 42,
+      "sysexOffset": 49,
       "lengthSysex": 1,
       "values": {
         "0": "MONO",
@@ -10851,7 +10851,7 @@ ZenProperties["PJC"] = {
     },
     "REC_POS": {
       "id": "REC_POS",
-      "byteOffset": 36,
+      "byteOffset": 43,
       "byteLength": 1,
       "description": "Rec Source",
       "dataRange": [
@@ -10859,7 +10859,7 @@ ZenProperties["PJC"] = {
         12
       ],
       "initValue": 0,
-      "sysexOffset": 43,
+      "sysexOffset": 50,
       "lengthSysex": 1,
       "values": {
         "0": "EXT(WET)",
@@ -10879,7 +10879,7 @@ ZenProperties["PJC"] = {
     },
     "SEQ_SCALE": {
       "id": "SEQ_SCALE",
-      "byteOffset": 37,
+      "byteOffset": 44,
       "byteLength": 1,
       "description": "Base Scale",
       "dataRange": [
@@ -10887,7 +10887,7 @@ ZenProperties["PJC"] = {
         5
       ],
       "initValue": 1,
-      "sysexOffset": 44,
+      "sysexOffset": 51,
       "lengthSysex": 1,
       "values": {
         "0": "1/8",
@@ -10900,7 +10900,7 @@ ZenProperties["PJC"] = {
     },
     "SEQ_LENGTH": {
       "id": "SEQ_LENGTH",
-      "byteOffset": 38,
+      "byteOffset": 45,
       "byteLength": 1,
       "description": "Base Step",
       "dataRange": [
@@ -10908,12 +10908,12 @@ ZenProperties["PJC"] = {
         128
       ],
       "initValue": 16,
-      "sysexOffset": 45,
+      "sysexOffset": 52,
       "lengthSysex": 1
     },
     "SEQ_SHUFFLE": {
       "id": "SEQ_SHUFFLE",
-      "byteOffset": 39,
+      "byteOffset": 46,
       "byteLength": 1,
       "description": "Shuffle",
       "dataRange": [
@@ -10921,12 +10921,12 @@ ZenProperties["PJC"] = {
         50
       ],
       "initValue": 0,
-      "sysexOffset": 46,
+      "sysexOffset": 53,
       "lengthSysex": 1
     },
     "SEQ_SHUFFLE_SRC": {
       "id": "SEQ_SHUFFLE_SRC",
-      "byteOffset": 40,
+      "byteOffset": 47,
       "byteLength": 1,
       "description": "Shuffle Source",
       "dataRange": [
@@ -10934,7 +10934,7 @@ ZenProperties["PJC"] = {
         1
       ],
       "initValue": 1,
-      "sysexOffset": 47,
+      "sysexOffset": 54,
       "lengthSysex": 1,
       "values": {
         "0": "COMMON",
@@ -10943,7 +10943,7 @@ ZenProperties["PJC"] = {
     },
     "SEQ_QUANTIZE_SW": {
       "id": "SEQ_QUANTIZE_SW",
-      "byteOffset": 41,
+      "byteOffset": 48,
       "byteLength": 1,
       "description": "Quanzie Sw",
       "dataRange": [
@@ -10951,7 +10951,7 @@ ZenProperties["PJC"] = {
         1
       ],
       "initValue": 1,
-      "sysexOffset": 48,
+      "sysexOffset": 55,
       "lengthSysex": 1,
       "values": {
         "0": "OFF",
@@ -10960,7 +10960,7 @@ ZenProperties["PJC"] = {
     },
     "SEQ_QUANTIZE_TIGHTNESS": {
       "id": "SEQ_QUANTIZE_TIGHTNESS",
-      "byteOffset": 42,
+      "byteOffset": 49,
       "byteLength": 1,
       "description": "Quanzie Tightness",
       "dataRange": [
@@ -10968,7 +10968,7 @@ ZenProperties["PJC"] = {
         100
       ],
       "initValue": 0,
-      "sysexOffset": 49,
+      "sysexOffset": 56,
       "lengthSysex": 1,
       "displayMeasurement": "%",
       "values": {
@@ -10978,7 +10978,7 @@ ZenProperties["PJC"] = {
     },
     "SEQ_MOTION_SW": {
       "id": "SEQ_MOTION_SW",
-      "byteOffset": 43,
+      "byteOffset": 50,
       "byteLength": 1,
       "description": "Motion Switch",
       "dataRange": [
@@ -10986,7 +10986,7 @@ ZenProperties["PJC"] = {
         1
       ],
       "initValue": 1,
-      "sysexOffset": 50,
+      "sysexOffset": 57,
       "lengthSysex": 1,
       "values": {
         "0": "OFF",
@@ -10995,7 +10995,7 @@ ZenProperties["PJC"] = {
     },
     "PAD_TRANSPOSE": {
       "id": "PAD_TRANSPOSE",
-      "byteOffset": 44,
+      "byteOffset": 51,
       "byteLength": 1,
       "description": "Pad Trancepose",
       "dataRange": [
@@ -11003,7 +11003,7 @@ ZenProperties["PJC"] = {
         6
       ],
       "initValue": 0,
-      "sysexOffset": 51,
+      "sysexOffset": 58,
       "lengthSysex": 1,
       "values": {
         "0": "F#",
@@ -11023,7 +11023,7 @@ ZenProperties["PJC"] = {
     },
     "PADDING2": {
       "id": "PADDING2",
-      "byteOffset": 45,
+      "byteOffset": 52,
       "byteLength": 4,
       "description": "__padding",
       "dataRange": [
@@ -11036,7 +11036,7 @@ ZenProperties["PJC"] = {
     },
     "TUNE": {
       "id": "TUNE",
-      "byteOffset": 49,
+      "byteOffset": 56,
       "byteLength": 2,
       "description": "Master Tune",
       "dataRange": [
@@ -11044,13 +11044,13 @@ ZenProperties["PJC"] = {
         195
       ],
       "initValue": 0,
-      "sysexOffset": 52,
+      "sysexOffset": 59,
       "lengthSysex": 4,
       "sysexValueOffset": 1024
     },
     "KEY_SHIFT": {
       "id": "KEY_SHIFT",
-      "byteOffset": 51,
+      "byteOffset": 58,
       "byteLength": 1,
       "description": "Master Key Shift",
       "dataRange": [
@@ -11058,13 +11058,13 @@ ZenProperties["PJC"] = {
         24
       ],
       "initValue": 0,
-      "sysexOffset": 56,
+      "sysexOffset": 63,
       "lengthSysex": 1,
       "sysexValueOffset": 64
     },
     "SCALE_TUNE_SW": {
       "id": "SCALE_TUNE_SW",
-      "byteOffset": 52,
+      "byteOffset": 59,
       "byteLength": 1,
       "description": "Scale Tune Sw",
       "dataRange": [
@@ -11072,7 +11072,7 @@ ZenProperties["PJC"] = {
         1
       ],
       "initValue": 1,
-      "sysexOffset": 57,
+      "sysexOffset": 64,
       "lengthSysex": 1,
       "values": {
         "0": "OFF",
@@ -11081,7 +11081,7 @@ ZenProperties["PJC"] = {
     },
     "_reserved_": {
       "id": "_reserved_",
-      "byteOffset": 53,
+      "byteOffset": 60,
       "byteLength": 1,
       "description": "reserved",
       "dataRange": [
@@ -11089,12 +11089,12 @@ ZenProperties["PJC"] = {
         8
       ],
       "initValue": 1,
-      "sysexOffset": 58,
+      "sysexOffset": 65,
       "lengthSysex": 1
     },
     "REC_MEAS": {
       "id": "REC_MEAS",
-      "byteOffset": 54,
+      "byteOffset": 61,
       "byteLength": 1,
       "description": "Rec Measure",
       "dataRange": [
@@ -11102,7 +11102,7 @@ ZenProperties["PJC"] = {
         8
       ],
       "initValue": 1,
-      "sysexOffset": 59,
+      "sysexOffset": 66,
       "lengthSysex": 1,
       "values": {
         "0": "1",
@@ -11117,7 +11117,7 @@ ZenProperties["PJC"] = {
     },
     "REC_FADE": {
       "id": "REC_FADE",
-      "byteOffset": 55,
+      "byteOffset": 62,
       "byteLength": 1,
       "description": "Rec Fade",
       "dataRange": [
@@ -11125,7 +11125,7 @@ ZenProperties["PJC"] = {
         3
       ],
       "initValue": 0,
-      "sysexOffset": 60,
+      "sysexOffset": 67,
       "lengthSysex": 1,
       "displayMeasurement": "Sample",
       "values": {
@@ -11138,7 +11138,7 @@ ZenProperties["PJC"] = {
     },
     "FIRST_SCENE": {
       "id": "FIRST_SCENE",
-      "byteOffset": 56,
+      "byteOffset": 63,
       "byteLength": 1,
       "description": "First Scene",
       "dataRange": [
@@ -11146,7 +11146,7 @@ ZenProperties["PJC"] = {
         7
       ],
       "initValue": 0,
-      "sysexOffset": 61,
+      "sysexOffset": 68,
       "lengthSysex": 1,
       "displayRange": [
         1,
@@ -11155,7 +11155,7 @@ ZenProperties["PJC"] = {
     },
     "PADDING3": {
       "id": "PADDING3",
-      "byteOffset": 57,
+      "byteOffset": 64,
       "byteLength": 128,
       "description": "__padding",
       "dataRange": [
@@ -11168,19 +11168,19 @@ ZenProperties["PJC"] = {
     },
     "SCENE": {
       "id": "SCENE",
-      "byteOffset": 185,
+      "byteOffset": 192,
       "byteLength": 64,
       "description": "SCENE",
       "blockName": "PJC_SCENE",
       "count": 8,
       "blockByteLength": 8,
-      "sysexOffset": "00 00 3e",
+      "sysexOffset": "00 00 45",
       "lengthSysex": 64,
       "block": ZenProperties["PJC_SCENE"]
     },
     "MASTER_REV_KNOB1_ASGN": {
       "id": "MASTER_REV_KNOB1_ASGN",
-      "byteOffset": 249,
+      "byteOffset": 256,
       "byteLength": 2,
       "description": "Rev Knob1 Assign",
       "dataRange": [
@@ -11188,12 +11188,12 @@ ZenProperties["PJC"] = {
         32767
       ],
       "initValue": -1,
-      "sysexOffset": 126,
+      "sysexOffset": 133,
       "lengthSysex": 4
     },
     "MASTER_REV_KNOB2_ASGN": {
       "id": "MASTER_REV_KNOB2_ASGN",
-      "byteOffset": 251,
+      "byteOffset": 258,
       "byteLength": 2,
       "description": "Rev Knob2 Assign",
       "dataRange": [
@@ -11201,12 +11201,12 @@ ZenProperties["PJC"] = {
         32767
       ],
       "initValue": -1,
-      "sysexOffset": 130,
+      "sysexOffset": 137,
       "lengthSysex": 4
     },
     "MASTER_DEL_KNOB1_ASGN": {
       "id": "MASTER_DEL_KNOB1_ASGN",
-      "byteOffset": 253,
+      "byteOffset": 260,
       "byteLength": 2,
       "description": "Dly Knob1 Assign",
       "dataRange": [
@@ -11214,12 +11214,12 @@ ZenProperties["PJC"] = {
         32767
       ],
       "initValue": -1,
-      "sysexOffset": 134,
+      "sysexOffset": 141,
       "lengthSysex": 4
     },
     "MASTER_DEL_KNOB2_ASGN": {
       "id": "MASTER_DEL_KNOB2_ASGN",
-      "byteOffset": 255,
+      "byteOffset": 262,
       "byteLength": 2,
       "description": "Dly Knob2 Assign",
       "dataRange": [
@@ -11227,12 +11227,12 @@ ZenProperties["PJC"] = {
         32767
       ],
       "initValue": -1,
-      "sysexOffset": 138,
+      "sysexOffset": 145,
       "lengthSysex": 4
     },
     "MASTER_MFXL_KNOB1_ASGN": {
       "id": "MASTER_MFXL_KNOB1_ASGN",
-      "byteOffset": 257,
+      "byteOffset": 264,
       "byteLength": 2,
       "description": "MFX Knob1 Assign",
       "dataRange": [
@@ -11240,12 +11240,12 @@ ZenProperties["PJC"] = {
         32767
       ],
       "initValue": -1,
-      "sysexOffset": 142,
+      "sysexOffset": 149,
       "lengthSysex": 4
     },
     "MASTER_MFX_KNOB2_ASGN": {
       "id": "MASTER_MFX_KNOB2_ASGN",
-      "byteOffset": 259,
+      "byteOffset": 266,
       "byteLength": 2,
       "description": "MFX Knob2 Assign",
       "dataRange": [
@@ -11253,12 +11253,12 @@ ZenProperties["PJC"] = {
         32767
       ],
       "initValue": -1,
-      "sysexOffset": 146,
+      "sysexOffset": 153,
       "lengthSysex": 4
     },
     "RHY_COMP_VALID": {
       "id": "RHY_COMP_VALID",
-      "byteOffset": 261,
+      "byteOffset": 268,
       "byteLength": 1,
       "description": "Drum Comp Active",
       "dataRange": [
@@ -11266,7 +11266,7 @@ ZenProperties["PJC"] = {
         1
       ],
       "initValue": 0,
-      "sysexOffset": 150,
+      "sysexOffset": 157,
       "lengthSysex": 1,
       "values": {
         "0": "OFF",
@@ -11275,7 +11275,7 @@ ZenProperties["PJC"] = {
     },
     "RHY_COMP_SW": {
       "id": "RHY_COMP_SW",
-      "byteOffset": 262,
+      "byteOffset": 269,
       "byteLength": 1,
       "description": "Drum Comp Sw",
       "dataRange": [
@@ -11283,7 +11283,7 @@ ZenProperties["PJC"] = {
         1
       ],
       "initValue": 1,
-      "sysexOffset": 151,
+      "sysexOffset": 158,
       "lengthSysex": 1,
       "values": {
         "0": "OFF",
@@ -11292,7 +11292,7 @@ ZenProperties["PJC"] = {
     },
     "RHY_COMP_PART": {
       "id": "RHY_COMP_PART",
-      "byteOffset": 263,
+      "byteOffset": 270,
       "byteLength": 1,
       "description": "Drum Comp Track",
       "dataRange": [
@@ -11300,12 +11300,12 @@ ZenProperties["PJC"] = {
         7
       ],
       "initValue": 0,
-      "sysexOffset": 152,
+      "sysexOffset": 159,
       "lengthSysex": 1
     },
     "EXT_PAN": {
       "id": "EXT_PAN",
-      "byteOffset": 264,
+      "byteOffset": 271,
       "byteLength": 1,
       "description": "External Pan",
       "dataRange": [
@@ -11313,7 +11313,7 @@ ZenProperties["PJC"] = {
         255
       ],
       "initValue": 128,
-      "sysexOffset": 153,
+      "sysexOffset": 160,
       "lengthSysex": 2,
       "values": {
         "0": "L128 - 127R"
@@ -11321,7 +11321,7 @@ ZenProperties["PJC"] = {
     },
     "PC_PAN": {
       "id": "PC_PAN",
-      "byteOffset": 265,
+      "byteOffset": 272,
       "byteLength": 1,
       "description": "PC Pan",
       "dataRange": [
@@ -11329,7 +11329,7 @@ ZenProperties["PJC"] = {
         255
       ],
       "initValue": 128,
-      "sysexOffset": 155,
+      "sysexOffset": 162,
       "lengthSysex": 2,
       "values": {
         "0": "L128 - 127R"
@@ -11337,7 +11337,7 @@ ZenProperties["PJC"] = {
     },
     "PAD_COLOR": {
       "id": "PAD_COLOR",
-      "byteOffset": 266,
+      "byteOffset": 273,
       "byteLength": 1,
       "description": "PAD Note Color",
       "dataRange": [
@@ -11345,7 +11345,7 @@ ZenProperties["PJC"] = {
         19
       ],
       "initValue": 13,
-      "sysexOffset": 157,
+      "sysexOffset": 164,
       "lengthSysex": 1,
       "values": {
         "0": "ORANGE",
@@ -11371,7 +11371,7 @@ ZenProperties["PJC"] = {
     },
     "OCT_COLOR": {
       "id": "OCT_COLOR",
-      "byteOffset": 267,
+      "byteOffset": 274,
       "byteLength": 1,
       "description": "PAD OCT Color",
       "dataRange": [
@@ -11379,7 +11379,7 @@ ZenProperties["PJC"] = {
         19
       ],
       "initValue": 10,
-      "sysexOffset": 158,
+      "sysexOffset": 165,
       "lengthSysex": 1,
       "values": {
         "0": "ORANGE",
@@ -11405,7 +11405,7 @@ ZenProperties["PJC"] = {
     },
     "CLIP_COLOR_PLAY": {
       "id": "CLIP_COLOR_PLAY",
-      "byteOffset": 268,
+      "byteOffset": 275,
       "byteLength": 1,
       "description": "Play Clip Color",
       "dataRange": [
@@ -11413,7 +11413,7 @@ ZenProperties["PJC"] = {
         19
       ],
       "initValue": 3,
-      "sysexOffset": 159,
+      "sysexOffset": 166,
       "lengthSysex": 1,
       "values": {
         "0": "ORANGE",
@@ -11439,7 +11439,7 @@ ZenProperties["PJC"] = {
     },
     "CLIP_COLOR_STAY": {
       "id": "CLIP_COLOR_STAY",
-      "byteOffset": 269,
+      "byteOffset": 276,
       "byteLength": 1,
       "description": "Stay Clip Color",
       "dataRange": [
@@ -11447,7 +11447,7 @@ ZenProperties["PJC"] = {
         19
       ],
       "initValue": 2,
-      "sysexOffset": 160,
+      "sysexOffset": 167,
       "lengthSysex": 1,
       "values": {
         "0": "ORANGE",
@@ -11473,7 +11473,7 @@ ZenProperties["PJC"] = {
     },
     "MUTE_PAD_COLOR": {
       "id": "MUTE_PAD_COLOR",
-      "byteOffset": 270,
+      "byteOffset": 277,
       "byteLength": 1,
       "description": "Mute Pad Color",
       "dataRange": [
@@ -11481,7 +11481,7 @@ ZenProperties["PJC"] = {
         19
       ],
       "initValue": 1,
-      "sysexOffset": 161,
+      "sysexOffset": 168,
       "lengthSysex": 1,
       "values": {
         "0": "ORANGE",
@@ -11507,7 +11507,7 @@ ZenProperties["PJC"] = {
     },
     "STOP_PAD_COLOR": {
       "id": "STOP_PAD_COLOR",
-      "byteOffset": 271,
+      "byteOffset": 278,
       "byteLength": 1,
       "description": "Stop Pad Color",
       "dataRange": [
@@ -11515,7 +11515,7 @@ ZenProperties["PJC"] = {
         19
       ],
       "initValue": 3,
-      "sysexOffset": 162,
+      "sysexOffset": 169,
       "lengthSysex": 1,
       "values": {
         "0": "ORANGE",
@@ -11541,7 +11541,7 @@ ZenProperties["PJC"] = {
     },
     "CHORD_COLOR_1": {
       "id": "CHORD_COLOR_1",
-      "byteOffset": 272,
+      "byteOffset": 279,
       "byteLength": 1,
       "description": "PAD Chord Color 1",
       "dataRange": [
@@ -11549,7 +11549,7 @@ ZenProperties["PJC"] = {
         19
       ],
       "initValue": 9,
-      "sysexOffset": 163,
+      "sysexOffset": 170,
       "lengthSysex": 1,
       "values": {
         "0": "ORANGE",
@@ -11575,7 +11575,7 @@ ZenProperties["PJC"] = {
     },
     "PAD_NOTE_SCALE": {
       "id": "PAD_NOTE_SCALE",
-      "byteOffset": 288,
+      "byteOffset": 295,
       "byteLength": 1,
       "description": "PAD NOTE SCALE",
       "dataRange": [
@@ -11583,7 +11583,7 @@ ZenProperties["PJC"] = {
         35
       ],
       "initValue": 0,
-      "sysexOffset": 179,
+      "sysexOffset": 186,
       "lengthSysex": 1,
       "values": {
         "0": "Chromatic",
@@ -11626,7 +11626,7 @@ ZenProperties["PJC"] = {
     },
     "STYLE_D_COLOR": {
       "id": "STYLE_D_COLOR",
-      "byteOffset": 289,
+      "byteOffset": 296,
       "byteLength": 1,
       "description": "Drum Style Color",
       "dataRange": [
@@ -11634,7 +11634,7 @@ ZenProperties["PJC"] = {
         19
       ],
       "initValue": 18,
-      "sysexOffset": 180,
+      "sysexOffset": 187,
       "lengthSysex": 1,
       "values": {
         "0": "ORANGE",
@@ -11660,7 +11660,7 @@ ZenProperties["PJC"] = {
     },
     "STYLE_M_COLOR": {
       "id": "STYLE_M_COLOR",
-      "byteOffset": 290,
+      "byteOffset": 297,
       "byteLength": 1,
       "description": "Melodic Style Color",
       "dataRange": [
@@ -11668,7 +11668,7 @@ ZenProperties["PJC"] = {
         19
       ],
       "initValue": 19,
-      "sysexOffset": 181,
+      "sysexOffset": 188,
       "lengthSysex": 1,
       "values": {
         "0": "ORANGE",
@@ -11694,7 +11694,7 @@ ZenProperties["PJC"] = {
     },
     "PADDING4": {
       "id": "PADDING4",
-      "byteOffset": 291,
+      "byteOffset": 298,
       "byteLength": 78,
       "description": "__padding",
       "dataRange": [
@@ -11993,7 +11993,7 @@ ZenProperties["PJC2_CHORDSET"] = {
 ZenProperties["PJC2"] = {
   "name": "PJC2",
   "description": "",
-  "byteLength": 134,
+  "byteLength": 136,
   "sysexLength": 256,
   "parameters": {
     "CHORDSET": {
@@ -12056,7 +12056,7 @@ ZenProperties["PJC2"] = {
     "RPJ_PRM_REV": {
       "id": "RPJ_PRM_REV",
       "byteOffset": 132,
-      "byteLength": 2,
+      "byteLength": 4,
       "description": "Project Paramter Rev",
       "dataRange": [
         0,
@@ -17559,7 +17559,7 @@ ZenProperties["STP_TRK"] = {
 ZenProperties["STP"] = {
   "name": "STP",
   "description": "",
-  "byteLength": 506,
+  "byteLength": 510,
   "sysexLength": 0,
   "parameters": {
     "CUR_TRACK": {
@@ -18309,7 +18309,7 @@ ZenProperties["STP"] = {
     "REC_START_OFST": {
       "id": "REC_START_OFST",
       "byteOffset": 128,
-      "byteLength": 2,
+      "byteLength": 4,
       "description": "Rec Start Ofst",
       "dataRange": [
         0,
@@ -18320,8 +18320,8 @@ ZenProperties["STP"] = {
     },
     "REC_END_OFST": {
       "id": "REC_END_OFST",
-      "byteOffset": 130,
-      "byteLength": 2,
+      "byteOffset": 132,
+      "byteLength": 4,
       "description": "Rec End Ofst",
       "dataRange": [
         -8388607,
@@ -18332,7 +18332,7 @@ ZenProperties["STP"] = {
     },
     "REC_START_STEP": {
       "id": "REC_START_STEP",
-      "byteOffset": 132,
+      "byteOffset": 136,
       "byteLength": 1,
       "description": "Rec Start Step",
       "dataRange": [
@@ -18348,7 +18348,7 @@ ZenProperties["STP"] = {
     },
     "REC_LAST_STEP": {
       "id": "REC_LAST_STEP",
-      "byteOffset": 133,
+      "byteOffset": 137,
       "byteLength": 1,
       "description": "Rec Last Step",
       "dataRange": [
@@ -18360,7 +18360,7 @@ ZenProperties["STP"] = {
     },
     "REC_STEP_LENGTH": {
       "id": "REC_STEP_LENGTH",
-      "byteOffset": 134,
+      "byteOffset": 138,
       "byteLength": 1,
       "description": "Rec Step Length",
       "dataRange": [
@@ -18372,7 +18372,7 @@ ZenProperties["STP"] = {
     },
     "SEQ_STEPINPUT": {
       "id": "SEQ_STEPINPUT",
-      "byteOffset": 135,
+      "byteOffset": 139,
       "byteLength": 1,
       "description": "Step Input",
       "dataRange": [
@@ -18388,7 +18388,7 @@ ZenProperties["STP"] = {
     },
     "SAMPLE_EDIT_ZOOM": {
       "id": "SAMPLE_EDIT_ZOOM",
-      "byteOffset": 136,
+      "byteOffset": 140,
       "byteLength": 2,
       "description": "Sample Edit Zoom",
       "dataRange": [
@@ -18401,7 +18401,7 @@ ZenProperties["STP"] = {
     },
     "SEQ_MUTE_TRK": {
       "id": "SEQ_MUTE_TRK",
-      "byteOffset": 138,
+      "byteOffset": 142,
       "byteLength": 96,
       "description": "SEQ_MUTE_TRK",
       "blockName": "STP_SEQ_MUTE_TRK",
@@ -18413,7 +18413,7 @@ ZenProperties["STP"] = {
     },
     "INT_EXT_CLK": {
       "id": "INT_EXT_CLK",
-      "byteOffset": 234,
+      "byteOffset": 238,
       "byteLength": 1,
       "description": "Clock Src",
       "dataRange": [
@@ -18429,7 +18429,7 @@ ZenProperties["STP"] = {
     },
     "PAD_OCT_SHIFT": {
       "id": "PAD_OCT_SHIFT",
-      "byteOffset": 235,
+      "byteOffset": 239,
       "byteLength": 1,
       "description": "Pad Oct Shift",
       "dataRange": [
@@ -18441,7 +18441,7 @@ ZenProperties["STP"] = {
     },
     "VALUE_KNOB_MODE": {
       "id": "VALUE_KNOB_MODE",
-      "byteOffset": 236,
+      "byteOffset": 240,
       "byteLength": 1,
       "description": "VALUE AS TEMPO or INPUT",
       "dataRange": [
@@ -18458,7 +18458,7 @@ ZenProperties["STP"] = {
     },
     "METRO_SW": {
       "id": "METRO_SW",
-      "byteOffset": 237,
+      "byteOffset": 241,
       "byteLength": 1,
       "description": "Metronome Switch",
       "dataRange": [
@@ -18474,7 +18474,7 @@ ZenProperties["STP"] = {
     },
     "METRO_FOR_REC": {
       "id": "METRO_FOR_REC",
-      "byteOffset": 238,
+      "byteOffset": 242,
       "byteLength": 1,
       "description": "Metronome For Rec",
       "dataRange": [
@@ -18490,7 +18490,7 @@ ZenProperties["STP"] = {
     },
     "REC_NORMALIZE_LEVEL": {
       "id": "REC_NORMALIZE_LEVEL",
-      "byteOffset": 239,
+      "byteOffset": 243,
       "byteLength": 1,
       "description": "Sample Normalize Level",
       "dataRange": [
@@ -18503,7 +18503,7 @@ ZenProperties["STP"] = {
     },
     "REC_SLICE_LEVEL": {
       "id": "REC_SLICE_LEVEL",
-      "byteOffset": 240,
+      "byteOffset": 244,
       "byteLength": 1,
       "description": "Sample Slice Level",
       "dataRange": [
@@ -18520,7 +18520,7 @@ ZenProperties["STP"] = {
     },
     "REC_SLICE_POINT": {
       "id": "REC_SLICE_POINT",
-      "byteOffset": 241,
+      "byteOffset": 245,
       "byteLength": 1,
       "description": "Sample Slice Point",
       "dataRange": [
@@ -18536,7 +18536,7 @@ ZenProperties["STP"] = {
     },
     "REC_SLICE_PREVIEW": {
       "id": "REC_SLICE_PREVIEW",
-      "byteOffset": 242,
+      "byteOffset": 246,
       "byteLength": 1,
       "description": "Sample Slice Preview",
       "dataRange": [
@@ -18552,7 +18552,7 @@ ZenProperties["STP"] = {
     },
     "DUMMY_PUSH": {
       "id": "DUMMY_PUSH",
-      "byteOffset": 243,
+      "byteOffset": 247,
       "byteLength": 1,
       "description": "Dummy Label For Edit",
       "dataRange": [
@@ -18567,7 +18567,7 @@ ZenProperties["STP"] = {
     },
     "COUNT_IN_SW": {
       "id": "COUNT_IN_SW",
-      "byteOffset": 244,
+      "byteOffset": 248,
       "byteLength": 1,
       "description": "Count-in",
       "dataRange": [
@@ -18583,7 +18583,7 @@ ZenProperties["STP"] = {
     },
     "PADDING5": {
       "id": "PADDING5",
-      "byteOffset": 245,
+      "byteOffset": 249,
       "byteLength": 1,
       "description": "__padding",
       "dataRange": [
@@ -18596,7 +18596,7 @@ ZenProperties["STP"] = {
     },
     "BRDG_SW": {
       "id": "BRDG_SW",
-      "byteOffset": 246,
+      "byteOffset": 250,
       "byteLength": 1,
       "description": "Bridger Sw",
       "dataRange": [
@@ -18612,7 +18612,7 @@ ZenProperties["STP"] = {
     },
     "BRDG_XFADE": {
       "id": "BRDG_XFADE",
-      "byteOffset": 247,
+      "byteOffset": 251,
       "byteLength": 1,
       "description": "Bridger Fader",
       "dataRange": [
@@ -18624,7 +18624,7 @@ ZenProperties["STP"] = {
     },
     "MIC_SW": {
       "id": "MIC_SW",
-      "byteOffset": 248,
+      "byteOffset": 252,
       "byteLength": 1,
       "description": "Mic Sw",
       "dataRange": [
@@ -18640,7 +18640,7 @@ ZenProperties["STP"] = {
     },
     "REC_PRE_EM_SW": {
       "id": "REC_PRE_EM_SW",
-      "byteOffset": 249,
+      "byteOffset": 253,
       "byteLength": 1,
       "description": "Rec Pre-Emphasis Sw",
       "dataRange": [
@@ -18656,7 +18656,7 @@ ZenProperties["STP"] = {
     },
     "VOCAL_LEVEL_CH_1": {
       "id": "VOCAL_LEVEL_CH_1",
-      "byteOffset": 250,
+      "byteOffset": 254,
       "byteLength": 1,
       "description": "Vocal Channel Level 1",
       "dataRange": [
@@ -18668,7 +18668,7 @@ ZenProperties["STP"] = {
     },
     "MIXDOWN_SW": {
       "id": "MIXDOWN_SW",
-      "byteOffset": 266,
+      "byteOffset": 270,
       "byteLength": 1,
       "description": "Mixdown Sw",
       "dataRange": [
@@ -18684,7 +18684,7 @@ ZenProperties["STP"] = {
     },
     "MIXDOWN_FADE": {
       "id": "MIXDOWN_FADE",
-      "byteOffset": 267,
+      "byteOffset": 271,
       "byteLength": 1,
       "description": "Mixdown Fade",
       "dataRange": [
@@ -18696,7 +18696,7 @@ ZenProperties["STP"] = {
     },
     "KBDARP_SW": {
       "id": "KBDARP_SW",
-      "byteOffset": 268,
+      "byteOffset": 272,
       "byteLength": 1,
       "description": "Kbd Arp Sw",
       "dataRange": [
@@ -18712,7 +18712,7 @@ ZenProperties["STP"] = {
     },
     "MICRO_PHRS_SW": {
       "id": "MICRO_PHRS_SW",
-      "byteOffset": 269,
+      "byteOffset": 273,
       "byteLength": 1,
       "description": "Micro Phrase Sw",
       "dataRange": [
@@ -18728,7 +18728,7 @@ ZenProperties["STP"] = {
     },
     "SONG_REC_STATE": {
       "id": "SONG_REC_STATE",
-      "byteOffset": 270,
+      "byteOffset": 274,
       "byteLength": 1,
       "description": "Song Rec State",
       "dataRange": [
@@ -18744,7 +18744,7 @@ ZenProperties["STP"] = {
     },
     "PAD_MODE_SEQ": {
       "id": "PAD_MODE_SEQ",
-      "byteOffset": 271,
+      "byteOffset": 275,
       "byteLength": 1,
       "description": "Pad Mode SEQ",
       "dataRange": [
@@ -18765,7 +18765,7 @@ ZenProperties["STP"] = {
     },
     "PAD_MODE_SCT": {
       "id": "PAD_MODE_SCT",
-      "byteOffset": 272,
+      "byteOffset": 276,
       "byteLength": 1,
       "description": "Pad Mode SCT",
       "dataRange": [
@@ -18786,7 +18786,7 @@ ZenProperties["STP"] = {
     },
     "PAD_MODE_SNG": {
       "id": "PAD_MODE_SNG",
-      "byteOffset": 273,
+      "byteOffset": 277,
       "byteLength": 1,
       "description": "Pad Mode SNG",
       "dataRange": [
@@ -18807,7 +18807,7 @@ ZenProperties["STP"] = {
     },
     "VCLP_PATCH_NUM": {
       "id": "VCLP_PATCH_NUM",
-      "byteOffset": 274,
+      "byteOffset": 278,
       "byteLength": 1,
       "description": "VP Patch Number",
       "dataRange": [
@@ -18819,7 +18819,7 @@ ZenProperties["STP"] = {
     },
     "PADDING6": {
       "id": "PADDING6",
-      "byteOffset": 275,
+      "byteOffset": 279,
       "byteLength": 3,
       "description": "__padding",
       "dataRange": [
@@ -18832,7 +18832,7 @@ ZenProperties["STP"] = {
     },
     "PADDING7": {
       "id": "PADDING7",
-      "byteOffset": 278,
+      "byteOffset": 282,
       "byteLength": 228,
       "description": "__padding",
       "dataRange": [
@@ -18929,8 +18929,8 @@ ZenProperties["SV"] = {
 ZenProperties["TAKE"] = {
   "name": "TAKE",
   "description": "",
-  "byteLength": 28,
-  "sysexLength": 33,
+  "byteLength": 32,
+  "sysexLength": 41,
   "parameters": {
     "NAME_1": {
       "id": "NAME_1",
@@ -18973,7 +18973,7 @@ ZenProperties["TAKE"] = {
     "START_ADRS": {
       "id": "START_ADRS",
       "byteOffset": 20,
-      "byteLength": 2,
+      "byteLength": 4,
       "description": "Start Address",
       "dataRange": [
         0,
@@ -18981,24 +18981,24 @@ ZenProperties["TAKE"] = {
       ],
       "initValue": 0,
       "sysexOffset": 20,
-      "lengthSysex": 4
+      "lengthSysex": 8
     },
     "END_ADRS": {
       "id": "END_ADRS",
-      "byteOffset": 22,
-      "byteLength": 2,
+      "byteOffset": 24,
+      "byteLength": 4,
       "description": "End Address",
       "dataRange": [
         0,
         2147483647
       ],
       "initValue": 0,
-      "sysexOffset": 24,
-      "lengthSysex": 4
+      "sysexOffset": 28,
+      "lengthSysex": 8
     },
     "LEVEL": {
       "id": "LEVEL",
-      "byteOffset": 24,
+      "byteOffset": 28,
       "byteLength": 1,
       "description": "Level",
       "dataRange": [
@@ -19006,12 +19006,12 @@ ZenProperties["TAKE"] = {
         127
       ],
       "initValue": 100,
-      "sysexOffset": 28,
+      "sysexOffset": 36,
       "lengthSysex": 1
     },
     "OUTPUT_ASGN": {
       "id": "OUTPUT_ASGN",
-      "byteOffset": 25,
+      "byteOffset": 29,
       "byteLength": 1,
       "description": "Output Assign",
       "dataRange": [
@@ -19019,7 +19019,7 @@ ZenProperties["TAKE"] = {
         8
       ],
       "initValue": 1,
-      "sysexOffset": 29,
+      "sysexOffset": 37,
       "lengthSysex": 1,
       "values": {
         "0": "DRY",
@@ -19035,7 +19035,7 @@ ZenProperties["TAKE"] = {
     },
     "CONTROL_DATA_ID": {
       "id": "CONTROL_DATA_ID",
-      "byteOffset": 26,
+      "byteOffset": 30,
       "byteLength": 1,
       "description": "Control Data ID",
       "dataRange": [
@@ -19043,12 +19043,12 @@ ZenProperties["TAKE"] = {
         127
       ],
       "initValue": -1,
-      "sysexOffset": 30,
+      "sysexOffset": 38,
       "lengthSysex": 2
     },
     "MUTE": {
       "id": "MUTE",
-      "byteOffset": 27,
+      "byteOffset": 31,
       "byteLength": 1,
       "description": "Mute",
       "dataRange": [
@@ -19056,7 +19056,7 @@ ZenProperties["TAKE"] = {
         1
       ],
       "initValue": 0,
-      "sysexOffset": 32,
+      "sysexOffset": 40,
       "lengthSysex": 1
     }
   },
@@ -19393,8 +19393,8 @@ ZenProperties["UserSampleCmn"] = {
 ZenProperties["UserSampleModify"] = {
   "name": "UserSampleModify",
   "description": "",
-  "byteLength": 14,
-  "sysexLength": 20,
+  "byteLength": 20,
+  "sysexLength": 32,
   "parameters": {
     "LOOP_MODE": {
       "id": "LOOP_MODE",
@@ -19624,7 +19624,7 @@ ZenProperties["UserSampleModify"] = {
     "START_POINT": {
       "id": "START_POINT",
       "byteOffset": 8,
-      "byteLength": 2,
+      "byteLength": 4,
       "description": "Start Point",
       "dataRange": [
         0,
@@ -19632,33 +19632,33 @@ ZenProperties["UserSampleModify"] = {
       ],
       "initValue": 0,
       "sysexOffset": 8,
-      "lengthSysex": 4
+      "lengthSysex": 8
     },
     "LOOP_START_POINT": {
       "id": "LOOP_START_POINT",
-      "byteOffset": 10,
-      "byteLength": 2,
+      "byteOffset": 12,
+      "byteLength": 4,
       "description": "Loop Start Point",
       "dataRange": [
         0,
         2147483647
       ],
       "initValue": 0,
-      "sysexOffset": 12,
-      "lengthSysex": 4
+      "sysexOffset": 16,
+      "lengthSysex": 8
     },
     "END_POINT": {
       "id": "END_POINT",
-      "byteOffset": 12,
-      "byteLength": 2,
+      "byteOffset": 16,
+      "byteLength": 4,
       "description": "End Point",
       "dataRange": [
         0,
         2147483647
       ],
       "initValue": 0,
-      "sysexOffset": 16,
-      "lengthSysex": 4
+      "sysexOffset": 24,
+      "lengthSysex": 8
     }
   },
   "category": "Autogenerated: mv_1_180_B"
@@ -22842,37 +22842,37 @@ ZenProperties["VCLU"] = {
 ZenProperties["VOCAL_SEQ_DATA"] = {
   "name": "VOCAL_SEQ_DATA",
   "description": "",
-  "byteLength": 12,
-  "sysexLength": 18,
+  "byteLength": 16,
+  "sysexLength": 26,
   "parameters": {
     "START_TICK": {
       "id": "START_TICK",
       "byteOffset": 0,
-      "byteLength": 2,
+      "byteLength": 4,
       "description": "Start Tick",
       "dataRange": [
         0,
         2147483647
       ],
       "initValue": 0,
-      "lengthSysex": 4
+      "lengthSysex": 8
     },
     "LENG_TICK": {
       "id": "LENG_TICK",
-      "byteOffset": 2,
-      "byteLength": 2,
+      "byteOffset": 4,
+      "byteLength": 4,
       "description": "Length Tick",
       "dataRange": [
         0,
         2147483647
       ],
       "initValue": 0,
-      "sysexOffset": 4,
-      "lengthSysex": 4
+      "sysexOffset": 8,
+      "lengthSysex": 8
     },
     "TAKE_ID": {
       "id": "TAKE_ID",
-      "byteOffset": 4,
+      "byteOffset": 8,
       "byteLength": 1,
       "description": "Take ID",
       "dataRange": [
@@ -22880,12 +22880,12 @@ ZenProperties["VOCAL_SEQ_DATA"] = {
         15
       ],
       "initValue": -1,
-      "sysexOffset": 8,
+      "sysexOffset": 16,
       "lengthSysex": 1
     },
     "MUTE_FLG": {
       "id": "MUTE_FLG",
-      "byteOffset": 5,
+      "byteOffset": 9,
       "byteLength": 1,
       "description": "Mute Flag",
       "dataRange": [
@@ -22893,12 +22893,12 @@ ZenProperties["VOCAL_SEQ_DATA"] = {
         1
       ],
       "initValue": 0,
-      "sysexOffset": 9,
+      "sysexOffset": 17,
       "lengthSysex": 1
     },
     "NEXT_SEQ": {
       "id": "NEXT_SEQ",
-      "byteOffset": 6,
+      "byteOffset": 10,
       "byteLength": 2,
       "description": "Next Seq",
       "dataRange": [
@@ -22906,12 +22906,12 @@ ZenProperties["VOCAL_SEQ_DATA"] = {
         511
       ],
       "initValue": -1,
-      "sysexOffset": 10,
+      "sysexOffset": 18,
       "lengthSysex": 4
     },
     "PREV_SEQ": {
       "id": "PREV_SEQ",
-      "byteOffset": 8,
+      "byteOffset": 12,
       "byteLength": 2,
       "description": "Prev Seq",
       "dataRange": [
@@ -22919,12 +22919,12 @@ ZenProperties["VOCAL_SEQ_DATA"] = {
         511
       ],
       "initValue": -1,
-      "sysexOffset": 14,
+      "sysexOffset": 22,
       "lengthSysex": 4
     },
     "PADDING1": {
       "id": "PADDING1",
-      "byteOffset": 10,
+      "byteOffset": 14,
       "byteLength": 2,
       "description": "__padding",
       "dataRange": [
@@ -25079,8 +25079,8 @@ ZenProperties["Proj"] = {
       "blockName": "PJC",
       "count": 1,
       "byteOffset": 0,
-      "blockByteLength": 369,
-      "byteLength": 369,
+      "blockByteLength": 376,
+      "byteLength": 376,
       "sysexOffset": "00 00 00",
       "sysexItemSize": 512,
       "block": ZenProperties["PJC"]
@@ -25088,9 +25088,9 @@ ZenProperties["Proj"] = {
     "PJC2": {
       "blockName": "PJC2",
       "count": 1,
-      "byteOffset": 369,
-      "blockByteLength": 134,
-      "byteLength": 134,
+      "byteOffset": 376,
+      "blockByteLength": 136,
+      "byteLength": 136,
       "sysexOffset": "00 04 00",
       "sysexItemSize": 512,
       "block": ZenProperties["PJC2"]
@@ -25098,7 +25098,7 @@ ZenProperties["Proj"] = {
     "PJT": {
       "blockName": "PJT",
       "count": 8,
-      "byteOffset": 503,
+      "byteOffset": 512,
       "blockByteLength": 256,
       "byteLength": 2048,
       "sysexOffset": "00 08 00",
@@ -25108,7 +25108,7 @@ ZenProperties["Proj"] = {
     "PEQ": {
       "blockName": "PEQ",
       "count": 8,
-      "byteOffset": 2551,
+      "byteOffset": 2560,
       "blockByteLength": 12,
       "byteLength": 96,
       "sysexOffset": "00 10 00",
@@ -25118,7 +25118,7 @@ ZenProperties["Proj"] = {
     "MFX": {
       "blockName": "MFX",
       "count": 3,
-      "byteOffset": 2647,
+      "byteOffset": 2656,
       "blockByteLength": 84,
       "byteLength": 252,
       "sysexOffset": "00 18 00",
@@ -25128,7 +25128,7 @@ ZenProperties["Proj"] = {
     "SH": {
       "blockName": "SH",
       "count": 1,
-      "byteOffset": 2899,
+      "byteOffset": 2908,
       "blockByteLength": 48,
       "byteLength": 48,
       "sysexOffset": "00 1e 00",
@@ -25138,7 +25138,7 @@ ZenProperties["Proj"] = {
     "SV": {
       "blockName": "SV",
       "count": 1,
-      "byteOffset": 2947,
+      "byteOffset": 2956,
       "blockByteLength": 44,
       "byteLength": 44,
       "sysexOffset": "00 1f 00",
@@ -25148,7 +25148,7 @@ ZenProperties["Proj"] = {
     "GLT": {
       "blockName": "GLT",
       "count": 1,
-      "byteOffset": 2991,
+      "byteOffset": 3000,
       "blockByteLength": 64,
       "byteLength": 64,
       "sysexOffset": "00 20 00",
@@ -25158,7 +25158,7 @@ ZenProperties["Proj"] = {
     "GLT2": {
       "blockName": "GLT2",
       "count": 16,
-      "byteOffset": 3055,
+      "byteOffset": 3064,
       "blockByteLength": 76,
       "byteLength": 1216,
       "sysexOffset": "00 21 00",
@@ -25168,7 +25168,7 @@ ZenProperties["Proj"] = {
     "SEQ": {
       "blockName": "SEQ",
       "count": 1,
-      "byteOffset": 4271,
+      "byteOffset": 4280,
       "blockByteLength": 16,
       "byteLength": 16,
       "sysexOffset": "00 31 00",
@@ -25178,7 +25178,7 @@ ZenProperties["Proj"] = {
     "SCMP": {
       "blockName": "SCMP",
       "count": 1,
-      "byteOffset": 4287,
+      "byteOffset": 4296,
       "blockByteLength": 24,
       "byteLength": 24,
       "sysexOffset": "00 32 00",
@@ -25186,7 +25186,7 @@ ZenProperties["Proj"] = {
       "block": ZenProperties["SCMP"]
     }
   },
-  "byteLength": 4311,
+  "byteLength": 4320,
   "category": "Autogenerated: mv_1_180_B"
 };
 
@@ -25275,8 +25275,8 @@ ZenProperties["LOOP"] = {
       "blockName": "LOOP_CMN",
       "count": 1,
       "byteOffset": 0,
-      "blockByteLength": 124,
-      "byteLength": 124,
+      "blockByteLength": 128,
+      "byteLength": 128,
       "sysexOffset": "00 00 00",
       "sysexItemSize": 128,
       "block": ZenProperties["LOOP_CMN"]
@@ -25284,7 +25284,7 @@ ZenProperties["LOOP"] = {
     "MFX": {
       "blockName": "MFX",
       "count": 1,
-      "byteOffset": 124,
+      "byteOffset": 128,
       "blockByteLength": 84,
       "byteLength": 84,
       "sysexOffset": "00 01 00",
@@ -25292,7 +25292,7 @@ ZenProperties["LOOP"] = {
       "block": ZenProperties["MFX"]
     }
   },
-  "byteLength": 208,
+  "byteLength": 212,
   "category": "Autogenerated: mv_1_180_B"
 };
 
@@ -25547,14 +25547,14 @@ ZenProperties["UserSample"] = {
       "blockName": "UserSampleModify",
       "count": 1,
       "byteOffset": 64,
-      "blockByteLength": 14,
-      "byteLength": 14,
+      "blockByteLength": 20,
+      "byteLength": 20,
       "sysexOffset": "00 01 00",
       "sysexItemSize": 128,
       "block": ZenProperties["UserSampleModify"]
     }
   },
-  "byteLength": 78,
+  "byteLength": 84,
   "category": "Autogenerated: mv_1_180_B"
 };
 
@@ -25653,8 +25653,8 @@ ZenProperties["MVProj"] = {
       "blockName": "TAKE",
       "count": 16,
       "byteOffset": 2876,
-      "blockByteLength": 28,
-      "byteLength": 448,
+      "blockByteLength": 32,
+      "byteLength": 512,
       "sysexOffset": "00 7a 00",
       "sysexItemSize": 128,
       "block": ZenProperties["TAKE"]
@@ -25662,7 +25662,7 @@ ZenProperties["MVProj"] = {
     "VOCAL_SEQ": {
       "blockName": "VOCAL_SEQ",
       "count": 1,
-      "byteOffset": 3324,
+      "byteOffset": 3388,
       "blockByteLength": 12,
       "byteLength": 12,
       "sysexOffset": "01 0a 00",
@@ -25672,9 +25672,9 @@ ZenProperties["MVProj"] = {
     "VOCAL_SEQ_DATA": {
       "blockName": "VOCAL_SEQ_DATA",
       "count": 128,
-      "byteOffset": 3336,
-      "blockByteLength": 12,
-      "byteLength": 1536,
+      "byteOffset": 3400,
+      "blockByteLength": 16,
+      "byteLength": 2048,
       "sysexOffset": "01 0b 00",
       "sysexItemSize": 128,
       "block": ZenProperties["VOCAL_SEQ_DATA"]
@@ -25682,7 +25682,7 @@ ZenProperties["MVProj"] = {
     "SLIM": {
       "blockName": "SLIM",
       "count": 1,
-      "byteOffset": 4872,
+      "byteOffset": 5448,
       "blockByteLength": 12,
       "byteLength": 12,
       "sysexOffset": "02 0b 00",
@@ -25692,7 +25692,7 @@ ZenProperties["MVProj"] = {
     "TCMP": {
       "blockName": "TCMP",
       "count": 7,
-      "byteOffset": 4884,
+      "byteOffset": 5460,
       "blockByteLength": 12,
       "byteLength": 84,
       "sysexOffset": "02 0c 00",
@@ -25700,7 +25700,7 @@ ZenProperties["MVProj"] = {
       "block": ZenProperties["TCMP"]
     }
   },
-  "byteLength": 4968,
+  "byteLength": 5544,
   "category": "Autogenerated: mv_1_180_B"
 };
 
@@ -25739,6 +25739,605 @@ ZenProperties["Ctrl"] = {
     }
   },
   "byteLength": 97,
+  "category": "Autogenerated: mv_1_180_B"
+};
+
+ZenProperties["System"] = {
+  "name": "System",
+  "type": "concrete",
+  "sysexBaseAddress": 0,
+  "parameters": {
+    "Sys": {
+      "id": "Sys",
+      "kind": "group",
+      "blockName": "Sys",
+      "count": 1,
+      "sysexOffset": 0,
+      "sysexItemSize": 16384,
+      "description": "System",
+      "block": ZenProperties["Sys"]
+    }
+  },
+  "category": "Autogenerated: mv_1_180_B"
+};
+
+ZenProperties["Setup"] = {
+  "name": "Setup",
+  "type": "concrete",
+  "sysexBaseAddress": 2097152,
+  "parameters": {
+    "stp": {
+      "id": "stp",
+      "kind": "block",
+      "blockName": "STP",
+      "count": 1,
+      "sysexOffset": 0,
+      "sysexItemSize": 256,
+      "description": "Setup",
+      "block": ZenProperties["STP"]
+    }
+  },
+  "category": "Autogenerated: mv_1_180_B"
+};
+
+ZenProperties["Project"] = {
+  "name": "Project",
+  "type": "concrete",
+  "sysexBaseAddress": 33554432,
+  "parameters": {
+    "Prm": {
+      "id": "Prm",
+      "kind": "group",
+      "blockName": "Proj",
+      "count": 1,
+      "sysexOffset": 0,
+      "sysexItemSize": 16384,
+      "description": "Project Parameter",
+      "block": ZenProperties["Proj"]
+    },
+    "T1ClipPrm": {
+      "id": "T1ClipPrm",
+      "kind": "group",
+      "blockName": "Clip",
+      "count": 17,
+      "sysexOffset": 33554432,
+      "sysexItemSize": 131072,
+      "description": "Tr1 Clip Parameter (02$)",
+      "block": ZenProperties["Clip"]
+    },
+    "T2ClipPrm": {
+      "id": "T2ClipPrm",
+      "kind": "group",
+      "blockName": "Clip",
+      "count": 17,
+      "sysexOffset": 35782656,
+      "sysexItemSize": 131072,
+      "description": "Tr2 Clip Parameter (02$)",
+      "block": ZenProperties["Clip"]
+    },
+    "T3ClipPrm": {
+      "id": "T3ClipPrm",
+      "kind": "group",
+      "blockName": "Clip",
+      "count": 17,
+      "sysexOffset": 38010880,
+      "sysexItemSize": 131072,
+      "description": "Tr3 Clip Parameter (02$)",
+      "block": ZenProperties["Clip"]
+    },
+    "T4ClipPrm": {
+      "id": "T4ClipPrm",
+      "kind": "group",
+      "blockName": "Clip",
+      "count": 17,
+      "sysexOffset": 40239104,
+      "sysexItemSize": 131072,
+      "description": "Tr4 Clip Parameter (02$)",
+      "block": ZenProperties["Clip"]
+    },
+    "T5ClipPrm": {
+      "id": "T5ClipPrm",
+      "kind": "group",
+      "blockName": "Clip",
+      "count": 17,
+      "sysexOffset": 42467328,
+      "sysexItemSize": 131072,
+      "description": "Tr5 Clip Parameter (02$)",
+      "block": ZenProperties["Clip"]
+    },
+    "T6ClipPrm": {
+      "id": "T6ClipPrm",
+      "kind": "group",
+      "blockName": "Clip",
+      "count": 17,
+      "sysexOffset": 44695552,
+      "sysexItemSize": 131072,
+      "description": "Tr6 Clip Parameter (02$)",
+      "block": ZenProperties["Clip"]
+    },
+    "T7ClipPrm": {
+      "id": "T7ClipPrm",
+      "kind": "group",
+      "blockName": "Clip",
+      "count": 17,
+      "sysexOffset": 46923776,
+      "sysexItemSize": 131072,
+      "description": "Tr7 Clip Parameter (02$)",
+      "block": ZenProperties["Clip"]
+    },
+    "T8ClipPrm": {
+      "id": "T8ClipPrm",
+      "kind": "group",
+      "blockName": "Clip",
+      "count": 17,
+      "sysexOffset": 49152000,
+      "sysexItemSize": 131072,
+      "description": "Tr8 Clip Parameter (02$)",
+      "block": ZenProperties["Clip"]
+    },
+    "T1ClipTone": {
+      "id": "T1ClipTone",
+      "kind": "group",
+      "blockName": "PCMEX",
+      "count": 17,
+      "sysexOffset": 67108864,
+      "sysexItemSize": 32768,
+      "description": "Tr1 Clip Tone (02$)",
+      "block": ZenProperties["PCMEX"]
+    },
+    "T2ClipTone": {
+      "id": "T2ClipTone",
+      "kind": "group",
+      "blockName": "PCMEX",
+      "count": 17,
+      "sysexOffset": 67665920,
+      "sysexItemSize": 32768,
+      "description": "Tr2 Clip Tone (02$)",
+      "block": ZenProperties["PCMEX"]
+    },
+    "T3ClipTone": {
+      "id": "T3ClipTone",
+      "kind": "group",
+      "blockName": "PCMEX",
+      "count": 17,
+      "sysexOffset": 68222976,
+      "sysexItemSize": 32768,
+      "description": "Tr3 Clip Tone (02$)",
+      "block": ZenProperties["PCMEX"]
+    },
+    "T4ClipTone": {
+      "id": "T4ClipTone",
+      "kind": "group",
+      "blockName": "PCMEX",
+      "count": 17,
+      "sysexOffset": 68780032,
+      "sysexItemSize": 32768,
+      "description": "Tr4 Clip Tone (02$)",
+      "block": ZenProperties["PCMEX"]
+    },
+    "T5ClipTone": {
+      "id": "T5ClipTone",
+      "kind": "group",
+      "blockName": "PCMEX",
+      "count": 17,
+      "sysexOffset": 69337088,
+      "sysexItemSize": 32768,
+      "description": "Tr5 Clip Tone (02$)",
+      "block": ZenProperties["PCMEX"]
+    },
+    "T6ClipTone": {
+      "id": "T6ClipTone",
+      "kind": "group",
+      "blockName": "PCMEX",
+      "count": 17,
+      "sysexOffset": 69894144,
+      "sysexItemSize": 32768,
+      "description": "Tr6 Clip Tone (02$)",
+      "block": ZenProperties["PCMEX"]
+    },
+    "T7ClipTone": {
+      "id": "T7ClipTone",
+      "kind": "group",
+      "blockName": "PCMEX",
+      "count": 17,
+      "sysexOffset": 70451200,
+      "sysexItemSize": 32768,
+      "description": "Tr7 Clip Tone (02$)",
+      "block": ZenProperties["PCMEX"]
+    },
+    "T8ClipTone": {
+      "id": "T8ClipTone",
+      "kind": "group",
+      "blockName": "PCMEX",
+      "count": 17,
+      "sysexOffset": 71008256,
+      "sysexItemSize": 32768,
+      "description": "Tr8 Clip Tone (02$)",
+      "block": ZenProperties["PCMEX"]
+    },
+    "T1ClipRhym": {
+      "id": "T1ClipRhym",
+      "kind": "group",
+      "blockName": "PCMR",
+      "count": 17,
+      "sysexOffset": 71565312,
+      "sysexItemSize": 49152,
+      "description": "Tr1 Clip Rhythm (02$)",
+      "block": ZenProperties["PCMR"]
+    },
+    "T2ClipRhym": {
+      "id": "T2ClipRhym",
+      "kind": "group",
+      "blockName": "PCMR",
+      "count": 17,
+      "sysexOffset": 72400896,
+      "sysexItemSize": 49152,
+      "description": "Tr2 Clip Rhythm (02$)",
+      "block": ZenProperties["PCMR"]
+    },
+    "T3ClipRhym": {
+      "id": "T3ClipRhym",
+      "kind": "group",
+      "blockName": "PCMR",
+      "count": 17,
+      "sysexOffset": 73236480,
+      "sysexItemSize": 49152,
+      "description": "Tr3 Clip Rhythm (02$)",
+      "block": ZenProperties["PCMR"]
+    },
+    "T4ClipRhym": {
+      "id": "T4ClipRhym",
+      "kind": "group",
+      "blockName": "PCMR",
+      "count": 17,
+      "sysexOffset": 74072064,
+      "sysexItemSize": 49152,
+      "description": "Tr4 Clip Rhythm (02$)",
+      "block": ZenProperties["PCMR"]
+    },
+    "T5ClipRhym": {
+      "id": "T5ClipRhym",
+      "kind": "group",
+      "blockName": "PCMR",
+      "count": 17,
+      "sysexOffset": 74907648,
+      "sysexItemSize": 49152,
+      "description": "Tr5 Clip Rhythm (02$)",
+      "block": ZenProperties["PCMR"]
+    },
+    "T6ClipRhym": {
+      "id": "T6ClipRhym",
+      "kind": "group",
+      "blockName": "PCMR",
+      "count": 17,
+      "sysexOffset": 75743232,
+      "sysexItemSize": 49152,
+      "description": "Tr6 Clip Rhythm (02$)",
+      "block": ZenProperties["PCMR"]
+    },
+    "T7ClipRhym": {
+      "id": "T7ClipRhym",
+      "kind": "group",
+      "blockName": "PCMR",
+      "count": 17,
+      "sysexOffset": 76578816,
+      "sysexItemSize": 49152,
+      "description": "Tr7 Clip Rhythm (02$)",
+      "block": ZenProperties["PCMR"]
+    },
+    "T8ClipRhym": {
+      "id": "T8ClipRhym",
+      "kind": "group",
+      "blockName": "PCMR",
+      "count": 17,
+      "sysexOffset": 77414400,
+      "sysexItemSize": 49152,
+      "description": "Tr8 Clip Rhythm (02$)",
+      "block": ZenProperties["PCMR"]
+    },
+    "T1ClipRhymInstSet": {
+      "id": "T1ClipRhymInstSet",
+      "kind": "clump",
+      "clumpName": "PCMRInstSet",
+      "childKind": "group",
+      "blockName": "PCMRInst",
+      "outerCount": 17,
+      "innerCount": 88,
+      "innerStride": 88,
+      "count": 17,
+      "sysexOffset": 83886080,
+      "sysexItemSize": 128,
+      "description": "Tr1 Clip Rhythm Inst Set (02$)",
+      "block": ZenProperties["PCMRInst"]
+    },
+    "T2ClipRhymInstSet": {
+      "id": "T2ClipRhymInstSet",
+      "kind": "clump",
+      "clumpName": "PCMRInstSet",
+      "childKind": "group",
+      "blockName": "PCMRInst",
+      "outerCount": 17,
+      "innerCount": 88,
+      "innerStride": 88,
+      "count": 17,
+      "sysexOffset": 84077568,
+      "sysexItemSize": 128,
+      "description": "Tr2 Clip Rhythm Inst Set (02$)",
+      "block": ZenProperties["PCMRInst"]
+    },
+    "T3ClipRhymInstSet": {
+      "id": "T3ClipRhymInstSet",
+      "kind": "clump",
+      "clumpName": "PCMRInstSet",
+      "childKind": "group",
+      "blockName": "PCMRInst",
+      "outerCount": 17,
+      "innerCount": 88,
+      "innerStride": 88,
+      "count": 17,
+      "sysexOffset": 84269056,
+      "sysexItemSize": 128,
+      "description": "Tr3 Clip Rhythm Inst Set (02$)",
+      "block": ZenProperties["PCMRInst"]
+    },
+    "T4ClipRhymInstSet": {
+      "id": "T4ClipRhymInstSet",
+      "kind": "clump",
+      "clumpName": "PCMRInstSet",
+      "childKind": "group",
+      "blockName": "PCMRInst",
+      "outerCount": 17,
+      "innerCount": 88,
+      "innerStride": 88,
+      "count": 17,
+      "sysexOffset": 84460544,
+      "sysexItemSize": 128,
+      "description": "Tr4 Clip Rhythm Inst Set (02$)",
+      "block": ZenProperties["PCMRInst"]
+    },
+    "T5ClipRhymInstSet": {
+      "id": "T5ClipRhymInstSet",
+      "kind": "clump",
+      "clumpName": "PCMRInstSet",
+      "childKind": "group",
+      "blockName": "PCMRInst",
+      "outerCount": 17,
+      "innerCount": 88,
+      "innerStride": 88,
+      "count": 17,
+      "sysexOffset": 84652032,
+      "sysexItemSize": 128,
+      "description": "Tr5 Clip Rhythm Inst Set (02$)",
+      "block": ZenProperties["PCMRInst"]
+    },
+    "T6ClipRhymInstSet": {
+      "id": "T6ClipRhymInstSet",
+      "kind": "clump",
+      "clumpName": "PCMRInstSet",
+      "childKind": "group",
+      "blockName": "PCMRInst",
+      "outerCount": 17,
+      "innerCount": 88,
+      "innerStride": 88,
+      "count": 17,
+      "sysexOffset": 84843520,
+      "sysexItemSize": 128,
+      "description": "Tr6 Clip Rhythm Inst Set (02$)",
+      "block": ZenProperties["PCMRInst"]
+    },
+    "T7ClipRhymInstSet": {
+      "id": "T7ClipRhymInstSet",
+      "kind": "clump",
+      "clumpName": "PCMRInstSet",
+      "childKind": "group",
+      "blockName": "PCMRInst",
+      "outerCount": 17,
+      "innerCount": 88,
+      "innerStride": 88,
+      "count": 17,
+      "sysexOffset": 85035008,
+      "sysexItemSize": 128,
+      "description": "Tr7 Clip Rhythm Inst Set (02$)",
+      "block": ZenProperties["PCMRInst"]
+    },
+    "T8ClipRhymInstSet": {
+      "id": "T8ClipRhymInstSet",
+      "kind": "clump",
+      "clumpName": "PCMRInstSet",
+      "childKind": "group",
+      "blockName": "PCMRInst",
+      "outerCount": 17,
+      "innerCount": 88,
+      "innerStride": 88,
+      "count": 17,
+      "sysexOffset": 85226496,
+      "sysexItemSize": 128,
+      "description": "Tr8 Clip Rhythm Inst Set (02$)",
+      "block": ZenProperties["PCMRInst"]
+    },
+    "T1ClipLoop": {
+      "id": "T1ClipLoop",
+      "kind": "group",
+      "blockName": "LOOP",
+      "count": 17,
+      "sysexOffset": 100663296,
+      "sysexItemSize": 16384,
+      "description": "Tr1 Clip Looper (02$)",
+      "block": ZenProperties["LOOP"]
+    },
+    "T2ClipLoop": {
+      "id": "T2ClipLoop",
+      "kind": "group",
+      "blockName": "LOOP",
+      "count": 17,
+      "sysexOffset": 100941824,
+      "sysexItemSize": 16384,
+      "description": "Tr2 Clip Looper (02$)",
+      "block": ZenProperties["LOOP"]
+    },
+    "T3ClipLoop": {
+      "id": "T3ClipLoop",
+      "kind": "group",
+      "blockName": "LOOP",
+      "count": 17,
+      "sysexOffset": 101220352,
+      "sysexItemSize": 16384,
+      "description": "Tr3 Clip Looper (02$)",
+      "block": ZenProperties["LOOP"]
+    },
+    "T4ClipLoop": {
+      "id": "T4ClipLoop",
+      "kind": "group",
+      "blockName": "LOOP",
+      "count": 17,
+      "sysexOffset": 101498880,
+      "sysexItemSize": 16384,
+      "description": "Tr4 Clip Looper (02$)",
+      "block": ZenProperties["LOOP"]
+    },
+    "T5ClipLoop": {
+      "id": "T5ClipLoop",
+      "kind": "group",
+      "blockName": "LOOP",
+      "count": 17,
+      "sysexOffset": 101777408,
+      "sysexItemSize": 16384,
+      "description": "Tr5 Clip Looper (02$)",
+      "block": ZenProperties["LOOP"]
+    },
+    "T6ClipLoop": {
+      "id": "T6ClipLoop",
+      "kind": "group",
+      "blockName": "LOOP",
+      "count": 17,
+      "sysexOffset": 102055936,
+      "sysexItemSize": 16384,
+      "description": "Tr6 Clip Looper (02$)",
+      "block": ZenProperties["LOOP"]
+    },
+    "T7ClipLoop": {
+      "id": "T7ClipLoop",
+      "kind": "group",
+      "blockName": "LOOP",
+      "count": 17,
+      "sysexOffset": 102334464,
+      "sysexItemSize": 16384,
+      "description": "Tr7 Clip Looper (02$)",
+      "block": ZenProperties["LOOP"]
+    },
+    "T8ClipLoop": {
+      "id": "T8ClipLoop",
+      "kind": "group",
+      "blockName": "LOOP",
+      "count": 17,
+      "sysexOffset": 102612992,
+      "sysexItemSize": 16384,
+      "description": "Tr8 Clip Looper (02$)",
+      "block": ZenProperties["LOOP"]
+    }
+  },
+  "category": "Autogenerated: mv_1_180_B"
+};
+
+ZenProperties["Storage"] = {
+  "name": "Storage",
+  "type": "concrete",
+  "sysexBaseAddress": 167772160,
+  "parameters": {
+    "UserTone": {
+      "id": "UserTone",
+      "kind": "group",
+      "blockName": "PCMEX",
+      "count": 64,
+      "sysexOffset": 0,
+      "sysexItemSize": 32768,
+      "description": "User Tone (03$)",
+      "block": ZenProperties["PCMEX"]
+    },
+    "UserRhym": {
+      "id": "UserRhym",
+      "kind": "group",
+      "blockName": "PCMR",
+      "count": 64,
+      "sysexOffset": 4194304,
+      "sysexItemSize": 49152,
+      "description": "User Rhythm (02$)",
+      "block": ZenProperties["PCMR"]
+    },
+    "UserRhymInstSet": {
+      "id": "UserRhymInstSet",
+      "kind": "clump",
+      "clumpName": "PCMRInstSet",
+      "childKind": "group",
+      "blockName": "PCMRInst",
+      "outerCount": 64,
+      "innerCount": 88,
+      "innerStride": 88,
+      "count": 64,
+      "sysexOffset": 8388608,
+      "sysexItemSize": 128,
+      "description": "User Rhythm Inst Set (02$)",
+      "block": ZenProperties["PCMRInst"]
+    },
+    "UserSMP": {
+      "id": "UserSMP",
+      "kind": "group",
+      "blockName": "UserSample",
+      "count": 500,
+      "sysexOffset": 10485760,
+      "sysexItemSize": 32768,
+      "description": "User Sample (03$)",
+      "block": ZenProperties["UserSample"]
+    },
+    "UserMSMP": {
+      "id": "UserMSMP",
+      "kind": "group",
+      "blockName": "MultiSample",
+      "count": 128,
+      "sysexOffset": 33554432,
+      "sysexItemSize": 32768,
+      "description": "User Multi Sample (03$)",
+      "block": ZenProperties["MultiSample"]
+    }
+  },
+  "category": "Autogenerated: mv_1_180_B"
+};
+
+ZenProperties["Project2"] = {
+  "name": "Project2",
+  "type": "concrete",
+  "sysexBaseAddress": 234881024,
+  "parameters": {
+    "MVPrm": {
+      "id": "MVPrm",
+      "kind": "group",
+      "blockName": "MVProj",
+      "count": 1,
+      "sysexOffset": 0,
+      "sysexItemSize": 49152,
+      "description": "MV Project Parameter",
+      "block": ZenProperties["MVProj"]
+    }
+  },
+  "category": "Autogenerated: mv_1_180_B"
+};
+
+ZenProperties["ZBCtrl"] = {
+  "name": "ZBCtrl",
+  "type": "concrete",
+  "sysexBaseAddress": 255852544,
+  "parameters": {
+    "Ctrl": {
+      "id": "Ctrl",
+      "kind": "group",
+      "blockName": "Ctrl",
+      "count": 1,
+      "sysexOffset": 0,
+      "sysexItemSize": 16384,
+      "description": "ZenBeats Control Message",
+      "block": ZenProperties["Ctrl"]
+    }
+  },
   "category": "Autogenerated: mv_1_180_B"
 };
 
